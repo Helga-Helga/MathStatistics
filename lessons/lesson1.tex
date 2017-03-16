@@ -54,7 +54,7 @@ $$a_n \left( k \right) =
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
-\subsubsection{1.4}
+\subsubsection*{1.4}
 
 \textit{Задание.}
 Пусть $X_1, \dotsc, X_n$ ---
@@ -79,7 +79,7 @@ $$a_n \left( k \right) =
   \item да.
 \end{enumerate}
 
-\subsubsection{1.5}
+\subsubsection*{1.5}
 
 \textit{Задание.}
 Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Пуассона с параметром $ \lambda $.
@@ -112,7 +112,7 @@ $$D \overline{X} =
 
 $ \overline{X}$ не обязательно буде принимать целые значения.
 
-\subsubsection{1.6}
+\subsubsection*{1.6}
 
 \textit{Задание.} Вычислите математическое ожидание статистик:
 \begin{enumerate}[label=\alph*)]
@@ -205,6 +205,48 @@ $ \overline{X}$ не обязательно буде принимать целы
     P$\{ровно $i$ элементов выборки не превышает $y$\} $=
     C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k}$.
 \end{enumerate}
+
+\subsubsection*{1.8}
+
+\textit{Задание.}
+Пусть $ \left( -0.8; 2.9; 4.5; -5.7; 1.1; -3.2 \right) $ --- наблюдаемые значения выборки.
+Составьте вариационный ряд,
+постройте эмпирическую функцию распределения $F_6 \left( x \right) $ и её график.
+Вычислите выборочное среднее и выборочную дисперсию.
+
+\textit{Решение.} Вариационный ряд: $ \left( -5.7; -3.2; -0.8; 1.1; 2.9; 4.3 \right) $.
+
+Эмпирическая функция распределения (рис. \ref{fig:18}).
+$$F_6 \left( y \right) =
+  \frac{1}{6} \sum \limits_{i = 1}^6 \mathbbm{1} \left\{ x_i \leq y \right\} =
+  \begin{cases}
+    0, \qquad x < -5.7; \\
+    \frac{1}{6}, \qquad -5.7 \leq x < -3.2, \\
+    \frac{2}{6}, \qquad -3.2 \leq x < -0.8, \\
+    \frac{3}{6}, \qquad -0.8 \leq x < 1.1, \\
+    \frac{4}{6}, \qquad 1.1 \leq x < 2.9, \\
+    \frac{5}{6}, \qquad 2.9 \leq x < 4.3, \\
+    1, \qquad x \geq 4.3.
+  \end{cases}$$
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.4\textwidth]{./pictures/1_8.png}
+  \caption{Эмпирическая функция распределения}
+  \label{fig:18}
+\end{figure}
+
+Выборочное среднее
+$$ \overline{X} =
+  \frac{1}{6} \left( -5.7 -3.2 - 0.8 + 1.1 + 2.9 + 4.3 \right) =
+  \frac{1}{6} \left( -9.7 + 8.3 \right) =
+  - \frac{1}{6} \cdot 1.4 =
+  -0.23.$$
+
+Выборочная дисперсия
+$$ \hat{ \sigma }^2 =
+  \frac{1}{5} \sum \limits_{i = 1}^6 \left( X_i + 0.23 \right)^2.$$
+Она является несмещённой.
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

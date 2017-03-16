@@ -273,3 +273,46 @@ $$ \hat{ \sigma }^2 =
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{1.15}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного на отрезке $ \left[ a, b \right] $ распределения.
+Вычислите математическое ожидание и дисперсию статистики
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i.$$
+Выясните, имеет ли статистика $ \overline{X}$ равномерное распределение; нормальное распределение.
+
+\textit{Решение.} Все $X_i$ одинаково распределены.
+Отсюда следует, что все математические ожидания одинаковы
+$$M \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n MX_i =
+  \frac{1}{n} \cdot nMX_1 =
+  MX_1 =
+  \frac{a+b}{2}.$$
+
+Из независимости $X_i$ получаем
+$$D \overline{X} =
+  \frac{1}{n^2} \sum \limits_{i = 1}^n DX_i.$$
+
+Так как $X_i$ одинаково распределены, то все дисперсии одинаковы
+$$D \overline{X} =
+  \frac{DX_1}{n} =
+  \frac{ \left( b - a \right)^2}{12n}.$$
+
+Чтобы выяснить,
+распределена ли статистика $ \overline{X}$ по нормальному или равномерному распределению,
+найдём её характеристическую функцию $ \varphi_{ \overline{X}} \left( t \right) $.
+Учитывая независимость элементов выборки и то, что
+$$ \varphi_{X_1} \left( t \right) =
+  \dotsc =
+  \varphi_{X_n} \left( t \right) =
+  \frac{e^{itb} - e^{ita}}{it \left( b - a \right) },$$
+находим
+$$ \varphi_{ \overline{X}} \left( t \right) =
+  \varphi_{X_1} \left( \frac{t}{n} \right) \cdot
+  \dotsc \cdot
+  \varphi_{X_n} \left( \frac{t}{n} \right) =
+  \left[ \frac{\left( e^{itb} - e^{ita} \right) n}{it \left( b - a \right)} \right]^n.$$
+Отсюда следует, что $ \overline{X}$ не имеет указанных распределений.

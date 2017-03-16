@@ -248,5 +248,28 @@ $$ \hat{ \sigma }^2 =
   \frac{1}{5} \sum \limits_{i = 1}^6 \left( X_i + 0.23 \right)^2.$$
 Она является несмещённой.
 
+\subsubsection*{1.9}
+
+\textit{Задание.}
+Вычислите вероятность $P \left( F_n \left( y \right) < F_n \left( z \right) \right) $.
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item $y \geq z$.
+  Событие невозможное, потому что $F_n \left( y \right) \geq F_n \left( z \right) $;
+  \item рассмотрим случай, когда $y < z$.
+
+  Тогда искомая вероятность равна
+  $P \left( F_n \left( y \right) < F_n \left( z \right) \right) = P$
+  \{в $ \left( y, z \right) $ попал хотя бы 1 элемент выборки\}
+  $= 1 - P$\{в $ \left( y, z \right) $ ни один элемент выборки не попал\}.
+  Случайные величины одинаково распределены,
+  поэтому $1 - P$\{в $ \left( y, z \right) $ ни один элемент выборки не попал\} $= \\
+  = \left[ 1 - P \left\{ x_i \notin \left( y, z \right) \right\} \right]^n =
+  1 - \left[ 1 - P \left\{ x_1 \in \left( y, z \right) \right\} \right]^n = \\
+  = 1 - \left[ 1 - P \left( x_1 < z \right) + P \left( x_1 < y \right) \right]^n =
+  1 - \left[ 1 - F \left( z \right) + F \left( y \right) \right]^n$.
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

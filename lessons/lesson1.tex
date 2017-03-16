@@ -358,3 +358,49 @@ $$F_{ \eta } \left( x \right) =
     x, \qquad x \in \left( 0, 1 \right] ,\\
     1, \qquad x > 1.
   \end{cases}$$
+
+\subsubsection*{1.17}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из дискретного распределения с вероятностями $P \left( X_1 = m \right) = p_m$, где
+$$ \sum \limits_{m = 0}^N p_m =
+  1.$$
+Найдите распределение $k$-й порядковой статистики $X_{ \left( k \right) }$.
+
+\textit{Решение.}
+Сделали упорядочивание случайных величин
+$$X_{ \left( 1 \right) } \leq
+  X_{ \left( 2 \right) } \leq
+  \dotsc \leq
+  X_{ \left( k \right) } \leq
+  \dotsc \leq
+  X_{ \left( n \right)}.$$
+
+По определению
+$F_{X_{ \left( k \right) }} \left( y \right) =
+  P \left( X_{ \left( k \right) } \leq y \right) =
+  P$\{хотя бы $k$ элементов выборки не превышает $y$\} =
+$$= \sum \limits_{i = k}^n P(A_i),$$
+где $A_i =$ \{ровно $i$ элементов выборки не превышают $y$\}.
+
+Есть $n$ испытаний, успех --- $X_i \leq y$.
+
+Вероятность успеха --- это $F \left( y \right) $, вероятность неудачи ---
+это $ \left[ 1 - F \left( y \right) \right] $.
+Это биномиальное распределение
+$$F_{X_{ \left( k \right) }} =
+  \sum \limits_{i = k}^n
+    C_n^i F^i \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - i}.$$
+
+Представим $F_{X_i} \left( y \right) = F \left( y \right) $ через $m$.
+Запишем по определению
+$$F_{X_1} \left( y \right) =
+  P \left( X_1 \leq y \right) =
+  \sum \limits_{m = 1}^n P \left( X_1 = m \right) =
+  \sum \limits_{m = 1}^n p_m.$$
+
+Подставим полученное выражение в функцию распределения
+$$F_{X_{ \left( k \right) }} =
+  \sum \limits_{i = k}^n
+    C_n^i \sum \limits_{m = 1}^n p_m \left( 1 - \sum \limits_{m = 1}^n \right)^{n - i}.$$

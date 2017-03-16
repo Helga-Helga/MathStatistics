@@ -112,5 +112,59 @@ $$D \overline{X} =
 
 $ \overline{X}$ не обязательно буде принимать целые значения.
 
+\subsubsection{1.6}
+
+\textit{Задание.} Вычислите математическое ожидание статистик:
+\begin{enumerate}[label=\alph*)]
+  \item $S^2 = \overline{X^2} - \left( \overline{X} \right)^2$;
+  \item $S_0^2 =
+          1 / \left( n - 1 \right) \cdot
+          \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2$.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Распишем каждую из величин
+  $$S^2 =
+    \overline{X^2} - \left( \overline{X} \right)^2 =
+    \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 -
+    \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2.$$
+  Распишем квадрат
+  $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 -
+    \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2
+    \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 -
+    \frac{1}{n^2} \left(
+      \sum \limits_{i = 1}^n X_i^2 + 2 \sum \limits_{i, j = 1, i < j}^n X_i X_j
+    \right).$$
+  Берём слева и справа математическое ожидание.
+  Из того, что случайные величины в выборке одинаково распределены
+  $$MS^2 =
+    MX_1^2 - \frac{1}{n^2} \left[ nMX_1 + 2C_n^2 \left( MX_1 \right)^2 \right].$$
+  Подставляем $C_n^2$ и группируем
+  $$MX_1^2 - \frac{1}{n^2} \left[ nMX_1 + 2C_n^2 \left( MX_1 \right)^2 \right] =
+    \frac{n - 1}{n} \cdot MX_1^2 - \frac{n - 1}{n} \left( MX_1 \right)^2.$$
+  Вынесем общий множитель за скобки
+  $$ \frac{n - 1}{n} \cdot MX_1^2 - \frac{n - 1}{n} \left( MX_1 \right)^2 = 
+    \frac{n - 1}{n} \left[ MX_1^2 - \left( MX_1 \right)^2 \right] =
+    \frac{n - 1}{n} \cdot SX_1.$$
+  Эта оценка смещена ассимптотически;
+  \item выразим $S_0$ через $S$.
+  Раскроем квадрат
+  $$S_0^2 =
+    \frac{1}{n - 1} \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2 =
+    \frac{1}{n - 1}
+    \sum \limits_{i = 1}^n \left( X_i^2 - 2X_i \overline{X} + \overline{X}^2 \right).$$
+  Имеем сумму $n$ одинаковых слагаемых
+  $$ S_0^2 =
+    \frac{1}{n - 1}
+    \left( n \overline{X^2} - 2 \left( \overline{X} \right)^2 n + n \overline{X}^2 \right) =
+    \frac{n}{n - 1} \left[ \overline{X^2} - \left( \overline{X} \right)^2 \right] =
+    \frac{n - 1}{n} \cdot S^2.$$
+  Отсюда следует, что
+  $$MS_0^2 =
+    \frac{n}{n - 1} \cdot \frac{n - 1}{n} \cdot DX_1 =
+    DX_1.$$
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

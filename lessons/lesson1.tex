@@ -316,3 +316,45 @@ $$ \varphi_{ \overline{X}} \left( t \right) =
   \varphi_{X_n} \left( \frac{t}{n} \right) =
   \left[ \frac{\left( e^{itb} - e^{ita} \right) n}{it \left( b - a \right)} \right]^n.$$
 Отсюда следует, что $ \overline{X}$ не имеет указанных распределений.
+
+\subsubsection*{1.16}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из некоторого распределения вероятностей,
+функция распределения которого $F$ является непрерывной и строго возрастающей.
+Найдите распределение выборки $Y_1, \dotsc, Y_n$, где
+$$Y_i =
+  F \left( X_i \right).$$
+
+\textit{Решение.}
+По определению
+$$F_{ \eta_1, \dotsc, \eta_n} \left( X_1, \dotsc, X_n \right) =
+  P \left( \eta_1 \leq X_1, \dotsc, \eta_n \leq X_n \right).$$
+Воспользуемся независимостью
+$$P \left( \eta_1 \leq X_1, \dotsc, \eta_n \leq X_n \right) =
+  P \left( \eta_1 \leq X_1 \right) \cdot \dotsc \cdot P \left( \eta_n \leq X_n \right).$$
+
+Функция распределения $i$-й компоненты вектора равна
+$$F_{ \eta_i} \left( x \right) =
+  P \left( F_{ \xi_i} \left( X_i \right) \leq x \right) =
+  \begin{cases}
+    0, \qquad x \leq 0, \\
+    1, \qquad x > 1.
+  \end{cases}$$
+
+Рассмотрим $ \left[ 0, 1 \right] $.
+
+Поскольку $F$ --- непрерывная и строго возрастающая, то существует $F^{-1} \left( x \right) $.
+Обозначим через $z$ точку $F^{-1} \left( x \right) $ такую, что $F \left( z \right) = x$.
+Событие $ \left\{ \eta = F \left( \xi \right) < x \right\} $ происходит тогда и только тогда,
+когда происходит событие $ \left\{ \xi < z \right\} $.
+
+Получаем на отрезке $ \left[ 0, 1 \right] $ равномерное распределение
+$$F_{ \eta } \left( x \right) =
+  F_{ \xi } \left( z \right) =
+  F_{ \xi } \left( F_{ \xi }^{-1} \left( x \right) \right) =
+  \begin{cases}
+    0, \qquad x \leq 0, \\
+    x, \qquad x \in \left( 0, 1 \right] ,\\
+    1, \qquad x > 1.
+  \end{cases}$$

@@ -144,7 +144,7 @@ $ \overline{X}$ не обязательно буде принимать целы
   $$MX_1^2 - \frac{1}{n^2} \left[ nMX_1 + 2C_n^2 \left( MX_1 \right)^2 \right] =
     \frac{n - 1}{n} \cdot MX_1^2 - \frac{n - 1}{n} \left( MX_1 \right)^2.$$
   Вынесем общий множитель за скобки
-  $$ \frac{n - 1}{n} \cdot MX_1^2 - \frac{n - 1}{n} \left( MX_1 \right)^2 = 
+  $$ \frac{n - 1}{n} \cdot MX_1^2 - \frac{n - 1}{n} \left( MX_1 \right)^2 =
     \frac{n - 1}{n} \left[ MX_1^2 - \left( MX_1 \right)^2 \right] =
     \frac{n - 1}{n} \cdot SX_1.$$
   Эта оценка смещена ассимптотически;
@@ -164,6 +164,46 @@ $ \overline{X}$ не обязательно буде принимать целы
   $$MS_0^2 =
     \frac{n}{n - 1} \cdot \frac{n - 1}{n} \cdot DX_1 =
     DX_1.$$
+\end{enumerate}
+
+\subsubsection*{1.7}
+
+\textit{Задание.} Найдите в терминах функции распределения $F$ выборки $X_1, \dotsc, X_n$:
+\begin{enumerate}[label=\alph*)]
+  \item распределение $k$-ой порядковой статистики $X_{ \left( k \right) }$;
+  \item вероятность
+  $P \left( X_{ \left( k \right) } < y, \, X_{ \left( k + 1 \right) } \geq y \right) $.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Сделали упорядочивание случайных величин
+  $$X_{ \left( 1 \right) } \leq
+    X_{ \left( 2 \right) } \leq
+    \dotsc \leq
+    X_{ \left( k \right) } \leq
+    \dotsc \leq
+    X_{ \left( n \right)}.$$
+
+  По определению
+  $F_{X_{ \left( k \right) }} \left( y \right) =
+    P \left( X_{ \left( k \right) } \leq y \right) =
+    P$\{хотя бы $k$ элементов выборки не превышает $y$\} =
+  $$= \sum \limits_{i = k}^n P(A_i),$$
+  где $A_i =$ \{ровно $i$ элементов выборки не превышают $y$\}.
+
+  Есть $n$ испытаний, успех --- $X_i \leq y$.
+
+  Вероятность успеха --- это $F \left( y \right) $, вероятность неудачи ---
+  это $ \left[ 1 - F \left( y \right) \right] $.
+  Это биномиальное распределение
+  $$F_{X_{ \left( k \right) }} =
+    \sum \limits_{i = k}^n
+      C_n^i F^i \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - i};$$
+  \item согласно с предыдущим пунктом
+  $P \left( X_{ \left( k \right) } < y, \, X_{ \left( k + 1 \right) } \geq y \right) =
+    P$\{ровно $i$ элементов выборки не превышает $y$\} $=
+    C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k}$.
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Домашнее задание}

@@ -271,6 +271,102 @@ $$ \hat{ \sigma }^2 =
   1 - \left[ 1 - F \left( z \right) + F \left( y \right) \right]^n$.
 \end{enumerate}
 
+\subsubsection{1.10}
+
+\textit{Задание.} Пусть $X1, \dotsc, X_n$ --- выборка из распределения $F$ с плотностью $f$.
+Найдите совместную плотность распределения всех порядковых статистик,
+то есть плотность распределения случайного вектора
+$ \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) $.
+
+\textit{Решение.}
+$F_{ \left( X_{ \left( 1 \right) }, X_{ \left( 2 \right) } \right) } \left( y_1, y_2 \right) =
+  P \left( X_{ \left( 1 \right) } \leq y_1, \, X_{ \left( 2 \right) } \leq y_2 \right)$.
+Воспользуемся формулой
+$P \left( A \cap B \right) =
+  P \left( B \right) - P \left( \overline{A} \cap B \right) $.
+Получим
+$$P \left( X_{ \left( 1 \right) } \leq y_1, \, X_{ \left( 2 \right) } \leq y_2 \right) =
+  P \left( X_{ \left( 1 \right) } \leq y_2 \right) -
+  P \left( X_{ \left( 1 \right) > y_1, \, X_{ \left( 2 \right) } \leq y_2} \right).$$
+Среди $X_{ \left( 1 \right) }$ и $X_{ \left( 2 \right) }$ случайная величина
+$X_{ \left( 2 \right) }$ является максимальной.
+\begin{equation*}
+  \begin{split}
+    P \left( X_{ \left( 1 \right) } \leq y_2 \right) -
+    P \left( X_{ \left( 1 \right) } > y_1, \, X_{ \left( 2 \right) } \leq y_2 \right) = \\
+    = P \left( X_1 \leq y_2, \, X_2 \leq y_2 \right) -
+    P \left( X_1 \in \left( y_1, y_2 \right], \, X_2 \in \left( y_1, y_2 \right] \right).
+  \end{split}
+\end{equation*}
+Случайные величины $X_1, X_2$ --- независимые и одинаково распределённые
+\begin{equation*}
+  \begin{split}
+    P \left( X_1 \leq y_2, \, X_2 \leq y_2 \right) -
+    P \left( X_1 \in \left( y_1, y_2 \right], \, X_2 \in \left( y_1, y_2 \right] \right) = \\
+    = \begin{cases}
+      \left[ F \left( y_2 \right) \right]^2, \qquad y_1 \geq y_2, \\
+      \left[ F \left( y_2 \right) \right]^2 -
+      \left[ F \left( y_2 \right) - F \left( y_1 \right) \right]^2, \qquad y_1 < y_2.
+    \end{cases}
+\end{split}
+\end{equation*}
+
+Продифференцируем
+\begin{equation*}
+    f_{ \left( X_{ \left( 1 \right) }, X_{ \left( 2 \right) } \right) } \left( y_1, y_2 \right) =
+    \begin{cases}
+      0, \qquad y_1 \geq y_2, \\
+      2f \left( y_1 \right) f \left( y_2 \right), \qquad y_1 < y_2.
+    \end{cases}
+\end{equation*}
+
+Рассматриваем множество всех векторов,
+которые имеют упорядоченные координаты
+$ \Delta = \left\{ \vec{x} \in \mathbb{R}^n \; : \; z_1 < z_2 < \dotsc < z_n \right\}, \,
+  \Gamma \subseteq \Delta $
+--- произвольное подмножество.
+
+$ \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) \in
+  \Delta$.
+
+Чтобы найти вероятность того, что данный вектор принадлежит $ \Gamma $,
+должны проинтегрировать плотность этого вектора по этому множеству
+$$P \left\{
+    \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) \in \Gamma
+  \right\} =
+  \int \limits_{ \Gamma }
+    f_{ \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) }
+    \left( z_1, \dotsc, z_n \right)
+  dz_1 \dotsc dz_n.$$
+
+С другой стороны,
+$$P \left\{
+    \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) \in \Gamma
+  \right\} =
+  \sum \limits_{ \sigma \in S_n}
+    P \left\{
+      \left( X_{ \sigma \left( 1 \right) }, \dotsc, X_{ \sigma \left( n \right) } \right) \in \Gamma
+    \right\}.$$
+Учтём все перестановки
+$$ \sum \limits_{ \sigma \in S_n}
+  P \left\{
+    \left( X_{ \sigma \left( 1 \right)}, \dotsc, X_{ \sigma \left( n \right) } \right) \in \Gamma
+  \right\} =
+  n! P \left\{ \left( X_1, \dotsc, X_n \right) \in \Gamma \right\}.$$
+Подставим найденное выражение для вероятности
+$$n! P \left\{ \left( X_1, \dotsc, X_n \right) \in \Gamma \right\}
+  n! \cdot
+  \int \limits_{ \Gamma }
+    f \left( z_1 \right) \cdot \dotsc \cdot f \left( z_n \right)
+  dz_1 \dotsc dz_n.$$
+
+Сравниваем полученные выражения
+$$f_{ \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) }
+  \left( z_1, \dotsc, z_n \right) =
+  n! f \left( z_1 \right) \cdot \dotsc \cdot f \left( z_n \right) \cdot
+  \mathbbm{1} \left\{ z_1 < z_2 < \dotsc < z_n \right\}$$
+--- плотность вектора упорядоченных статистик.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

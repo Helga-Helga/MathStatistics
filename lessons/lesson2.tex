@@ -55,5 +55,109 @@ $$ \frac{1}{n - 1} \sum \limits_{k = 1}^n \left( x_k - \overline{x} \right)^2$$
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
+\subsubsection*{2.4}
+
+\textit{Задание.}
+Для выборки равномерного распределения на отрезке $ \left[ 0, 1 \right] $
+проверьте состоятельность и несмещённость оценки $X_{ \left( 1 \right) }$ параметра $ \theta $.
+
+\textit{Решение.} $ \theta $ --- минимальное наблюдение.
+Проверяем,
+выполняется ли $X_{ \left( 1 \right) )} \overset{P}{ \rightarrow } \theta, \, n \to \infty $.
+
+По определению сходимости по вероятности
+$$ \forall \varepsilon > 0 \,
+  P \left( \left| X_{ \left( 1 \right) } - \theta \right| > \varepsilon \right) \to 0, \,
+  n \to \infty.$$
+
+Раскроем модуль
+$$P \left\{ X_{ \left( 1 \right) } > \varepsilon + \theta \right\} =
+  P \left( X_1 > \varepsilon + \theta, \dotsc, X_n > \varepsilon + \theta \right) =
+  \left[ P \left( X_1 > \varepsilon + \theta \right) \right]^n.$$
+Подставим значение вероятности из геометрического эксперимента
+$$ \left[ P \left( X_1 > \varepsilon + \theta \right) \right]^n
+  \left( \frac{1 - \theta - \varepsilon }{1 - \theta } \right)^n =
+  \left( 1 - \frac{ \varepsilon }{1 - \theta } \right)^n \to
+  0, \,
+  n \to \infty.$$
+
+Число в скобках строго меньше единицы, так как $0 \leq \theta \leq 1$.
+
+Отсюда следует, что оценка состоятельная.
+
+Проверяем несмещённость оценки.
+Проверяем, выполняется ли
+$$MX_{ \left( 1 \right) } =
+  \theta.$$
+
+Нужно найти плотность
+$$MX_{ \left( 1 \right) } =
+  \int \limits_{ \mathbb{R}} f_{X_{ \left( 1 \right) }} \left( y \right) ydy.$$
+
+Начинаем с функции распределения
+$F_{X_{ \left( 1 \right) }} \left( y \right) =
+  P \left( X_{ \left( 1 \right) } \leq y \right) $.
+Переходим к противоположному событию
+$$P \left( X_{ \left( 1 \right) } \leq y \right) =
+  1 - P \left( X_{ \left( 1 \right) } > y \right) =
+  1 - \left[ P \left( X_1 > y \right) \right]^n.$$
+Переходим к противоположному событию
+$1 - \left[ P \left( X_1 > y \right) \right]^n =
+  1 - \left[ 1 - F \left( y \right) \right]^n$.
+
+Продифференцируем
+$$ \frac{dF_{X_{ \left( 1 \right) }} \left( y \right) }{dy} =
+  n \left[ 1 - F \left( y \right) \right]^{n - 1} f \left( y \right).$$
+На отрезке $ \left[ \theta, 1 \right] $ имеет равномерное распределение
+$$n \left[ 1 - F \left( y \right) \right]^{n - 1} f \left( y \right) =
+  n \left[ 1 - \frac{y - \theta }{1 - \theta } \right]^{n - 1} \cdot
+  \mathbbm{1} \left\{ y \in \left[ \theta, 1 \right] \right\} \cdot \frac{1}{1 - \theta }.$$
+Приведём к общему знаменателю
+$$n \left[ 1 - \frac{y - \theta }{1 - \theta } \right]^{n - 1} \cdot
+  \mathbbm{1} \left\{ y \in \left[ \theta, 1 \right] \right\} \cdot \frac{1}{1 - \theta } =
+  \frac{n}{ \left( 1 - \theta \right)^2} \cdot \left( 1 - y \right)^{n - 1} \cdot
+  \mathbbm{1} \left\{ y \in \left[ \theta, 1 \right] \right\}.$$
+
+Нашли плотность $X_{ \left( 1 \right) }$ и теперь можем вычислить интеграл
+$$MX_{ \left( 1 \right) } =
+  \int \limits_{ \theta }^1
+    y \cdot \frac{n}{ \left( 1 - \theta \right)^2} \cdot \left( 1 - y \right)^{n - 1}
+  dy.$$
+Замена:
+$$1 - y = z, \,
+  dy = -dz, \,
+  y = 1 - z, \,
+  y = 1 \Rightarrow \implies z = 0, \,
+  y = \theta \implies z = 1 - \theta.$$
+Подставляя замену, получаем
+$$ \int \limits_{ \theta }^1
+    y \cdot \frac{n}{ \left( 1 - \theta \right)^2} \cdot \left( 1 - y \right)^{n - 1}
+  dy =
+  n \cdot \frac{1}{ \left( 1 - \theta \right)^n}
+  \int \limits_0^{1 - \theta } \left( 1 - z \right) z^{n - 1} dz.$$
+Вычислим интеграл
+\begin{equation*}
+  \begin{split}
+    n \cdot \frac{1}{ \left( 1 - \theta \right)^n}
+    \int \limits_0^{1 - \theta } \left( 1 - z \right) z^{n - 1} dz
+    \frac{n}{ \left( 1 - \theta \right)^n}
+    \left[
+      \frac{ \left( 1 - \theta \right)^n}{n} - \frac{ \left( 1 - \theta \right)^{n+1}}{n + 1}
+    \right] = \\
+    = n \left( \frac{1}{n} - \frac{1 - \theta }{n + 1} \right) =
+    1 - \frac{n}{n + 1} \left( 1 - \theta \right).
+  \end{split}
+\end{equation*}
+Раскроем скобки
+$$1 - \frac{n}{n + 1} \left( 1 - \theta \right) =
+  1 - \frac{n}{n + 1} - \theta \cdot \frac{n}{n + 1} \neq
+  \theta.$$
+Отсюда следует, что оценка смещённая, но ассимптотически несмещённая, потому что
+$$1 - \frac{n}{n + 1} \to 0, \,
+  n \to \infty $$
+и
+$$ \frac{n}{n + 1} \to 1, \,
+  n \to \infty.$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

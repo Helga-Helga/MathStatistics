@@ -367,6 +367,169 @@ $$f_{ \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) }
   \mathbbm{1} \left\{ z_1 < z_2 < \dotsc < z_n \right\}$$
 --- плотность вектора упорядоченных статистик.
 
+\subsubsection*{1.11}
+
+\textit{Задание.}
+Пусть задана выборка $X_1, \dotsc, X_n$ из показательного распределения с параметром $ \alpha $.
+\begin{enumerate}[label=\alph*)]
+  \item Докажите,
+  что случайные величины
+  $X_{ \left( 1 \right) },
+    X_{ \left( 2 \right) } - X_{ \left( 1 \right) },
+    \dotsc,
+    X_{ \left( n \right) } - X_{ \left( n - 1 \right) }$
+  являются независимыми;
+  \item найдите распределение разности $X_{ \left( k + 1 \right) } - X_{ \left( k \right) }$
+  соседних порядковых статистик.
+\end{enumerate}
+
+\textit{Решение.}
+$ \vec{ \xi } = \left( \xi_1, \dotsc, \xi_n \right) $ ---
+случайный вектор с плотностью распределения $f_{ \vec{ \xi }} \left( \vec{x} \right) $.
+
+Линейное преобразование этого вектора $ \vec{ \eta } = A \vec{ \xi }$, где $A$ ---
+некоторая $n$-мерная матрица.
+
+$$f_{A \vec{ \xi }} \left( \vec{y} \right) =
+  \frac{1}{ \left| detA \right| } \cdot f_{ \vec{ \xi }} \left( A^{-1} \vec{y} \right).$$
+
+Составим вектор из величин
+$X_{ \left( 1 \right) },
+  X_{ \left( 2 \right) } - X_{ \left( 1 \right) },
+  \dotsc,
+  X_{ \left( n \right) } - X_{ \left( n - 1 \right) }$.
+Его плотность должна распасться на произведение плотностей компонент.
+
+Из задачи 1.10
+$$f_{ \left( X_{ \left( 1 \right) }, \dotsc, X_{ \left( n \right) } \right) }
+  \left( y_1, \dotsc, y_n \right) =
+  n! f \left( y_1 \right) \cdot \dotsc \cdot f \left( y_n \right) \cdot
+  \mathbbm{1} \left\{y_1 < y_2 < \dotsc < y_n \right\}.$$
+Подставим плотность показательного распределения
+\begin{equation*}
+  \begin{split}
+    n! f \left( y_1 \right) \cdot \dotsc \cdot f \left( y_n \right) \cdot
+    \mathbbm{1} \left\{y_1 < y_2 < \dotsc < y_n \right\} = \\
+    = n! \alpha e^{- \alpha y_1} \cdot \mathbbm{1} \left\{ y_1 > 0 \right\} \cdot \dotsc \cdot
+    \alpha e^{- \alpha y_n} \cdot \mathbbm{1} \left\{ y_n > 0 \right\} \cdot
+    \mathbbm{1} \left\{ y_1 < y_2 < \dotsc < y_n \right\}.
+  \end{split}
+\end{equation*}
+Перемножим
+\begin{equation*}
+  \begin{split}
+    n! \alpha e^{- \alpha y_1} \cdot \mathbbm{1} \left\{ y_1 > 0 \right\} \cdot \dotsc \cdot
+    \alpha e^{- \alpha y_n} \cdot \mathbbm{1} \left\{ y_n > 0 \right\} \cdot
+    \mathbbm{1} \left\{ y_1 < y_2 < \dotsc < y_n \right\} = \\
+    = n! \alpha^n e^{- \alpha \left( y_1 + \dotsc + y_n \right) } \cdot
+    \mathbbm{1} \left\{ 0 < y_1 < y_2 < \dotsc < y_n \right\}.
+  \end{split}
+\end{equation*}
+
+Нужно найти линейное преобразование
+$$\begin{bmatrix}
+    X_{ \left( 1 \right) } \\
+    X_{ \left( 2 \right) } - X_{ \left( 1 \right) } \\
+    X_{ \left( 3 \right) } - X_{ \left( 2 \right) } \\
+    \dotsc \\
+    X_{ \left( n \right) } - X_{ \left( n - 1 \right) }
+  \end{bmatrix} =
+  \begin{bmatrix}
+    1 & 0 & 0 & 9 & \dots & 0 & 0 & 0\\
+    -1 & 1 & 0 & 9 & \dots & 0 & 0 & 0\\
+    0 & -1 & 1 & 0 & \dotsc & 0 & 0 & 0\\
+    \dotsc \\
+    0 & 0 & 0 & 0 & \dotsc & 0 & -1 & 1
+  \end{bmatrix}
+  \begin{bmatrix}
+    X_{ \left( 1 \right) )} \\
+    X_{ \left( 2 \right) } \\
+    X_{ \left( 3 \right) } \\
+    \dotsc \\
+    X_{ \left( n \right) }
+  \end{bmatrix},$$
+где
+$$\begin{bmatrix}
+    1 & 0 & 0 & 0 & \dots & 0 & 0 & 0\\
+    -1 & 1 & 0 & 0 & \dots & 0 & 0 & 0\\
+    0 & -1 & 1 & 0 & \dotsc & 0 & 0 & 0\\
+    \dotsc \\
+    0 & 0 & 0 & 0 & \dotsc & 0 & -1 & 1
+  \end{bmatrix} =
+  A.$$
+
+Определитель $detA = 1$.
+
+Ищем обратную матрицу
+$$\begin{bmatrix}
+    1 & 0 & 0 & 0 & \dots & 0 \\
+    1 & 1 & 0 & 0 & \dots & 0 \\
+    1 & 1 & 1 & 0 & \dotsc & 0 \\
+    \dotsc \\
+    1 & 1 & 1 & 1 & \dotsc & 1
+  \end{bmatrix}
+  \begin{bmatrix}
+    X_{ \left( 1 \right) } \\
+    X_{ \left( 2 \right) } - X_{ \left( 1 \right) } \\
+    X_{ \left( 3 \right) } - X_{ \left( 2 \right) } \\
+    \dotsc \\
+    X_{ \left( n \right) } - X_{ \left( n - 1 \right) }
+  \end{bmatrix} =
+  \begin{bmatrix}
+    X_{ \left( 1 \right) )} \\
+    X_{ \left( 2 \right) } \\
+    X_{ \left( 3 \right) } \\
+    \dotsc \\
+    X_{ \left( n \right) }
+  \end{bmatrix}.$$
+
+Тогда имеем выражение
+$$A^{-1} \vec{y} =
+  \begin{bmatrix}
+    y_1 \\
+    y_1 + y_2 \\
+    \dotsc \\
+    \sum \limits_{i = 1}^n y_i
+  \end{bmatrix}.$$
+
+Определим искомый вектор через
+$$ \vec{ \eta } =
+  \left(
+    X_{ \left( 1 \right) },
+    X_{ \left( 2 \right) } - X_{ \left( 1 \right) },
+    \dotsc,
+    X_{ \left(n \right) } - X_{ \left( n - 1 \right) }
+  \right).$$
+Тогда
+\begin{equation*}
+  \begin{split}
+    f_{ \vec{ \eta }} \left( y_1, \dotsc, y_n \right) = \\
+    = n! \alpha^n e^{- \alpha \left( ny_1 + \left( n - 1 \right) y_2 + \dotsc + y_n \right) } \cdot
+    \mathbbm{1} \left\{ 0 < y_1 < y_1 + y_2 < \dotsc < y_1 + y_2 + \dotsc + y_n \right\}.
+  \end{split}
+\end{equation*}
+Разобъём на $n$ множителей
+\begin{equation*}
+  \begin{split}
+    n! \alpha^n e^{- \alpha \left( ny_1 + \left( n - 1 \right) y_2 + \dotsc + y_n \right) } \cdot
+    \mathbbm{1} \left\{ 0 < y_1 < y_1 + y_2 < \dotsc < y_1 + y_2 + \dotsc + y_n \right\} = \\
+    = \left[ n \alpha e^{- \alpha ny_1} \cdot \mathbbm{1} \left\{ 0 < y_1 \right\} \right] \cdot
+    \left[
+      \left( n - 1 \right) \alpha e^{- \alpha \left( n - 1 \right) y_2} \cdot
+      \mathbbm{1} \left\{ y_2 > 0 \right\}
+    \right] \cdot \dotsc \times \\
+    \times \left[ \alpha e^{- \alpha y_n} \cdot \mathbbm{1} \left\{ y_n > 0 \right\} \right].
+  \end{split}
+\end{equation*}
+
+Имеем произведение плотностей компонент, значит,
+элементы вектора независимы и показательно распределены с параметром
+$ \alpha \left( n - k \right) $,
+то есть
+$X_{ \left( k + 1 \right) } - X_{ \left( k \right) } \sim
+  \Pi \left( \alpha \left( n - k \right) \right) $.
+Считаем, что $X_{ \left( 0 \right) } = 0$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

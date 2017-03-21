@@ -195,5 +195,28 @@ $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2:$$
   значит, оценка не состоятельная.
 \end{enumerate}
 
+\subsubsection*{2.6}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распределения с параметром $ \alpha > 0$.
+Докажите, что статистика $1 / \overline{X}$ является состоятельной оценкой для $ \alpha $.
+
+\textit{Решение.} Нужно показать, что
+$$ \frac{1}{ \overline{X}} \overset{P}{ \rightarrow } \alpha, \,
+   n \to \infty.$$
+
+Выборочное среднее
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i.$$
+
+По закону больших чисел
+$$ \overline{X} \overset{P}{ \rightarrow }
+  MX_1 =
+  \frac{1}{ \alpha }.$$
+Отсюда следует, что
+$$ \frac{1}{ \overline{X}} \overset{P}{ \rightarrow }
+  \frac{1}{MX_1} =
+  \alpha.$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

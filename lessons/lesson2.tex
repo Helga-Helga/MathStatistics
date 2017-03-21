@@ -218,5 +218,74 @@ $$ \frac{1}{ \overline{X}} \overset{P}{ \rightarrow }
   \frac{1}{MX_1} =
   \alpha.$$
 
+\subsubsection*{2.7}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из нормального распределения $N \left( a, \sigma^2 \right) $.
+Докажите, что статистика
+$$S_n =
+  \frac{1}{2 \left( n - 1 \right) } \sum \limits_{i = 1}^{n - 1} \left( X_{i + 1} - X_i \right)^2$$
+является несмещённой и состоятельной оценкой для $ \sigma^1$.
+
+\textit{Решение.} Нужно проверить условие $MS_n = \sigma^2$.
+
+Разность двух соседних элементов выборки имеет распределение
+$$X_{i + 1} - X_i \sim
+  N \left( 0, 2 \sigma^2 \right).$$
+
+Найдём математическое ожидание статистики
+$$MS_n =
+  M \frac{1}{2 \left( n - 1 \right) } \cdot
+  \sum \limits_{i = 1}^{n - 1} \left( X_{i + 1} - X_i \right)^2 =
+  \frac{1}{2 \left( n - 1 \right) } \sum \limits_{i = 1}^n M \left( X_{i + 1} - X_i \right)^2.$$
+Случайные величины одинаково распределены
+$$ \frac{1}{2 \left( n - 1 \right) } \sum \limits_{i = 1}^n M \left( X_{i + 1} - X_i \right)^2 =
+  \frac{n}{2 \left( n - 1 \right) } \cdot M \left( X_2 - X_1 \right)^2.$$
+В данном случае второй момент равен  дисперсии
+$$ \frac{n}{2 \left( n - 1 \right) } \cdot M \left( X_2 - X_1 \right)^2 =
+  \frac{1}{2} \cdot 2 \sigma^2 =
+  \sigma^2.$$
+Отсюда следует, что оценка несмещённая.
+
+Проверим состоятельность, то есть $S_n \overset{P}{ \rightarrow } \sigma^2, \, n \to \infty $.
+
+Разобъём $S_n$ на две суммы
+$$S_n =
+  \frac{1}{2 \left( n - 1 \right) } \cdot
+  \left[
+    \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+    \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+  \right].$$
+В каждой из сумм слагаемые независимы
+\begin{equation*}
+  \begin{split}
+    \frac{1}{2 \left( n - 1 \right) } \cdot
+    \left[
+      \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+      \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+    \right] = \\
+    = \frac{1}{2 \left( n - 1 \right) } \cdot
+    \left[
+      \frac{m}{m} \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+      \frac{n - 1 - m}{n - 1 - m} \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+    \right].
+  \end{split}
+\end{equation*}
+По закону больших чисел
+\begin{equation*}
+  \begin{split}
+    \frac{1}{2 \left( n - 1 \right) } \cdot
+    \left[
+      \frac{m}{m} \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+      \frac{n - 1 - m}{n - 1 - m} \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+    \right] \overset{P}{ \rightarrow } \\
+    \overset{P}{ \rightarrow } \frac{1}{2} \cdot M \left( X_2 - X_1 \right)^2 =
+    \frac{1}{2} \cdot D \left( X_2 - X_1 \right) =
+    \sigma^2, \,
+    n \to \infty.
+  \end{split}
+\end{equation*}
+Отсюда следует, что оценка состоятельная.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

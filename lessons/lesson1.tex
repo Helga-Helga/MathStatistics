@@ -767,3 +767,30 @@ $$F_n \left( y \right) =
   \caption{Эмпирическая функция распределения}
   \label{fig:119}
 \end{figure}
+
+\subsubsection*{1.20}
+
+\textit{Задание.} Пусть $X_1, \dotsc, X_n$ --- выборка из распределения $F$.
+Докажите,
+что для произвольных $y \in \mathbb{R}$ и $k \in \left\{ 0, 1, \dotsc, n \right\} $
+справедливо равенство
+$$P \left( F_n \left( y \right) = \frac{k}{n} \right) =
+  C_n^k F^k \left( y \right) \left( 1 - F \left( y \right) \right)^{n - k}.$$
+
+\textit{Решение.} Эмпирической функцией распределения, построенной по выборке $X_1, \dotsc, X_n$,
+называется функция
+$$F_n \left( y \right) =
+  \frac{1}{n} \sum \limits_{i = 1}^n \mathbbm{1} \left( X_i \leq y \right).$$
+
+Посмотрим, что значит событие в указанной вероятности
+$$F_n \left( y \right) =
+  \frac{k}{n} =
+  \frac{1}{n} \sum \limits_{i = 1}^n \mathbbm{1} \left( X_i \leq y \right).$$
+
+Сократим константы в знаменателях
+$$k =
+  \sum \limits_{i = 1}^n \mathbbm{1} \left( X_i \leq y \right).$$
+Это означает, что есть ровно $k$ элементов выборки, не превышающих $y$.
+Следовательно, это биномиальное распределение с параметром $F \left( y \right) $, то есть
+$$P \left( F_n \left( y \right) = \frac{k}{n} \right) =
+  C_n^k F^k \left( y \right) \left( 1 - F \left( y \right) \right)^{n - k}.$$

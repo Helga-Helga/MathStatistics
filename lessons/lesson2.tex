@@ -287,5 +287,55 @@ $$S_n =
 \end{equation*}
 Отсюда следует, что оценка состоятельная.
 
+\subsubsection*{2.8}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распредения с параметром $ \alpha > 1$.
+Для какого параметра $ \theta = \theta \left( \alpha \right) $ статистика
+$ \hat{ \theta_n} = e^{ \overline{X}}$ является состоятельной оценкой?
+Является ли $ \hat{ \theta_n}$ сильно состоятельной оценкой того же параметра?
+Является ли $ \hat{ \theta_n}$ несмещённой оценкой того же параметра?
+Ассимптотически немещённой?
+
+\textit{Решение.}
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i.$$
+По закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \to } MX_1, \,
+  n \to \infty.$$
+
+СЛучайные величины в выборке имеют показательное распределение
+$$MX_1 =
+  \frac{1}{ \alpha },$$
+значит,
+$$ \overline{X} \overset{P}{ \to } \frac{1}{ \alpha }, \,
+  n \to \infty.$$
+
+Применяем непрерывную функцию $e^x$.
+Получаем $e^{ \overline{X}} \overset{P}{ \to } e^{ \frac{1}{ \alpha }}, \, n \to \infty $.
+
+Проверяем, является ли оценка $e^{ \overline{X}}$ несмещённой к параметру $e^{ \frac{1}{ \alpha }}$,
+то есть выполняется ли $Me^{ \overline{X}} = e^{ \frac{1}{ \alpha }}$.
+
+Вычисляем $Me^{ \overline{X}} = Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i}$.
+Случайные величины независимы и одинаково распределены,
+поэтому $Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i} = \left( Me^{ \frac{X_1}{n}} \right)^n$.
+По определению характеристической функции $ \varphi_{X_1} = Me^{itX_1}$ получаем
+$$ \left( Me^{ \frac{X_1}{n}} \right)^n =
+  \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n.$$
+Характеристическая функция показательного распределения
+$$ \varphi_{X_1} \left(t \right) =
+  Me^{itX_1} =
+  \frac{ \alpha }{ \alpha - it}.$$
+Подставляем
+$$ \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n =
+  \left( \frac{ \alpha }{ \alpha - \frac{1}{n}} \right)^n.$$
+Прибавим и отнимем в числителе $1 / n$ и поделим числитель на знаменатель
+$$ \left( \frac{ \alpha }{ \alpha - \frac{1}{n}} \right)^n =
+  \left( \frac{ \alpha + \frac{1}{n} - \frac{1}{n}}{ \alpha - \frac{1}{n}} \right)^n =
+  \left[ 1 + \frac{1}{n \left( \alpha - \frac{1}{n} \right)} \right]^n =
+  e^{ \frac{1}{ \alpha }}.$$
+Значит, оценка смещённая, но несмещённая ассимптотически.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

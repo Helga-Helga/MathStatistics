@@ -159,5 +159,41 @@ $$1 - \frac{n}{n + 1} \to 0, \,
 $$ \frac{n}{n + 1} \to 1, \,
   n \to \infty.$$
 
+\subsubsection*{2.5}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Пуассона с параметром $ \lambda > 0$.
+Выясните, является ли статистика
+$$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2:$$
+\begin{enumerate}[label=\alph*)]
+  \item несмещённой оценкой для $ \lambda^2$;
+  \item состоятельной оценкой для $ \lambda^2$.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Нужно проверить, выполняется ли
+  $$M \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 =
+    \lambda^2.$$
+  Преобразуем левую часть
+  $$M \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 =
+    MX_1^2 =
+    DX_1 + \left( MX_1 \right)^2 =
+    \lambda + \lambda^2 \neq
+    \lambda^2.$$
+
+  Значит, оценка смещённая;
+  \item проверяем, имеет ли место
+  $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2  \overset{P}{ \rightarrow } \lambda^2, \,
+    n \to \infty.$$
+
+  По закону больших чисел
+  $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 \to
+    MX_1^2 =
+    \lambda^2 + \lambda \neq
+    \lambda^2,$$
+  значит, оценка не состоятельная.
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

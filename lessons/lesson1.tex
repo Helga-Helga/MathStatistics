@@ -287,7 +287,7 @@ $P \left( A \cap B \right) =
 Получим
 $$P \left( X_{ \left( 1 \right) } \leq y_1, \, X_{ \left( 2 \right) } \leq y_2 \right) =
   P \left( X_{ \left( 1 \right) } \leq y_2 \right) -
-  P \left( X_{ \left( 1 \right) > y_1, \, X_{ \left( 2 \right) } \leq y_2} \right).$$
+  P \left( X_{ \left( 1 \right) } > y_1, \, X_{ \left( 2 \right) } \leq y_2 \right).$$
 Среди $X_{ \left( 1 \right) }$ и $X_{ \left( 2 \right) }$ случайная величина
 $X_{ \left( 2 \right) }$ является максимальной.
 \begin{equation*}
@@ -757,7 +757,7 @@ $$F_n \left( y \right) =
     0, \qquad x < 0, \\
     \frac{n - k}{n}, \qquad 0 \leq x < 1, \\
     1, \qquad x \geq 1.
-  \end{cases}$$
+\end{cases}$$
 
 Эмпирическая функция распределения будет выглядеть так, как показано на рис. \ref{fig:119}.
 
@@ -794,3 +794,333 @@ $$k =
 Следовательно, это биномиальное распределение с параметром $F \left( y \right) $, то есть
 $$P \left( F_n \left( y \right) = \frac{k}{n} \right) =
   C_n^k F^k \left( y \right) \left( 1 - F \left( y \right) \right)^{n - k}.$$
+
+\subsubsection*{1.21}
+
+\textit{Задание.}
+Для выборки $X_1, \dotsc, X_n$ из равномерного распределения на отрезке $ \left[ 0, \theta \right] $
+найдите плотность, математическое ожидание и дисперсию:
+\begin{enumerate}[label=\alph*)]
+\item максимального члена вариационного ряда $X_{ \left( n \right) }$;
+\item минимального члена вариационного ряда $X_{ \left( 1 \right) }$;
+\item совместную плотность распределения и ковариацию $X_{ \left( n \right) }$ и
+$X_{ \left( 1 \right) }$.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+\item Найдём функцию распределения $n$-й порядковой статистики
+$F_{X_{ \left( n \right) }} \left( y \right) = \\
+  = P \left( X_{ \left( n \right) } \leq y \right) =
+  P$ ($n$ элементов выборки не превышают $y$)$=$
+  $$= C_n^n \left[ F_{X_1} \left( y \right) \right]^n \cdot
+  \left[ 1 - F_{X_1} \left( y \right) \right]^{n - n} =
+  \left[ F_{X_1} \left( y \right) \right]^n =
+  \left[ P \left( X_1 \leq y \right) \right]^n =
+  \left( \frac{y}{ \theta } \right)^n,$$
+при этом $y \in \left[ 0, \theta \right] $.
+
+Продифференцируем
+$$f_{X_{ \left( n \right) }} \left( y \right) =
+  \frac{ \partial F_{X_{ \left( n \right) }} \left( y \right) }{ \partial y} =
+  \frac{ \partial }{ \partial y} \left( \frac{y}{ \theta } \right)^n =
+  \frac{1}{ \theta^n} \cdot \frac{dy^n}{dy} =
+  \frac{ny^{n - 1}}{ \theta^n} \cdot \mathbbm{1} \left\{ y \in \left[ 0, \theta \right] \right\}.$$
+
+По определению математического ожидания
+$$MX_{ \left( n \right) } =
+  \int \limits_0^{ \theta } ydF^n \left( y \right) =
+  \int \limits_0^{ \theta } yd \left( \frac{y}{ \theta } \right)^n =
+  \frac{1}{ \theta^n} \int \limits_0^{ \theta } ydy^n =
+  \frac{n}{ \theta^n} \int \limits_0^{ \theta } yy^{n - 1} dy.$$
+Сложим степени сомножителей
+$$ \frac{n}{ \theta^n} \int \limits_0^{ \theta } yy^{n - 1} dy =
+  \frac{n}{ \theta^n} \int \limits_0^{ \theta } y^n dy =
+  \frac{n}{ \theta^n} \cdot \left. \frac{y^{n + 1}}{n + 1} \right|_0^{ \theta } =
+  \frac{ \theta^{n + 1} n}{ \theta^n \left( n + 1 \right) } =
+  \frac{ \theta n}{n + 1}.$$
+
+Найдём второй момент
+$$MX_{ \left( n \right) }^2 =
+  \int \limits_0^{ \theta } y^2 dF^n \left( y \right) =
+  \frac{n}{ \theta^n} \int \limits_0^{ \theta } y^2 y^{n - 1} dy =
+  \frac{n}{ \theta^n} \int \limits_0^{ \theta } y^{n + 1} dy.$$
+Возьмём интеграл
+$$ \frac{n}{ \theta^n} \int \limits_0^{ \theta } y^{n + 1} dy =
+  \left. \frac{ny^{n + 2}}{ \theta^n \left( n + 2 \right) } \right|_0^{ \theta } =
+  \frac{n \theta^{n + 2}}{ \theta^n \left( n + 2 \right) } =
+  \frac{n \theta^2}{n + 2}.$$
+
+По свойствам дисперсии
+$$DX_{ \left( n \right) } =
+  MX_{ \left( n \right) }^2 - \left( MX_{ \left( n \right) } \right)^2 =
+  \frac{n \theta^2}{n + 2} - \frac{n^2 \theta^2}{ \left( n + 1 \right)^2}.$$
+Приведём к общему знаменателю
+\begin{equation*}
+  \begin{split}
+    \frac{n \theta^2}{n + 2} - \frac{n^2 \theta^2}{ \left( n + 1 \right)^2} =
+    \frac{n \theta^2 \left( n^2 + 2n + 1 \right) - n^2 \theta^2 \left( n + 2 \right) }{ \left( n + 2 \right) \left( n + 1 \right)^2} = \\
+    = \frac{n^3 \theta^2 + 2n^2 \theta^2 + n \theta^2 - n^3 \theta^2 - 2n^2 \theta^2}{ \left( n + 2 \right) \left( n + 1 \right)^2} =
+    \frac{n \theta^2}{ \left( n + 2 \right) \left( n + 1 \right)^2};
+  \end{split}
+\end{equation*}
+\item найдём функцию распределения первой порядковой статистики
+$$F_{X_{ \left( 1 \right) }} \left( y \right) =
+  P \left( X_{ \left( 1 \right) } \leq y \right) =
+  P \left( \min \left( X_1, X_2, \dotsc, X_n \right) \leq y \right) =$$
+  $= P$(хотя бы 1 элемент выборки не превышает $y$)$ =$
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k = 1}^n
+    P \left(exactly \, k \, elements \, of \, the \, sample \, does \, not \, exceed \, y \right) = \\
+    = \sum \limits_{k = 1}^n C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k} = \\
+    = \sum \limits_{k = 0}^n
+      C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k} -
+    C_n^0 F^0 \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - 0}.
+  \end{split}
+\end{equation*}
+Применяем формулу для бинома Ньютона
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k = 0}^n
+    C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k} -
+    C_n^0 F^0 \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - 0} = \\
+    = \left[ F \left( y \right) + 1 - F \left( y \right) \right]^n -
+    \left[ 1 - F \left( y \right) \right]^n =
+    1 - \left( 1 - \frac{y}{ \theta } \right)^n.
+  \end{split}
+\end{equation*}
+
+Продифференцируем
+$$f_{X_{ \left( 1 \right) }} \left( y \right) =
+  \frac{ \partial F_{X_{ \left( 1 \right) }} \left( y \right) }{ \partial y} =
+  \frac{ \partial }{ \partial y}
+    \left( 1 - \frac{ \left( \theta - y \right)^n}{ \theta^n} \right) =
+  - \frac{1}{ \theta^n} \cdot \frac{ \partial }{ \partial y} \left( \theta - y \right)^n.$$
+Берём производную сложной функции
+$$- \frac{1}{ \theta^n} \cdot \frac{ \partial }{ \partial y} \left( \theta - y \right)^n
+  - \frac{1}{ \theta^n} \cdot n \left( \theta - y \right)^{n - 1} \left( -1 \right) =
+  \frac{n \left( \theta - y \right)^{n - 1}}{ \theta^n}, \,
+  y \in \left[ 0, \theta \right].$$
+
+Найдём математическое ожидание по определению
+$$MX_{ \left( 1 \right) } =
+  \int \limits_0^{ \theta } ydF^n \left( y \right) =
+  \int \limits_0^{ \theta } yd \left( 1 - \frac{y}{ \theta } \right)^n.$$
+Сделаем замену
+$$1 - \frac{y}{ \theta } =
+  z,$$
+откуда $y = \theta \left( 1 - z \right) $,
+при этом интегрирование происходит в пределах от одного до нуля
+$$ \int \limits_0^{ \theta } yd \left( 1 - \frac{y}{ \theta } \right)^n =
+  \int \limits_1^0 \theta \left( 1 - z \right) dz^n =
+  \theta n \int \limits_1^0 \left( z - 1 \right) z^{n - 1} dz.$$
+Разбиваем на 2 интеграла
+$$ \theta n \int \limits_1^0 \left( z - 1 \right) z^{n - 1} dz =
+  - \theta n \int \limits_0^1 z^n dz + \theta n \int \limits_0^1 z^{n - 1} dz =
+  - \theta n \cdot \left. \frac{z^{n + 1}}{n + 1} \right|_0^1 +
+  \theta n \cdot \left. \frac{z^n}{n} \right|_0^1.$$
+Подставляем пределы интегрирования
+$$- \theta n \cdot \left. \frac{z^{n + 1}}{n + 1} \right|_0^1 +
+  \theta n \cdot \left. \frac{z^n}{n} \right|_0^1 =
+  - \theta n \cdot \frac{1}{n + 1} + \theta n \cdot \frac{1}{n} =
+  - \theta n \left( \frac{1}{n + 1} - \frac{1}{n} \right).$$
+Приводим к общему знаменателю
+$$ - \theta n \left( \frac{1}{n + 1} - \frac{1}{n} \right) =
+  - \theta n \cdot \frac{n - n - 1}{n \left( n + 1 \right) } =
+  \frac{ \theta n}{n \left( n + 1 \right) } =
+  \frac{ \theta }{ \left( n + 1 \right) }.$$
+
+Найдём второй момент
+$$MX_{ \left( 1 \right) }^2 =
+  \int \limits_0^{ \theta } y^2 d \left( 1 - \frac{y}{ \theta } \right)^n.$$
+Применяем такую же замену, как при поиске первого момента
+$$ \int \limits_0^{ \theta } y^2 d \left( 1 - \frac{y}{ \theta } \right)^n =
+  \int_1^0 \theta^2 \left( 1 - z \right)^2 dz^n =
+  \int_0^1 \theta^2 n \left( 1 - z \right)^2 z^{n - 1} dz.$$
+Выносим константу за знак интеграла и возводим скобку в квадрат
+\begin{equation*}
+  \begin{split}
+    \int_0^1 \theta^2 n \left( 1 - z \right)^2 z^{n - 1} dz =
+    \theta^2 n \int \limits_0^1 \left( 1 - 2z + z^2 \right) z^{n - 1} dz = \\
+    = \theta^2 n \int \limits_0^1 z^{n - 1} dz -
+    2 \theta^2 n \int \limits_0^1 z^n dz +
+    \theta^2 n \int \limits_0^1 z^{n + 1} dz = \\
+    = \theta^2 n \cdot \left. \frac{z^n}{n} \right|_0^1 -
+    2 \theta^2 n \cdot \left. \frac{z^{n + 1}}{n + 1} \right|_0^1 +
+    \theta^2 n \cdot \left. \frac{z^{n + 2}}{n + 2} \right|_0^1 =
+    \theta^2 - \frac{2 \theta^2 n}{n + 1} + \frac{ \theta^2 n}{n + 2} = \\
+    = \theta^2 \left( 1 - \frac{2n}{n + 1} + \frac{n}{n + 2} \right) = \\
+    = \theta^2 \cdot
+    \frac{ \left( n + 1 \right) \left( n + 2 \right) - 2n \left( n + 2 \right) + n \left( n + 1 \right) }{ \left( n + 1 \right) \left( n + 2 \right) } = \\
+    = \frac{ \theta^2 \left( n^2 + 3n + 2 - 2n^2 - 4n + n^2 + n \right) }{ \left( n + 1 \right) \left( n + 2 \right) } =
+    \frac{2 \theta^2}{ \left( n + 1 \right) \left( n + 2 \right) }.
+  \end{split}
+\end{equation*}
+
+По свойствам дисперсии
+$$DX_{ \left( 1 \right) } =
+  MX_{ \left( 1 \right) }^2 - \left[ MX_{ \left( 1 \right) } \right]^2 =
+  \frac{2 \theta^2}{ \left( n + 1 \right) \left( n + 2 \right) } -
+  \frac{ \theta^2}{ \left( n + 1 \right)^2}.$$
+Приводим к общему знаменателю
+\begin{equation*}
+  \begin{split}
+    \frac{2 \theta^2}{ \left( n + 1 \right) \left( n + 2 \right) } -
+    \frac{ \theta^2}{ \left( n + 1 \right)^2} =
+    \frac{2 \theta^2 \left( n + 1 \right) - \theta^2 \left( n + 2 \right) }{ \left( n + 1 \right)^2 \left( n + 2 \right) } = \\
+    = \frac{2 \theta^2 n + 2 \theta^2 - \theta^2 n - 2 \theta^2}{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+    \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) };
+  \end{split}
+\end{equation*}
+\item найдём функцию распределения вектора по определению
+$$F_{ \left( X_{ \left( 1 \right)}, X_{ \left( n \right) } \right) } \left( y_1, y_n \right)=
+  P \left( X_{ \left( 1 \right) } \leq y_1, X_{ \left( n \right) } \leq y_n \right).$$
+Воспользовавшись формулой
+$P \left( A \cap B \right) =
+  P \left( B \right) - P \left( \overline{A} \cap B \right) $,
+получим
+$$P \left( X_{ \left( 1 \right) } \leq y_1, X_{ \left( n \right) } \leq y_n \right) =
+    P \left( X_{ \left( n \right) } \leq y_n \right) -
+    P \left( X_{ \left( 1 \right) } > y_1, \, X_{ \left( n \right) } \leq y_n \right).$$
+Если максимум меньше какого-то значения, то все элементы меньше него
+\begin{equation*}
+  \begin{split}
+    P \left( X_{ \left( 1 \right) } > y_1, \, X_{ \left( n \right) } \leq y_n \right) = \\
+    = P \left( X_1 \leq y_n, \dotsc, X_n \leq y_n \right) - \\
+    = P \left(
+      X_1 \in \left( y_1, y_n \right], \,
+      X_2 \in \left( y_1, y_n \right],
+      \dotsc,
+      X_n \in \left( y_1, y_n \right]
+    \right) = \\
+    = \left[ F \left( y_n \right) \right]^n -
+    \left[ F \left( y_n \right) - F \left( y_1 \right) \right]^n
+  \end{split}
+\end{equation*}
+при $y_1 < y_n$.
+
+Продифференцируем
+\begin{equation*}
+  \begin{split}
+    f_{ \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) } \left( y_1, y_n \right) =
+    \begin{cases}
+      0, \qquad y_1 \geq y_n, \\
+      n \left( n - 1 \right) \cdot
+      \left[ F \left( y_n \right) - F \left( y_1 \right) \right]^{n - 2} \times \\
+      \times p_{X_1} \left( y_1 \right) p_{X_n} \left( y_n \right) = \\
+      = n \left( n - 1 \right) \cdot
+      \left[ \frac{y_n}{ \theta } - \frac{y_1}{ \theta } \right]^{n - 2} \cdot
+      \frac{1}{ \theta^2} = \\
+      = n \left( n - 1 \right) \cdot \frac{ \left( y_n - y_1 \right)^n}{ \theta^{n - 2}} \cdot
+      \frac{1}{ \theta^2} =
+      \frac{n \left( n - 1 \right) \left( y_n - y_1 \right)^{n - 1}}{ \theta^n}.
+    \end{cases}
+  \end{split}
+\end{equation*}
+
+Найдём математическое ожидание вектора
+$$M \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) =
+    \frac{n \left( n - 1 \right) }{ \theta^n} \cdot
+    \int \limits_0^{ \theta }
+      \int \limits_{y_n}^{ \theta } y_1 y_n \left( y_n - y_1 \right)^{n - 2} dy_1
+    dy_n.$$
+
+Заменим разность величин величиной $x$.
+Якобиан преобразования равен
+$$ \frac{ \partial \left( x, y_n \right) }{ \partial \left( x, y_1 \right) } =
+  \left|
+    \begin{bmatrix}
+      \frac{ \partial x}{ \partial y_1} & \frac{ \partial y_n}{ \partial y_1} \\
+      \frac{ \partial x}{ \partial y_n} & \frac{ \partial y_1}{ \partial y_1}
+    \end{bmatrix}
+  \right| =
+  \left|
+    \begin{bmatrix}
+      1 & 0 \\
+      -1 & 1
+    \end{bmatrix}
+  \right| =
+  1.$$
+Получаем
+\begin{equation*}
+  \begin{split}
+    \frac{n \left( n - 1 \right) }{ \theta^n} \cdot
+    \int \limits_0^{ \theta }
+      \int \limits_{y_n}^{ \theta } y_1 y_n \left( y_n - y_1 \right)^{n - 2} dy_1
+    dy_n = \\
+    = \frac{n \left( n - 1 \right) }{ \theta^n} \cdot
+    \int \limits_0^{ \theta }
+      \int \limits_0^{ \theta - y_n} \left( x + y_n \right) y_n x^{n - 2} dx
+    dy_n = \\
+    = \frac{n \left( n - 1 \right) }{ \theta^n} \cdot
+    \int \limits_0^{ \theta } y_n dy_n \cdot
+      \int \limits_0^{ \theta - y_n} \left( x^{n - 1} + y_n x^{n - 2} \right) dx = \\
+    = \frac{n \left( n - 1 \right) }{ \theta^n} \cdot
+    \int \limits_0^{ \theta } y_n dy_n \cdot
+      \left.
+        \left( \frac{x^n}{n} + y_n \cdot \frac{x^{n - 1}}{n - 1} \right)
+      \right|_0^{ \theta - y_n} = \\
+    = \frac{1}{ \theta^n}  \cdot
+    \int \limits_0^{ \theta }
+      \left[
+        \left( n - 1 \right) \left( \theta - y_n \right) + y_n n \left( \theta - y_n \right)^{n - 1}
+      \right] \cdot
+      y_n
+    dy_n = \\
+    = \frac{1}{ \theta^n} \cdot
+    \int \limits_0^{ \theta }
+      \left( \theta - y_n \right)^{n - 1} \cdot
+      \left[ \left( n - 1 \right) \left( \theta - y_n \right) + y_n n \right] \cdot
+      y_n
+    dy_n = \\
+    = \frac{1}{ \theta^n} \cdot
+    \int \limits_0^{ \theta }
+      \left( \theta - y_n \right)^{n - 1} \left[ n \theta - \left( \theta - y_n \right) \right] y_n
+    dy_n.
+  \end{split}
+\end{equation*}
+Заменяем первую скобку в интеграле на $t$.
+Получаем
+$$ \frac{1}{ \theta^n} \cdot
+  \int \limits_0^{ \theta }
+    \left( \theta - y_n \right)^{n - 1} \left[ n \theta - \left( \theta - y_n \right) \right] y_n
+  dy_n =
+  \frac{1}{ \theta^n} \cdot
+  \int \limits_0^{ \theta } t^{n - 1} \left( n \theta - t \right) \left( \theta - t \right) dt.$$
+Перемножаем скобки
+\begin{equation*}
+  \begin{split}
+    \frac{1}{ \theta^n} \cdot
+    \int \limits_0^{ \theta } t^{n - 1} \left( n \theta - t \right) \left( \theta - t \right) dt =
+    \frac{1}{ \theta^n} \cdot
+    \int \limits_0^{ \theta }
+      t^{n - 1} \left( n \theta^2 - \left( n + 1 \right) \theta t + t^2 \right)
+    dt = \\
+    = \frac{1}{ \theta^n} \cdot
+    \int \limits_0^{ \theta }
+      \left( n \theta^2 t^{n - 1} - \left( n + 1 \right) \theta t^n + t^{n + 1} \right)
+    dt = \\
+    = \frac{1}{ \theta^n} \cdot
+    \left.
+      \left[ \theta^2 t^n - \theta t^{n + 1} + \frac{t^{n + 2}}{n + 2} \right]
+    \right|_0^{ \theta } =
+    \frac{1}{ \theta^n} \cdot
+    \left[ \theta^{n + 2} - \theta^{n + 2} + \frac{ \theta^{n + 2}}{n + 2} \right] =
+    \frac{ \theta^2}{n + 2}.
+  \end{split}
+\end{equation*}
+
+По определению ковариации
+$$cov \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) =
+  M \left( X_{ \left( 1 \right) } X_{ \left( n \right) } \right) -
+  MX_{ \left( 1 \right) } MX_{ \left( n \right) } =
+  \frac{ \theta^2}{n + 2} - \frac{ \theta }{n + 1} \cdot \frac{ \theta n}{n + 1}.$$
+Выносим общий множитель за скобки
+$$ \frac{ \theta^2}{n + 2} - \frac{ \theta }{n + 1} \cdot \frac{ \theta n}{n + 1} =
+  \theta^2 \left( \frac{1}{n + 2} - \frac{n}{ \left( n + 1 \right)^2} \right).$$
+Приводим к общему знаменателю дроби в скобках
+$$ \theta^2 \left( \frac{1}{n + 2} - \frac{n}{ \left( n + 1 \right)^2} \right) =
+  \theta^2 \cdot \frac{n^2 + 2n + 1 - n^2 - 2n}{ \left( n + 2 \right) \left( n + 1 \right)^2} =
+  \frac{ \theta^2}{ \left( n + 2 \right) \left( n + 1 \right)^2}.$$
+\end{enumerate}

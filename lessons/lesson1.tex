@@ -1217,3 +1217,123 @@ $$MX_{ \left( 1 \right) } +
 $$ \frac{1}{n \alpha } + \sum \limits_{i = 1}^{k - 1} \frac{1}{ \alpha \left( n - i \right) } =
   \frac{1}{ \alpha } \cdot
   \left( \frac{1}{n} + \frac{1}{n - 1} + \frac{1}{n - 2} + \dotsc + \frac{1}{n - k + 1} \right).$$
+
+\subsubsection*{1.23}
+
+\textit{Задание.}
+Для выборки $X_1, \dotsc, X_n$ из равномерного распрделения на отрзке $ \left[ 0, \theta \right] $
+найдите:
+\begin{enumerate}[label=\alph*)]
+  \item ковариацию $X_{ \left( n \right) }$ и $X_{ \left( 1 \right) }$;
+  \item совместную плотность распределения
+  $X_{ \left( k \right) }$ и $X_{ \left( j \right) }, \,
+    1 \leq k \leq j \leq n$.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Данный пункт решён в задаче 1.21 c);
+  \item по определению функции распределения
+  $$F_{ \left( X_{ \left( k \right) }, X_{ \left( j \right) } \right) } \left( y, z \right) =
+    P \left( X_{ \left( k \right) } \leq y, X_{ \left( j \right) } \leq z \right).$$
+  Воспользовавшись формулой
+  $P \left( A \cap B \right) = P \left( B \right) - P \left( \overline{A} \cap B \right) $, получим
+  $P \left( X_{ \left( k \right) } \leq y, X_{ \left( j \right) } \leq z \right) =
+    P \left( X_{ \left( j \right) } \leq z \right) -
+    P \left( X_{ \left( k \right)} > y, X_{ \left( j \right) } \leq z \right).$
+  Аналогично задаче 1.10 разбиваем на 2 решения согласно коэффициентам
+  \begin{equation*}
+    \begin{split}
+      P \left( X_{ \left( j \right) } \leq z \right) -
+      P \left( X_{ \left( k \right)} > y, X_{ \left( j \right) } \leq z \right) = \\
+      = \begin{cases}
+        P \left( X_{ \left( j \right) } \leq z \right), \qquad y \geq z, \\
+        P \left( X_{ \left( j \right) } \leq z \right) -
+        P \left( X_{ \left( k \right) } > y, X_{ \left( j \right) } \leq z \right),
+        \qquad y < z.
+      \end{cases}
+    \end{split}
+  \end{equation*}
+
+  Найдём первую вероятность
+  $P \left( X_{\left( j \right) } \leq z \right) =
+  P$(хотя бы $j$ элементов выборки не превышает $z$) $=$
+  $$= \sum \limits_{i = j}^n
+      C_n^i F^i \left( z \right) \left[ 1 - F \left( z \right) \right]^{n - i} =
+    \sum \limits_{i = j}^n
+      C_n^i \left( \frac{z}{ \theta } \right)^i \left( 1 - \frac{z}{ \theta } \right)^{n - i}.$$
+  Приводим к общему знаменателю
+  $$ \sum \limits_{i = j}^n
+      C_n^i \left( \frac{z}{ \theta } \right)^i \left( 1 - \frac{z}{ \theta } \right)^{n - i} =
+    \sum \limits_{i = j}^n
+      C_n^i \frac{z^i}{ \theta^i} \cdot \frac{ \left( \theta - z \right)^{n - i}}{ \theta^{n - i}} =
+    \sum \limits_{i = j}^n C_n^i \frac{z^i \left( \theta - z \right)^{n - i}}{ \theta^n}.$$
+
+  Найдём вторую вероятность
+  $P \left( X_{ \left( j \right) } \leq z, X_{ \left( k \right) } > y \right) =
+  P$(
+    хотя бы
+    $$ \left( j - k + 1 \right) $$
+    элементов выборки находится в интервале
+    $ \left( y, z \right]
+  $) $=$
+  \begin{equation*}
+    \begin{split}
+      = \sum \limits_{i = j - k + 1}^n
+        C_n^i \left[ F \left( z \right) - F \left( y \right) \right]^i \cdot
+        \left\{ 1 - \left[ F \left( z \right) - F \left( y \right) \right] \right\}^{n - i} = \\
+      = \sum \limits_{i = j - k + 1}^n
+        C_n^i \cdot
+        \left( \frac{z}{ \theta } - \frac{y}{ \theta } \right)^i \cdot
+        \left[ 1 - \left( \frac{z}{ \theta } - \frac{y}{ \theta } \right) \right]^{n - i} = \\
+      = \sum \limits_{i = j - k + 1}^n
+        C_n^k \cdot
+        \frac{ \left( z - y \right)^i}{ \theta^i} \cdot
+        \left( 1 - \frac{z - y}{ \theta } \right)^{n - i} = \\
+      = \sum \limits_{i = j - k + 1}^n
+        C_n^i \cdot
+        \frac{ \left( z - y \right)^i}{ \theta^i} \cdot
+        \frac{ \left( \theta - z + y \right)^{n - i}}{ \theta^{n - i}} = \\
+      = \sum \limits_{i = j - k + 1}^n
+        \frac{C_n^i}{ \theta^n} \left( z - y \right)^i \left( \theta - z + y \right)^{n - i}.
+    \end{split}
+  \end{equation*}
+
+Продифференцируем.
+В первом случае будет 0.
+Найдём производную второй вероятности
+\begin{equation*}
+  \begin{split}
+    - \frac{ \partial^2 F}{ \partial y \partial z} = \\
+    = \frac{ \partial }{ \partial y}
+      \{
+        \sum \limits_{i = j - k + 1}^n
+          \frac{C_n^i}{ \theta^n} \times \\
+          \times \left[
+            i \left( z - y \right)^{i - 1} \left( \theta - z + y \right)^{n - i} -
+            \left( z - y \right) \left( n - i \right) \left( \theta - z + y \right)^{n - i - 1}
+          \right]
+      \} = \\
+    = \sum \limits_{i = j - k + 1}^n
+      \frac{C_n^i}{ \theta^n} \times \\
+      \times [
+        -i \left( i - 1 \right) \left( z - y \right)^{i - 2} \left( \theta - z + y \right)^{n - i} + \\
+        + 2i \left( z - y \right)^{i - 1} \left( n - i \right) \cdot
+        \left( \theta - z + y \right)^{n - i - 1} - \\
+        - \left( z - y \right)^i \left( n - i \right) \left( n - i - 1 \right) \cdot
+        \left( \theta - z + y \right)^{n - i - 2}
+      ] = \\
+    = \sum \limits_{i = j - k + 1}^n
+      \frac{C_n^i \left( z - y \right)^{i - 2} \cdot
+      \left( \theta - z + y \right)^{n - i - 2}}{ \theta^n} \times \\
+      \times [
+        2i \left( z - y \right) \left( n - i \right) \left( \theta - z + y \right) -
+        i \left( i - 1 \right) \left( \theta - z + y \right) - \\
+        - \left( n - i \right) \left( n - i - 1 \right) \left( z - y \right)^2
+      ].
+  \end{split}
+\end{equation*}
+
+Тогда во втором случае плотность равна полученному выражению.
+
+\end{enumerate}

@@ -1124,3 +1124,96 @@ $$ \theta^2 \left( \frac{1}{n + 2} - \frac{n}{ \left( n + 1 \right)^2} \right) =
   \theta^2 \cdot \frac{n^2 + 2n + 1 - n^2 - 2n}{ \left( n + 2 \right) \left( n + 1 \right)^2} =
   \frac{ \theta^2}{ \left( n + 2 \right) \left( n + 1 \right)^2}.$$
 \end{enumerate}
+
+\subsubsection*{1.22}
+
+\textit{Задание.}
+Пусть задана выборка $X_1, \dotsc, X_n$ из показательного распределения с параметром $ \alpha $.
+Докажите, что
+$$MX_{ \left( k \right) } =
+  \frac{1}{ \alpha } \left( \frac{1}{n - k + 1} + \dotsc + \frac{1}{n} \right),$$
+не находя распределения порядковой статистики $X_{ \left( k \right) }$.
+
+\textit{Решение.} Преобразуем левую часть того, что нужно доказать
+$$MX_{ \left( k \right) } =
+  MX_{ \left( 1 \right) } +
+  \sum \limits_{i = 1}^{k - 1}
+    M \left( X_{ \left( i + 1 \right) } - X_{ \left(i \right) } \right).$$
+
+Элементы выборки имеют плотность распределения
+$$p \left( y \right) =
+  \alpha e^{- \alpha y} \cdot \mathbbm{1} \left\{ y \geq 0 \right\}.$$
+
+Интегрируя плотность, получим функцию распределения
+$$F \left( y \right) =
+  \int \limits_{- \infty }^y p \left( x \right) dx =
+  \int \limits_{- \infty }^y \alpha e^{- \alpha x} \cdot \mathbbm{1} \left\{ x \geq 0 \right\} dx =
+  \int \limits_0^y \alpha e^{- \alpha x} dx =
+  \left. -e^{- \alpha x} \right|_0^y.$$
+Подставляем пределы интегрирования
+$$ \left. -e^{- \alpha x} \right|_0^y =
+  1 - e^{- \alpha y}, \,
+  y \geq 0.$$
+
+Находим функцию распределения минимальной порядковой статистики
+$$F_{X_{ \left( 1 \right) }} \left( y \right) =
+  P \left( X_{ \left( 1 \right) } \leq y \right) =
+  1 - P \left( X_{ \left( 1 \right) } > y \right).$$
+Если минимальный элемент выборки больше какого-то значения, то все элементы выборки больше него
+$$1 - P \left( X_{ \left( 1 \right) } > y \right) =
+  1 - P \left( X_1 > y, X_2 > y, \dotsc, X_n > y \right).$$
+Из независимости случайных величин следует, что
+$$1 - P \left( X_1 > y, X_2 > y, \dotsc, X_n > y \right) =
+  1 -
+  P \left( X_1 > y \right) \cdot
+  P \left( X_2 > y \right) \cdot
+  \dotsc \cdot
+  P \left( X_n > y \right).$$
+Переходим к противоположным событиям и учитываем то, что случайные величины одинаково распределены
+$$1 -
+  P \left( X_1 > y \right) \cdot
+  P \left( X_2 > y \right) \cdot
+  \dotsc \cdot
+  P \left( X_n > y \right) =
+  1 - \left[ 1 - F \left( y \right) \right]^n.$$
+
+Находим плотность минимальной порядковой статистики
+$$f_{X_{ \left( 1 \right) }} \left( y \right) =
+  \frac{ \partial F_{X_{ \left( 1 \right) }} \left( y \right) }{ \partial y} =
+  \frac{ \partial \left\{ 1 - \left[ 1 - F \left( y \right) \right]^n \right\} }{ \partial y} =
+  -n \left[ 1 - F \left( y \right) \right]^{n - 1} \cdot \left( -1 \right) f \left( y \right).$$
+Упрощаем и учитываем, что $f \left( y \right) $ --- это плотность распределения элементов выборки
+$$-n \left[ 1 - F \left( y \right) \right]^{n - 1} \cdot \left( -1 \right) f \left( y \right) =
+  n \left[ 1 - F \left( y \right) \right]^{n - 1} p \left( y \right).$$
+Подставляем функцию и плотность распределения
+$$n \left[ 1 - F \left( y \right) \right]^{n - 1} p \left( y \right) =
+  n \left[ 1 - \left( 1 - e^{- \alpha y} \right) \right]^n \alpha e^{- \alpha y} \cdot
+  \mathbbm{1} \left\{ y \geq 0 \right\}.$$
+Упрощаем выражение в скобках
+$$n \left[ 1 - \left( 1 - e^{- \alpha y} \right) \right]^n \alpha e^{- \alpha y} \cdot
+  \mathbbm{1} \left\{ y \geq 0 \right\} =
+  n \alpha e^{- \alpha \left( n - 1 \right) y} e^{- \alpha y} \cdot
+  \mathbbm{1} \left\{ y \geq 0 \right\}.$$
+Суммируем показатели экспонент
+$$n \alpha e^{- \alpha \left( n - 1 \right) y} e^{- \alpha y} \cdot
+  \mathbbm{1} \left\{ y \geq 0 \right\} =
+  n \alpha e^{- \alpha ny} \cdot \mathbbm{1} \left\{ y \geq 0 \right\}.$$
+Отсюда следует, что $X_{ \left( 1 \right) } \sim Exp \left( n \alpha \right) $.
+
+Из задачи 1.11 б)
+$X_{ \left( i + 1 \right) } - X_{ \left( i \right) } \sim
+  Exp \left( \alpha \left( n - i \right) \right) $.
+
+Тогда такая разность имеет математическое ожидание
+$$M \left( X_{ \left( i + 1 \right) } - X_{ \left( i \right) } \right) =
+  \frac{1}{ \alpha \left( n - i \right) }.$$
+
+Подставялем в полученное в начале выражение
+$$MX_{ \left( 1 \right) } +
+  \sum \limits_{i = 1}^{k - 1}
+    M \left( X_{ \left( i + 1 \right) } - X_{ \left(i \right) } \right) =
+  \frac{1}{n \alpha } + \sum \limits_{i = 1}^{k - 1} \frac{1}{ \alpha \left( n - i \right) }.$$
+Записываем сумму в явном виде
+$$ \frac{1}{n \alpha } + \sum \limits_{i = 1}^{k - 1} \frac{1}{ \alpha \left( n - i \right) } =
+  \frac{1}{ \alpha } \cdot
+  \left( \frac{1}{n} + \frac{1}{n - 1} + \frac{1}{n - 2} + \dotsc + \frac{1}{n - k + 1} \right).$$

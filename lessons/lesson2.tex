@@ -58,12 +58,12 @@ $$ \frac{1}{n - 1} \sum \limits_{k = 1}^n \left( x_k - \overline{x} \right)^2$$
 \subsubsection*{2.4}
 
 \textit{Задание.}
-Для выборки равномерного распределения на отрезке $ \left[ 0, 1 \right] $
+Для выборки равномерного распределения на отрезке $ \left[ \theta , 1 \right] $
 проверьте состоятельность и несмещённость оценки $X_{ \left( 1 \right) }$ параметра $ \theta $.
 
 \textit{Решение.} $ \theta $ --- минимальное наблюдение.
 Проверяем,
-выполняется ли $X_{ \left( 1 \right) )} \overset{P}{ \rightarrow } \theta, \, n \to \infty $.
+выполняется ли $X_{ \left( 1 \right) } \overset{P}{ \rightarrow } \theta, \, n \to \infty $.
 
 По определению сходимости по вероятности
 $$ \forall \varepsilon > 0 \,
@@ -75,7 +75,7 @@ $$P \left\{ X_{ \left( 1 \right) } > \varepsilon + \theta \right\} =
   P \left( X_1 > \varepsilon + \theta, \dotsc, X_n > \varepsilon + \theta \right) =
   \left[ P \left( X_1 > \varepsilon + \theta \right) \right]^n.$$
 Подставим значение вероятности из геометрического эксперимента
-$$ \left[ P \left( X_1 > \varepsilon + \theta \right) \right]^n
+$$ \left[ P \left( X_1 > \varepsilon + \theta \right) \right]^n =
   \left( \frac{1 - \theta - \varepsilon }{1 - \theta } \right)^n =
   \left( 1 - \frac{ \varepsilon }{1 - \theta } \right)^n \to
   0, \,
@@ -292,7 +292,9 @@ $$S_n =
 \textit{Задание.}
 Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распредения с параметром $ \alpha > 1$.
 Для какого параметра $ \theta = \theta \left( \alpha \right) $ статистика
-$ \hat{ \theta_n} = e^{ \overline{X}}$ является состоятельной оценкой?
+$$ \hat{ \theta_n} =
+  e^{ \overline{X}}$$
+является состоятельной оценкой?
 Является ли $ \hat{ \theta_n}$ сильно состоятельной оценкой того же параметра?
 Является ли $ \hat{ \theta_n}$ несмещённой оценкой того же параметра?
 Ассимптотически немещённой?
@@ -339,3 +341,218 @@ $$ \left( \frac{ \alpha }{ \alpha - \frac{1}{n}} \right)^n =
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{2.17}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного распределения на отрезке $ \left[ 0, \theta \right] $.
+Проверьте несмещённость,
+состоятельность и найдите среднеквадратическое отклонение следующих оценок параметра $ \theta $:
+\begin{enumerate}[label=\alph*)]
+  \item $X_{ \left( 1 \right) } + X_{ \left( n \right) }$;
+  \item $ \left( n + 1 \right) X_{ \left( 1 \right) }$.
+\end{enumerate}
+
+\textit{Решение.} $ \theta $ --- максимальное наблюдение.
+\begin{enumerate}[label=\alph*)]
+  \item Проверим,
+  выполняется ли
+  $X_{ \left( 1 \right) } + X_{ \left( n \right) } \overset{P}{ \to } \theta, \,
+    n \to \infty $.
+
+  По определению сходимости по вероятности
+  $ \forall \varepsilon > 0 \,
+    P \left( X_{ \left( 1 \right) } > \varepsilon \right) = \\
+    = P \left( X_1 > \varepsilon, X_2 > \varepsilon, \dotsc, X_n > \varepsilon \right) =
+    \left[ P \left( X_1 > \varepsilon \right) \right]^n.$
+  Подставим значение вероятности из геометрического эксперимента
+  $$ \left[ P \left( X_1 > \varepsilon \right) \right]^n =
+    \left( \frac{ \theta - \varepsilon }{ \theta } \right)^n \to 0, \,
+    n \to \infty.$$
+
+  Значит, $X_{ \left( 1 \right) } \overset{P}{ \to } 0, \, n \to \infty $.
+
+  Остаётся проверить,
+  выполняется ли $X_{ \left( n \right) } \overset{P}{ \to } \theta, \, n \to \infty $.
+
+  По определению сходимости по вероятности
+  $$P \left\{ \left| X_{ \left( n \right) } - \theta \right| > \varepsilon \right\} \to 0, \,
+    n \to \infty.$$
+
+  Раскроем модуль
+  \begin{equation*}
+    \begin{split}
+      P \left\{ \theta - X_{ \left( n \right) } > \varepsilon \right\} =
+      P \left\{ X_{ \left( n \right) } - \theta < - \varepsilon \right\} =
+      P \left\{ X_{ \left( n \right) } < \theta - \varepsilon \right\} = \\
+      = P \left(
+        X_1 < \theta - \varepsilon, X_2 < \theta - \varepsilon, \dotsc, X_n < \theta - \varepsilon
+      \right) =
+      \left[ P \left( X_1 < \theta - \varepsilon \right) \right]^n.
+    \end{split}
+  \end{equation*}
+  Подставим значение вероятности из геометрического эксперимента
+  $$ \left[ P \left( X_1 < \theta - \varepsilon \right) \right]^n =
+    \left( \frac{ \theta - \varepsilon }{ \theta } \right)^n =
+    \left( 1 - \frac{ \varepsilon }{ \theta } \right)^n \to 0, \,
+    n \to \infty.$$
+
+  Число в скобках строго меньше единицы, так как $0 \leq \theta \leq 1, \, \varepsilon > 0$.
+
+  Отсюда следует, что оценка состоятельная.
+
+  Проверим несмещённость оценки.
+  Проверим, выполняется ли
+  $$M \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) =
+    \theta.$$
+
+  Из задачи 1.21
+  $$MX_{ \left( n \right) } =
+    \frac{ \theta n}{n + 1}$$
+  и
+  $$MX_{ \left( 1 \right) } =
+    \frac{ \theta }{n + 1}.$$
+  Из свойства линейности математического ожидания
+  $$M \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) =
+    MX_{ \left( 1 \right) } + MX_{ \left( n \right) } =
+    \frac{ \theta n}{n + 1} + \frac{ \theta }{n + 1} =
+    \frac{ \theta \left( n + 1 \right) }{n + 1} =
+    \theta.$$
+
+  Отсюда следует, что оценка несмещённая.
+
+  Формула среднеквадратического отклонения имеет вид $ \sigma = \sqrt{D \xi }$.
+
+  Найдём дисперсию оценки
+  \begin{equation*}
+    \begin{split}
+      D \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) =
+      M \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right)^2 -
+      \left[ M \left(  X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) \right]^2 = \\
+      = M \left(
+        X_{ \left( 1 \right) }^2 +
+        X_{ \left( n \right) }^2 +
+        2X_{ \left( 1 \right) } X_{ \left( n \right) }
+      \right) -
+      \left( MX_{ \left( 1 \right) } + MX_{ \left( n \right) } \right)^2 = \\
+      = MX_{ \left( 1 \right) }^2 +
+      MX_{ \left( n \right) }^2 +
+      2M \left( X_{ \left( 1 \right) } X_{ \left( n \right) } \right) -
+      \left( MX_{ \left( 1 \right) } \right)^2 -
+      2MX_{ \left( 1 \right) } MX_{ \left( n \right) } - \\
+      - \left( MX_{ \left( n \right) } \right)^2 =
+      DX_{ \left( 1 \right) } +
+      DX_{ \left( n \right) } +
+      2cov \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right).
+    \end{split}
+  \end{equation*}
+  Возьмём необходимые значения из задачи 1.21, а именно
+  $$DX_{ \left( 1 \right) } =
+    \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+    DX_{ \left( n \right) }, \,
+    cov \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) =
+    \frac{ \theta^2}{ \left( n + 1 \right)^2 \left( n + 2 \right) }.$$
+  Подставляя в найденной выражение, получаем
+  \begin{equation*}
+    \begin{split}
+      DX_{ \left( 1 \right) } +
+      DX_{ \left( n \right) } +
+      2cov \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) = \\
+      = \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } +
+      \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } +
+      \frac{2 \theta^2}{ \left( n + 1 \right)^2 \left( n + 2 \right) } = \\
+      = \frac{2 \theta^2 n + 2 \theta }{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+      \frac{2 \theta^2 \left( n + 1 \right) }{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+      \frac{2 \theta^2}{ \left( n + 1 \right) \left( n + 2 \right) }.
+    \end{split}
+  \end{equation*}
+
+  Извлекая корень, получаем
+  $$ \sigma =
+    \sqrt{ \frac{2 \theta^2}{ \left( n + 1 \right) \left( n + 2 \right) }} =
+    \theta \sqrt{ \frac{2}{ \left( n + 1 \right) \left( n + 2 \right) }};$$
+  \item проверим,
+  выполняется ли
+  $ \left( n + 1 \right) X_{ \left( 1 \right) } \overset{P}{ \to } \theta, \,
+    n \to \infty $.
+
+  По определению сходимости по вероятности
+  $$ \forall \varepsilon > 0 \,
+    P \left(
+      \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| > \varepsilon
+    \right) \to 0, \,
+    n \to \infty.$$
+
+  Перейдём к противоположному событию
+  $$P \left(
+    \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| > \varepsilon
+  \right) =
+  1 -
+  P \left\{
+    \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| \leq \varepsilon
+  \right\}.$$
+  Раскроем модуль
+  \begin{equation*}
+    \begin{split}
+      1 - P \left\{
+        \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| \leq \varepsilon
+      \right\} = \\
+      = 1 - P \left\{
+        - \varepsilon \leq \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \leq \varepsilon
+      \right\} = \\
+      = 1 - P \left\{
+        \frac{- \varepsilon + \theta }{n + 1} \leq
+        X_{ \left( 1 \right) } \leq
+        \frac{ \varepsilon + \theta }{n + 1}
+      \right\} = \\
+      = 1 + P \left\{ X_{ \left( 1 \right) } \leq \frac{ \theta - \varepsilon }{n + 1} \right\} -
+      P \left\{ X_{ \left( 1 \right) } < \frac{ \varepsilon + \theta }{n + 1} \right\} = \\
+      = 1 + 1 - P \left(
+        X_1 > \frac{ \theta - \varepsilon }{n + 1},
+        \dotsc,
+        X_n > \frac{ \theta - \varepsilon }{n + 1}
+      \right) -
+      1 + P \left( X_{ \left( 1 \right) } > \frac{ \varepsilon + \theta }{n + 1} \right) = \\
+      = 1 - \left[ P \left( X_1 > \frac{ \theta - \varepsilon }{n + 1} \right) \right]^n +
+      \left[ P \left( X_1 > \frac{ \theta + \varepsilon}{n + 1} \right) \right]^n.
+    \end{split}
+  \end{equation*}
+  Подставим значения вероятностей из геометрического эксперимента
+  \begin{equation*}
+    \begin{split}
+      1 - \left[ P \left( X_1 > \frac{ \theta - \varepsilon }{n + 1} \right) \right]^n +
+      \left[ P \left( X_1 > \frac{ \theta + \varepsilon}{n + 1} \right) \right]^n = \\
+      = 1 - \left( \frac{ \theta - \frac{ \theta - \varepsilon }{n + 1}}{ \theta } \right)^2 +
+      \left( \frac{ \theta - \frac{ \varepsilon + \theta }{ n + 1}}{ \theta } \right)^n = \\
+      = 1 - \left( 1 - \frac{ \theta - \varepsilon }{ \left( n + 1 \right) \theta } \right)^n +
+      \left( 1 - \frac{ \varepsilon + \theta }{ \left( n + 1 \right) \theta } \right)^n \not \to
+      0, \, n \to \infty.
+    \end{split}
+  \end{equation*}
+
+  Отсюда следует, что оценка несостоятельная.
+
+  Проверим несмещённость оценки.
+  Проверим, выполняется ли
+  $$M \left( n + 1 \right) X_{ \left( 1 \right) } =
+    \theta.$$
+
+  Выносим константу из-под знака математического ожидания
+  $$ \left( n + 1 \right) MX_{ \left( 1 \right) } =
+    \left( n + 1 \right) \cdot \frac{ \theta }{n + 1} =
+    \theta.$$
+
+  Отсюда следует, что оценка несмещённая.
+
+  Найдём дисперсию оценки
+  $$D \left( n + 1 \right) X_{ \left( 1 \right) } =
+    \left( n + 1 \right)^2 DX_{ \left( 1 \right) } =
+    \left( n + 1 \right)^2 \cdot \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+    \frac{ \theta^2 n}{n + 2},$$
+  откуда среднеквадратическое отклонение равно
+  $$ \sigma =
+    \sqrt{D \left( n + 1 \right) X_{ \left( 1 \right) }} =
+    \sqrt{ \frac{ \theta^2 n}{n + 2}} =
+    \theta \sqrt{ \frac{n}{n + 2}}.$$
+\end{enumerate}

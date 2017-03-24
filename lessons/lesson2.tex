@@ -306,7 +306,7 @@ $$ \overline{X} =
 $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \to } MX_1, \,
   n \to \infty.$$
 
-СЛучайные величины в выборке имеют показательное распределение
+Случайные величины в выборке имеют показательное распределение
 $$MX_1 =
   \frac{1}{ \alpha },$$
 значит,
@@ -556,3 +556,137 @@ $$ \left( \frac{ \alpha }{ \alpha - \frac{1}{n}} \right)^n =
     \sqrt{ \frac{ \theta^2 n}{n + 2}} =
     \theta \sqrt{ \frac{n}{n + 2}}.$$
 \end{enumerate}
+
+\subsubsection*{2.18}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из показательного распределения с параметром $1 / \sqrt{ \alpha }$.
+Выясните,
+является ли статистика $ \hat{ \alpha_n} = \left( \overline{X} \right)^2$
+несмещённой оценкой параметра $ \alpha $.
+Является ли эта оценка состоятельной?
+
+\textit{Решение.} Нужно проверить, выполняется ли $M \left( \overline{X} \right)^2 = \alpha $.
+
+Запишем, что означает выборочное среднее
+$$M \left( \overline{X} \right)^2 =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2 =
+  M \left( \frac{1}{n^2} \left( \sum \limits_{i = 1}^n X_i \right)^2 \right) =
+  \frac{1}{n^2} \cdot M \left( \sum \limits_{i = 1}^n X_i \right)^2.$$
+Квадрат суммы запишем в виде двух сумм.
+Получим
+$$ \frac{1}{n^2} \cdot
+  M \left( \sum \limits_{i = 1}^n X_i^2 + 2 \sum \limits_{k < i}^n X_k X_i \right) =
+  \frac{1}{n^2} \cdot M \sum \limits_{i = 1}^n X_i +
+  \frac{2}{n^2} M \sum \limits_{k < i}^n X_k X_i.$$
+Случайные величины независимы и одинаково распределены, поэтому
+$$ \frac{1}{n^2} \cdot M \sum \limits_{i = 1}^n X_i +
+  \frac{2}{n^2} M \sum \limits_{k < i}^n X_k X_i =
+  \frac{1}{n^2} \sum \limits_{i = 1}^n MX_i^2 + \frac{2}{n^2} \sum \limits_{k < i}^n MX_k MX_i.$$
+Для показательного распределения
+$$MX_i = \frac{1}{ \lambda } = \frac{1}{ \frac{1}{ \sqrt{ \alpha }}} = \sqrt{ \alpha }, \,
+  MX_i^2 = \frac{2}{ \lambda^2} = \frac{2}{ \frac{1}{ \alpha }} = 2 \alpha.$$
+Подставляем
+\begin{equation*}
+  \begin{split}
+    \frac{1}{n^2} \sum \limits_{i = 1}^n MX_i^2 + \frac{2}{n^2} \sum \limits_{k < i}^n MX_k MX_i =
+    \frac{1}{n^2} \cdot n \cdot 2 \alpha +
+    \frac{1}{n^2} \cdot \left( n - 1 \right) n \left( MX_1 \right)^2 = \\
+    = \frac{2 \alpha }{n} + \frac{n - 1}{n} \cdot \alpha =
+    \frac{2 \alpha }{n} + \alpha - \frac{ \alpha }{n} =
+    \frac{ \alpha }{n} + \alpha \to \alpha, \, n \to \infty,
+  \end{split}
+\end{equation*}
+значит, оценка смещённая, но несмещённая ассимптотически.
+
+Проверим, имеет ли место
+$ \left( \overline{X} \right)^2 \overset{P}{ \to } \alpha, \,
+  n \to \infty $.
+
+По закону больших чисел
+$$ \left( \overline{X} \right)^2 =
+  \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2 \to
+  \left( MX_1 \right)^2 =
+  \left( \sqrt{ \alpha } \right)^2 =
+  \alpha,$$
+значит, оценка состоятельная.
+
+\subsubsection*{2.21}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из биномиального распределения с параметрами 2 и $p$.
+Для какого параметра $ \theta = \theta \left( p \right) $ статистика
+$ \hat{ \theta_n} = e^{ \overline{X}}$ будет состоятельной?
+Является ли $ \hat{ \theta_n}$ сильно состоятельной оценкой того же параметра?
+Является ли $ \hat{ \theta_n}$ несмещённой оценкой того же параметра?
+Найдите среднеквадратическое отклонение этой оценки.
+
+\textit{Решение.}
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i.$$
+
+По закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \to } MX_1, \,
+  n \to \infty.$$
+
+Случайные величины в выборке имеют биномиальное распределение с математическим ожиданием
+$MX_1 = np = 2p$, значит, $ \overline{X} \overset{P}{ \to } 2p, \, n \to \infty $.
+
+Применим непрерывную функцию $e^x$.
+Получим $e^{ \overline{X}} \overset{P}{ \to } e^{2p}, \, n \to \infty $.
+
+Проверим, является ли оценка несмещённой к параметру $e^{2p}$,
+то есть выполняется ли $Me^{ \overline{X}} = e^{2p}$.
+
+Вычисляем $Me^{ \overline{X}} = Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i}$.
+Случайные величины независимы и одинаково распределены,
+поэтому $Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i} = \left( Me^{ \frac{X_1}{n}} \right)^n$.
+По определению характеристической функции $ \varphi_{X_1} \left( t \right) = Me^{itX_1}$, получим
+$$ \left( Me^{ \frac{X_1}{n}} \right)^n =
+  \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n.$$
+Характеристическая функция биномиального распределения
+$$ \varphi_{X_1} \left( t \right) =
+  Me^{itX_1} =
+  \left[ \left( e^{it} - 1 \right) p + 1 \right]^n.$$
+Подставим и получим
+$$ \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n =
+  \left[ \left( e^{\frac{i}{in}} - 1 \right) p + 1 \right]^n =
+  \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^n \neq
+  e^{2p}.$$
+
+Значит, оценка смещённая.
+
+Проверим сильную состоятельность.
+По усиленному закону больших чисел
+$$ \overline{X} = \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{a.s.}{ \to } MX_1 = 2p, \,
+  n \to \infty.$$
+Отсюда следует, что $e^{ \overline{X}} \overset{a.s.}{ \to } e^{2p}, \, n \to \infty $.
+Значит, оценка сильно состоятельная.
+
+Найдём дисперсию оценки
+$De^{ \overline{X}} =
+  Me^{2 \overline{X}} - \left( Me^{ \overline{X}} \right)^2$.
+
+Нашли, что $Me^{ \overline{X}} = \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^n$.
+
+Вычисляем $Me^{2 \overline{X}} = Me^{ \frac{2}{n} \sum \limits_{i = 1}^n X_i}$.
+Из независимости и одинаковой распределенности случайных величин следует,
+что $Me^{ \frac{2}{n} \sum \limits_{i = 1}^n X_i} = \left( Me^{ \frac{2X_1}{n}} \right)^n$.
+По определению характеристической функции $ \varphi_{X_1} \left( t \right) = Me^{itX_1}$, получаем
+$$ \left( Me^{ \frac{2X_1}{n}} \right)^n =
+  \left[ \varphi_{X_1} \left( \frac{2}{in} \right) \right]^n.$$
+Подставляем характеристическую фунцию биномиального распределения
+$$ \left[ \varphi_{X_1} \left( \frac{2}{in} \right) \right]^n =
+  \left[ \left( e^{ \frac{2i}{in}} - 1 \right) p + 1 \right]^n =
+  \left[ \left( e^{ \frac{2}{n}} - 1 \right) p + 1 \right]^n.$$
+Отсюда находим дисперсию оценки
+$$De^{ \overline{X}} =
+  \left[ \left( e^{ \frac{2}{n}} - 1 \right) p + 1 \right]^n -
+  \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^{2n}.$$
+Извлекая корень, получим
+$ \sigma =
+  \sqrt{
+    \left[ \left( e^{ \frac{2}{n}} - 1 \right) p + 1 \right]^n -
+    \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^{2n}
+  }.$

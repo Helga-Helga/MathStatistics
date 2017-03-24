@@ -1,0 +1,80 @@
+\addcontentsline{toc}{chapter}{Занятие 3. Метод моментов построения оценок}
+\chapter*{Занятие 3. Метод моментов построения оценок}
+
+\addcontentsline{toc}{section}{Контрольные вопросы и задания}
+\section*{Контрольные вопросы и задания}
+
+\subsubsection*{Преведиты определение оценки: несмещённой, ассимптотически несмещённой,
+                состоятельной, сильно состоятельной, оптимальной.}
+
+Оценка $ \hat{ \theta}$  несмещённая,
+если $ \forall \theta \in \Theta: \, M_{ \theta } \hat{ \theta } = \theta $.
+
+Асимптотически несмещенная оценка --- такая оценка,
+математическое ожидание которой совпадает с оцениваемым параметром при $n \to \infty $.
+
+Оценка $ \hat{ \theta }$ называется состоятельной,
+если стремится к истинному значению $ \theta $ по вероятности
+$ \hat{ \theta } \overset{P}{ \rightarrow } \theta, \,
+  n \to \infty $.
+
+Оценка $ \hat{ \theta }$ называется сильно состоятельной,
+если стремится к истинному значению $ \theta $ почти наверное
+$ \hat{ \theta } \overset{a.s.}{ \rightarrow } \theta, \,
+  n \to \infty $.
+
+Несмещённая оценка $ \hat{ \theta } \in K$
+называется оптимальной в классе квадратично интегрируемых оценок $K$,
+если для всякой другой несмещённой оценки
+$ \tilde{ \theta } \in \Theta \,
+  \forall \theta \in \Theta: \,
+  D_{ \theta } \hat{ \theta } \leq D_{ \theta } \tilde{ \theta }$
+или же
+$ \forall \theta \in \Theta, \,
+  M_{ \theta } \left( \hat{ \theta } - \theta \right)^ \leq
+  M_{ \theta } \left( \tilde{ \theta } - \theta \right)^2$.
+
+\subsubsection*{Что называется среднеквадратическим отклонением оценки?}
+
+$M_{ \theta } \left( \hat{ \theta } - \theta \right) $ --- среднеквадратическое оклонение.
+
+\subsubsection*{Сформулируйте утверждение про поведение выборочных моментов.}
+
+Выборочный начальный момент $M_k \, k$-го порядка стремится к начальному моменту $ \nu_k$
+случайной величины $X$, то есть
+$$ \lim \limits_{n \to \infty } P \left( \left| M_k - \nu_k \right| \geq \varepsilon \right) =
+  0,$$
+для любого сколь угодно малого $ \varepsilon > 0$,
+если моменты $ \nu_{2k}$ и $ \nu_k$ случайной величины $X$ существуют и конечны.
+
+\subsubsection*{Сформулируйте основную идею метода моментов построения оценки
+                неизвестного параметра.}
+
+$x_1, \dotsc, x_n$ ---
+выборка из распределения $F_{ \theta }$ и
+$ \theta: \,
+  M_{ \theta } f \left( x_1 \right) = g \left( \theta \right) $.
+
+Вычисляем математическое ожидание, считая, что $x_1$ имеет распределение с параметром $ \theta $,
+иными словами,
+$$M_{ \theta } f \left( x \right) = \int \limits_{ \mathbb{R}} xdF_{ \theta } \left( x \right) , \,
+  f, g \in C \left( \mathbb{R} \right), \,
+  g$$
+--- строго монотонная.
+Тогда в силу усиленного закона больших чисел
+$$ \theta \approx
+  g^{-1} \left( \frac{1}{n} \sum \limits_{k = 1}^n f \left( x_k \right) \right) \overset{a.s.}
+  \theta, \,
+  n \to \infty.$$
+
+Если существуют непрерывные $f$ и $g, \, g$ ---
+обратима и $g \left( \theta \right) = M_{ \theta } f \left( x \right) $,
+то в качестве оценки можно выбрать
+$$ \hat{ \theta } =
+  g^{-1} \left( \int \limits_{ \mathbb{R}} fdF_n \right).$$
+
+\addcontentsline{toc}{section}{Аудиторные задачи}
+\section*{Аудиторные задачи}
+
+\addcontentsline{toc}{section}{Домашнее задание}
+\section*{Домашнее задание}

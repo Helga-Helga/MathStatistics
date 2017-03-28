@@ -405,6 +405,79 @@ $$ \hat{ln p} =
 $$ \frac{1}{1 + \overline{X}} \overset{P}{ \to }
   p.$$
 
+\subsubsection*{2.12}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределния Пуассона с параметром $ \lambda > 0$.
+Докажите, что не существует несмещённой оценки для параметра $1 / \lambda $.
+
+\textit{Решение.} Будем действовать от противного.
+
+Допустим, что такая оценка существует, то есть существует $ \hat{ \theta }$ такое, что
+$$M \hat{ \theta } =
+  \frac{1}{ \lambda }.$$
+Это условие несмещённости.
+
+$ \hat{ \theta }$ --- функция от выборки,
+то есть $ \hat{ \theta } = f \left( X_1, \dotsc, X_n \right) $.
+
+Распределение Пуассона дискретное
+\begin{equation*}
+  \begin{split}
+    M \hat{ \theta } =
+    Mf \left( X_1, \dotsc, X_n \right) = \\
+    = \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Воспользуемся независимостью
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n \right) = \\
+    = \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1 \right) \cdot \dotsc \cdot P \left( X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Подставим в явном виде вероятности
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1 \right) \cdot \dotsc \cdot P \left( X_n = k_n \right) = \\
+    = \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      \frac{ \lambda^{ \sum \limits_{i = 1}^n k_i}}{ \prod \limits_{i = 1}^n k_i!} \cdot
+      e^{- \lambda n}.
+  \end{split}
+\end{equation*}
+Обозначим
+$$ \sum k_i =
+  k$$
+и получим
+$$e^{- \lambda n} \cdot
+  \sum \limits_{k = 0}^{ \infty } \lambda^k \cdot
+  \sum \limits_{k_i: \, k_1 + k_2 + \dotsc + k_n = k}
+    \frac{f \left( k_1, \dotsc, k_n \right) }{k_1! \dotsc k_n!} =
+  e^{- \lambda n} \sum \limits_{k = 0}^{ \infty } \lambda^k c_k,$$
+где $c_k$ --- число.
+
+Допустим, что эта величина равна $1 / \lambda $.
+
+Посмотрим, возможно ли это
+$$e^{- \lambda n} \sum \limits_{k = 0}^{ \infty } \lambda^k c_k =
+  \frac{1}{ \lambda }.$$
+
+Запишем так, чтобы с одной стороны было $e^{ \lambda n}$, а всё остальное перенесём
+$$e^{ \lambda n} =
+  \sum \limits_{k = 0}^{ \infty } \lambda^{k + 1} c_k.$$
+
+Для экспоненты существует одно развитие в ряд.
+Из этого следует, что последнее равенство невозможно
+(развитие в ряд начинается со степени $ \lambda $, равной единице).
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

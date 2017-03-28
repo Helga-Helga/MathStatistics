@@ -76,5 +76,57 @@ $$ \hat{ \theta } =
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
+\subsubsection*{3.3}
+
+\textit{Задание.}
+Пользуясь методом моментов, оцените параметр $ \theta $ равномерного распределения на отрезке:
+\begin{enumerate}[label=\alph*)]
+  \item $ \left[ 0, \theta \right] $;
+  \item $ \left[ \theta - 1, \theta + 1 \right] $;
+  \item $ \left[ 0, 2 \theta \right] $;
+  \item $ \left[ - \theta, \theta \right] $.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item $X_i \sim U \left( \left[ 0, \theta \right] \right) $.
+  Записываем теоретический момент.
+  Для равномерного распределения --- это средина отрезка
+  $$MX_1 =
+    \frac{ \theta }{2}.$$
+
+  Должны приравнять
+  $$ \frac{ \theta^*}{2} =
+    \overline{X},$$
+  откуда $ \theta^* = 2 \overline{X} $;
+  \item случайные величины имеют распределение
+  $X_i \sim
+    U \left( \left[ \theta - 1, \theta + 1 \right] \right) $.
+
+  Вычисляем теоретический момент $MX_1 = \theta $.
+  Должны записать, что $ \theta^* = \overline{X}$;
+  \item случайные величины имеют распределение
+  $X_i \sim
+    U \left( \left[ 0, 2 \theta \right] \right) $.
+
+  Вычисляем теоретический момент $MX_1 = \theta $, откуда $ \theta^* = \overline{X}$;
+  \item случайные величины имеют распределение
+  $X_i \sim
+    U \left( \left[ - \theta, \theta \right] \right) $.
+
+  Вычисляем теоретический момент $MX_1 = 0$ --- не подходит,
+  потому что не является функцией от $ \theta $.
+  Можем вычислить второй момент, который в данном случае совпадает с дисперсией $MX_1^2 = DX_1$.
+  Для равномерного распределения
+  $$DX_1 =
+    \frac{4 \theta^2}{12} =
+    \frac{ \theta }{3}.$$
+  Должны записать уравнение
+  $$ \frac{ \left( \theta^2 \right)^*}{3} =
+    \overline{X^2},$$
+  откуда $ \left( \theta^2 \right)^* = 3 \overline{X^2}$.
+  Извлекая корень, получаем $ \theta^* = \sqrt{3 \overline{X^2}}$.
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

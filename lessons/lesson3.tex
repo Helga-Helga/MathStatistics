@@ -146,5 +146,30 @@ $$ \lambda^* =
 $M \lambda^* = MX_1 = \lambda $.
 Отсюда следует несмещённость.
 
+\subsubsection*{3.5}
+
+\textit{Задание.} Пользуясь методом моментов с пробной функцией $g \left( y \right) = y$,
+оцените параметр сдвига $ \beta \in \mathbb{R}$ показательного распределения с плотностью
+$$f_{ \beta } \left( y \right) =
+  \begin{cases}
+    e^{ \beta - y}, \qquad t \geq \beta, \\
+    0, \qquad y < \beta.
+  \end{cases}$$
+
+\textit{Решение.} $Mg \left( X_1 \right) = \overline{g \left( X \right) }$ --- метод моментов.
+
+Ищем теоретический момент, зная плотность распределения
+$$MX_1 =
+  \int \limits_{ \beta }^{ \infty } ye^{ \beta - y} dy.$$
+Делаем замену $y - \beta = z$ и получаем
+$$ \int \limits_{ \beta }^{ \infty } ye^{ \beta - y} dy =
+  \int \limits_0^{ \infty } \left( \beta + z \right) e^{-z} dz =
+  \beta + 1.$$
+
+Отсюда должны решить уравение $ \beta^* + 1 = \overline{X}$.
+
+Отсюда $ \beta^* = \overline{X} - 1$.
+Эта оценка несмещённая и состоятельная.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

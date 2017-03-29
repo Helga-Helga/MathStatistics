@@ -171,5 +171,61 @@ $$ \int \limits_{ \beta }^{ \infty } ye^{ \beta - y} dy =
 Отсюда $ \beta^* = \overline{X} - 1$.
 Эта оценка несмещённая и состоятельная.
 
+\subsubsection*{3.6}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из биномиального распределения с параметрами $m$ и $p$.
+Пользуясь методом моментов, постройте оценку:
+\begin{enumerate}[label=\alph*)]
+  \item параметра $p$, если параметр $m$ известный;
+  \item параметра $m$, если параметр $p$ известный;
+  \item векторного параметра $ \left( m, p \right) $.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item $MX_1 = mp$.
+  Тогда уравенение имеет вид $mp^* = \overline{X}$.
+  Отсюда
+  $$p^* =
+    \frac{ \overline{X}}{m};$$
+  \item параметр $m$ --- это целое число.
+
+  $m^* p = \overline{X}$, откуда
+  $$m^* =
+    \left[ \frac{ \overline{X}}{p} \right] $$
+  --- целая часть;
+  \item одного теоретического момента мало.
+
+  Нужно найти второй теоретический момент.
+
+  Выражаем его через дисперсию и первый момент
+  $$MX_1^2 =
+    DX_1 + \left( MX_1 \right)^2 =
+    mp \left( 1 - p \right) + \left( mp \right)^2 =
+    mp \left( 1 - p + mp \right).$$
+  Составляем уравения с двумя неизвестными
+  $$ \begin{cases}
+      m^* p^* = \overline{X}, \\
+      m^* p^* \left( 1 - p^* + m^* p^* \right) = \overline{X^2}.
+    \end{cases}$$
+
+  Во второе уравнение можем подставить $ \overline{X}$ вместо произведения $m^* p^*$ и решить
+  $ \overline{X} \left( 1 - p + \overline{X} \right) = \overline{X^2}$, откуда
+  $$1 - p^* + \overline{X} =
+    \frac{ \overline{X^2}}{ \overline{X}}.$$
+
+  Отсюда находим
+  $$p^* =
+    1 + \overline{X} - \frac{ \overline{X^2}}{ \overline{X}},$$
+  соответственно
+  $$m^* =
+    \left[ \frac{ \overline{X}}{p^*} \right] =
+    \left[ \frac{ \overline{X}}{1 + \overline{X} - \frac{ \overline{X^2}}{ \overline{X}}} \right] =
+    \left[
+      \frac{ \left( \overline{X} \right)^2}{ \overline{X} + \overline{X}^2 - \overline{X^2}}
+    \right].$$
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

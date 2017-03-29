@@ -227,5 +227,94 @@ $$ \int \limits_{ \beta }^{ \infty } ye^{ \beta - y} dy =
     \right].$$
 \end{enumerate}
 
+\subsubsection*{3.7}
+
+\textit{Задание.} Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Парето с плотностью
+$$f_{ \beta, \theta } \left( y \right) =
+  \begin{cases}
+    \beta \theta y^{- \left( \beta + 1 \right) }, \qquad y \geq \theta, \\
+    0, \qquad t < \theta,
+  \end{cases}
+  \beta > 0, \,
+  \theta > 0.$$
+
+Постройте оценки по методу моментов
+\begin{enumerate}[label=\alph*)]
+  \item параметра $ \beta > 1$, если параметр $ \theta > 0$ известный;
+  \item параметра $ \theta > 0$, если параметр $ \beta > 1$ известный;
+  \item векторного параметра $ \left( \beta, \theta \right) $, где $ \beta > 2, \, \theta > 0$.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Вычисляем теоретический момент
+  $$MX_1 =
+    \beta \int \limits_{ \theta }^{ \infty } \theta^{ \beta } y^{- \beta } dy =
+    \beta \theta^{ \beta } \cdot \frac{y^{- \beta + 1}}{- \beta + 1} =
+    - \beta \theta^{ \beta } \cdot \frac{ \theta }{1 - \beta } =
+    \frac{ \beta }{ \beta - 1} \cdot \theta.$$
+
+  Найдём второй момент
+  $$MX_1^2 =
+    \beta \int \limits_{ \theta }^{ \infty } \theta^{ \beta } y^{- \beta + 1} dy =
+    \beta \cdot \frac{1}{ \beta - 2} \cdot \theta^2.$$
+
+  Приравниваем теоретический и выборочный момент, учитывая, что $ \beta $ --- параметр
+  $$ \frac{ \beta^*}{ \beta^* - 1} \cdot \theta =
+    \overline{X},$$
+  откуда
+  $$ \frac{ \beta^*}{ \beta^* - 1} =
+    \frac{ \overline{X}}{ \theta }.$$
+  Решим пропорцию
+  $ \beta^* \theta =
+    \left( \beta - 1 \right) \overline{X} =
+    \beta^* \overline{X} - \overline{X}$.
+
+  Получаем
+  $$ \beta^* =
+    \frac{ \overline{X}}{ \overline{X} - \theta };$$
+  \item считаем, что $ \beta $ --- известно, ищем $ \theta $.
+
+  Приравниваем моменты
+  $$ \frac{ \beta }{ \beta - 1} \cdot \theta =
+    \overline{X},$$
+  откуда
+  $$ \theta^* =
+    \frac{ \overline{X} \left( \beta - 1 \right) }{ \beta };$$
+  \item нужно 2 уравнения
+  $$ \begin{cases}
+      \frac{ \beta^*}{ \beta^* - 1} \cdot \theta^* = \overline{X}, \\
+      \frac{ \beta^*}{ \beta^* - 2} \cdot \left( \theta^* \right)^2 = \overline{X^2}.
+    \end{cases}$$
+
+  Выражаем $ \theta^*$ из первого уравнения и подставляем во второе
+  $$ \frac{ \beta^*}{ \beta^* - 2} \cdot
+    \left( \frac{ \beta^* - 1}{ \beta^*} \right)^2 \cdot
+    \left( \overline{X} \right)^2 =
+    \overline{X^2}.$$
+  Умножим на знаменатель
+  $ \left( \overline{X} \right)^2 \left( \beta^* - 1 \right)^2 =
+    \overline{X^2} \beta^* \left( \beta^* - 2 \right) $.
+
+  Оставляем в левой части только квадрат выборочного момента
+  $$ \left( \overline{X} \right)^2 =
+    \overline{X^2} \cdot
+    \frac{ \left( \beta^* \right)^2 - 2 \beta^*}{ \left( \beta^* - 1 \right)^2}.$$
+
+  Делаем замену $ \left( \beta^* - 1 \right)^2 = t$.
+
+  Получаем
+  $$ \left( \overline{X} \right)^2 =
+    \frac{t - 1}{t} \cdot \overline{X^2} =
+    \left( 1 - \frac{1}{t} \right) \cdot \overline{X^2} =
+    \overline{X^2} - \frac{ \overline{X^2}}{t}.$$
+
+  Отсюда
+  $$t =
+    \frac{ \overline{X^2}}{ \overline{X^2} - \left( \overline{X} \right)^2}.$$
+
+  Отсюда найдём $ \beta^* = \sqrt{t} + 1$, соответственно находим $ \theta^*$.
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

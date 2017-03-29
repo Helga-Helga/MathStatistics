@@ -875,3 +875,54 @@ $$ \frac{1}{n} \cdot M \left( X_1 + \dotsc + X_n \right) =
   \frac{1}{n} \cdot nMX_1 =
   p,$$
 то есть оценка несмещённая.
+
+\subsubsection*{2.23}
+
+\textit{Задание.} При каком значении $k$ статистика
+$$k \sum \limits_{j = 1}^n \left| X_j \right|,$$
+которая построена по выборке из нормального распределения $N \left( 0, \sigma^2 \right) $,
+является несмещённой оценкой для параметра $ \sigma $?
+
+\textit{Решение.} Нужно найти такое $k$, для которого
+$$M \left( k \sum \limits_{j = 1}^n \left| X_j \right| \right) =
+  \sigma, \,
+  X_j \sim N \left( 0, \sigma^2 \right).$$
+
+Выносим константу $k$ за знак математического ожидания
+$$M \left( k \sum \limits_{j = 1}^n \left| X_j \right| \right) =
+  kM \sum \limits_{j = 1}^n \left| X_j \right|.$$
+Пользуемся линейностью математического ожидания
+$$kM \sum \limits_{j = 1}^n \left| X_j \right| =
+  k \sum \limits_{j = 1}^n M \left| X_j \right|.$$
+Из того, что случайные величины одинаково распределены, следует, что
+$$k \sum \limits_{j = 1}^n M \left| X_j \right| =
+  knM \left| X_1 \right|.$$
+
+Найдём математическое ожидание модуля первого элемента выборки через плотность распределения
+$$M \left| X_1 \right| =
+  \int \limits_{ \mathbb{R}} p \left( x \right) \cdot \left| x \right| dx =
+  \int \limits_{ \mathbb{R}}
+    \left| x \right| \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{x^2}{2 \sigma^2}}
+  dx =
+  2 \cdot
+  \int \limits_0^{+ \infty }
+    x \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{x^2}{2 \sigma^2}}
+  dx.$$
+Внесём под знак дифференциала то, что стоит в степени экспоненты
+$$2 \cdot
+  \int \limits_0^{+ \infty }
+    x \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{x^2}{2 \sigma^2}}
+  dx =
+  -2 \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot \frac{1}{2} \cdot
+  \int \limits_0^{+ \infty }
+    e^{- \frac{x^2}{2 \sigma^2}}
+  d \left( - \frac{x^2}{2 \sigma^2} \right) \cdot
+  2 \sigma^2 =
+  \sqrt{ \frac{2}{ \pi }} \cdot \sigma.$$
+
+Тогда математическое ожидание оценки
+$$M \left( k \sum \limits_{j = 1}^n \left| X_j \right| \right) =
+  kn \sigma \sqrt{ \frac{2}{ \pi }}$$
+--- условие несмещённости, откуда
+$$k =
+  \frac{1}{n} \sqrt{ \frac{ \pi }{2}}.$$

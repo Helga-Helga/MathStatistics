@@ -318,3 +318,38 @@ $$f_{ \beta, \theta } \left( y \right) =
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{3.12}
+
+\textit{Задание.}
+Пользуясь методом моментов с пробной функцией $g \left( y \right) = y$,
+оцените параметр $p$ распределения Бернулли.
+Возможно ли с помощью метода мометов с некоторой
+пробной функией $g \left( y \right) $ получить оценку параметра $p$, отличную от $ \overline{X}$?
+
+\textit{Решение.}
+$$X_i =
+  \begin{cases}
+    0, \qquad 1 - p, \\
+    1, \qquad p.
+  \end{cases}$$
+
+Теоретический момент $MX_1 = p, \, p^* = \overline{X}$.
+
+Найдём теоретический момент с пробной функцией
+$$Mg \left( X_1 \right) =
+  g \left( 0 \right) \left( 1 - p \right) + g \left( 0 \right) p =
+  g \left( 0 \right) + p \left[ g \left( 1 \right) - g \left( 0 \right) \right] =
+  \overline{g \left( X \right) }.$$
+Отсюда
+$$p^* =
+  \frac{g \left( \overline{X} \right) - g \left( 0 \right) }{g \left( 1 \right) - g \left( 0 \right) }=
+  \frac{g \left( X_1 \right) + \dotsc + g \left( X_n \right) - g \left( 0 \right) }{n \left[ g \left( 1 \right) - g \left( 0 \right) \right]}.$$
+Количество единиц равно $ \overline{X} n$, соответственно $n - \overline{X} n$ --- количество нулей.
+$$\frac{g \left( X_1 \right) + \dotsc + g \left( X_n \right) - g \left( 0 \right) }{n \left[ g \left( 1 \right) - g \left( 0 \right) \right]} =
+  \frac{g \left( 1 \right) \overline{X} n + g \left( 0 \right) \left( n - \overline{X} n \right) - g \left( 0 \right) n}{n \left[ g \left( 1 \right) - g \left( 0 \right) \right] }.$$
+Раскроем скобки и приведём подобные
+$$ \frac{g \left( 1 \right) \overline{X} n + g \left( 0 \right) \left( n - \overline{X} n \right) - g \left( 0 \right) n}{n \left[ g \left( 1 \right) - g \left( 0 \right) \right] } =
+  \frac{ng \left( 1 \right) \overline{X} - gn \overline{X}}{n \left[ g \left( 1 \right) - g \left( 0 \right) \right] } =
+  \overline{X},$$
+откуда следует, что невозможно получить другую оценку параметра $p$.

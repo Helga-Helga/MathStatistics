@@ -926,3 +926,67 @@ $$M \left( k \sum \limits_{j = 1}^n \left| X_j \right| \right) =
 --- условие несмещённости, откуда
 $$k =
   \frac{1}{n} \sqrt{ \frac{ \pi }{2}}.$$
+
+\subsubsection*{2.24}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распределения с параметром $ \alpha > 0$.
+Найдите несмещённые состоятельные оценки для параметров
+$$ \alpha, \,
+  \sin \frac{1}{ \alpha }.$$
+
+\textit{Решение.} $X_1, \dotsc, X_n$ --- независимые одинаково распределённые.
+
+$ \theta $ --- неизвестный параметр.
+
+$$ \hat{ \theta } =
+  \frac{f \left( X_1 \right) + \dotsc + f \left( X_n \right) }{n}.$$
+
+Так как элементы выборки одинаково распределённые, то $M \hat{ \theta } = Mf \left( X_1 \right) $.
+
+По закону больших чисел $ \hat{ \theta } \overset{P}{ \to } Mf \left( X_1 \right) $.
+
+Хотим, чтобы
+$$ \begin{cases}
+    M \hat{ \theta } = \hat{ \theta }, \\
+    \hat{ \theta } \overset{P}{ \to } \theta.
+  \end{cases}$$
+
+Нужно подобрать $f$ из условия, что $Mf \left( X_1 \right) = \theta = \alpha $.
+
+Записывая математическое ожидание через интеграл от плотности получаем преобразование Лапласа
+$$ \int \limits_0^{ \infty } f \left( y \right) \alpha e^{- \alpha y} dy =
+   \alpha.$$
+
+Это способ построения одновременно несмещённой и сотоятельной оценки.
+
+Выносим $ \alpha $ из-под знака интеграла
+$$ \alpha \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  \alpha.$$
+Сокращая константы, получаем
+$$ \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  1.$$
+Из таблицы преобразований Лапласа $f \left( y \right) = \delta \left( y \right) $.
+Тогда оценка параметра $ \alpha $ примет вид
+$$ \hat{ \theta } =
+  \frac{ \delta \left( X_1 \right) + \dotsc + \delta \left( X_n \right) }{n}.$$
+
+Для второго параметра
+$$ \int \limits_0^{ \infty } f \left( y \right) \alpha e^{- \alpha y} dy =
+  \sin \frac{1}{ \alpha }.$$
+
+Вынесем $ \alpha $ из-под знака интеграла
+$$ \alpha \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  \sin \frac{1}{ \alpha }.$$
+
+Перенесём $ \alpha $ вправо
+$$ \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  \frac{1}{ \alpha } \cdot \sin \frac{1}{y} \sim
+  \frac{1}{ \alpha } \cdot \frac{1}{ \alpha } =
+  \frac{1}{ \alpha^2},$$
+откуда из таблицы преобразований Лапласа $f \left( y \right) = y$.
+Перешли к пределу, потому что иначе интеграл расходится.
+Оценка параметра в таком случае примет вид
+$$ \hat{ \theta } =
+  \frac{X_1 + \dotsc + X_n}{n} =
+  \overline{X}.$$

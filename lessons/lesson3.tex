@@ -319,6 +319,63 @@ $$f_{ \beta, \theta } \left( y \right) =
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 
+\subsubsection*{3.10}
+
+\textit{Задание.}
+Пользуясь методом моментов,
+оцените значение $ \alpha $
+по выборке из показательного распределения с параметром $1 / \sqrt{ \alpha }$.
+
+\textit{Решение.}
+$$X_i \sim
+  Exp \left( \frac{1}{ \sqrt{ \alpha }} \right).$$
+Записываем теоретический момент.
+Для показательного распределения --- это обратная величина к параметру распределения
+$$MX_1 =
+  \frac{1}{ \frac{1}{ \sqrt{ \alpha }}} =
+  \sqrt{ \alpha }.$$
+
+Должны приравнять $ \sqrt{ \alpha^*} = \overline{X}$,
+откуда $ \alpha^* = \left( \overline{X} \right)^2$.
+
+\subsubsection*{3.11}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распределения с параметром $ \alpha > 0$.
+Пользуясь методом моментов с пробной функцией $g \left( y \right) = y$,
+оцените параметр $ \theta \left( \alpha \right) = P \left( X_1 > 1 \right) $.
+
+\textit{Решение.} $Mg \left( X_1 \right) = \overline{g \left( X \right) }$ --- метод моментов.
+
+Ищем теоретический момент, зная плотность распределения
+$$MX_1 =
+  \frac{1}{ \alpha }.$$
+Из метода моментов следует, что
+$$ \frac{1}{ \alpha^*} =
+  \overline{X}.$$
+Выражаем оценку
+$$ \alpha^* =
+  \frac{1}{ \overline{X}}.$$
+
+Перейдём в параметре к противоположному событию
+$$ \theta \left( \alpha \right) =
+  P \left( X_1 > 1 \right) =
+  1 - P \left( X_1 \leq 1 \right) =
+  1 - F_{X_1} \left( 1 \right).$$
+Найдём функцию показательного распределения как интеграл от плотности
+$$F_{X_1} \left( y \right) =
+  \int \limits_0^y \alpha e^{ - \alpha x} dx =
+  \alpha \cdot \left( - \frac{1}{ \alpha } \right) \cdot
+  \int \limits_0^{ \alpha } e^{- \alpha x} d \left( - \alpha x \right) =
+  \left. -e^{- \alpha x} \right|_0^y =
+  1 - e^{- \alpha y}.$$
+Тогда параметр примет вид
+$ \theta \left( \alpha \right) =
+  1 - \left( 1 - e^{- \alpha } \right) =
+  1 - 1 + e^{- \alpha } =
+  e^{- \alpha } =
+  e^{- \frac{1}{ \overline{X}}}.$
+
 \subsubsection*{3.12}
 
 \textit{Задание.}

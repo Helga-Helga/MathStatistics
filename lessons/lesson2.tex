@@ -990,3 +990,197 @@ $$ \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
 $$ \hat{ \theta } =
   \frac{X_1 + \dotsc + X_n}{n} =
   \overline{X}.$$
+
+\subsubsection*{2.25}
+
+\textit{Задание.}
+Пусть $X$ --- количество успехов в серии из $n$ испытаний Бернулли с вероятностью успеха $p$.
+Докажите, что не существует несмещённой оценки для параметра $p^N$ при $N > n$.
+
+\textit{Решение.} Будем действовать от противного.
+
+Допустим, такая оценка существует, то есть существует $ \hat{ \theta }$ такое,
+что $M \hat{ \theta } = p^N$.
+
+Это условие несмещённости.
+
+$ \hat{ \theta }$ --- функция от выборки $X_1, \dotsc, X_n$, где $X_1 + \dotsc + X_n = X$,
+то есть $ \hat{ \theta } = f \left( X_1, \dotsc, X_n \right) $.
+
+Распределение Бернулли дискретное
+\begin{equation*}
+  \begin{split}
+    M \hat{ \theta } =
+    Mf \left( X_1, \dotsc, X_n \right) = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1, \dotsc, X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Пользуясь независимостью, получаем
+\begin{equation*}
+  \begin{split}
+   \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1, \dotsc, X_n = k_n \right) = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1 \right) \cdot \dotsc \cdot P \left( X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Подставляем вероятности в явном виде
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1 \right) \cdot P \left( X_n = k_n \right) = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) p^{k_1} \cdot
+      \left( 1 - p \right)^{1 - k_1} \cdot \dotsc \cdot p^{k_n} \cdot \left( 1 - p \right)^{1 - k_n} = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      p^{k_1 + \dotsc + k_n} \cdot \left( 1 - p \right)^{n - \left( k_1 + \dotsc + k_n \right) }.
+    \end{split}
+\end{equation*}
+Обозначим
+$$ \sum k_i =
+  k.$$
+Получим
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      p^{k_1 + \dotsc + k_n} \cdot \left( 1 - p \right)^{n - \left( k_1 + \dotsc + k_n \right) } = \\
+    = \sum \limits_{k = 0}^n
+      \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+        f \left( k_1, \dotsc, k_n \right) p^k \left( 1 - p \right)^{n - k} =
+    \sum \limits_{k = 0}^n c_k p^k \left( 1 - p \right)^{n - k},
+  \end{split}
+\end{equation*}
+где $c_k$ --- число.
+
+Допустим, эта величина равна $p^N$.
+
+Посмотрим, возможно ли это
+$$ \sum \limits_{k = 0}^n c_k p^k \left( 1 - p \right)^{n - k} =
+  p^N.$$
+
+Последнее равенство невозможно при $N > n$.
+Из этого следует, что не существует несмещённой оценки для параметра $p^N$ при $N > n$.
+
+\subsubsection*{2.26}
+
+\textit{Задание.} Проводится $n$ измерений неизвестного диаметра $d$ круга.
+В первом приближении считается,
+что измерения $X_i = d + \varepsilon_i$
+проводятся с независимыми случайными погрешностями $ \varepsilon_i$,
+которые имеют нормальное распределение с нулевым математическим ожиданием
+и неизвестной дисперсией $ \sigma^2$.
+Проверьте несмещённость и состоятельность следующей оценки площади круга:
+$$ \hat{s_n} =
+  \frac{ \pi }{4} \left( \left( \overline{X} \right)^2 - \frac{S_0^2}{n} \right),$$
+где
+$$S_0^2 =
+  \frac{1}{n - 1} \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2.$$
+
+\textit{Решение.} Имеем случайные величины $ \varepsilon_i \sim N \left( 0, \sigma^2 \right) $.
+Проверим несмещённость оценки, то есть проверим, выполняется ли
+$$M \hat{s_n} =
+  \frac{ \pi d^2}{4}.$$
+
+Преобразуем
+$$S_0^2 =
+  \frac{1}{n - 1} \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2 =
+  \frac{1}{n - 1} \cdot
+  \sum \limits_{i = 1}^n \left( d + \varepsilon_i - d - \overline{ \varepsilon } \right)^2 =
+  \frac{1}{n - 1} \cdot
+  \sum \limits_{i = 1}^n \left( \varepsilon_i - \overline{ \varepsilon } \right)^2.$$
+Математическое ожидание этой случайной величины равно
+$$MS_0^2 =
+  DS_0^2 =
+  \sigma^2.$$
+
+Найдём математическое ожидание квадрата выборочного среднего
+$$M \left( \overline{X} \right)^2 =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2 =
+  M \left[
+    \frac{1}{n^2} \cdot
+    \left( \sum \limits_{i = 1}^n X_i^2 + 2 \sum \limits_{i, j = 1, \, i \neq j}^n X_i X_j \right)
+  \right].$$
+Пользуемся тем, что случайные величины в выборке одинаково распределены
+$$M \left[
+    \frac{1}{n^2} \cdot
+    \left( \sum \limits_{i = 1}^n X_i^2 + 2 \sum \limits_{i, j = 1, \, i \neq j}^n X_i X_j \right)
+  \right] =
+  \frac{1}{n^2} \cdot nMX_1^2 + \frac{1}{n^2} \cdot 2C_n^2 \left( MX_1 \right)^2.$$
+Расписываем биномиальный коэффициент
+$$ \frac{1}{n^2} \cdot nMX_1^2 + \frac{1}{n^2} \cdot 2C_n^2 \left( MX_1 \right)^2 =
+  \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot \frac{n!}{2 \left( n - 2 \right)!} \cdot \left( MX_1 \right)^2.$$
+Расписываем $n!$ через факториал, стоящий в знаменателе
+$$ \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot \frac{n!}{2 \left( n - 2 \right)!} \cdot \left( MX_1 \right)^2 =
+  \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot
+  \frac{ \left( n - 2 \right)! \left( n - 1 \right) n}{2 \left( n - 2 \right)!} \cdot
+  \left( MX_1 \right)^2.$$
+Сокращаем
+$$ \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot
+  \frac{ \left( n - 2 \right)! \left( n - 1 \right) n}{2 \left( n - 2 \right)!} \cdot
+  \left( MX_1 \right)^2 =
+  \frac{1}{n} \cdot MX_1^2 + \frac{n - 1}{n} \cdot \left( MX_1 \right)^2.$$
+Найдём математическое ожидание измерения
+$$MX_1 =
+  M \left( d + \varepsilon_i \right) =
+  Md + M \varepsilon_i =
+  d.$$
+Найдём математическое ожидание квадрата измерения
+$$MX_1^2 =
+  M \left( d + \varepsilon_i \right)^2 =
+  M \left( d^2 + 2d \varepsilon_i + \varepsilon_i^2 \right) =
+  Md^2 + M \left( 2d \varepsilon_i \right) + M \varepsilon_i^2.$$
+Выносим константы за знак матетматического ожидания и учитываем то,
+что случайная величина $ \varepsilon_i$ имеет нулевой математическое ожидание
+$$Md^2 + M \left( 2d \varepsilon_i \right) + M \varepsilon_i^2 =
+  d^2 + 2dM \varepsilon_i + D \varepsilon_i =
+  d^2 + \sigma^2.$$
+Подставляя эти значения
+в полученное выражение для математического ожидания квадрата выборочного среднего, получаем
+$$M \left( \overline{X} \right)^2 =
+  \frac{1}{n} \cdot \left( d^2 + \sigma^2 \right) + \frac{n - 1}{n} \cdot d^2 =
+  \frac{d^2 + \sigma^2 + nd^2 - d^2}{n} =
+  \frac{ \sigma^2 + nd^2}{n} =
+  d^2 + \frac{ \sigma^2}{n}.$$
+
+Получаем математическое ожидание оценки
+$$M \hat{s_n} =
+  M \left\{
+    \frac{ \pi }{4} \cdot \left[ \left( \overline{X} \right)^2 - \frac{S_0^2}{n} \right]
+  \right\} =
+  \frac{ \pi }{4} \cdot M \left[ \left( \overline{X} \right)^2 - \frac{S_0^2}{n} \right] =
+  \frac{ \pi }{4} \cdot M \left( \overline{X} \right)^2 - \frac{ \pi }{4} \cdot M \frac{S_0^2}{n}.$$
+Подставляем найденные значения математических ожиданий и выносим за скобку общий множитель
+$$ \frac{ \pi }{4} \cdot M \left( \overline{X} \right)^2 - \frac{ \pi }{4} \cdot M \frac{S_0^2}{n} =
+  \frac{ \pi }{4} \cdot \left( d^2 + \frac{ \sigma^2}{n} \right) - \frac{ \pi }{4n} \cdot MS_0^2 =
+  \frac{ \pi }{4} \cdot d^2 + \frac{ \pi \sigma^2}{4n} - \frac{ \pi \sigma^2}{4n} =
+  \frac{ \pi d^2}{4},$$
+значит, оценка несмещённая.
+
+Проверим состоятельность оценки, то есть выполняется ли
+$$ \hat{s_n} \overset{P}{ \to } \frac{ \pi d^2}{4}, \,
+  n \to \infty.$$
+
+По закону больших чисел
+$$ \left( \overline{X} \right)^2 \overset{P}{ \to } \left( MX_1 \right)^2 = d^2, \,
+  n \to \infty.$$
+
+Остаётся проверить, стремится ли по вероятности второе слагаемое в оценке к нулю
+$$P \left( \frac{S_0^2}{n} \geq \varepsilon \right) =
+  P \left( S_0^2 \geq \varepsilon n \right).$$
+Применим неравенство Чебышева
+$$P \left( S_0^2 \geq \varepsilon n \right) \leq
+  \frac{MS_0^2}{ \varepsilon n} \to 0, \,
+  n \to \infty.$$
+Остюда следует, что
+$$ \frac{S_0^2}{n} \overset{P}{ \to } 0, \, n \to \infty.$$
+Значит,
+$$ \hat{s_n} \overset{P}{ \to } \frac{ \pi }{4} \cdot d^2,$$
+то есть оценка состоятельная.

@@ -236,5 +236,70 @@ $$ \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq 0, \, \max \limits_i x_i \
 
 Значит, $ \hat{ \theta } = \max \limits_{1 \leq i \leq n} x_i$.
 
+\subsubsection*{4.9}
+
+\textit{Задание.} Постройте оценку максимального правдоподобия параметра $p$ распределения Бернулли.
+
+\textit{Решение.} Распределение Бернулли не имеет плотности.
+Есть выборка $x_1, \dotsc, x_n \sim B \left( 1, p \right) $.
+
+Функция правдоподобия, когда есть плотность, выглядит так
+$$L \left( \vec{x}, p \right) =
+  \prod \limits_{i = 1}^n p_p \left( x_i \right).$$
+
+Функция
+$f_p \left( x \right) =
+  P \left\{ x_1 = x \right\} =``
+  P \left( \left\{ \left. \omega \right| \, x_1 \left( \omega \right) = x \right\} \right) $,
+где $x \in \left\{ 0, 1 \right\} $.
+
+В этом случае функция правдободобие примет вид
+$$L \left( \vec{x}, p \right) =
+  \prod \limits_{i = 1}^n f_p \left( x_i \right).$$
+Для распределения Пуассона $x \in \left\{ 0, 1, 2, \dotsc \right\} $.
+Ищем максимум функции правдоподобия.
+Нужно записать $f_p \left( 1 \right) = p, \, f_p \left( 0 \right) = 1 - p$, то есть
+$$f_p \left( x \right) =
+  \begin{cases}
+    p, \qquad x = 1, \\
+    1 - p, \qquad x = 0
+  \end{cases} =
+  p \cdot \mathbbm{1} \left\{ x = 1 \right\} +
+  \left( 1 - p \right) \cdot \mathbbm{1} \left\{ x = 0 \right\}.$$
+Подставляем в функцию правдоподобия
+$$ \prod \limits_{i = 1}^n f_p \left( x_i \right) =
+  \prod \limits_{i = 1}^n \left[ p \cdot \mathbbm{1} \left\{ x_i = 1 \right\} +
+  \left( 1 - p \right) \cdot \mathbbm{1} \left\{ x_i = 0 \right\} \right].$$
+Перепишем первый индикатор как
+$ \mathbbm{1} \left\{ x_i = 1 \right\} =
+  1 - \mathbbm{1} \left\{ x_i = 0 \right\} $.
+Получим
+\begin{equation*}
+  \begin{split}
+    \prod \limits_{i = 1}^n \left[ p \cdot \mathbbm{1} \left\{ x_i = 1 \right\} +
+    \left( 1 - p \right) \cdot \mathbbm{1} \left\{ x_i = 0 \right\} \right] = \\
+    = \prod \limits_{i = 1}^n
+      \left[
+        p -
+        p \cdot \mathbbm{1} \left\{ x_i = 0 \right\} +
+        \mathbbm{1} \left\{ x_i = 0 \right\} -
+        p \cdot \mathbbm{1} \left\{ x_i = 0 \right\}
+      \right] = \\
+    = \prod \limits_{i = 1}^n
+      \left(
+        p - 2p \cdot \mathbbm{1} \left\{ x_i = 0 \right\} + \mathbbm{1} \left\{ x_i = 0 \right\}
+      \right) =
+    p^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 1 \right\} } \cdot
+    \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 0 \right\} }.
+  \end{split}
+\end{equation*}
+$p$ будет встречаться ровно столько раз, сколько индикаторов равно единице.
+$$p^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 1 \right\} } \cdot
+  \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 0 \right\} } =
+  p^{ \sum \limits_{i = 1}^n x_i} \left( 1 - p \right)^{n - \sum \limits_{i = 1}^n x_i} =
+  p^{n \overline{x}} \left( 1 - p \right)^{n \left( 1 - \overline{x} \right) }.$$
+Теперь нужно брать производную по $p$, приравнивать к нулю, искать оценку,
+которая должна получиться $ \hat{p} = \overline{x}$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

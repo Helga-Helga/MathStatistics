@@ -236,6 +236,70 @@ $$ \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq 0, \, \max \limits_i x_i \
 
 Значит, $ \hat{ \theta } = \max \limits_{1 \leq i \leq n} x_i$.
 
+\subsubsection*{4.7}
+
+\textit{Задание.}
+Постройте оценку максимального правдоподобия параметра сдвига $ \beta \in \mathbb{R}$
+показательного распределения с плотностью
+$$f_{ \beta } \left( y \right) =
+  \begin{cases}
+    e^{ \beta - y}, \qquad y \geq \beta, \\
+    0, \qquad otherwise.
+  \end{cases}$$
+
+Проверьте состоятельность этой оценки.
+
+\textit{Решение.}
+$f_{ \beta } \left( y \right) = e^{ \beta - y} \cdot \mathbbm{1} \left\{ y \geq \beta \right\}.$
+
+Запишем функцию правдоподобия
+$$L \left( \vec{x}, \beta \right) =
+  e^{n \beta - \sum \limits_{i = 1}^n x_i} \cdot
+  \mathbbm{1} \left\{ \vec{x} \in \left[ \beta, + \infty \right)^n \right\} =
+  e^{n \beta - \sum \limits_{i = 1}^n x_i} \cdot
+  \mathbbm{1} \left\{ \min \limits_{1 \leq i \leq n} x_i \geq \beta \right\}.$$
+Рисуем схематический график (рис. \ref{fig:47}).
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.4\textwidth]{./pictures/4_7.png}
+  \caption{График функции $L \left( \beta \right) $}
+  \label{fig:47}
+\end{figure}
+
+Из графика видно, что $ \hat{ \beta } = \min \limits_{1 \leq i \leq n} x_i$.
+Проверяем состоятельность:
+$$ \hat{ \beta } \overset{P}{ \to } \beta, \, n \to \infty.$$
+По определению
+$P \left( \left| \hat{ \beta } - \beta \right| > \varepsilon \right) \to 0,
+  \, n \to \infty, \,
+  \forall \varepsilon > 0$.
+Подставляем оценку в функцию правдоподобия
+$$e^{n \beta - \sum \limits_{i = 1}^n x_i} \cdot
+  \mathbbm{1} \left\{ \min \limits_{1 \leq i \leq n} x_i \geq \beta \right\} =
+  P \left( \left| \min \limits_{1 \leq i \leq n} x_i - \beta \right| > \varepsilon \right).$$
+Минимальный член выборки не может быть меньше $ \beta $ из-за распределения.
+$P \left( \left| \min \limits_{1 \leq i \leq n} x_i - \beta \right| > \varepsilon \right) =
+  P \left( \min \limits_{1 \leq i \leq n} x_i > \beta + \varepsilon \right).$
+Запишем через вероятность пересечения событий $ \left\{ x_i > \beta + \varepsilon \right\} $.
+Получим
+$$P \left( \min \limits_{1 \leq i \leq n} x_i > \beta + \varepsilon \right) =
+  P \left( \bigcap \limits_{i = 1}^n \left\{ x_i > \beta + \varepsilon \right\} \right).$$
+Случайные величины независимы и одинаково распределены
+$$P \left( \bigcap \limits_{i = 1}^n \left\{ x_i > \beta + \varepsilon \right\} \right) =
+  \left[ P \left( x_1 > \beta + \varepsilon \right) \right]^n \to 0, \,
+  n \to \infty,$$
+так как такая вероятность меньше единицы.
+
+Достаточно показать, что $P \left( x_1 > \beta + \varepsilon \right) \neq 1$.
+Тогда $l^n \to 0$.
+
+Запишем интеграл от плотности со сдвигом
+$$ \int \limits_{ \beta + \varepsilon }^{+ \infty } p_{ \beta } \left( y \right) dy =
+  1 - \int \limits_{ \beta }^{ \beta + \varepsilon } p_{ \beta } \left( y \right) dy <
+  1,$$
+так как второй интеграл больше нуля (забрали кусок $ \beta + \varepsilon $).
+
 \subsubsection*{4.9}
 
 \textit{Задание.} Постройте оценку максимального правдоподобия параметра $p$ распределения Бернулли.

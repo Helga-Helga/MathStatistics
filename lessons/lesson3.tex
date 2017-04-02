@@ -420,3 +420,121 @@ $$ \frac{g \left( 1 \right) \overline{X} n + g \left( 0 \right) \left( n - \over
 \textit{Решение.} Первый теоретический момент $MX_1 = ln \lambda $.
 Должны приравнять $ln \lambda = \overline{X}$.
 Отсюда следует, что $ \lambda^* = e^{ \overline{X}}$.
+
+\subsubsection*{3.14}
+
+\textit{Задание.} Пусть $X_1, \dotsc, X_n$ --- выборка из $ \Gamma $-распределения с плотностью
+$$f_{ \alpha, \beta } \left( y \right) =
+  \begin{cases}
+    \frac{ \alpha^{ \beta }}{ \Gamma \left( \beta \right) } \cdot y^{ \beta - 1} e^{- \alpha y}, \,
+    y \geq 0, \\
+    0, \qquad y < 0,
+  \end{cases} \,
+  \alpha, \beta > 0.$$
+
+Постройте оценки по методу моментов
+\begin{enumerate}[label=\alph*)]
+  \item параметра $ \alpha $, если параметр $ \beta $ известный;
+  \item параметра $ \beta $, если параметр $ \alpha $ известный;
+  \item векторного параметра $ \left( \alpha, \beta \right) $.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Вычислим теоретический момент
+  $$MX_1 =
+    \int \limits_0^{+ \infty }
+      \frac{ \alpha^{ \beta }}{ \Gamma \left( \beta \right) } \cdot
+      y^{ \beta - 1} \cdot e^{- \alpha y} \cdot y
+    dy =
+    \frac{1}{ \Gamma \left( \beta \right) } \cdot
+    \int \limits_0^{+ \infty } \alpha^{ \beta } y^{ \beta } e^{- \alpha y} dy.$$
+  Сделаем замену $ \alpha y = s$, откуда
+  $$y = \frac{s}{ \alpha }, \,
+    dy = \frac{ds}{ \alpha }.$$
+  Подставляем
+  $$ \frac{1}{ \Gamma \left( \beta \right) } \cdot
+    \int \limits_0^{+ \infty } \alpha^{ \beta } y^{ \beta } e^{- \alpha y} dy =
+    \frac{1}{ \Gamma \left( \beta \right) } \cdot
+    \int \limits_0^{+ \infty } s^{ \beta } e^{-s} \cdot \frac{ds}{ \alpha } =
+    \frac{1}{ \alpha \Gamma \left( \beta \right) } \cdot
+    \int \limits_0^{+ \infty } s^{ \beta } \cdot e^{-s} ds.$$
+  Интеграл равен Гамма-функции
+  $$ \frac{1}{ \alpha \Gamma \left( \beta \right) } \cdot
+    \int \limits_0^{+ \infty } s^{ \beta } \cdot e^{-s} ds =
+    \frac{1}{ \alpha \Gamma \left( \beta \right) } \cdot \Gamma \left( \beta + 1 \right) =
+    \frac{1}{ \alpha \Gamma \left( \beta \right) } \cdot \beta \cdot \Gamma \left( \beta \right) =
+    \frac{ \beta }{ \alpha }.$$
+
+  Найдём второй момент
+  $$MX_1^2 =
+    \int \limits_0^{+ \infty }
+      \frac{ \alpha^{ \beta }}{ \Gamma \left( \beta \right) } \cdot
+      y^{ \beta - 1} e^{- \alpha y} \cdot y^2
+    dy =
+    \frac{1}{ \Gamma \left( \beta \right) } \cdot
+    \int \limits_0^{+ \infty } \alpha^{ \beta } y^{ \beta + 1} e^{- \alpha y} dy.$$
+  Умножаем на $ \alpha $ числитель и знаменатель
+  $$ \frac{1}{ \Gamma \left( \beta \right) } \cdot
+    \int \limits_0^{+ \infty } \alpha^{ \beta } y^{ \beta + 1} e^{- \alpha y} dy =
+    \frac{1}{ \Gamma \left( \beta \right) \alpha } \cdot
+    \int \limits_0^{+ \infty } \alpha^{ \beta + 1} y^{ \beta + 1} e^{- \alpha y} dy.$$
+  Сделаем замену как и в предыдущем случае
+  $$ \frac{1}{ \Gamma \left( \beta \right) \alpha } \cdot
+    \int \limits_0^{+ \infty } \alpha^{ \beta + 1} y^{ \beta + 1} e^{- \alpha y} dy =
+    \frac{1}{ \Gamma \left( \beta \right) \alpha^2} \cdot
+    \int \limits_0^{+ \infty } s^{ \beta + 1} e^{-s} ds =
+    \frac{ \Gamma \left( \beta + 2 \right) }{ \alpha^2 \Gamma \left( \beta \right) }.$$
+  Пользуясь свойством Гамма-функции, записываем
+  $$ \frac{ \Gamma \left( \beta + 2 \right) }{ \alpha^2 \Gamma \left( \beta \right) } =
+    \frac{ \left( \beta + 1 \right) \Gamma \left( \beta + 1 \right) }{ \alpha^2 \Gamma \left( \beta \right) } =
+    \frac{ \Gamma \left( \beta + 1 \right) \beta + \Gamma \left( \beta + 1 \right) }{ \alpha^2 \Gamma \left( \beta \right) }.$$
+  Снова пользуемся свойством Гамма-функции и сокращаем её
+  $$ \frac{ \Gamma \left( \beta + 1 \right) \beta + \Gamma \left( \beta + 1 \right) }{ \alpha^2 \Gamma \left( \beta \right) } =
+    \frac{ \beta^2 \Gamma \left( \beta \right) + \beta \Gamma \left( \beta \right) }{ \alpha^2 \Gamma \left( \beta \right) } =
+    \frac{ \beta^2 + \beta }{ \alpha^2}.$$
+
+  Приравниваем теоретический момент и выборочный момент, учитывая, что $ \alpha $ --- параметр
+  $$ \frac{ \beta }{ \alpha^*} =
+    \overline{X},$$
+  откуда
+  $$ \alpha^* =
+    \frac{ \beta }{ \overline{X}};$$
+  \item считаем, что $ \alpha $ --- известно, ищем $ \beta^*$.
+
+  Приравниваем моменты
+  $$ \frac{ \beta^*}{ \alpha } =
+    \overline{X},$$
+  откуда $ \beta^* = \alpha \overline{X}$;
+  \item нужно 2 уравнения
+  $$ \begin{cases}
+      \frac{ \beta^*}{ \alpha^*} = \overline{X}, \\
+      \frac{ \left( \beta^* \right)^2 + \beta^*}{ \left( \alpha^* \right)^2} = \overline{X^2}.
+    \end{cases}$$
+
+  Выражаем $ \alpha^*$ из первого уравнения и подставляем во второе
+  $$ \frac{ \left( \beta^* \right)^2 + \beta^*}{ \beta^*} \cdot \overline{X} =
+    \overline{X^2}.$$
+
+  Поделим числитель на знаменатель
+  $$ \left( 1 + \frac{1}{ \beta^*} \right) \cdot \left( \overline{X} \right)^2 =
+    \overline{X^2}.$$
+  Оставляем в левой части только скобку
+  $$ 1 + \frac{1}{ \beta^*} =
+    \frac{ \overline{X^2}}{ \left( \overline{X} \right)^2}.$$
+
+  Переносим единицу вправо
+  $$ \frac{1}{ \beta^*} =
+    \frac{ \overline{X^2}}{ \left( \overline{X} \right)^2} - 1.$$
+  Выражаем параметр
+  $$ \beta^* =
+    \frac{1}{ \frac{ \overline{X^2}}{ \left( \overline{X} \right)^2} - 1} =
+    \frac{ \left( \overline{X} \right)^2}{ \overline{X^2} - \left( \overline{X} \right)^2}.$$
+
+  Соответственно находим
+  $$ \alpha^* =
+    \frac{ \beta^*}{ \overline{X}} =
+    \frac{ \frac{ \left( \overline{X} \right)^2}{ \overline{X^2} - \left( \overline{X} \right)^2}}{ \overline{X}} =
+    \frac{ \left( \overline{X} \right)^2}{ \left( \overline{X^2} - \left( \overline{X} \right)^2 \right) \overline{X}} =
+    \frac{ \overline{X}}{ \overline{X^2} - \left( \overline{X} \right)^2}.$$
+\end{enumerate}

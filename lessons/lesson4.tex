@@ -24,6 +24,55 @@ $ \hat{ \theta } =
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
+\subsubsection*{4.5}
+
+\textit{Задание.}
+Постройте оценку максимального правдоподобия параметра $ \theta $ показательного распределения.
+
+\textit{Решение.}
+$p \left( x, \theta \right) =
+  \theta e^{- \theta x} \cdot \mathbbm{1} \left\{ x \geq 0 \right\} $.
+
+Нужно найти функцию правдобоподия как произведение плотностей
+$L \left( \vec{x}, \theta \right) =
+  \theta^n \cdot e^{-n \theta \sum \limits_{i = 1}^n x_i} \cdot
+  \mathbbm{1} \left\{ \vec{x} \in \left[ 0, + \infty \right)^n \right\} $.
+Предполагаем, что все $x_i \geq 0$, то есть индикатор можно отбросить.
+Если какой-то элемент выборки сильно отрицательный,
+то не имеет смысла говорить о равномерном распределении.
+Если какой-то элемент выборки близок к нулю и при этом отрицательный, то на него повлияла ошибка,
+и его не учитываем
+$$ \theta^n \cdot e^{-n \theta \sum \limits_{i = 1}^n x_i} \cdot
+  \mathbbm{1} \left\{ \vec{x} \in \left[ 0, + \infty \right)^n \right\} =
+  \theta^n e^{-n \theta \sum \limits_{i = 1}^n x_i}.$$
+
+Удобнее будет рассмотреть
+$$ln L \left( \vec{x}, \theta \right) =
+  l \left( \theta \right) =
+  - \theta \sum \limits_{i = 1}^n x_i + n ln \theta.$$
+
+Нужно взять производную и приравнять к нулю
+$$ \frac{ \partial }{ \partial \theta } l \left( \theta \right) =
+  - \sum \limits_{i = 1}^n x_i + \frac{n}{ \theta } =
+  0.$$
+
+Переносим сумму вправо
+$$ \frac{n}{ \theta } =
+  \sum \limits_{i = 1}^n x_i.$$
+
+Получаем оценку
+$$ \hat{ \theta } =
+  \frac{n}{ \sum \limits_{i = 1}^n x_i}.$$
+Выразим через выборочное среднее
+$$ \frac{n}{ \sum \limits_{i = 1}^n x_i} =
+  \frac{1}{ \overline{X}}.$$
+Остаётся проверить, что $ \hat{ \theta }$ будет действительно максимумом функции $l$.
+Нужно найти вторую производную
+$$ \frac{ \partial^2}{ \partial \theta^2} l \left( \theta \right) =
+  - \frac{n}{ \theta^n} <
+  0.$$
+Отсюда следует, что фунция выпуклая ввекх, соответственно это точка максимума.
+
 \subsubsection*{4.6}
 
 \textit{Задание.}

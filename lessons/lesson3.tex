@@ -570,3 +570,217 @@ $$p^* =
   \frac{ \overline{X}}{2}.$$
 
 Оценим параметр $ \theta^* = e^{2p^*} = e^{ \frac{2 \overline{X}}{2}} = e^{ \overline{X}}$.
+
+\subsubsection*{3.16}
+
+\textit{Задание.} При нейтронном бомбардировании ядер урана начинается расщепление ядра,
+при котором ядро урана распадается на две части разного типа.
+В камере Вильсона это явление наблюдается в виде двух траекторий, которые выходят из одной точки.
+Эти траектории вскоре разделяются на несколько веток,
+которые получаются от столкновения частиц с молекулами газа в камере.
+Можно показать,
+что количество веток в одной траектории имеет так называемое <<двойное>> распределение Пуассона,
+то есть
+$$P \left( X = k \right) =
+  \frac{1}{2} \cdot
+  \left(
+    \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} + \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2}
+  \right), \,
+  k = 0, 1, \dotsc,$$
+где $ \lambda_1 < \lambda_2$ --- некоторые положительные постоянные.
+Пользуясь методом моментов, оцените векторный параметр $ \left( \lambda_1, \lambda_2 \right) $.
+
+\textit{Решение.}
+$$MX =
+  \sum \limits_{k = 0}^{ \infty } k \cdot P \left( X = k \right) =
+  \sum \limits_{k = 0}^{ \infty }
+    k \cdot \frac{1}{2} \cdot
+    \left(
+      \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} + \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2}
+    \right).$$
+Разобьём на две суммы
+$$ \sum \limits_{k = 0}^{ \infty }
+    k \cdot \frac{1}{2} \cdot
+    \left(
+      \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} + \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2}
+    \right) =
+  \frac{1}{2} \cdot
+  \sum \limits_{k = 0}^{ \infty } k \cdot \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} +
+  \frac{1}{2} \cdot
+  \sum \limits_{k = 0}^{ \infty } k \cdot \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2}.$$
+Слагаемые при $k = 0$ равны нулю
+$$ \frac{1}{2} \cdot
+  \sum \limits_{k = 0}^{ \infty } k \cdot \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} +
+  \frac{1}{2} \cdot
+  \sum \limits_{k = 0}^{ \infty } k \cdot \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2} =
+  \frac{1}{2} \cdot
+  \sum \limits_{k = 1}^{ \infty } k \cdot \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} +
+  \frac{1}{2} \cdot
+  \sum \limits_{k = 1}^{ \infty } k \cdot \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2}.$$
+Вынесем $ \lambda_i$ за скобку и сократим $k$, где $i \in \left\{ 1, 2 \right\} $.
+Получим
+\begin{equation*}
+  \begin{split}
+    \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty } k \cdot \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} +
+    \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty } k \cdot \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2} = \\
+    = \frac{ \lambda_1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      \frac{ \lambda_1^{k - 1}}{ \left( k - 1 \right)!} \cdot e^{- \lambda_1} +
+    \frac{ \lambda_2}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      \frac{ \lambda_2^{k - 1}}{ \left( k - 1 \right)!} \cdot e^{- \lambda_2} = \\
+    = \frac{ \lambda_1}{2} \cdot e^{ \lambda_1} \cdot e^{- \lambda_1} +
+    \frac{ \lambda_2}{2} \cdot e^{ \lambda_2} \cdot e^{- \lambda_2} =
+    \frac{ \lambda_1}{2} + \frac{ \lambda_2}{2} =
+    \frac{ \lambda_1 + \lambda_2}{2}.
+  \end{split}
+\end{equation*}
+
+Одного теоретического момента мало.
+
+Нужно найти второй теоретический момент
+$$MX^2 =
+  \sum \limits_{k = 0}^{ \infty }
+    k^2 \cdot \frac{1}{2} \cdot
+    \left(
+      \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} + \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2}
+    \right).$$
+Одно $k$ сокращаем, записываем через две суммы
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k = 0}^{ \infty }
+      k^2 \cdot \frac{1}{2} \cdot
+      \left(
+        \frac{ \lambda_1^k}{k!} \cdot e^{- \lambda_1} +
+        \frac{ \lambda_2^k}{k!} \cdot e^{- \lambda_2}
+      \right) = \\
+    = \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      k \cdot \frac{ \lambda_1^k}{ \left( k - 1 \right)!} \cdot e^{- \lambda_1 } +
+    \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      k \cdot \frac{ \lambda_2^k}{ \left( k -1 \right)!} \cdot e^{- \lambda_2} = \\
+    = \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      \left( k - 1 \right) \cdot \frac{ \lambda_1^k}{ \left( k - 1 \right)!} \cdot e^{- \lambda_1} +
+    \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      \left( k - 1 \right) \cdot \frac{ \lambda_2^k}{ \left( k - 1 \right)!} \cdot
+      e^{- \lambda_2} + \\
+    + \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      \frac{ \lambda_1^k}{ \left( k - 1 \right)!} \cdot e^{- \lambda_1} +
+    \frac{1}{2} \cdot
+    \sum \limits_{k = 1}^{ \infty }
+      \frac{ \lambda_2^k}{ \left( k - 1 \right)!} \cdot e^{- \lambda_2} = \\
+    = \frac{1}{2} \cdot
+    \sum \limits_{k = 2}^{ \infty }
+      \left( k - 1 \right) \cdot \frac{ \lambda_1^k}{ \left( k - 1 \right)!} \cdot e^{- \lambda_1} +
+    \frac{1}{2} \cdot
+    \sum \limits_{k = 2}^{ \infty }
+      \left( k - 1 \right) \cdot \frac{ \lambda_2^k}{ \left( k - 1 \right)!} \cdot
+      e^{- \lambda_2} + \\
+    + \frac{1}{2} \cdot \lambda_1 \cdot e^{- \lambda_1} \cdot
+    \sum \limits_{k = 1}^{ \infty } \frac{ \lambda_1^{k - 1}}{ \left( k - 1 \right)!} +
+    \frac{1}{2} \cdot \lambda_2 \cdot e^{- \lambda_2} \cdot
+    \sum \limits_{k = 1}^{ \infty } \frac{ \lambda_2^{k - 1}}{ \left( k - 1 \right)!} = \\
+    = \frac{1}{2} \cdot
+    \sum \limits_{k = 2}^{ \infty }
+      \frac{ \lambda_1^k}{ \left( k - 2 \right)!} \cdot e^{- \lambda_1} +
+    \frac{1}{2} \cdot
+    \sum \limits_{k = 2}^{ \infty }
+      \frac{ \lambda_2^k}{ \left( k - 2 \right)!} \cdot e^{- \lambda_2} +
+    \frac{1}{2} \cdot \lambda_1 \cdot e^{- \lambda_1} \cdot e^{ \lambda_1} + \\
+    + \frac{1}{2} \cdot \lambda_2  \cdot e^{- \lambda_2} \cdot e^{ \lambda_2} = \\
+    = \frac{1}{2} \cdot \lambda_1^2 \cdot e^{- \lambda_1 } \cdot
+    \sum \limits_{k = 2}^{ \infty } \frac{ \lambda_1^{k - 2}}{ \left( k - 2 \right)!} +
+    \frac{1}{2} \cdot \lambda_1^2 \cdot e^{- \lambda_2 } \cdot
+    \sum \limits_{k = 2}^{ \infty } \frac{ \lambda_2^{k - 2}}{ \left( k - 2 \right)!} +
+    \frac{1}{2} \cdot \lambda_1 +
+    \frac{1}{2} \cdot \lambda_2 = \\
+    = \frac{1}{2} \cdot \lambda_1^2 \cdot e^{- \lambda_1 } \cdot e^{ \lambda_1} +
+    \frac{1}{2} \cdot \lambda_2^2 \cdot e^{- \lambda_2 } \cdot e^{ \lambda_2} +
+    \frac{1}{2} \left( \lambda_1 + \lambda_2 \right) =
+    \frac{1}{2} \left( \lambda_1^2 + \lambda_2^2 + \lambda_1 + \lambda_2 \right).
+  \end{split}
+\end{equation*}
+
+Составим уравенения с двумя неизвестными
+$$ \begin{cases}
+    \frac{ \lambda_1^* + \lambda_2^*}{2} = \overline{X}, \\
+    \frac{1}{2} \cdot
+    \left(
+      \left( \lambda_1^* \right)^2 + \left( \lambda_2^* \right)^2 + \lambda_1^* + \lambda_2^*
+    \right) =
+    \overline{X^2}.
+  \end{cases}$$
+
+Возведём первое уравнение в квадрат, предварительно умножив на 2.
+Получим
+$ \left( \lambda_1^* + \lambda_2^* \right)^2 =
+  \left( \lambda_1^* \right)^2 + 2 \lambda_1^* \lambda_2^* + \left( \lambda_2^* \right)^2 =
+  4 \left( \overline{X} \right)^2$,
+откуда
+$$ \left( \lambda_1^* \right)^2 + \left( \lambda_2^* \right)^2 =
+  4 \left( \overline{X} \right)^2 - 2 \lambda_1^* \lambda_2^*.$$
+Подставим это выражение во второе уравнение
+$$ \frac{1}{2} \cdot
+  \left[
+    4 \left( \overline{X} \right)^2 - 2 \lambda_1^* \lambda_2^* + \lambda_1^* + \lambda_2^*
+  \right] =
+  \overline{X^2}.$$
+
+Раскроем скобки
+$$2 \left( \overline{X} \right)^2 -
+  \lambda_1^* \lambda_2^* +
+  \frac{1}{2} \left( \lambda_1^* + \lambda_2^* \right) =
+  \overline{X^2}.$$
+Подставим сумму оценок из первого уравнения
+$$2 \left( \overline{X} \right)^2 - \lambda_1^* \lambda_2^* + \frac{1}{2} \cdot 2 \overline{X} =
+  \overline{X^2}.$$
+Выразим произведение оценок и сократим двойки
+$ \lambda_1^* \lambda_2^* =
+  2 \left( \overline{X} \right)^2 + \overline{X} - \overline{X^2}$.
+
+Из первого уравнения подставим $ \lambda_2^* = 2 \overline{X} - \lambda_1^*$ в полученное уравнение
+$ \lambda_1^* \left( 2 \overline{X} - \lambda_1^* \right) =
+  2 \left( \overline{X} \right)^2 + \overline{X} - \overline{X^2}$.
+
+Раскроем скобки и поменяем знаки в обеих частях
+$$ \left( \lambda_1^* \right)^2 - 2 \overline{X} \lambda_1^* =
+  -2 \left( \overline{X} \right)^2 - \overline{X} + \overline{X^2}.$$
+
+Перенесём всё влево
+$ \left( \lambda_1^* \right)^2 -
+  2 \overline{X} \lambda_1^* +
+  2 \left( \overline{X} \right)^2 +
+  \overline{X} -
+  \overline{X^2} =
+  0$.
+
+Получили квадратное уравнение относительно $ \lambda_1^*$.
+Найдём его дискриминант
+$$D =
+  4 \left( \overline{X} \right)^2 -
+  4 \left( 2 \left( \overline{X} \right)^2 + \overline{X} - \overline{X^2} \right) =
+  4 \left( \overline{X} \right)^2 -
+  8 \left( \overline{X} \right)^2 -
+  4 \overline{X} +
+  4 \overline{X^2}.$$
+Приведём подобные
+$$4 \left( \overline{X} \right)^2 -
+  8 \left( \overline{X} \right)^2 -
+  4 \overline{X} +
+  4 \overline{X^2} =
+  4 \overline{X^2} - 4 \left( \overline{X} \right)^2 - 4 \overline{X}.$$
+
+Найдём корень
+$$ \lambda_1^* =
+  \frac{2 \overline{X} - 2 \sqrt{ \overline{X^2} - \left( \overline{X} \right)^2 - \overline{X}}}{2} =
+  \overline{X} - \sqrt{ \overline{X^2} - \left( \overline{X} \right)^2 - \overline{X}}.$$
+
+Тогда оценка второго параметра равна
+$ \lambda_2^* =
+  \overline{X} + \sqrt{ \overline{X^2} - \left( \overline{X} \right)^2 - \overline{X}}$.

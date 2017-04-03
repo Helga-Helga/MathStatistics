@@ -38,9 +38,9 @@ $$p \left( x \right) =
   \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{ \left( x - a \right)^2}{2 \sigma^2}}.$$
 
 Произведение этих плотностей даёт
-$$L \left( \vec{x}, a, sigma^2 \right) =
-  \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}} \sigma^2}
-  \cdot e^{- \frac{1}{2 \sigma^2} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2}.$$
+$$L \left( \vec{x}, a, \sigma^2 \right) =
+  \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}} \sigma^n}
+  \cdot e^{- \frac{1}{2 \sigma^n} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2}.$$
 Обозначим $ \sigma^2 = \sigma^*$, чтобы было удобней брать производную
 $$ \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}} \sigma^2}
   \cdot e^{- \frac{1}{2 \sigma^2} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2} =
@@ -367,3 +367,96 @@ $$p^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 1 \right\} } \cdot
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{4.14}
+
+\textit{Задание.}
+Постройте оценку максимального правдоподобия дисперсии $ \sigma^2$ нормального распределения,
+если математическое ожидание $a$ известно.
+Выясните, не является ли оценка состоятельной оценкой параметра $ \sigma^2$.
+
+\textit{Решение.}
+$$p_{ \sigma^2} \left( y \right) =
+  \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{ \left( y - a \right)^2}{2 \sigma^2}}.$$
+
+Запишем функцию правдоподобия
+$$L \left( \vec{x}, \sigma^2 \right) =
+  \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}} \sigma^n} \cdot
+  e^{- \frac{ \sum \limits_{i = 1}^n \left( x_i - a \right)^2}{2 \sigma^2}} =
+  \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}} \sigma^n} \cdot
+  e^{- \frac{1}{2 \sigma^2} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2}.$$
+Обозначим $ \sigma^2 = \sigma^*$, чтобы было удобнее брать производную
+$$ \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}} \sigma^n} \cdot
+  e^{- \frac{1}{2 \sigma^2} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2} =
+  \frac{1}{ \left( 2 \pi \sigma^* \right)^{ \frac{n}{2}}} \cdot
+  e^{- \frac{1}{2 \sigma^*} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2}.$$
+
+Поскольку есть экспонента, стоит брать логарифм
+$$l \left( \vec{x}, \sigma^2 \right) =
+  ln L \left( \vec{x}, \sigma^2 \right) =
+  - \frac{n}{2} \cdot ln \left( 2 \pi \sigma^* \right) -
+  \frac{1}{2 \sigma^*} \sum \limits_{i = 1}^n \left( x_i - a \right)^2.$$
+Распишем логарифм произведения через сумму логарифмов в первом слагаемом
+$$- \frac{n}{2} \cdot ln \left( 2 \pi \sigma^* \right) -
+  \frac{1}{2 \sigma^*} \sum \limits_{i = 1}^n \left( x_i - a \right)^2 =
+  - \frac{n}{2} \cdot ln \left( 2 \pi \right) -
+  \frac{n}{2} \cdot ln \sigma^* -
+  \frac{1}{2 \sigma^*} \sum \limits_{i = 1}^n \left( x_i - a \right)^2.$$
+
+Берём производную и приравниваем её к нулю
+$$ \frac{ \partial l}{ \partial \sigma^*} =
+  - \frac{n}{2} \cdot \frac{1}{ \sigma^*} +
+  \frac{1}{2 \left( \sigma^* \right)^2} \sum \limits_{i = 1}^n \left( x_i - a \right)^2 =
+  0.$$
+
+Выносим в знаменателе $ \sigma^*$ за скобку, сокращаем и переносим первое слагаемое вправо
+$$ \frac{1}{2 \sigma^*} \sum \limits_{i = 1}^n \left( x_i - a \right)^2 =
+  \frac{n}{2}.$$
+
+Выражаем оценку
+$$ \sigma^* =
+  \hat{ \sigma^2} =
+  \frac{ \sum \limits_{i = 1}^n \left( x_i - a \right)^2}{n}.$$
+
+Проверили необходимое условие для максимума.
+Теперь нужно проверить достаточное.
+
+Найдём вторую производную
+$$ \frac{ \partial^2 l}{ \partial \left( \sigma^* \right)^2} =
+  \frac{ \partial }{ \partial \sigma^*}
+    \left[
+      - \frac{n}{2} \cdot \frac{1}{ \sigma^*} +
+      \frac{1}{2 \left( \sigma^* \right)^2} \sum \limits_{i = 1}^n \left( x_i - a \right)^2
+    \right] =
+  \frac{n}{2 \left( \sigma^* \right)^2} -
+  \frac{1}{ \left( \sigma^* \right)^3} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2.$$
+Подставим найденное значение оценки
+$$ \frac{n}{2 \left( \sigma^* \right)^2} -
+  \frac{1}{ \left( \sigma^* \right)^3} \cdot \sum \limits_{i = 1}^n \left( x_i - a \right)^2 =
+  \frac{n \cdot n^2}{2 \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^2} -
+  \frac{n^3}{ \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^3} \cdot
+  \sum \limits_{i = 1}^n \left( x_i - a \right)^2.$$
+Упростим
+\begin{equation*}
+  \begin{split}
+    \frac{n \cdot n^2}{2 \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^2} -
+    \frac{n^3}{ \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^3} \cdot
+    \sum \limits_{i = 1}^n \left( x_i - a \right)^2 = \\
+    = \frac{n^3}{2 \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^2} -
+    \frac{n^3}{ \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^2} =
+    \frac{n^3}{ \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^3} \cdot
+    \left( \frac{1}{2} - 1 \right) = \\
+    = - \frac{n^3}{2 \left[ \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \right]^3} <
+    0,
+  \end{split}
+\end{equation*}
+следовательно, $ \hat{ \sigma^2}$ --- точка максимума функции.
+Проверим состоятельность, то есть $ \hat{ \sigma^2} \overset{P}{ \to } \sigma^2, \, n \to \infty $.
+
+По закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \overset{P}{ \to }
+  M \left( x_1 - a \right)^2 =
+  Dx_1 =
+  \sigma^2, \,
+  n \to \infty,$$
+то есть оценка состоятельная.

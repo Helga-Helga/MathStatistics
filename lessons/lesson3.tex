@@ -536,5 +536,37 @@ $$f_{ \alpha, \beta } \left( y \right) =
     \frac{ \beta^*}{ \overline{X}} =
     \frac{ \frac{ \left( \overline{X} \right)^2}{ \overline{X^2} - \left( \overline{X} \right)^2}}{ \overline{X}} =
     \frac{ \left( \overline{X} \right)^2}{ \left( \overline{X^2} - \left( \overline{X} \right)^2 \right) \overline{X}} =
-    \frac{ \overline{X}}{ \overline{X^2} - \left( \overline{X} \right)^2}.$$
+    \frac{ \overline{X}}{ \overline{X^2} - \left( \overline{X} \right)^2о }.$$
 \end{enumerate}
+
+\subsubsection*{3.15}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из биномиального распределения с параметрами $2, \, p$.
+Пользуясь методом моментов с пробной функцией
+$$g \left( y \right) = y,$$
+оцените параметр $ \theta = e^{2p}$.
+
+\textit{Решение.} $Mg \left( X_1 \right) = \overline{g \left( X \right) }$ --- метод моментов.
+
+Ищем теоретический момент, зная распределение
+$$MX_1 =
+  \sum \limits_{k = 0}^2 k \cdot P \left( X_1 = k \right) =
+  \sum \limits_{k = 0}^2 k \cdot C_2^k p^k \left( 1 - p \right)^{2 - k}.$$
+При $k = 0$ первое слагаемое зануляется, поэтому можно суммировать от единицы
+$$ \sum \limits_{k = 0}^2 k \cdot C_2^k p^k \left( 1 - p \right)^{2 - k} =
+  \sum \limits_{k = 1}^2 k \cdot C_2^k \cdot p^k \left( 1 - p \right)^{2 - k} =
+  1 \cdot C_2^1 p \left( 1 - p \right) + 2 \cdot C_2^2 \cdot p^2.$$
+Распишем биномиальные коэффициенты, раскроем скобки и приведём подобные
+$$1 \cdot C_2^1 p \left( 1 - p \right) + 2 \cdot C_2^2 \cdot p^2 =
+  2p \left( 1 - p \right) + 2p^2 =
+  2p - 2p^2 + 2p^2 =
+  2p.$$
+
+Должны решить уравнение $2p^* = \overline{X}$.
+
+Отсюда
+$$p^* =
+  \frac{ \overline{X}}{2}.$$
+
+Оценим параметр $ \theta^* = e^{2p^*} = e^{ \frac{2 \overline{X}}{2}} = e^{ \overline{X}}$.

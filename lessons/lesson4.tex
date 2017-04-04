@@ -530,3 +530,160 @@ $$ \frac{ \partial^2 l \left( \vec{x}, \lambda \right) }{ \partial \lambda^2} =
   0,$$
 то есть точка $ \lambda^* = \overline{x}$ --- точка максимума функции правдоподобия,
 то есть оценка максимального правдоподобия.
+
+\subsubsection*{4.18}
+
+\textit{Задание.}
+Постройте оценку максимального правдоподобия параметра $ \theta $
+равномерного распределения на отрезке:
+\begin{enumerate}[label=\alph*)]
+  \item $ \left[- \theta, 0 \right], \, \theta > 0$;
+  \item $ \left[- \theta, \theta \right], \, \theta > 0$;
+  \item $ \left[ \theta , \theta + 2 \right], \, \theta \in \mathbb{R}$;
+  \item $ \left[ \theta, 2 \theta \right], \, \theta > 0$.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Плотность равномерного распределения а отрезке $ \left[- \theta, 0 \right], \, \theta > 0$
+  имеет вид
+  $$p_{ \theta } \left( x \right) =
+    \frac{1}{ \theta } \cdot \mathbbm{1} \left\{ x \in \left[ - \theta, 0 \right] \right\}.$$
+
+  По этой плотности строим функцию правдоподобия
+  $$L \left( \vec{x}, \theta \right) =
+    \frac{ \mathbbm{1} \left\{ \vec{x} \in \left[ - \theta, 0 \right]^n \right\} }{ \theta^n} =
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq - \theta, \, \max \limits_i x_i \leq 0 \right\} }{ \theta ^n}.$$
+  Если какой-то элемент выборки сильно положительный,
+  то не имеет смысла говорить о равномерном распределении, если положительный, но близок к нулю,
+  то на него повлияла ошибка, и его не учитываем
+  $$ \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq - \theta, \, \max \limits_i x_i \leq 0 \right\} }{ \theta ^n} =
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq - \theta \right\} }{ \theta^n}.$$
+
+  Нарисуем график получившейся функции, как функции от $ \theta $ (рис. \ref{fig:418}).
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\textwidth]{./pictures/4_18.png}
+    \caption{График функции $L \left( \theta \right) $}
+    \label{fig:418}
+  \end{figure}
+
+  Точка максимума этой функции --- это $ \left( - \min \limits_i x_i \right) $.
+
+  Значит, $ \hat{ \theta } = - \min \limits_{1 \leq i \leq n} x_i$;
+  \item плотность равномерного распределения на отрезке
+  $ \left[- \theta, \theta \right], \, \theta > 0$ имеет вид
+  $$p_{ \theta } \left( x \right) =
+    \frac{ \mathbbm{1} \left\{ x \in \left[ - \theta, \theta \right] \right\} }{2 \theta }.$$
+
+  По этой функции строим функцию правдоподобия
+  $$L \left( \vec{x}, \theta \right) =
+    \frac{ \mathbbm{1} \left\{ \vec{x} \in \left[ - \theta, \theta \right]^n \right\} }{ \left( 2 \theta \right)^n} =
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq - \theta, \, \max \limits_i x_i \leq \theta \right\} }{ \left( 2 \theta \right)^n}.$$
+  Меняем знак для минимального элемента выборки
+  $$ \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq - \theta, \, \max \limits_i x_i \leq \theta \right\} }{ \left( 2 \theta \right)^n} =
+    \frac{1}{ \left( 2 \theta \right)^n} \cdot
+    \mathbbm{1} \left\{
+      \max \limits_i x_i \leq \theta, \, - \min \limits_i x_i \leq \theta
+    \right\}.$$
+  Берём максимум
+  \begin{equation*}
+    \begin{split}
+      \frac{1}{ \left( 2 \theta \right)^n} \cdot
+      \mathbbm{1} \left\{
+        \max \limits_i x_i \leq \theta, \, - \min \limits_i x_i \leq \theta
+      \right\} = \\
+      = \frac{1}{ \left( 2 \theta \right)^n} \cdot
+      \mathbbm{1} \left\{
+        \max \left( \max \limits_i x_i, \, - \min \limits_i x_i \right) \leq \theta
+      \right\}.
+    \end{split}
+  \end{equation*}
+
+  Нарисуем график этой функции, как функции от $ \theta $ (рис. \ref{fig:4181}).
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\textwidth]{./pictures/4_18_1.png}
+    \caption{График функции $L \left( \theta \right) $}
+    \label{fig:4181}
+  \end{figure}
+
+  Точка максимума такой функции ---
+  это $ \max \left( \max \limits_i x_i, \, - \min \limits_i x_i \right) $.
+
+  Значит,
+  $ \hat{ \theta } =
+    \max \left(
+      \max \limits_{1 \leq i\leq n} x_i, \, - \min \limits_{1 \leq i \leq n} x_i
+    \right) $;
+  \item плотность равномерного распределения на отрезке
+  $ \left[ \theta , \theta + 2 \right], \, \theta \in \mathbb{R}$ имеет вид
+  $$p_{ \theta } \left( x \right) =
+    \frac{ \mathbbm{1} \left\{ x \in \left[ \theta, \theta + 2 \right] \right\} }{2}.$$
+
+  По этой плотности строим функцию правдоподобия
+  $$L \left( \vec{x}, \theta \right) =
+    \frac{ \mathbbm{1} \left\{ \vec{x} \in \left[ \theta, \theta + 2 \right]^n \right\} }{2^n} =
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, \max \limits_i x_i \leq \theta + 2 \right\} }{2^n}.$$
+  Переносим 2 влево и именяем знак
+  $$ \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, \max \limits_i x_i \leq \theta + 2 \right\} }{2^n} =
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, - \max \limits_i x_i + 2 \geq \theta \right\} }{2^n}.$$
+  Берём максимум
+  \begin{equation*}
+    \begin{split}
+      \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, - \max \limits_i x_i + 2 \geq \theta \right\} }{2^n} = \\
+      = \frac{ \mathbbm{1} \left\{ \max \left( \min \limits_i x_i,\, - \max \limits_i x_i + 2 \right) \geq \theta \right\} }{2^n}.
+    \end{split}
+  \end{equation*}
+
+  Нарисуем график полученной функции, как функции от $ \theta $ (рис. \ref{fig:4182}).
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\textwidth]{./pictures/4_18_2.png}
+    \caption{График функции $L \left( \theta \right) $}
+    \label{fig:4182}
+  \end{figure}
+
+  Точка максимума этой функции ---
+  это $ \max \left( \min \limits_i x_i,\, - \max \limits_i x_i + 2 \right) $.
+
+  Значит,
+  $ \hat{ \theta } =
+    \max \left(
+      \min \limits_{1 \leq i \leq n} x_i,\, - \max \limits_{1 \leq i \leq n} x_i + 2
+    \right) $;
+  \item плотность равномерного распределения на отрезке
+  $ \left[ \theta, 2 \theta \right], \, \theta > 0$ имеет вид
+  $$p_{ \theta } \left( x \right) =
+    \frac{ \mathbbm{1} \left\{ x \in \left[ \theta, 2 \theta \right] \right\} }{ \theta }.$$
+
+  По этой функции строим функцию правдоподобия
+  $$L \left( \vec{x}, \theta \right) =
+    \frac{ \mathbbm{1} \left\{ \vec{x} \in \left[ \theta, 2 \theta \right]^n \right\} }{ \theta^n} =
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, \max \limits_i x_i \leq 2 \theta \right\} }{ \theta^n}.$$
+  Делим неравенство с максимумом на 2
+  $$ \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, \max \limits_i x_i \leq 2 \theta \right\} }{ \theta^n} =
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta,\, \frac{ \max \limits_i x_i}{2} \leq \theta \right\} }{ \theta^n}.$$
+  Остюда следует, что
+  $$ \frac{ \max \limits_i x_i}{2} \leq
+    \theta \leq
+    \min \limits_i x_i.$$
+
+  Нарисуем график полученной функции, как функции от $ \theta $ (рис. \ref{fig:4183}).
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\textwidth]{./pictures/4_18_3.png}
+    \caption{График функции $L \left( \theta \right) $}
+    \label{fig:4183}
+  \end{figure}
+
+  Точка максимума такой функции --- это
+  $$ \frac{ \max \limits_i x_i}{2}.$$
+
+  Значит,
+  $$ \hat{ \theta } =
+    \frac{ \max \limits_{1 \leq i \leq n} x_i}{2}.$$
+\end{enumerate}

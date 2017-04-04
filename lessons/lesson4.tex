@@ -210,7 +210,7 @@ $$ \frac{ \partial^2}{ \partial \theta^2} l \left( \theta \right) =
 равномерного распределения на отрезке $ \left[ 0, \theta \right] $.
 
 \textit{Решение.}
-Плотность равномерного распределения на отрезук $ \left[ 0, \theta \right] $ имеет вид
+Плотность равномерного распределения на отрезке $ \left[ 0, \theta \right] $ имеет вид
 $$p_{ \theta } \left( x \right) =
   \frac{ \mathbbm{1} \left\{ x \in \left[ 0, \theta \right] \right\} }{ \theta }.$$
 По этой плотности строим функцию правдоподобия
@@ -313,8 +313,8 @@ $$L \left( \vec{x}, p \right) =
 
 Функция
 $f_p \left( x \right) =
-  P \left\{ x_1 = x \right\} =``
-  P \left( \left\{ \left. \omega \right| \, x_1 \left( \omega \right) = x \right\} \right) $,
+  P \left\{ x_1 = x \right\} =
+  P \left\{ \left. \omega \right| \, x_1 \left( \omega \right) = x \right\} $,
 где $x \in \left\{ 0, 1 \right\} $.
 
 В этом случае функция правдободобие примет вид
@@ -460,3 +460,73 @@ $$ \frac{1}{n} \sum \limits_{i = 1}^n \left( x_i - a \right)^2 \overset{P}{ \to 
   \sigma^2, \,
   n \to \infty,$$
 то есть оценка состоятельная.
+
+\subsubsection*{4.15}
+
+\textit{Задание.}
+Постройте оценку максимального правдоподобия параметра $ \lambda > 0$ распределения Пуассона.
+
+\textit{Решение.} Распределение Пуассона не имеет плотности.
+Есть выборка $x_1, \dotsc, x_n \sim Pois \left( \lambda \right), \, \lambda > 0$.
+
+Функция правдоподобия, когда есть плотность, выглядит так
+$$L \left( \vec{x}, \lambda \right) =
+  \prod \limits_{i = 1}^n p_{ \lambda } \left( x_i \right).$$
+
+Введём функцию
+$f_{ \lambda } \left( x \right) =
+  P \left\{ x_1 = x \right\} =
+  P \left\{ \left. \omega \right| x_1 \left( \omega \right) = x \right\} $,
+где
+$$x \in
+  \left\{ 0, 1, \dotsc \right\}.$$
+
+В этом случае функция правдоподобия примет вид
+$$L \left( \vec{x}, \lambda \right) =
+  \prod \limits_{i = 1}^n f_{ \lambda } \left( x_i \right).$$
+
+Ищем максимум функции правдоподобия.
+Нужно записать
+$$f_{ \lambda } \left( x \right) =
+  \frac{ \lambda^x}{x!} \cdot e^{- \lambda }.$$
+
+Подставляем в функцию правдоподобия
+$$ \prod \limits_{i = 1}^n f_{ \lambda } \left( x_i \right) =
+  \prod \limits_{i = 1}^n \left( \frac{ \lambda^{x_i}}{x_i!} \cdot e^{- \lambda } \right) =
+  \frac{ \lambda^{ \sum \limits_{i = 1}^n x_i}}{ \prod \limits_{i = 1}^n x_i!} \cdot
+  e^{- \lambda n}.$$
+
+Так как есть экспонента, возьмём логарифм
+$$l \left( \vec{x}, \lambda \right) =
+  ln L \left( \vec{x}, \lambda \right) =
+  ln \left(
+    \frac{ \lambda^{ \sum \limits_{i = 1}^n x_i}}{ \prod \limits_{i = 1}^n x_i!} \cdot
+    e^{- \lambda n}
+  \right) =
+  - \lambda n + \sum \limits_{i = 1}^n x_i \cdot ln \lambda - ln \prod \limits_{i = 1}^n x_i!.$$
+
+Берём производную по $ \lambda $, приравниваем её к нулю
+$$ \frac{ \partial l \left( \vec{x}, \lambda \right) }{ \partial \lambda } =
+  -n + \sum \limits_{i = 1}^n x_i \cdot \frac{1}{ \lambda } =
+  0.$$
+
+Ищем оценку
+$$ \sum \limits_{i = 1}^n x_i \cdot \frac{1}{ \lambda } =
+  n,$$
+откуда
+$$ \lambda^* =
+  \frac{ \sum \limits_{i = 1}^n x_i}{n} =
+  \overline{x}.$$
+
+Проверили необходимое условие максимума.
+Проверим достаточное,
+то есть найдём вторую производную логарифма функции правдоподобия и посмотрим на её знак
+$$ \frac{ \partial^2 l \left( \vec{x}, \lambda \right) }{ \partial \lambda^2} =
+  \frac{ \partial }{ \partial \lambda } \left(
+    -n + \sum \limits_{i = 1}^n x_i \cdot \frac{1}{ \lambda }
+  \right) =
+  \sum \limits_{i = 1}^n x_i \cdot \frac{ \partial \lambda^{-1}}{ \partial \lambda } =
+  - \sum \limits_{i = 1}^n x_i \cdot \frac{1}{ \lambda^2} <
+  0,$$
+то есть точка $ \lambda^* = \overline{x}$ --- точка максимума функции правдоподобия,
+то есть оценка максимального правдоподобия.

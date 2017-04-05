@@ -687,3 +687,145 @@ $$ \frac{ \partial^2 l \left( \vec{x}, \lambda \right) }{ \partial \lambda^2} =
   $$ \hat{ \theta } =
     \frac{ \max \limits_{1 \leq i \leq n} x_i}{2}.$$
 \end{enumerate}
+
+\subsubsection*{4.19}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из друхпараметрического показательного распределения с плотностью
+$$f_{ \alpha, \beta } \left( y \right) =
+  \begin{cases}
+    \alpha^{-1} e^{- \frac{y - \beta }{ \alpha }}, \qquad y \geq \beta, \\
+    0, \qquad otherwise,
+  \end{cases}$$
+где $ \alpha > 0, \, \beta \in \mathbb{R}$.
+Постройте оценку максимального правдоподобия двумерного параметра $ \left( \alpha, \beta \right) $.
+Проверьте состоятельность этой оценки.
+
+\textit{Решение.}
+Сейчас $ \theta $ будет векторным параметром, состоящим из двух элементов: $ \alpha, \beta $.
+
+Плотность имеет вид
+$$f_{ \alpha, \beta } \left( y \right) =
+  \frac{1}{ \alpha } \cdot
+  e^{- \frac{y}{ \alpha } + \frac{ \beta }{ \alpha }} \cdot
+  \mathbbm{1} \left\{ y \geq \beta \right\}.$$
+
+Произведение этих плотностей даёт
+$$L \left( \vec{X}, \alpha, \beta \right) =
+  \frac{1}{ \alpha^n} \cdot
+  e^{- \frac{1}{ \alpha } \sum \limits_{i = 1}^n \left( X_i - \beta \right) } \cdot
+  \mathbbm{1} \left\{ \vec{X} \in \left[ \beta, + \infty \right)^n \right\}.$$
+Все элементы выборки не меньше, чем $ \beta $.
+Запишем это условие через минимальный элемент
+$$ \frac{1}{ \alpha^n} \cdot
+  e^{- \frac{1}{ \alpha } \sum \limits_{i = 1}^n \left( X_i - \beta \right) } \cdot
+  \mathbbm{1} \left\{ \vec{X} \in \left[ \beta, + \infty \right)^n \right\} =
+  \frac{1}{ \alpha^n} \cdot
+  e^{- \frac{1}{ \alpha } \sum \limits_{i = 1}^n \left( X_i - \beta \right) }
+  \cdot \mathbbm{1} \left\{ \min \limits_{1 \leq i \leq n} X_i \geq \beta \right\}.$$
+
+Найдём $ \beta^*$.
+При фиксированном $ \alpha $ нарисуем график функции правдоподобия как функции от $ \beta $
+(рис. \ref{fig:419}).
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.4\textwidth]{./pictures/4_19.png}
+  \caption{График функции $L \left( \beta \right) $}
+  \label{fig:419}
+\end{figure}
+
+Из графика видно, что точка максимума этой функции ---
+это точка $ \min \limits_{1 \leq i \leq n} X_i = \beta^*$.
+
+Так как есть экспонента, удобнее взять логарифм от функции правдоподобия
+$$ln \left( \vec{X}, \alpha, \beta \right) =
+  l \left( \vec{X}, \alpha, \beta \right) =
+  -n ln \alpha + \frac{n \beta - \sum \limits_{i = 1}^n X_i}{ \alpha }.$$
+
+Возьмём производную по $ \alpha $ и приравняем её к нулю
+$$ \frac{ \partial l}{ \partial \alpha } =
+  -n \cdot \frac{1}{ \alpha } - \frac{n \beta - \sum \limits_{i = 1}^n X_i}{ \alpha^2} =
+  0.$$
+Умножим на $ \left( - \alpha^2 \right) $ левую и правую части уравнения
+$$n \alpha + n \beta - \sum \limits_{i = 1}^n X_i =
+  0.$$
+
+Отсюда выражаем оценку
+$$ \alpha^* =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i - \beta^* =
+  \overline{X} - \min \limits_{1 \leq i \leq n} X_i.$$
+
+Проверим состоятельность.
+Нужно проверить,
+выполняется ли
+$$ \left( \alpha^*, \beta^* \right) \overset{P}{ \to } \left( \alpha , \beta \right), \,
+  n \to \infty.$$
+
+По определению
+$P \left( \left| \beta^* - \beta \right| > \varepsilon \right) \to 0, \,
+  n \to \infty, \,
+  \forall \varepsilon > 0$.
+
+Подставим в вероятность оценку
+$$P \left( \left| \beta^* - \beta \right| > \varepsilon \right) =
+  P \left( \left| \min \limits_{1 \leq i \leq n} X_i - \beta \right| > \varepsilon \right).$$
+
+Из распределения $ \min \limits_{1 \leq i \leq n} X_i \geq \beta $, следовательно,
+можем убрать модуль
+$P \left( \left| \min \limits_{1 \leq i \leq n} X_i - \beta \right| > \varepsilon \right) =
+  P \left( \min \limits_{1 \leq i \leq n} X_i - \beta > \varepsilon \right) =
+  P \left( \min \limits_{1 \leq i \leq n} X_i > \beta + \varepsilon \right) = \\
+  = P \left( \bigcap \limits_{i = 1}^n \left\{ X_i > \beta + \varepsilon \right\} \right) $.
+Случайные величины независимые и одинаково распределённые
+$P \left( \bigcap \limits_{i = 1}^n \left\{ X_i > \beta + \varepsilon \right\} \right) =
+  \left[ P \left( X_1 > \beta + \varepsilon \right) \right]^n \to 0, \,
+  n \to \infty,$
+так как $P \left( X_1 > \beta + \varepsilon \right) \neq 1$.
+
+Значит, $ \beta^*$ --- состоятельная оценка.
+Тогда по закону больших чисел
+$$ \alpha^* =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i - \beta^* \overset{P}{ \to }
+  MX_1 - \beta =
+  \int \limits_{ \beta }^{+ \infty }
+    \frac{1}{ \alpha } \cdot e^{- \frac{-y}{ \alpha }} e^{ \frac{ \beta }{ \alpha }} ydy -
+  \beta. $$
+Возьмём интеграл по частям
+$$u = y, \,
+  du = dy, \,
+  dv = e^{- \frac{y}{ \alpha }} dy, \,
+  v = \int e^{- \frac{y}{ \alpha }} dy = - \alpha e^{- \frac{y}{ \alpha }}.$$
+Получим
+$$ \int \limits_{ \beta }^{+ \infty }
+    \frac{1}{ \alpha } \cdot e^{- \frac{-y}{ \alpha }} e^{ \frac{ \beta }{ \alpha }} ydy -
+  \beta =
+  \left.
+    \frac{1}{ \alpha } \cdot
+    e^{ \frac{ \beta }{ \alpha }} \left( - \alpha \right) y e^{- \frac{y}{ \alpha }}
+  \right|_{ \beta }^{+ \infty } +
+  \frac{1}{ \alpha } \cdot e^{ \frac{ \beta }{ \alpha }} \cdot \alpha \cdot
+  \int \limits_{ \beta }^{+ \infty } e^{- \frac{y}{ \alpha }} dy -
+  \beta.$$
+Подставим пределы интегрирования и возьмём интеграл
+$$ \left.
+    \frac{1}{ \alpha } \cdot
+    e^{ \frac{ \beta }{ \alpha }} \left( - \alpha \right) y e^{- \frac{y}{ \alpha }}
+  \right|_{ \beta }^{+ \infty } +
+  \frac{1}{ \alpha } \cdot e^{ \frac{ \beta }{ \alpha }} \cdot \alpha \cdot
+  \int \limits_{ \beta }^{+ \infty } e^{- \frac{y}{ \alpha }} dy -
+  \beta =
+  e^{ \frac{ \beta }{ \alpha }} \beta \cdot e^{- \frac{ \beta }{ \alpha }} -
+  e^{ \frac{ \beta }{ \alpha }} \cdot
+  \left. \alpha e^{- \frac{y}{ \alpha }} \right|_{ \beta }^{+ \infty } -
+  \beta.$$
+Сократим экспоненты и подставим пределы интегрирования во втором слагаемом
+$$e^{ \frac{ \beta }{ \alpha }} \beta \cdot e^{- \frac{ \beta }{ \alpha }} -
+  e^{ \frac{ \beta }{ \alpha }} \cdot
+  \left. \alpha e^{- \frac{y}{ \alpha }} \right|_{ \beta }^{+ \infty } -
+  \beta =
+  \beta + \alpha e^{ \frac{ \beta }{ \alpha }} \cdot e^{- \frac{ \beta }{ \alpha }} - \beta =
+  \alpha.$$
+
+Получили, что оценка $ \alpha^*$ --- тоже состоятельная.

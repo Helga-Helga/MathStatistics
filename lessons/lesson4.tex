@@ -365,6 +365,62 @@ $$p^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 1 \right\} } \cdot
 Теперь нужно брать производную по $p$, приравнивать к нулю, искать оценку,
 которая должна получиться $ \hat{p} = \overline{x}$.
 
+\subsubsection*{4.10}
+
+\textit{Задание.}
+Пусть задана выборка из нормального распределения с единичной
+дисперсией и математическим ожиданием $a$, которое может принимать только два значения: 1 или 2.
+Постройте оценку максимального правдоподобия параметра $a$.
+
+\textit{Решение.} Записываем общую функцию правдоподобия, как функцию параметра $a$.
+
+Запишем для этого плотность распределения каждого элемента
+$$p \left( x \right) =
+  \frac{1}{ \sqrt{2 \pi }} \cdot e^{- \frac{ \left( x - a \right)^2}{2}}.$$
+Теперь
+$$L \left( \vec{X}, a \right) =
+  \prod \limits_{i = 1}^n \frac{1}{ \sqrt{2 \pi }} \cdot e^{- \frac{ \left( X_i - a \right)^2}{2}} =
+  \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}}} \cdot
+  e^{- \frac{1}{2} \sum \limits_{ \left( X_i - a \right)^2}}.$$
+
+Записываем логарифм
+$$l \left( \vec{X}, a \right) =
+  - \frac{n}{2} \cdot ln \left( 2 \pi \right) -
+  \frac{1}{2} \sum \limits_{i = 1}^n \left( X_i - a \right).$$
+
+Подставим возможные значения $a$ и найдём разность логарифмов двух
+соответствующих функций правдоподобия
+$$l \left( \vec{X}, 2 \right) - l \left( \vec{X}, 1 \right) =
+  \frac{1}{2} \sum \limits_{i = 1}^n \left( X_i - 2 \right)^2 -
+  \frac{1}{2} \sum \limits_{i = 1}^n \left( X_i - 1 \right)^2.$$
+Запишем под одну сумму
+$$ \frac{1}{2} \sum \limits_{i = 1}^n \left( X_i - 2 \right)^2 -
+  \frac{1}{2} \sum \limits_{i = 1}^n \left( X_i - 1 \right)^2 =
+  \frac{1}{2} \cdot
+  \sum \limits_{i = 1}^n \left[ \left( X_i - 2 \right)^2 - \left( X_i - 1 \right)^2 \right].$$
+Разложим на 2 множителя
+$$ \frac{1}{2} \cdot
+  \sum \limits_{i = 1}^n \left[ \left( X_i - 2 \right)^2 - \left( X_i - 1 \right)^2 \right] =
+  \frac{1}{2} \cdot
+  \sum \limits_{i = 1}^n \left( X_i - 2 - X_i + 1 \right) \left( X_i - 2 + X_i - 1 \right).$$
+Приведём подобные
+$$ \frac{1}{2} \cdot
+  \sum \limits_{i = 1}^n \left( X_i - 2 - X_i + 1 \right) \left( X_i - 2 + X_i - 1 \right) =
+  \frac{1}{2} \sum \limits_{i = 1}^n \left( 2X_i - 3 \right) \left( -1 \right).$$
+Выносим $n$ за скобки
+$$ \frac{1}{2} \sum \limits_{i = 1}^n \left( 2X_i - 3 \right) \left( -1 \right) =
+  n \left( \frac{3}{2} - \vec{X} \right).$$
+
+Знак разности будет зависеть от значения $ \vec{X}$.
+
+Если
+$$ \vec{X} <
+  \frac{3}{2},$$
+то $a^* = 1$, если
+$$ \vec{X} \geq
+  \frac{3}{2},$$
+то $a^* = 2$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

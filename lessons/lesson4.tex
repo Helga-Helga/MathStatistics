@@ -300,6 +300,39 @@ $$ \int \limits_{ \beta + \varepsilon }^{+ \infty } p_{ \beta } \left( y \right)
   1,$$
 так как второй интеграл больше нуля (забрали кусок $ \beta + \varepsilon $).
 
+\subsubsection*{4.8}
+
+\textit{Задание.}
+Постройте оценку максимального правдоподобия параметра сдвига $ \mu \in \mathbb{R}$
+распределения Лапласа с плотностью
+$f_{ \mu } \left( y \right) =
+  e^{- \frac{ \left| y - \mu \right| }{2}}$.
+
+\textit{Решение.} Записываем функцию правдоподобия
+$$L \left( \vec{X}, \mu \right) =
+  \prod \limits_{i = 1}^n f_{ \mu } \left( X_i \right) =
+  \prod \limits_{i = 1}^n \frac{1}{2} \cdot e^{- \left| X_i - \mu \right| } =
+  \frac{1}{2^n} \cdot e^{- \sum \limits_{i = 1}^n \left| X_i - \mu \right| }.$$
+
+Нахожим  логарифм
+$$l \left( \vec{X}, \mu \right) =
+  c - \sum \limits_{i = 1}^n \left| X_i - \mu \right|,$$
+где $c = const$.
+Дифференцировать по $ \mu $ не можем.
+Хотим максимизировать эту функцию правдоподобия.
+Нужно минимизировать сумму $X_i$ --- точки на очи.
+$ \left| X_i - \mu \right| $ --- расстояние.
+
+Вариационный ряд имеет понятие медианы.
+Это приблизительно средина вариационного ряда.
+
+$$ \mu^* =
+  \begin{cases}
+    X_{ \left( m + 1 \right) }, \qquad n = 2m + 1, \\
+    \frac{X_{ \left( m \right) + X_{ \left( m + 1 \right) }}}{2}, \qquad n = 2m
+  \end{cases}$$
+--- аналогия с центром масс треугольника, который задаётся как точка пересечения медиан.
+
 \subsubsection*{4.9}
 
 \textit{Задание.} Постройте оценку максимального правдоподобия параметра $p$ распределения Бернулли.
@@ -307,63 +340,45 @@ $$ \int \limits_{ \beta + \varepsilon }^{+ \infty } p_{ \beta } \left( y \right)
 \textit{Решение.} Распределение Бернулли не имеет плотности.
 Есть выборка $x_1, \dotsc, x_n \sim B \left( 1, p \right) $.
 
-Функция правдоподобия, когда есть плотность, выглядит так
-$$L \left( \vec{x}, p \right) =
-  \prod \limits_{i = 1}^n p_p \left( x_i \right).$$
+Сформулируем метод максимального правдоподобия в общем случае.
 
-Функция
-$f_p \left( x \right) =
-  P \left\{ x_1 = x \right\} =
-  P \left\{ \left. \omega \right| \, x_1 \left( \omega \right) = x \right\} $,
-где $x \in \left\{ 0, 1 \right\} $.
+$X_1, \dotsc, X_n$ --- выборка с параметром $ \theta $.
 
-В этом случае функция правдободобие примет вид
-$$L \left( \vec{x}, p \right) =
-  \prod \limits_{i = 1}^n f_p \left( x_i \right).$$
-Для распределения Пуассона $x \in \left\{ 0, 1, 2, \dotsc \right\} $.
-Ищем максимум функции правдоподобия.
-Нужно записать $f_p \left( 1 \right) = p, \, f_p \left( 0 \right) = 1 - p$, то есть
-$$f_p \left( x \right) =
-  \begin{cases}
-    p, \qquad x = 1, \\
-    1 - p, \qquad x = 0
-  \end{cases} =
-  p \cdot \mathbbm{1} \left\{ x = 1 \right\} +
-  \left( 1 - p \right) \cdot \mathbbm{1} \left\{ x = 0 \right\}.$$
-Подставляем в функцию правдоподобия
-$$ \prod \limits_{i = 1}^n f_p \left( x_i \right) =
-  \prod \limits_{i = 1}^n \left[ p \cdot \mathbbm{1} \left\{ x_i = 1 \right\} +
-  \left( 1 - p \right) \cdot \mathbbm{1} \left\{ x_i = 0 \right\} \right].$$
-Перепишем первый индикатор как
-$ \mathbbm{1} \left\{ x_i = 1 \right\} =
-  1 - \mathbbm{1} \left\{ x_i = 0 \right\} $.
-Получим
-\begin{equation*}
-  \begin{split}
-    \prod \limits_{i = 1}^n \left[ p \cdot \mathbbm{1} \left\{ x_i = 1 \right\} +
-    \left( 1 - p \right) \cdot \mathbbm{1} \left\{ x_i = 0 \right\} \right] = \\
-    = \prod \limits_{i = 1}^n
-      \left[
-        p -
-        p \cdot \mathbbm{1} \left\{ x_i = 0 \right\} +
-        \mathbbm{1} \left\{ x_i = 0 \right\} -
-        p \cdot \mathbbm{1} \left\{ x_i = 0 \right\}
-      \right] = \\
-    = \prod \limits_{i = 1}^n
-      \left(
-        p - 2p \cdot \mathbbm{1} \left\{ x_i = 0 \right\} + \mathbbm{1} \left\{ x_i = 0 \right\}
-      \right) =
-    p^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 1 \right\} } \cdot
-    \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 0 \right\} }.
-  \end{split}
-\end{equation*}
-$p$ будет встречаться ровно столько раз, сколько индикаторов равно единице.
-$$p^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 1 \right\} } \cdot
-  \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ x_i = 0 \right\} } =
-  p^{ \sum \limits_{i = 1}^n x_i} \left( 1 - p \right)^{n - \sum \limits_{i = 1}^n x_i} =
-  p^{n \overline{x}} \left( 1 - p \right)^{n \left( 1 - \overline{x} \right) }.$$
-Теперь нужно брать производную по $p$, приравнивать к нулю, искать оценку,
-которая должна получиться $ \hat{p} = \overline{x}$.
+$X_1, \dotsc, X_n$ имеют плотность распределения $p_{ \theta } \left( y \right) $.
+Тогда
+$$L \left( \vec{X}, \theta \right) =
+  \prod \limits_{i = 1}^n p_{ \theta } \left( X_i \right).$$
+Отсюда находим $ \hat{ \theta } = argmax L \left( \vec{X}, \theta \right)$.
+
+В дискретном случае плотность заменяем функцией $f \left( x \right) = P \left\{ Y = x \right\} $.
+
+Имеем распределение $P \left( X = k \right) = p^k \cdot \left( 1 - p \right)^{1 - k}, \, k = 0, 1$.
+Следовательно,
+$$L \left( \vec{X}, p \right) =
+  \prod \limits_{i = 1}^n p^{X_i} \left( 1 - p \right)^{1 - X_i} =
+  p^{ \sum \limits_{i = 1}^n X_i} \cdot
+  \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \left( 1 - X_i \right) }=
+  p^{n \overline{X}} \cdot \left( 1 - p \right)^{n \left( 1 - \overline{X} \right) }.$$
+Функцию непрерывна по $p$.
+Можем продифференцировать
+$$l \left( \vec{X}, p \right) =
+  n \overline{X} ln p + n \left( 1 - \overline{X} \right) ln \left( 1 - p \right).$$
+
+Берём производную и приравниваем к нулю
+$$ \frac{ \partial l}{ \partial p} =
+  \frac{n \overline{X}}{p} - \frac{n \left( 1 - \overline{X} \right) }{1 - p} = 0.$$
+Сокращаем на $n$ и переносим второе слагаемое вправо
+$$ \frac{ \overline{X}}{p} =
+  \frac{1 - \overline{X}}{1 - p}.$$
+Перемножаем как пропорцию $ \overline{X} - p \overline{X} = p \left( 1 - \overline{X} \right) $.
+Отсюда следует, что $p^* = \overline{X}$.
+
+Проверим это, взяв вторую производную и посмотрев на её знак
+$$ \frac{ \partial^2 l}{ \partial p^2} =
+  - \frac{n \overline{X}}{p^2} -
+  \frac{n \left( 1 - \overline{X} \right) }{ \left( 1 - p \right)^2} <
+  0,$$
+следовательно, $p^* = argmax l \left( \vec{X}, p \right) $.
 
 \subsubsection*{4.10}
 

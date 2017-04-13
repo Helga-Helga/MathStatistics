@@ -661,6 +661,125 @@ $$ \frac{ \partial^2 l}{ \partial p^2} =
   0,$$
 следовательно, $p^* = argmax l \left( \vec{X}, p \right) $.
 
+\subsubsection*{4.17}
+
+\textit{Задание.}
+Пусть задана выборка из биномиального распределения с параметрами $p \in \left( 0, 1 \right) $ и
+$m$.
+Постройте оценку максимального правдоподобия параметра:
+\begin{enumerate}[label=\alph*)]
+  \item $p$, если значение параметра $m$ известно;
+  \item $m$ по выборке объёма $n = 1$, если значение $p$ известно.
+\end{enumerate}
+
+\textit{Решение.} Биномиальное распределение не имеет плотности.
+
+Сформирулируем метод максимального правдоподобия в общем случае.
+
+$X_1, \dotsc, X_n$ --- выборка с параметром $ \theta $.
+
+Случайные величины $X_1, \dotsc, X_n$ имеют плотность распределения
+$p_{ \theta } \left( y \right) $.
+Тогда
+$$L \left( \vec{X}, \theta \right) =
+  \prod \limits_{i = 1}^n p_{ \theta } \left( X_i \right).$$
+
+Отсюда находим $ \hat{ \theta } = argmax L \left( \vec{X}, \theta \right) $.
+
+В дискретном случае плотность заменяется функцией $f \left( x \right) = P \left\{ Y = x \right\} $.
+
+Имеем распределение
+$P \left( X = k \right) = C_m^k p^k \left( 1 - p \right)^{m - k}, \,
+  k = \overline{0, m}$.
+Следовательно,
+$$L \left( \vec{X}, p, m \right) =
+  \prod \limits_{i = 1}^n C_m^{X_i} p^{X_i} \left( 1 - p \right)^{m - X_i} =
+  \prod \limits_{i = 1}^n C_m^{X_i} \cdot
+  p^{ \sum \limits_{i = 1}^n X_i} \cdot
+  \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \left( m - X_i \right) }.$$
+Записываем через выборочное среднее
+$$ \prod \limits_{i = 1}^n C_m^{X_i} \cdot
+  p^{ \sum \limits_{i = 1}^n X_i} \cdot
+  \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \left( m - X_i \right) } =
+  \prod \limits_{i = 1}^n C_m^{X_i} \cdot
+  p^{n \overline{X}} \left( 1 - p \right)^{n \left( m - \overline{X} \right) }.$$
+
+\begin{enumerate}[label=\alph*)]
+  \item Функция непрерывна по $p$.
+  Можем дифференцировать.
+
+  $l \left( \vec{X}, p, m \right) =
+    \sum \limits_{i = 1}^n C_m^{X_i} +
+    n \overline{X} ln p +
+    n \left( m - \overline{X} \right) ln \left( 1 - p \right) $.
+
+  Берём производную и приравниваем к нулю
+  $$ \frac{ \partial l}{ \partial p} =
+    \frac{n \overline{X}}{p} - \frac{n \left( m - \overline{X} \right) }{1 - p} = 0.$$
+
+  Сокращаем на $n$ и переносим вправо второе слагаемое
+  $$ \frac{ \overline{X}}{p} =
+    \frac{m - \overline{X}}{1 - p}.$$
+
+  Перемножим как пропорцию $ \overline{X} - p \overline{X} = p \left( m - \overline{X} \right) $.
+  Отсюда следует, что $p \left( m - \overline{X} \right) + p \overline{X} = \overline{X}$,
+  и оценка равна
+  $$p^* =
+    \frac{ \overline{X}}{m - \overline{X} + \overline{X}} =
+    \frac{ \overline{X}}{m}.$$
+
+  Проверим это, взяв вторую производную и посмотрев на её знак
+  $$ \frac{ \partial^2 l}{ \partial p^2} =
+    - \frac{m \overline{X}}{p^2} -
+    \frac{m \left( m - \overline{X} \right) }{ \left( 1 - p \right)^2} <
+    0,$$
+  следовательно, $p^* = argmax \, l \left( \vec{X}, p \right) $;
+  \item в данном случае $ \vec{X} = X_1$.
+  Имеем функцию правдоподобия
+  $$L_m =
+    C_m^{X_1} p^{X_1} \left( 1 - p \right)^{m - X_1} =
+    L \left( X_1, m \right) =
+    L \left( \vec{X}, m \right),$$
+  соответственно $L_{m - 1} = C_{m - 1}^{X_1} p^{X_1} \left( 1 - p \right)^{m - 1 - X_1}$.
+
+  Найдём отношение
+  $$ \frac{L_m}{L_{m - 1}} =
+    \frac{C_m^{X_1} p^{X_1} \left( 1 - p \right)^{m - X_1}}{C_{m - 1}^{X_1} p^{X_1} \left( 1 - p \right)^{m - 1 - X_1}} =
+    \frac{m! \left( 1 - p \right) X_1 ! \left( m - X_1 - 1 \right)!}{X_1 ! \left( m - X_1 \right)! \left( m - 1 \right)!}.$$
+  Сокращаем факториалы
+  $$ \frac{m! \left( 1 - p \right) X_1 ! \left( m - X_1 - 1 \right)!}{X_1 ! \left( m - X_1 \right)! \left( m - 1 \right)!} =
+    \frac{m \left( 1 - p \right) }{m - X_1}.$$
+
+  Возможны 2 случая
+  $$ \begin{cases}
+    \frac{m \left( 1 - p \right) }{m - X_1} \geq 1, \\
+    \frac{m \left( 1 - p \right) }{m - X_1} \leq 1.
+  \end{cases}$$
+  Переносим знаменатель вправо
+  $$ \begin{cases}
+    m \left( 1 - p \right) \geq m - X_1, \\
+    m \left( 1 - p \right) \leq m - X_1.
+  \end{cases}$$
+  Переносим слагаемые с $m$ в одну сторону
+  $$ \begin{cases}
+    m - m \left( 1 - p \right) \leq X_1, \\
+    m - m \left( 1 - p \right) \geq X_1.
+  \end{cases}$$
+  Выносим $m$ за скобки
+  $$ \begin{cases}
+    m \left( 1 - 1 + p \right) \leq X_1, \\
+    m \left( 1 - 1 + p \right) \geq X_1.
+  \end{cases}$$
+  Получаем
+  $$ \begin{cases}
+    m \leq \frac{X_1}{p}, \\
+    m \geq \frac{X_1}{p}.
+  \end{cases}$$
+  Отсюда оценка равна
+  $$m^* =
+    \left[ \frac{X_1}{p} \right].$$
+\end{enumerate}
+
 \subsubsection*{4.18}
 
 \textit{Задание.}

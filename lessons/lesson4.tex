@@ -314,13 +314,13 @@ $$L \left( \vec{X}, \mu \right) =
   \prod \limits_{i = 1}^n \frac{1}{2} \cdot e^{- \left| X_i - \mu \right| } =
   \frac{1}{2^n} \cdot e^{- \sum \limits_{i = 1}^n \left| X_i - \mu \right| }.$$
 
-Нахожим  логарифм
+Находим  логарифм
 $$l \left( \vec{X}, \mu \right) =
   c - \sum \limits_{i = 1}^n \left| X_i - \mu \right|,$$
 где $c = const$.
 Дифференцировать по $ \mu $ не можем.
 Хотим максимизировать эту функцию правдоподобия.
-Нужно минимизировать сумму $X_i$ --- точки на очи.
+Нужно минимизировать сумму $X_i$ --- точки на оси.
 $ \left| X_i - \mu \right| $ --- расстояние.
 
 Вариационный ряд имеет понятие медианы.
@@ -601,6 +601,65 @@ $$ \frac{ \partial^2 l \left( \vec{x}, \lambda \right) }{ \partial \lambda^2} =
   0,$$
 то есть точка $ \lambda^* = \overline{x}$ --- точка максимума функции правдоподобия,
 то есть оценка максимального правдоподобия.
+
+\subsubsection*{4.16}
+
+\textit{Задание.}
+Постройте оценку максимального прадоподобия параметра
+$$p \in
+  \left(0, 1 \right) $$
+геометрического распределения.
+
+\textit{Решение.} Геометрическое распределение не имеет плотности.
+
+Сформирулируем метод максимального правдоподобия в общем случае.
+
+$X_1, \dotsc, X_n$ --- выборка с параметром $ \theta $.
+
+Случайные величины $X_1, \dotsc, X_n$ имеют плотность распределения
+$p_{ \theta } \left( y \right) $.
+Тогда
+$$L \left( \vec{X}, \theta \right) =
+  \prod \limits_{i = 1}^n p_{ \theta } \left( X_i \right).$$
+
+Отсюда находим $ \hat{ \theta } = argmax L \left( \vec{X}, \theta \right) $.
+
+В дискретном случае плотность заменяется функцией $f \left( x \right) = P \left\{ Y = x \right\} $.
+
+Имеем распределение $P \left( X = k \right) = p \left( 1 - p \right)^k$, где $k = 0, 1, 2, \dotsc $.
+Следовательно,
+$$L \left( \vec{X}, p \right) =
+  \prod \limits_{i = 1}^n p \left( 1 - p \right)^{X_i} =
+  p^n \left( 1 - p \right)^{ \sum \limits_{i = 1}^n X_i}  =
+  p^n \left( 1 - p \right)^{n \overline{X}}.$$
+
+Функция непрерывна по $p$, можем дифференцировать.
+
+$l \left( \vec{X}, p \right) =
+  nlnp + n \overline{X} ln \left( 1 - p \right) $.
+
+Берём производную и приравниваем к нулю
+$$ \frac{ \partial l}{ \partial p} =
+  \frac{n}{p} - \frac{n \overline{X} }{1 - p} =
+  0.$$
+Сокращаем на $n$ и переновим второе слагаемое вправо
+$$ \frac{1}{p} =
+  \frac{ \overline{X}}{1 - p}.$$
+
+Перемножаем как пропорцию $1 - p = p \overline{X}$.
+Отсюда слудует, что
+$$1 =
+  p + p \overline{X} =
+  p \left( 1 + \overline{X} \right),$$
+и
+$$p^* =
+  \frac{1}{1 + \overline{X}}.$$
+
+Проверим это, взяв вторую производную и посмотрев на её знак
+$$ \frac{ \partial^2 l}{ \partial p^2} =
+  - \frac{n}{p^2} - \frac{n \overline{X}}{ \left( 1 - p \right)^2} <
+  0,$$
+следовательно, $p^* = argmax l \left( \vec{X}, p \right) $.
 
 \subsubsection*{4.18}
 

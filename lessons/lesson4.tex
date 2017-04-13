@@ -1078,3 +1078,59 @@ $$e^{ \frac{ \beta }{ \alpha }} \beta \cdot e^{- \frac{ \beta }{ \alpha }} -
   \alpha.$$
 
 Получили, что оценка $ \alpha^*$ --- тоже состоятельная.
+
+\subsubsection*{4.20}
+
+\textit{Задание.} Пусть задана выборка из двухпараметричного распределения Лапласа с плотностью
+$$f_{ \mu, \sigma} \left( y \right) =
+  \frac{e^{- \frac{ \left| y - \mu \right| }{ \sigma }}}{2 \sigma }, \,
+  \mu \in \mathbb{R}, \,
+  \sigma > 0.$$
+
+Постройте оценку максимального правдоподобия двумерного параметра $ \left( \mu, \sigma \right) $.
+
+\textit{Решение.} Записываем функцию правдоподобия
+$$L \left( \vec{X}, \mu, \sigma \right) =
+  \prod \limits_{i = 1}^n f_{ \mu, \sigma } \left( X_i \right) =
+  \prod \limits_{i = 1}^n
+    \frac{1}{2 \sigma } \cdot e^{- \frac{ \left| X_i - \mu \right| }{ \sigma }} =
+  \frac{1}{ \left( 2 \sigma \right)^n} \cdot
+  e^{- \frac{1}{ \sigma } \sum \limits_{i = 1}^n \left| X_i - \mu \right| }.$$
+
+Находим логарифм
+$$l \left( \vec{X}, \mu, \sigma \right) =
+  -n \, ln \left(2 \sigma \right) -
+  \frac{1}{ \sigma } \sum \limits_{i = 1}^n \left| X_i - \mu \right| =
+  - n \, ln 2 -
+  n \, ln \sigma -
+  \frac{1}{ \sigma } \sum \limits_{i = 1}^n \left| X_i - \mu \right|.$$
+Дифференцировать по $ \mu $ не можем.
+Хотим максимизировать функцию правдоподобия.
+Нужно минимизировать сумму $X_i$ --- точки на оси.
+$ \left| X_i - \mu \right| $ --- расстояние.
+
+Вариационный ряд имеет понятие медианы.
+Это приблизительно средина вариационного ряда
+$$ \mu^* =
+  \begin{cases}
+    X_{ \left( m + 1 \right) }, \qquad n = 2m + 1, \\
+    \frac{X_{ \left( m \right) + X_{ \left( m + 1 \right) }}}{2}, \qquad n = 2m
+  \end{cases}$$
+--- аналог с центром масс треугольника, который задаётся как точка пересечения медиан.
+
+Найдём оценку второго параметра.
+Нужно взять производную и приравнять к нулю
+$$ \frac{ \partial l \left( \vec{X}, \mu, \sigma \right) }{ \partial \sigma } =
+  - \frac{n}{ \sigma } + \frac{1}{ \sigma^2} \sum \limits_{i = 1}^n \left| X_i - \mu \right| =
+  \frac{1}{ \sigma } \cdot
+  \left( \frac{1}{ \sigma } \sum \limits_{i = 1}^n \left| X_i - \mu \right| - n \right) =
+  0.$$
+
+Приравниваем выражение в скобках к нулю
+$$ \frac{1}{ \sigma } \sum \limits_{i =1}^n \left| X_i - \mu \right| =
+  n.$$
+
+Отсюда оценка равна
+$$ \sigma^* =
+  \frac{ \sum \limits_{i = 1}^n \left| X_i - \mu^* \right| }{n} =
+  \overline{X - \mu^*}.$$

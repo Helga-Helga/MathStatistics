@@ -875,35 +875,15 @@ $$ \prod \limits_{i = 1}^n C_m^{X_i} \cdot
   $$L \left( \vec{x}, \theta \right) =
     \frac{ \mathbbm{1} \left\{ \vec{x} \in \left[ \theta, \theta + 2 \right]^n \right\} }{2^n} =
     \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, \max \limits_i x_i \leq \theta + 2 \right\} }{2^n}.$$
-  Переносим 2 влево и именяем знак
+  Переносим 2 влево
   $$ \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, \max \limits_i x_i \leq \theta + 2 \right\} }{2^n} =
-    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, - \max \limits_i x_i + 2 \geq \theta \right\} }{2^n}.$$
-  Берём максимум
-  \begin{equation*}
-    \begin{split}
-      \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, - \max \limits_i x_i + 2 \geq \theta \right\} }{2^n} = \\
-      = \frac{ \mathbbm{1} \left\{ \max \left( \min \limits_i x_i,\, - \max \limits_i x_i + 2 \right) \geq \theta \right\} }{2^n}.
-    \end{split}
-  \end{equation*}
-
-  Нарисуем график полученной функции, как функции от $ \theta $ (рис. \ref{fig:4182}).
-
-  \begin{figure}[h!]
-    \centering
-    \includegraphics[width=.4\textwidth]{./pictures/4_18_2.png}
-    \caption{График функции $L \left( \theta \right) $}
-    \label{fig:4182}
-  \end{figure}
-
-  Точка максимума этой функции ---
-  это $ \max \left( \min \limits_i x_i,\, - \max \limits_i x_i + 2 \right) $.
-
+    \frac{ \mathbbm{1} \left\{ \min \limits_i x_i \geq \theta, \, \max \limits_i x_i - 2 \leq \theta \right\} }{2^n}.$$
   Значит,
-  $ \hat{ \theta } =
-    \max \left(
-      \min \limits_{1 \leq i \leq n} x_i,\, - \max \limits_{1 \leq i \leq n} x_i + 2
-    \right) $;
+  $ \max \limits_{1 \leq i \leq n} x_i - 2 \leq
+    \hat{ \theta } \leq
+    \min \limits_{1 \leq i \leq n} x_i$;
   \item плотность равномерного распределения на отрезке
+  Значит, $ \max \limits_{1 \leq i \leq n} x_i - 2 \leq \hat{ \theta } \leq \min \limits_{1 \leq i \leq n} x_i$;
   $ \left[ \theta, 2 \theta \right], \, \theta > 0$ имеет вид
   $$p_{ \theta } \left( x \right) =
     \frac{ \mathbbm{1} \left\{ x \in \left[ \theta, 2 \theta \right] \right\} }{ \theta }.$$

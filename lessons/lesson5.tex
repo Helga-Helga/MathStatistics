@@ -28,5 +28,57 @@ $$L \left( \vec{x}, \theta \right) =
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
+\subsubsection{5.3}
+
+\textit{Задание.} Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Бернулли с параметром $p$.
+Выясните, является ли $ \overline{X}$ достаточной статистикой для параметра $p$.
+
+\textit{Решение.} Записываем условное распределение.
+
+Пусть $k_i = 0$ или $1$.
+
+По определению условной вероятности
+\begin{equation*}
+  \begin{split}
+    P \left\{ \left. X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n \right| \overline{X} = y \right\} = \\
+    = \frac{P \left\{ X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n, \overline{X} = y \right\} }{P \left\{ \overline{X} = y \right\} }.
+  \end{split}
+\end{equation*}
+Выборочное среднее $ \overline{X}$ выражаем через сумму
+\begin{equation*}
+  \begin{split}
+    \frac{P \left\{ X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n, \overline{X} = y \right\} }{P \left\{ \overline{X} = y \right\} } = \\
+    = \frac{P \left\{ X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n, \sum \limits_{i = 1}^n X_i = ny \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = ny \right\} }.
+  \end{split}
+\end{equation*}
+Все $X_i$ --- независимы, следовательно, будет произведение вероятностей событий
+\begin{equation*}
+  \begin{split}
+    \frac{P \left\{ X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n, \sum \limits_{i = 1}^n X_i = ny \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = ny \right\} } = \\
+    = \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} P \left\{ X_1 = k_1 \right\} \cdot \dotsc \cdot P \left\{ X_n = k_n \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = ny \right\} }.
+  \end{split}
+\end{equation*}
+Сумма распределена по биномиальному распределению с параметрами $n, p$.
+Подставляем значения вероятностей
+\begin{equation*}
+  \begin{split}
+    \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} P \left\{ X_1 = k_1 \right\} \cdot \dotsc \cdot P \left\{ X_n = k_n \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = ny \right\} } = \\
+    = \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} p^{k_1} \left( 1 - p \right)^{1 - k_1} \cdot \dotsc \cdot p^{k_n} \left( 1 - p \right)^{1 - k_n}}{C_n^{ny} p^{ny} \left( 1 - p \right)^{n + ny}}.
+  \end{split}
+\end{equation*}
+Воспользуемся индикатором
+\begin{equation*}
+  \begin{split}
+    \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} \cdot p^{k_1} \left( 1 - p \right)^{1 - k_1} \cdot \dotsc \cdot p^{k_n} \left( 1 - p \right)^{1 - k_n}}{C_n^{ny} p^{ny} \left( 1 - p \right)^{n + ny}} = \\
+    = \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} \cdot p^{ny} \left( 1 - p \right)^{n - ny}}{C_n^{ny} p^{ny} \left( 1 - p \right)^{n - ny}}.
+  \end{split}
+\end{equation*}
+Всё, что связано с $p$, пропадает
+$$ \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} \cdot p^{ny} \left( 1 - p \right)^{n - ny}}{C_n^{ny} p^{ny} \left( 1 - p \right)^{n - ny}} =
+  \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} }{C_n^{ny}}.$$
+
+Зависимости от $p$ нет.
+Отсюда следует, что $ \overline{X}$ --- достаточная статистика.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

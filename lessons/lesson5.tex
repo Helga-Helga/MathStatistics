@@ -117,5 +117,34 @@ $$X_1 + \dotsc + X_n = k.$$
 Видим, что нет зависимости от $ \lambda $, следовательно, выборочное среднее $ \overline{X}$ ---
 достаточная статистика для неизвестного $ \lambda $.
 
+\subsubsection{5.5}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc X_n$ ---
+выборка из нормального распределение со средним $a$ и единичной дисперсией.
+Найдите условное совместное распределение выборки при условии $X_1 + \dotsc + X_n = y$.
+Выясните, является ли $ \overline{X}$ достаточной статистикой для параметра $a$.
+
+\textit{Решение.} Нужно записать функцию правдоподобия
+$$L \left( X_1, \dotsc, X_n, a \right) =
+  \prod \limits_{i = 1}^n \frac{1}{ \sqrt{2 \pi }} \cdot e^{ \frac{- \left( X_i - a \right)^2}{2}} =
+  \frac{1}{ \left( \sqrt{2 \pi } \right)^n} \cdot
+  e^{- \sum \limits_{i = 1}^n \frac{ \left( X_i - a \right)^2}{2}}.$$
+Откроем квадрат и запишем в статистических обозначениях
+$$ \frac{1}{ \left( \sqrt{2 \pi } \right)^n} \cdot
+  e^{- \sum \limits_{i = 1}^n \frac{ \left( X_i - a \right)^2}{2}} =
+  \frac{1}{ \left( \sqrt{2 \pi } \right)^n} \cdot
+  e^{- \frac{n \overline{X^2}}{2} an \overline{X} - \frac{a^2 n}{2}} =
+  \frac{1}{ \left( \sqrt{2 \pi } \right)^n} \cdot e^{- \frac{n \overline{X^2}}{2}} \cdot
+  e^{an \overline{X} - \frac{a^2 n}{2}},$$
+где
+$$ \frac{1}{ \left( \sqrt{2 \pi } \right)^n} \cdot e^{- \frac{n \overline{X^2}}{2}} =
+  h \left( X_1, \dotsc, X_n \right), \,
+  e^{an \overline{X} - \frac{a^2 n}{2}} = g \left( a, \overline{X} \right).$$
+
+Предьявляем функции, о которых идёт речь в теореме.
+
+По теореме про характеризацию достаточной статистики $ \overline{X}$ --- достаточная статистика.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

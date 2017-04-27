@@ -360,3 +360,35 @@ $$L \left( \vec{X}, a \left( \theta \right), b \left( \theta \right) \right) =
 
 Видим, что нет зависимости от $p$, следовательно, выбороочное среднее $ \overline{X}$ ---
 достаточная статистика для неизвестного $p$.
+
+\subsubsection*{5.12}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из нормального распределения со средним $a$ и дисперсией $ \sigma^2$.
+Найдите достаточную статистику со значениями в $ \mathbb{R}^2$ для двумерного параметра
+$ \left( a, \sigma^2 \right) $.
+
+\textit{Решение.} Ищем функцию правдоподобия
+$$L \left( \vec{X}, a, \sigma^2 \right) =
+  \prod \limits_{i = 1}^n
+    \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{ \left( X_i - a \right)^2}{2 \sigma^2}} =
+  \frac{1}{ \left( \sqrt{2 \pi } \sigma \right)^n} \cdot
+  e^{- \frac{1}{2 \sigma^2} \sum \limits_{i = 1}^n \left( X_i - a \right)^2}.$$
+Раскрываем квадрат
+$$ \frac{1}{ \left( \sqrt{2 \pi } \sigma \right)^n} \cdot
+  e^{- \frac{1}{2 \sigma^2} \sum \limits_{i = 1}^n \left( X_i - a \right)^2} =
+  \frac{1}{ \left( \sqrt{2 \pi } \sigma \right)^n} \cdot
+  e^{- \frac{1}{2 \sigma^2} \sum \limits_{i = 1}^n \left( X_i^2 - 2aX_i + a^2 \right) }.$$
+Записываем через статистические величины
+$$ \frac{1}{ \left( \sqrt{2 \pi } \sigma \right)^n} \cdot
+  e^{- \frac{1}{2 \sigma^2} \sum \limits_{i = 1}^n \left( X_i^2 - 2aX_i + a^2 \right) } =
+  \frac{1}{ \left( \sqrt{2 \pi } \sigma \right)^n} \cdot
+  e^{- \frac{n \overline{X^2}}{2 \sigma^2}} \cdot e^{ \frac{n \overline{X} a}{2 \sigma^2}} \cdot
+  e^{- \frac{a^2 n}{2 \sigma^2}}.$$
+Эта величина равна
+$g \left( a, \sigma^2, \overline{X}, \overline{X^2} \right), \,
+  h \left( \vec{X} \right) = 1$.
+
+По теореме о характеризации, $ \left( \overline{X}, \overline{X^2} \right) $ ---
+достаточная статистика для $ \left( a, \sigma^2 \right) $.

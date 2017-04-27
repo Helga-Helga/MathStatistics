@@ -4,7 +4,7 @@
 \addcontentsline{toc}{section}{Контрольные вопросы и задания}
 \section*{Контрольные вопросы и задания}
 
-\subsubsection*{Приведите определение условного распределения, определения достаточной статистики.}
+\subsubsection*{Приведите определение условного распределения, определение достаточной статистики.}
 
 $P \left( \xi \in \Delta \; \middle| \; \mathcal{F'} \right) =
   M \left[ \mathbbm{1}_{ \Delta } \left( \xi \right) \; \middle| \; \mathcal{F'} \right] $.
@@ -235,7 +235,7 @@ $$ \frac{1}{ \left( b - a \right)^n} \cdot
 Допустим, $ \overline{X}$ --- достаточная статистика,
 значит должно выполняться
 $L \left( \vec{X}, a, b \right) =
-  h \left( \vec{X} \right) \cdot g \left( a, b, \vec{X} \right) $.
+  h \left( \vec{X} \right) \cdot g \left( a, b, \overline{X} \right) $.
 
 Пусть имеем две выборки: $X_1^1, \dotsc, X_n^1$ и $X_1^2, \dotsc, X_n^2$,
 причём
@@ -247,8 +247,9 @@ $$ \overline{X^1} =
 $X_i^1 \sim U \left( \left[ a, b \right] \right) $.
 
 Вторую выборку подбираем так,
-чтобы наблюдаемое значение выходило за пределы $ \left[ a, b \right] $, например, $X_1^2 < a$,
-но $X_i^2 \in \left( a, b \right) $ при $i \neq 1$.
+чтобы наблюдаемое значение выходило за пределы $ \left[ a, b \right] $, например,
+$X_{ \left( 1 \right) }^2 < a$,
+но $X_{ \left( i \right) }^2 \in \left( a, b \right) $ при $i \neq 1$.
 
 Ищем функции правдоподобия для этих двух выборок
 $$L \left( \vec{X^1} \right) =
@@ -264,6 +265,8 @@ $$L \left( \vec{X^1} \right) =
 
 Но как только пересекаем границу, то есть реакция, то есть $h$ уже зависит от концов отрезка,
 $h$ зависит от $a, b$.
+
+Для статистики $X_{ \left( n \right) }$ --- аналогично.
 
 \subsubsection{5.9}
 

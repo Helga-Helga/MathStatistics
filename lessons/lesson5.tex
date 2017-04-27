@@ -392,3 +392,51 @@ $g \left( a, \sigma^2, \overline{X}, \overline{X^2} \right), \,
 
 По теореме о характеризации, $ \left( \overline{X}, \overline{X^2} \right) $ ---
 достаточная статистика для $ \left( a, \sigma^2 \right) $.
+
+\subsubsection*{5.13}
+
+\textit{Задание.} Пусть $X_1, \dotsc, X_n$ --- выборка из равномерного распределения на отрезке
+\begin{enumerate}[label=\alph*)]
+  \item $ \left[ \theta, \theta + 1 \right] $;
+  \item $ \left[ \theta, 2 \theta \right] $.
+\end{enumerate}
+Найдите достаточную для параметра $ \theta $ статистику со значениями в $ \mathbb{R}^2$.
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item Ищем функцию правдоподобия
+  $$L \left( \vec{X}, \theta \right) =
+    \prod \limits_{i = 1}^n
+      \mathbbm{1} \left\{ X_i \in \left[ \theta, \theta + 1 \right] \right\}.$$
+  Все $X_i$ должны быть не меньше $ \theta $ и не больше $ \left( \theta + 1 \right) $.
+  Получаем
+  $$ \prod \limits_{i = 1}^n
+      \mathbbm{1} \left\{ X_i \in \left[ \theta, \theta + 1 \right] \right\} =
+    \mathbbm{1} \left\{
+      X_{ \left( 1 \right) } \geq \theta, X_{ \left( n \right) } \leq \theta + 1
+    \right\}.$$
+  Это равно $g \left( \theta, X_{ \left( 1 \right) }, X_{ \left( n \right) - 1 } \right), \,
+    h \left( \vec{X} \right) = 1.$
+
+  Вывод: $ \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) $ ---
+  достаточная статистика для $ \theta $;
+  \item ищем функцию правдоподобия
+  $$L \left( \vec{X}, \theta \right) =
+    \prod \limits_{i = 1}^n
+      \frac{1}{ \theta } \cdot
+      \mathbbm{1} \left\{ X_i \in \left[ \theta, 2 \theta \right] \right\}.$$
+  Все $X_i$ должны быть не меньше чем $ \theta $, не больше $2 \theta $.
+  Получим
+  $$ \prod \limits_{i = 1}^n
+      \frac{1}{ \theta } \cdot
+      \mathbbm{1} \left\{ X_i \in \left[ \theta, 2 \theta \right] \right\} =
+    \frac{1}{ \theta^n} \cdot
+    \mathbbm{1} \left\{
+      X_{ \left( 1 \right) } \geq \theta, X_{ \left( n \right) } \leq 2 \theta
+    \right\}.$$
+  Это равно $g \left( \theta, X_{ \left( 1 \right) }, X_{ \left( n \right) } \right), \,
+    h \left( \vec{X} \right) = 1.$
+
+  Вывод: $ \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) $ ---
+  достаточная статистика для $ \theta $.
+\end{enumerate}

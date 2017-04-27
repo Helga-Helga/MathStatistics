@@ -146,5 +146,29 @@ $$ \frac{1}{ \left( \sqrt{2 \pi } \right)^n} \cdot e^{- \frac{n \overline{X^2}}{
 
 По теореме про характеризацию достаточной статистики $ \overline{X}$ --- достаточная статистика.
 
+\subsubsection{5.6}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из нормального распределения с нулевым средним и дисперсией $ \sigma^2$.
+Найдите достаточную статистику со значениями в $ \mathbb{R}$ для параметра $ \sigma^2$.
+
+\textit{Решение.}
+$$L \left( \vec{X}, \sigma^2 \right) =
+  \prod \limits_{i = 1}^n \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{X_i^2}{2 \sigma^2}} =
+  \left( \frac{1}{ \sqrt{2 \pi } \sigma } \right)^n \cdot
+  e^{- \frac{ \sum \limits_{i = 1}^n X_i^2}{2 \sigma^2}} =
+  \frac{1}{ \left( \sqrt{2 \pi } \sigma \right)^n} \cdot
+  e^{- \frac{n \overline{X^2}}{2 \sigma^2}}.$$
+
+Достаточной статистикой будет второй выборочный момент.
+
+$h \left( X_1, \dotsc, X_n \right) = 1$, тогда
+$$g \left( \sigma^2, \overline{X^2} \right) =
+  \frac{1}{ \left( \sqrt{2 \pi } \sigma \right)^n} \cdot
+  e^{- \frac{n \overline{X^2}}{2 \sigma^2}}.$$
+
+Для $ \sigma^2$ достаточная статистика --- $ \hat{ \sigma^2} = \overline{X^2}$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

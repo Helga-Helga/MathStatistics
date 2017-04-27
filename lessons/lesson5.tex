@@ -170,5 +170,32 @@ $$g \left( \sigma^2, \overline{X^2} \right) =
 
 Для $ \sigma^2$ достаточная статистика --- $ \hat{ \sigma^2} = \overline{X^2}$.
 
+\subsubsection{5.7}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного распределения на отрезке $ \left[ 0, \theta \right] $.
+Найдите достаточную статистику со значениями в $ \mathbb{R}$ для параметра $ \theta $.
+
+\textit{Решение.}
+$$L \left( \vec{X}, \theta \right) =
+  \prod \limits_{i = 1}^n
+    \frac{1}{ \theta } \cdot \mathbbm{1} \left\{ X_i \in \left[ 0, \theta \right] \right\}.$$
+Все $X_i$ должны быть не меньше нуля и не больше $ \theta $.
+Получаем
+$$ \prod \limits_{i = 1}^n
+    \frac{1}{ \theta } \cdot \mathbbm{1} \left\{ X_i \in \left[ 0, \theta \right] \right\} =
+  \frac{1}{ \theta^n} \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq 0, X_{ \left( n \right) } \leq \theta \right\}.$$
+Разделим индекатор на 2
+$$ \frac{1}{ \theta^n} \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq 0, X_{ \left( n \right) } \leq \theta \right\} =
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq 0 \right\} \cdot
+  \frac{1}{ \theta^n} \cdot \mathbbm{1} \left\{ X_{ \left( n \right) } \leq \theta \right\},$$
+где первый индикатор --- это функция $h \left( \vec{X} \right) $, всё остальное ---
+$g \left( \theta, X_{ \left( n \right) } \right) $.
+
+Вывод: $X_{ \left( n \right) }$ --- достаточная статистика для $ \theta $.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

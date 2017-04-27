@@ -58,5 +58,131 @@ $$D_{ \theta } \hat{ \theta } =
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
+\subsubsection*{6.3}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного распределения на отрезке $ \left[ 0, \theta \right].$
+Найдите несмещённую оценку неизвестного параметра
+$ \tau \left( \theta, y \right) =
+  P \left( X_1 > y \right) $
+и улучшите её усреднением по достаточной для параметра $ \theta $ статистике.
+
+\textit{Решение.} $X_{ \left( n \right) }$ --- достаточная статистика для $ \theta $.
+
+Нужно найти $ \hat{ \tau }$ из условия, что она была бы несмещённой,
+что
+$$M \hat{ \tau } =
+  \tau =
+  P \left( X_1 > y \right).$$
+Берём в качестве $ \hat{ \tau } = \mathbbm{1} \left\{ X_1 > y \right\} $ ---
+это несмещённая оценка для $ \tau $.
+Теперь улучшаем эту оценку.
+$ \tau^* =
+  M \left( \hat{ \tau } \; \middle| \; X_{ \left( n \right) } \right) =
+  M \left\{ \mathbbm{1} \left\{ X_1 < y \right\} \; \middle| \; X_{ \left( n \right) } \right\}.$
+Индикатор может принимать значения 0 и 1,
+значит
+\begin{equation*}
+  \begin{split}
+    M \left\{
+      \mathbbm{1} \left\{ X_1 < y \right\} \; \middle| \; X_{ \left( n \right) }
+    \right\} = \\
+    = 0 \cdot
+    P \left(
+      \mathbbm{1} \left\{ X_1 > y \right\} = 0 \; \middle| \; X_{ \left( n \right) }
+    \right) +
+    1 \cdot
+    P \left( \mathbbm{1} \left\{ X_1 > y \right\} = 1 \; \middle| \; X_{ \left( n \right) } \right).
+  \end{split}
+\end{equation*}
+Первое слагаемое пропадает
+\begin{equation*}
+  \begin{split}
+    0 \cdot
+    P \left(
+      \mathbbm{1} \left\{ X_1 > y \right\} = 0 \; \middle| \; X_{ \left( n \right) }
+    \right) +
+    1 \cdot
+    P \left(
+      \mathbbm{1} \left\{ X_1 > y \right\} = 1 \; \middle| \; X_{ \left( n \right) }
+    \right) = \\
+    = P \left( X_1 > y \; \middle| X_{ \left( n \right) } \right) =
+    f \left( X_{ \left( n \right) } \right).
+  \end{split}
+\end{equation*}
+Ищем $f \left( z \right) = P \left( X_1 > y \; \middle| \; X_{ \left( n \right) } = z \right).$
+Выборка имеет равномерное распределение, то есть распределение, которое имеет плотность.
+Вероятность попадания в точку равна нулю
+$$ P \left( X_1 > y \; \middle| \; X_{ \left( n \right) } = z \right) =
+  \lim \limits_{h \to 0}
+    P \left\{ X_1 > y \; \middle| \; X_{ \left( n \right) } \in \left[ z, z + h \right] \right\}.$$
+Воспользуемся определением условной вероятности
+$$ \lim \limits_{h \to 0}
+    P \left\{ X_1 > y \; \middle| \; X_{ \left( n \right) } \in \left[ z, z + h \right] \right\} =
+  \lim \limits_{h \to 0}
+    \frac{P \left\{ X_1 > y, X_{ \left( n \right) } \in \left[ z, z + h \right] \right\} }{P \left\{ X_{ \left( n \right) } \in \left[ z, z + h \right] \right\} }.$$
+Это нужно рассматривать при $y < z$.
+Разбиваем на разность двух вероятностей в числителе и знаменателе
+\begin{equation*}
+  \begin{split}
+    \lim \limits_{h \to 0}
+      \frac{P \left\{ X_1 > y, X_{ \left( n \right) } \in \left[ z, z + h \right] \right\} }{P \left\{ X_{ \left( n \right) } \in \left[ z, z + h \right] \right\} } = \\
+    = \lim \limits_{h \to 0} \left[
+      \frac{P \left\{ X_1 > y, X_{ \left( n \right) } \leq z + h \right\} }{P \left\{ X_{ \left( n \right) } \leq z + h \right\} - P \left\{ X_{ \left( n \right) } \leq z \right\} } -
+      \frac{P \left\{ X_1 > y, X_{ \left( n \right) } \leq z \right\} }{P \left\{ X_{ \left( n \right) } \leq z + h \right\} - P \left\{ X_{ \left( n \right) } \leq z \right\} }
+    \right].
+  \end{split}
+\end{equation*}
+Переходим к функции распределения выборки
+\begin{equation*}
+  \begin{split}
+    \lim \limits_{h \to 0} \left[
+      \frac{P \left\{ X_1 > y, X_{ \left( n \right) } \leq z + h \right\} }{P \left\{ X_{ \left( n \right) } \leq z + h \right\} - P \left\{ X_{ \left( n \right) } \leq z \right\} } -
+      \frac{P \left\{ X_1 > y, X_{ \left( n \right) } \leq z \right\} }{P \left\{ X_{ \left( n \right) } \leq z + h \right\} - P \left\{ X_{ \left( n \right) } \leq z \right\} }
+    \right] = \\
+    = \lim \limits_{h \to 0} \left\{
+      \frac{ \left[ F \left( z + h \right) - F \left( y \right) \right] \left[ F \left( z + h \right) \right]^{n - 1}}{ \left[ F \left( z + h \right) \right]^n - \left[ F \left( z \right) \right]^n} -
+      \frac{ \left[ F \left( z \right) - F \left( y \right) \right] \left[ F \left( z \right) \right]^{n - 1}}{ \left[ F \left( z + h \right) \right]^n - \left[ F \left( z \right) \right]^n}
+    \right\}.
+  \end{split}
+\end{equation*}
+
+Знаменатель и числитель стремятся к нулю.
+Дифференцируем по $h$ числитель и знаменатель.
+Это правило Лопиталя
+\begin{equation*}
+  \begin{split}
+    \lim \limits_{h \to 0} \left\{
+      \frac{ \left[ F \left( z + h \right) - F \left( y \right) \right] \left[ F \left( z + h \right) \right]^{n - 1}}{ \left[ F \left( z + h \right) \right]^n - \left[ F \left( z \right) \right]^n} -
+      \frac{ \left[ F \left( z \right) - F \left( y \right) \right] \left[ F \left( z \right) \right]^{n - 1}}{ \left[ F \left( z + h \right) \right]^n - \left[ F \left( z \right) \right]^n}
+    \right\} = \\
+    = \lim \limits_{h \to 0} \left\{
+      \frac{p \left( z + h \right) \left[ F \left( z + h \right) \right]^{n - 1}}{n \left[ F \left( z + h \right) \right]^{n - 1} p \left( z + h \right) } +
+      \frac{ \left( n + 1 \right) \left[ F \left( z + h \right) \right]^{n - 2} p \left( z + h \right) \left[ F \left( z + h \right) - F \left( y \right) \right] }{n \left[ F \left( z + h \right) \right]^{n - 1} p \left( z + h \right) }
+    \right\} = \\
+    = \lim \limits_{h \to 0}
+      \frac{F \left( z + h \right) + \left( n - 1 \right) \left[ F \left( z + h \right) - F \left( y \right) \right] }{nF \left( z + h \right) }.
+  \end{split}
+\end{equation*}
+Переходим к пределу
+$$ \lim \limits_{h \to 0}
+    \frac{F \left( z + h \right) + \left( n - 1 \right) \left[ F \left( z + h \right) - F \left( y \right) \right] }{nF \left( z + h \right) } =
+  \frac{F \left( z \right) + \left( n + 1 \right) \left[ F \left( z \right) - F \left( y \right) \right] }{nF \left( z \right) }.$$
+Приводим подобные
+$$ \frac{F \left( z \right) + \left( n + 1 \right) \left[ F \left( z \right) - F \left( y \right) \right] }{nF \left( z \right) } =
+  \frac{nF \left( z \right) - \left( n - 1 \right) F \left( y \right) }{nF \left( z \right) }.$$
+Почленно поделим числитель на знаменатель
+$$ \frac{nF \left( z \right) - \left( n - 1 \right) F \left( y \right) }{nF \left( z \right) } =
+  1 - \frac{n - 1}{n} \cdot \frac{F \left( y \right) }{F \left( z \right) }.$$
+Подставляем значения функции равномерного распределения на отрезке $ \left[ 0, \theta \right] $.
+Получаем
+$$1 - \frac{n - 1}{n} \cdot \frac{F \left( y \right) }{F \left( z \right) } =
+  1 - \frac{n - 1}{n} \cdot \frac{y}{z}.$$
+
+Окончательно
+$$f \left( X_{ \left( n \right) } \right) =
+  1 - \frac{n - 1}{n} \cdot \frac{y}{X_{ \left( n \right) }}.$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

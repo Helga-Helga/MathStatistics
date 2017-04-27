@@ -226,3 +226,31 @@ $$a^* \sim
   N \left( a, \frac{1}{n} \right).$$
 
 Так как $Ma^* = a$, то оценка несмещённая.
+
+\subsubsection*{6.11}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Пуассона с параметром $ \lambda $.
+В качестве оценки параметра $ \theta = e^{- \lambda }$ рассматривают статистику
+$$ \hat{ \theta } =
+  \overline{ \mathbbm{1} \left\{ X = 0 \right\} } =
+  \frac{1}{n} \sum \limits_{i = 1}^n \mathbbm{1} \left\{ X_i = 0 \right\}.$$
+Вычислите смещение $b_n \left( \theta \right) = M \hat{ \theta } - \theta $ этой оценки и выясните,
+является ли она эффективной.
+
+\textit{Решение.}
+$$M \hat{ \theta } =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n \mathbbm{1} \left\{ X_i = 0 \right\} \right) =
+  \frac{1}{n} M \left( \sum \limits_{i = 1}^n \mathbbm{1} \left\{ X_i = 0 \right\} \right) =
+  \frac{1}{n} \cdot \sum \limits_{i = 1}^n P \left( X_i = 0 \right).$$
+Подставляем значение вероятности для распределения Пуассона
+$$ \frac{1}{n} \cdot \sum \limits_{i = 1}^n P \left( X_i = 0 \right) =
+  \frac{1}{n} \cdot \sum \limits_{i = 1}^n \frac{ \lambda^0}{0!} \cdot e^{- \lambda } =
+  \frac{1}{n} \cdot e^{- \lambda } \cdot n =
+  e^{- \lambda }.$$
+
+Подставляем полученное значение в формулу для смещения
+$$b_n \left( \theta \right) =
+  M \hat{ \theta } - \theta =
+  e^{- \lambda } - e^{- \lambda } =
+  0.$$

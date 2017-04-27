@@ -485,6 +485,49 @@ $h \left( \vec{X} \right) \cdot
 Вывод: $\max \left( -X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) $ ---
 достаточная статистика для $ \theta $.
 
+\subsubsection*{5.15}
+
+\textit{Задание.} Пусть $X_1, \dotsc, X_n$ --- выборка из $ \Gamma $-распределения с плотностью
+$$f_{ \alpha, \beta } \left( y \right) =
+  \begin{cases}
+    \frac{ \alpha^{ \beta}}{ \Gamma \left( \beta \right) } \cdot y^{ \beta - 1} e^{- \alpha y},
+    \qquad y \geq 0, \\
+    0, \qquad y < 0,
+  \end{cases} \qquad \alpha, \beta > 0.$$
+Найдите достаточную статистику для параметра $ \left( \alpha, \beta \right) $.
+
+\textit{Решение.} Запишем функцию правдоподобия данной выборки
+$$L \left( X_1, \dotsc, X_n, \alpha, \beta \right) =
+  \prod \limits_{i = 1}^n f_{ \alpha, \beta } \left( X_i \right) =
+  \frac{ \alpha^{n \beta }}{ \Gamma^n \left( \beta \right) } \cdot
+  \prod \limits_{i = 1}^n \left( X_i^{ \beta - 1} e^{- \alpha X_i} \right) \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq 0 \right\}.$$
+Раскроем скобки в произведении
+$$ \frac{ \alpha^{n \beta }}{ \Gamma^n \left( \beta \right) } \cdot
+  \prod \limits_{i = 1}^n \left( X_i^{ \beta - 1} e^{- \alpha X_i} \right) \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq 0 \right\} =
+  \frac{ \alpha^{n \beta }}{ \Gamma^n \left( \beta \right) } \cdot
+  \prod \limits_{i = 1}^n X_i^{ \beta - 1} \cdot e^{- \alpha \overline{X} n} \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq 0 \right\}.$$
+
+Видно,
+что функция правдоподобия подаётся в виде произведения функции
+$h \left( X_1, \dotsc, X_n \right) = \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq 0 \right\} $,
+которая не зависит от неизвестных параметров, и функции
+$$g \left( X_1, \dotsc, X_n, \alpha, \beta \right) =
+  \frac{ \alpha^{n \beta }}{ \Gamma^n \left( \beta \right) } \cdot
+  \prod \limits_{i = 1}^n X_i^{ \beta - 1} \cdot e^{- \alpha \overline{X} n},$$
+которая зависит от неизвестных параметров и от функции выборки
+$$T_1 \left( X_1, \dotsc, X_n \right) = \overline{X}$$ и
+$$T_2 \left( X_1, \dotsc, X_n \right) = \prod \limits_{i = 1}^n X_i.$$
+
+Тогда, по теореме о характеризации достаточной статистики,
+двумерная функция
+$$T \left( X_1, \dotsc, X_n \right) =
+  \left( T_1 \left( X_1, \dotsc, X_n \right), T_2 \left( X_1, \dotsc, X_n \right) \right) =
+  \left( \overline{X}, \prod \limits_{i = 1}^n X_i \right) $$
+является достаточной статистикой для параметра $ \left( \alpha, \beta \right) $.
+
 \subsubsection*{5.16}
 
 \textit{Задание.}

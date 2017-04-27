@@ -197,5 +197,73 @@ $g \left( \theta, X_{ \left( n \right) } \right) $.
 
 Вывод: $X_{ \left( n \right) }$ --- достаточная статистика для $ \theta $.
 
+\subsubsection{5.8}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного распределения на отрезке $ \left[ a, b \right] $.
+Выясните,
+какие из статистик
+$ \overline{X}, \,
+  X_{ \left( n \right) }, \,
+  \left( X_{ \left( 1 \right) }, X_{ \left( n \right) }) \right) $
+являются достаточными для двумерного параметра $ \left( a, b \right) $.
+
+\textit{Решение.} Для оценки $ \left( a, b \right) $ будет достаточно
+$ \left( X_{ \left( 1 \right) }, X_{ \left( n \right) }) \right) $.
+
+Информацию про средину отрезка даёт $ \overline{X}$.
+Этой информации недостаточно для оценки концов .
+
+Зная $X_{ \left( n \right) }$, будем знать, где правая граница, следовательно,
+этой информации недостаточно.
+
+Ищем функцию правдоподобия
+$$L \left( \vec{X}, a, b \right) =
+  \prod \limits_{i = 1}^n
+    \frac{1}{b - a} \cdot \mathbbm{1} \left\{ X_i \in \left[ a, b \right] \right\} =
+  \frac{1}{ \left( b - a \right)^n} \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq a, X_{ \left( n \right) } \leq b \right\}.$$
+Записываем через функции, которые используются в теореме о характеризации достаточной статистики
+$$ \frac{1}{ \left( b - a \right)^n} \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq a, X_{ \left( n \right) } \leq b \right\} =
+  g \left( a, b, X_{ \left( 1 \right) }, X_{ \left( n \right) } \right), \,
+  h \left( \vec{X} \right) = 1.$$
+По теореме о характеризации, $ \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) $ ---
+достаточная статистика для $ \left( a, b \right) $.
+
+Допустим, $ \overline{X}$ --- достаточная статистика,
+значит должно выполняться
+$L \left( \vec{X}, a, b \right) =
+  h \left( \vec{X} \right) \cdot g \left( a, b, \vec{X} \right) $.
+
+Пусть имеем две выборки: $X_1^1, \dotsc, X_n^1$ и $X_1^2, \dotsc, X_n^2$,
+причём
+$$ \overline{X^1} =
+  \overline{X^2} =
+  c.$$
+
+Допустим, что $X_{ \left( 1 \right) }^1 = a, \, X_{ \left( n \right) }^1 = b$, следовательно,
+$X_i^1 \sim U \left( \left[ a, b \right] \right) $.
+
+Вторую выборку подбираем так,
+чтобы наблюдаемое значение выходило за пределы $ \left[ a, b \right] $, например, $X_1^2 < a$,
+но $X_i^2 \in \left( a, b \right) $ при $i \neq 1$.
+
+Ищем функции правдоподобия для этих двух выборок
+$$L \left( \vec{X^1} \right) =
+  \frac{1}{ \left( b - a \right)^n} =
+  h \left( \vec{X^1} \right) \cdot g \left( a, b, c \right), \,
+  L \left( \vec{X^2} \right) =
+  0 =
+  h \left( \vec{X^2} \right) g \left( a, b, c \right).$$
+
+Ноль --- реакция на индикатор.
+
+Если бы взяли выборку внутри $ \left( a, b \right) $, то ничего бы не поменялось.
+
+Но как только пересекаем границу, то есть реакция, то есть $h$ уже зависит от концов отрезка,
+$h$ зависит от $a, b$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

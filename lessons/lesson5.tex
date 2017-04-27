@@ -80,5 +80,42 @@ $$ \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = ny \right\} \cdot p^{
 Зависимости от $p$ нет.
 Отсюда следует, что $ \overline{X}$ --- достаточная статистика.
 
+\subsubsection{5.4}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Пуассона с параметром $ \lambda $.
+Найдите условное распределение выборки при условии
+$$X_1 + \dotsc + X_n = k.$$
+Выясните, является ли $ \overline{X}$ достаточной статистикой для параметра $ \lambda $.
+
+\textit{Решение.} Это дискретное распределение
+\begin{equation*}
+  \begin{split}
+    P \left\{ X_1 = k_1, \dotsc, X_n = k_n \; \middle| \; \sum \limits_{i = 1}^n X_i = k \right\} = \\
+    \frac{P \left\{ X_1 = k_1, \dotsc, X_n = k_n, \sum \limits_{i = 1}^n X_i = k \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = k \right\} }.
+  \end{split}
+\end{equation*}
+Случайные величины $X_i$ --- независимы
+\begin{equation*}
+  \begin{split}
+    \frac{P \left\{ X_1 = k_1, \dotsc, X_n = k_n, \sum \limits_{i = 1}^n X_i = k \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = k \right\} } = \\
+    \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} P \left\{ X_1 = k_1 \right\} \cdot \dotsc \cdot P \left\{ X_n = k_n \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = k \right\} }.
+  \end{split}
+\end{equation*}
+Имеем распределение Пуассона.
+Сумма независимых случайных величин имеет распределение Пуассона с параметром $ \lambda n$.
+Подставляем значения вероятностей
+\begin{equation*}
+  \begin{split}
+    \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} P \left\{ X_1 = k_1 \right\} \cdot \dotsc \cdot P \left\{ X_n = k_n \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = k \right\} } = \\
+    = \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} \cdot
+    \frac{ \frac{ \lambda^{k_1}}{k_1!} \cdot e^{- \lambda } \cdot \dotsc \cdot \frac{ \lambda^{k_n}}{k_n!} \cdot e^{- \lambda }}{ \frac{ \left( \lambda n \right)^k}{k!} \cdot e^{- \lambda }} =
+    \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} k!}{k_1! \dotsc k_n! n^k}.
+  \end{split}
+\end{equation*}
+
+Видим, что нет зависимости от $ \lambda $, следовательно, выборочное среднее $ \overline{X}$ ---
+достаточная статистика для неизвестного $ \lambda $.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

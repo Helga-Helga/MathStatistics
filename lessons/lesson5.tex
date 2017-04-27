@@ -332,3 +332,31 @@ $$L \left( \vec{X}, a \left( \theta \right), b \left( \theta \right) \right) =
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{5.11}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из биномиального распределения с параметрами $m$ и $p$.
+Найдите условное распределение выборки при условии $X_1 + \dotsc, X_n = k$.
+Выясните, является ли $ \overline{X}$ достаточной статистикой для параметра $p$ при известном $m$.
+
+\textit{Решение.} Это дискретное распределение
+\begin{equation*}
+  \begin{split}
+    P \left( X_1 = k_1, \dotsc, X_n = k_n \; \middle| \; \sum \limits_{i = 1}^n X_i = k \right) = \\
+    = \frac{P \left( X_1 = k_1, \dotsc, X_n = k_n, \sum \limits_{i = 1}^n X_i = k \right) }{P \left( \sum \limits_{i = 1}^n X_i = k \right) }.
+  \end{split}
+\end{equation*}
+Имеем биномиальное распределение.
+Сумма независимых случайных величин имеет биномиальное распределение с параметрами $mn$ и $p$.
+Подставляем значения вероятностей
+\begin{equation*}
+  \begin{split}
+    \frac{P \left( X_1 = k_1, \dotsc, X_n = k_n, \sum \limits_{i = 1}^n X_i = k \right) }{P \left( \sum \limits_{i = 1}^n X_i = k \right) } = \\
+    = \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} C_m^{k_1} p^{k_1} q^{m - k_1} \cdot \dotsc \cdot C_m^{k_n} p^{k_n} q^{m - k_n}}{C_{mn}^k p^k q^{mn-k}} = \\
+    = \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} C_m^{k_1} \cdot \dotsc C_m^{k_n}}{C_{mn}^k}.
+  \end{split}
+\end{equation*}
+
+Видим, что нет зависимости от $p$, следовательно, выбороочное среднее $ \overline{X}$ ---
+достаточная статистика для неизвестного $p$.

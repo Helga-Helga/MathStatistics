@@ -186,3 +186,43 @@ $$f \left( X_{ \left( n \right) } \right) =
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{6.10}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из нормального распределения с параметрами $ \left( a, 1 \right) $.
+Улучшите оценку $ \hat{a} = X_1$ усреднением по фиксированному значению достаточной
+статистики $ \overline{X}$.
+Найдите распределение, математическое ожидание и дисперсию улучшенной оценки.
+
+\textit{Решение.} Улучшаем оценку
+$$a^* =
+  M \left( \hat{a} \; \middle| \; \overline{X} \right) =
+  M \left( X_1 \; \middle| \; \overline{X} \right) =
+  \frac{1}{n} \sum \limits_{i = 1}^n M \left( X_i \; \middle| \; \overline{X} \right) =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \; \middle| \; \overline{X} \right).$$
+Запишем через выборочное среднее
+$$M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \; \middle| \; \overline{X} \right) =
+  M \left( \overline{X} \; \middle| \; \overline{X} \right) =
+  \overline{X}.$$
+
+Математическое ожидание равно
+$$Ma^* =
+  M \overline{X} =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
+  \frac{1}{n} \sum \limits_{i = 1}^n MX_i =
+  \frac{1}{n} \cdot na =
+  a,$$
+дисперсия ---
+$$Da^* =
+  D \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
+  \frac{1}{n^2} \cdot n DX_1 =
+  \frac{1}{n} \cdot 1 =
+  \frac{1}{n}.$$
+
+Она имеет нормальное распределение
+$$a^* \sim
+  N \left( a, \frac{1}{n} \right).$$
+
+Так как $Ma^* = a$, то оценка несмещённая.

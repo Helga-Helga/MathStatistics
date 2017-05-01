@@ -371,6 +371,61 @@ $$ \frac{1}{nI \left( \theta \right) } =
   D \hat{ \theta }.$$
 Получили, что оценка эффективная.
 
+\subsubsection*{6.7}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из распределения $N \left( \theta, \sigma^2 \right) $ с неизвестным параметром $ \theta $
+и известной дисперсией.
+Выясните,
+является ли статистика $ \theta^* = \overline{X}$ эффективной оценкой параметра $ \theta $.
+
+\textit{Решение.} Проверим несмещённость
+$$M \theta^* =
+  M \overline{X} =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
+  \frac{1}{n} \cdot M \sum \limits_{i = 1}^n X_1 =
+  \frac{1}{n} \cdot nMX_1 =
+  \theta.$$
+Несмещённость есть.
+Ищем дисперсию
+$$D \theta^* =
+  D \overline{X} =
+  D \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
+  \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i.$$
+Воспользуемся независимостью случайных величин в выборке
+$$ \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i -
+  \frac{1}{n^2} \cdot nDX_1.$$
+Случайные величины в выборке одинаково распределены, значит
+$$ \frac{1}{n^2} \cdot nDX_1 =
+  \frac{ \sigma^2}{n}.$$
+
+Переходим к функции правдоподобия и оценке количества информации.
+Смотрим на одно наблюдение
+$$L \left( X_1, \theta \right) =
+  \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{ \left( X_1 - \theta \right) }{2 \sigma^2}}.$$
+Логарифмируем
+$$ln \, L \left( X_1, \theta \right) =
+  ln \left( \frac{1}{ \sqrt{2 \pi } \sigma } \right) -
+  \left( X_1 - \theta \right)^2 \cdot \frac{1}{2 \sigma^2}.$$
+
+Ищем первую производную
+$$ \frac{ \partial }{ \partial \theta } ln \, L \left( X_1, \theta \right) =
+  2 \left( X_1 - \theta \right) \cdot \frac{1}{2 \sigma^2} =
+  \frac{X_1 - \theta }{ \sigma^2}.$$
+Ищем вторую производную
+$$ \frac{ \partial }{ \partial \theta^2} ln \, L \left( X_1, \theta \right) =
+  - \frac{1}{ \sigma^2}.$$
+Таким образом,
+$$I \left( \theta \right) =
+  -M \left( - \frac{1}{ \sigma^2} \right) =
+  \frac{1}{ \sigma^2}.$$
+Формируем величину
+$$ \frac{1}{nI \left( \theta \right) } =
+  \frac{ \sigma^2}{n} =
+  D \theta^*,$$
+значит, оценка эффективная.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

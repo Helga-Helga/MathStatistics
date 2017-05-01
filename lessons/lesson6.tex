@@ -241,6 +241,68 @@ $$ \frac{P \left( X_1 = 0 \right) P \left( \sum \limits_{i = 2}^n X_i = ny \righ
 $$ \left( \frac{n - 1}{n} \right)^{n \overline{X}}.$$
 Когда $n \to \infty $, эта оценка стремится к $e^{- \overline{X}}$.
 
+\subsubsection*{6.5}
+
+\textit{Задание.}
+Пользуясь неравенством Рао-Крамера, выясните,
+является ли эффективной оценка $ \overline{X}$ параметра $p$ распределения Бернулли.
+
+\textit{Решение.} $X_1, \dotsc, X_n$ --- выборка.
+
+Несмещённой оценкой для параметра является $ \hat{p} = \overline{X}$.
+Формально в этом убедимся.
+Итак,
+$$M \hat{p} =
+  M \overline{X} =
+  \frac{1}{n} \cdot M \sum \limits_{i = 1}^n X_i.$$
+Все случайные величины одинаково распределены, следовательно, все математические ожидания совпадают
+$$ \frac{1}{n} \cdot M \sum \limits_{i = 1}^n X_i =
+  \frac{1}{n} \cdot n MX_1 =
+  MX_1 =
+  p.$$
+
+Ищем дисперсию
+$$D \hat{p} =
+  D \overline{X} =
+  D \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
+  \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i.$$
+Дисперсии равны.
+Случайные величины независимы, следовательно, дисперсия суммы --- это сумма дисперсий
+$$ \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i =
+  \frac{1}{n^2} \cdot nDX_1 =
+  \frac{1}{n} \cdot p \left( 1 - p \right).$$
+
+Сначала нужна функция правдоподобия для одного наблюдения
+$$L \left( X_1, p \right) =
+  p^{X_1} \left( 1 - p \right)^{1 - X_1}.$$
+Логарифмируем
+$ln \, L \left( X_1, p \right) =
+  X_1 \, ln \, p + \left( 1 - p \right) ln \left( 1 - p \right) $.
+Ищем первую производную
+$$ \frac{ \partial }{ \partial p} ln \, L \left( X_1, p \right) =
+  \frac{X_1}{p} - \frac{1 - X_1}{1 - p}.$$
+Ищем вторую производную
+$$ \frac{ \partial^2}{ \partial p^2} ln \, L \left( X_1, p \right) =
+  - \frac{X_1}{p^2} - \frac{1 - X_1}{ \left( 1 -p \right)^2}.$$
+Пишем количество информации.
+Берём математическое ожидание со знаком <<минус>>
+$$I \left( \theta \right) =
+  M \left( \frac{X_1}{p} + \frac{1 - X_1}{ \left( 1 - p \right)^2} \right) =
+  \frac{1}{p} + \frac{1 - p}{ \left( 1 - p \right)^2} =
+  \frac{1}{p} + \frac{1}{1 - p}.$$
+Приводим к общему знаменателю
+$$ \frac{1}{p} + \frac{1}{1 - p} =
+  \frac{1 - p + p}{p \left( 1 - p \right) } =
+  \frac{1}{p \left( 1 - p \right) }.$$
+
+Ищем обратную величину, делённую на $n$.
+Получаем
+$$ \frac{1}{nI \left( \theta \right) } =
+  \frac{1}{n \left[ p \left( 1 - p \right) \right]^{-1}} =
+  \frac{p \left( 1 - p \right) }{n} =
+  D \hat{p},$$
+следовательно, $ \hat{p}$ --- эффективная оценка параметра $p$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

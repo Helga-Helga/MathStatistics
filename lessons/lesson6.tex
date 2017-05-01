@@ -184,6 +184,63 @@ $$1 - \frac{n - 1}{n} \cdot \frac{F \left( y \right) }{F \left( z \right) } =
 $$f \left( X_{ \left( n \right) } \right) =
   1 - \frac{n - 1}{n} \cdot \frac{y}{X_{ \left( n \right) }}.$$
 
+\subsubsection*{6.4}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Пуассона с параметром $ \lambda $.
+В качестве оценки параметра $ \theta = e^{- \lambda }$ рассматривают статистику
+$ \hat{ \theta } =
+  \mathbbm{1} \left\{ X_1 = 0 \right\} $.
+Вычислите смещение $b_n \left( \theta \right) = M \hat{ \theta } - \theta $
+этой оценки и улучшите её усреднением по достаточной статистике для параметра
+$ \theta $ статистикой.
+
+\textit{Решение.} Неизвестный параметр --- это $e^{- \lambda } = \theta $.
+
+Ищем смещение
+$M \hat{ \theta } =
+  M \mathbbm{1} \left\{ X_1 = 0 \right\} =
+  P \left\{ X_1 = 0 \right\} =
+  e^{- \lambda } =
+  \theta $,
+значит, смещение $b_n \left( \theta \right) = 0$.
+Это несмещённая оценка.
+
+Займёмся поиском достаточной статистики
+$$L \left( \vec{X}, \lambda \right) =
+  \prod \limits_{i = 1}^n \frac{ \lambda^{X_i}}{X_i!} \cdot e^{- \lambda } =
+  \frac{ \lambda^{n \overline{X}}}{X_1! \dotsc X_n!} \cdot e^{- \lambda n} =
+  \frac{1}{X_1! \dotsc X_n!} \cdot \lambda^{n \overline{X}} e^{- \lambda n}.$$
+
+Вывод: $ \overline{X}$ --- достаточная статистика для $ \lambda $, а значит и для $ \theta $,
+как функции от $ \lambda $.
+
+Нудно найти условное математическое ожидание
+$M \left( \hat{ \theta } \; \middle| \; \overline{X} \right) =
+  f \left( \overline{X} \right) $.
+Начнём с
+$f \left( y \right) =
+  M \left( \hat{ \theta } \; \middle| \; \overline{X} = y \right) =
+  M \left( \mathbbm{1} \left\{ X_1 = 0 \right\} \; \middle| \; \overline{X} = y \right) $.
+Индикатор --- это дискретная случайная величина, которая принимает 2 значения
+$$M \left( \mathbbm{1} \left\{ X_1 = 0 \right\} \; \middle| \; \overline{X} = y \right) =
+  1 \cdot P \left( X_1 = 0 \; \middle| \; \overline{X} = y \right) =
+  \frac{P \left( X_1 = 0, \sum \limits_{i = 1}^n X_i = ny \right) }{P \left( \sum \limits_{i = 1}^n X_i = ny \right) }.$$
+В числителе стоит случайное событие $X_1 = 0$.
+Оно означает, что суммировать можно от двух
+$$ \frac{P \left( X_1 = 0, \sum \limits_{i = 1}^n X_i = ny \right) }{P \left( \sum \limits_{i = 1}^n X_i = ny \right) } =
+  \frac{P \left( X_1 = 0 \right) P \left( \sum \limits_{i = 2}^n X_i = ny \right) }{P \left( \sum \limits_{i = 1}^n X_i = ny \right) }.$$
+Сумма независимых пуассоновских случайных величин имеет распределение Пуассона с параметром,
+который равен сумме параметров
+$$ \frac{P \left( X_1 = 0 \right) P \left( \sum \limits_{i = 2}^n X_i = ny \right) }{P \left( \sum \limits_{i = 1}^n X_i = ny \right) } =
+  \frac{e^{- \lambda } \cdot \frac{ \left( \left( n - 1 \right) \lambda \right)^{ny}}{ \left( ny \right)!} \cdot e^{- \lambda \left( n - 1 \right) }}{ \frac{ \left( n \lambda \right)^{ny}}{ \left( ny \right)!} \cdot e^{- \lambda n}} =
+  \left( \frac{n - 1}{n} \right)^{ny}.$$
+
+Чтобы записать ответ, нужно вместо $y$ записать $ \overline{X}$.
+Получим
+$$ \left( \frac{n - 1}{n} \right)^{n \overline{X}}.$$
+Когда $n \to \infty $, эта оценка стремится к $e^{- \overline{X}}$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

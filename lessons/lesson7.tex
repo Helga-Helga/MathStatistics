@@ -1,0 +1,76 @@
+\addcontentsline{toc}{chapter}{Занятие 7. Гауссовые системы}
+\chapter*{Занятие 7. Гауссовые системы}
+
+\addcontentsline{toc}{section}{Контрольные вопросы и задания}
+\section*{Контрольные вопросы и задания}
+
+\subsubsection*{Приведите определение гауссового случайного вектора,
+                ковариационной матрицы гауссового случаайного вектора.}
+
+$ \vec{ \xi } = \left( \xi_1, \dotsc, \xi_n \right) $ --- гауссовый, если
+$$ \forall \alpha_1, \dotsc, \alpha_n: \,
+  \sum \limits_{k = 1}^n \alpha_k \xi_k$$
+--- гауссовская случайная величина.
+
+$A = cov_{ \vec{ \xi } \vec{ \xi }}, \,
+  A_{ij} =
+  cov \left( \xi_i, \xi_j \right) =
+  M \left( \xi_i \xi_j \right) - M \xi_i M \xi_j$.
+
+\subsubsection*{Какими свойствами владеет ковариационная матрица?}
+
+$A_{ii} = D \xi_i \geq 0$ --- на диагонале --- неотрицательные числа.
+
+Матрица симметрична: $A_{ij} = A_{ji}$.
+
+Матрица неотрицательно определена.
+
+\subsubsection*{Как изменяются характеристики гауссового случайного
+                вектора при действии на него линейного оператора?}
+Пускай $ \vec{ \xi }$ случайный $n$-элементный вектор,
+имеющий гауссовское распределение с параметрами $ \vec{a}$ и
+$A, \,
+  \vec{ \xi } \sim N \left( \vec{a}, A \right), \,
+  \vec{b} \in \mathbb{R}^m, \,
+  T \in \mathbb{R}^{m \times n}$.
+Тогда $T \vec{ \xi } + \vec{b} \sim N \left( T \vec{a} + \vec{b}, TAT^* \right) $.
+
+\subsubsection*{При каких условиях гауссовский случайный вектор имеет плотность распределения?}
+
+Плотность можно записать только в случае, когда $det \, A \neq 0$.
+
+\subsubsection*{Запишите плотность распределения гауссового случайного вектора.}
+
+$$p_{ \vec{ \xi }} \left( \vec{x} \right) =
+  \left( \frac{1}{ \sqrt{2 \pi }} \right)^n \cdot \frac{1}{ \sqrt{det \, A}} \cdot
+  e^{- \frac{1}{2} \left[ \vec{x} - \vec{a}, A^{-1} \left( \vec{x} - \vec{a} \right) \right] }.$$
+
+\subsubsection*{Сформулируйте теорему про нормальную корреляцию.}
+
+Есть гауссоский вектор $ \vec{ \xi } \circ \vec{ \eta }$ с ненулевой ковариацией
+$cov_{ \vec{ \xi } \circ \vec{ \eta }, \vec{ \xi } \circ \vec{ \eta }} \neq 0$.
+
+Определитель ковариационной матрицы вектора $ \eta $ положителен
+$$det \, cov_{ \vec{ \eta }, \vec{ \eta }} \geq
+  0.$$
+
+Тогда вектор $ \vec{ \xi }$ при условии $ \vec{ \eta }$ ---
+гауссовский случайный вектор
+$$ \left. \vec{ \xi} \right| \vec{ \eta } \sim
+  N \left( \vec{m}, D \right).$$
+
+Параметры $ \vec{m}$ и $D$ имеют следующий вид
+$$ \vec{m} =
+  M \vec{ \xi } +
+  cov_{ \vec{ \xi }, \vec{ \eta }}
+    cov_{ \vec{ \eta }, \vec{ \eta }^{-1}} \left( \eta - M \vec{ \eta } \right), \,
+  D =
+  cov_{ \vec{ \xi }, \vec{ \xi }} -
+  cov_{ \vec{ \xi }, \vec{ \eta }} cov_{ \vec{ \eta }, \vec{ \eta }}^{-1}
+    cov_{ \vec{ \eta }, \vec{ \xi }}.$$
+
+\addcontentsline{toc}{section}{Аудиторные задачи}
+\section*{Аудиторные задачи}
+
+\addcontentsline{toc}{section}{Домашнее задание}
+\section*{Домашнее задание}

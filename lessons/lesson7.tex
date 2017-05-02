@@ -145,5 +145,133 @@ $$ \vec{m} =
   то есть может быть ковариационной матрицей гауссового случайного вектора.
 \end{enumerate}
 
+\subsubsection*{7.5}
+
+\textit{Задание.}
+Пусть $ \xi = \left( \xi_1, \xi_2, \xi_3 \right) $ ---
+гауссовый вектор с математическим ожиданием $ \left( -1, 0, 2 \right) $
+и матрицей ковариаций из задачи 7.3 e).
+\begin{enumerate}[label=\alph*)]
+  \item Выпишите плотность распределения и характеристическую фукнцию для
+  $ \xi_1, \,
+    \left( \xi_1, \xi_2 \right), \,
+    \xi $.
+  \item Найдите матрицу ковариаций и математическое ожидание для вектора
+  $ \left( \eta_1, \eta_2, \eta_3 \right) $,
+  где $ \eta_1 = \xi_1 - \xi_2, \, \eta_2 = \xi_1 + 2 \xi_2 + 3 \xi_3, \, \eta_3 = \xi_3$.
+  \item Вычислите $M \eta_2^2, \, M \eta_2^3, \, M \eta_2^4$.
+  \item Выясните, являются ли случайные величины $ \eta_1$ и $ \eta_2$ независимыми.
+  \item Найдите
+  $M \left( \xi \; \middle| \; \left( \xi_1, \xi_3 \right) \right), \,
+    M \left( \xi_1 \; \middle| \; \xi_2 \right) $.
+\end{enumerate}
+
+\textit{Решение.}
+$$A =
+  \begin{bmatrix}
+    1 & 2 & 1 \\
+    2 & 6 & -1 \\
+    1 & -1 & 12
+  \end{bmatrix}$$
+
+\begin{enumerate}[label=\alph*)]
+  \item Начинаем со случайной величины $ \xi_1$.
+  Запишем её как линейную комбинацию гауссового вектора
+  $ \xi_1 =
+    1 \cdot \xi_1 + 0 \cdot \xi_2 + 0 \cdot \xi_3$.
+  Следовательно, $ \xi_1 \sim N \left( -1, 1 \right) $, где $-1$ --- это первый элемент $ \vec{a}$,
+  а 1 --- элемент $a_{11}$ матрицы ковариации.
+
+  Записываем плотность
+  $$p_{ \xi_1} \left( x \right) =
+    \frac{1}{ \sqrt{2 \pi }} \cdot e^{- \frac{ \left( x + 1 \right)^2}{2}}$$
+  и характеристическую функцию $ \varphi_{ \xi_1} \left( t \right) = e^{-it - \frac{t^2}{2}}$.
+
+  Переходим к вектору $ \left( \xi_1, \xi_2 \right) $.
+  Это гауссовый вектор,
+  потому что произвольная линейная комбинация
+  $ \lambda_1 \xi_1 + \lambda_2 \xi_2 = \lambda_1 \xi_1 + \lambda_2 \xi_2 + 0 \cdot \xi_3$ ---
+  это случайная величина, которая должна иметь нормальное распределение.
+  Отсюда следует, что $ \left( \xi_1, \xi_2 \right) = \vec{ \xi }$ --- гауссовый вектор.
+
+  $M \vec{ \xi } = \left( -1, 0 \right) $, а ковариационная матрица данного вектора ---
+  это сужение исходной ковариационной матрицы на соответствующие вектора
+  $$R =
+    \begin{bmatrix}
+      1 & 2 \\
+      2 & 6
+    \end{bmatrix}.$$
+
+  Записываем характеристическую функцию и плотность.
+  Матрица коавриации невырождена, так что плотность может записать
+  $$p_{ \left( \xi_1, \xi_2 \right) } \left( \vec{x} \right) =
+    \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{2}} \cdot
+    e^{- \frac{1}{2} \left( x_1 + 1 \, x_2 \right) \cdot
+      \begin{bmatrix}
+        3 & -1 \\
+        -1 & \frac{1}{2}
+      \end{bmatrix} \cdot
+      \begin{bmatrix}
+        x_1 + 1 \\
+        x_2
+      \end{bmatrix}
+    }.$$
+  Определитель этой матрицы $det \, R = 6 - 4 = 2$.
+  Обратная матрица
+  $$R^{-1} =
+    \frac{1}{2} \cdot
+    \begin{bmatrix}
+      6 & -2 \\
+      -2 & 1
+    \end{bmatrix} =
+    \begin{bmatrix}
+      3 & -1 \\
+      -1 & \frac{1}{2}
+    \end{bmatrix}.$$
+  Подставим полученное в выражение для плотности
+  \begin{equation*}
+    \begin{split}
+      \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{2}} \cdot
+      e^{- \frac{1}{2} \left( x_1 + 1 \, x_2 \right) \cdot
+        \begin{bmatrix}
+          3 & -1 \\
+          -1 & \frac{1}{2}
+        \end{bmatrix} \cdot
+        \begin{bmatrix}
+          x_1 + 1 \\
+          x_2
+        \end{bmatrix}
+      } = \\
+      = \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{2}} \cdot
+      exp \left\{
+      - \frac{1}{4} \left( x_1 + 6 - 2 \cdot x_2 \, -2x_1 - 2 + 2x_2 \right) \cdot
+        \begin{bmatrix}
+          x_1 + 1 \\
+          x_2
+        \end{bmatrix}
+      \right\} = \\
+      = \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{2}} \cdot
+      exp \left\{
+        - \frac{1}{4} \cdot
+        \left[
+          6 \, x_1 \left( x_1 + 1 \right) - 2x_1 \left( x_1 - 1 \right) - 2x_1 x_2 + 2x_2^2
+        \right]
+      \right\}.
+    \end{split}
+  \end{equation*}
+
+  Для вектора $ \xi $ математическое ожидание равно $ \left( -1, 0, 2 \right) $,
+  а матрица ковариаций совпадает с исходной.
+  \item Найдите матрицу ковариаций и математическое ожидание для вектора
+  $ \left( \eta_1, \eta_2, \eta_3 \right) $,
+  где $ \eta_1 = \xi_1 - \xi_2, \, \eta_2 = \xi_1 + 2 \xi_2 + 3 \xi_3, \, \eta_3 = \xi_3$.
+  \item Вычислите $M \eta_2^2, \, M \eta_2^3, \, M \eta_2^4$.
+  \item Выясните, являются ли случайные величины $ \eta_1$ и $ \eta_2$ независимыми.
+  \item Найдите
+  $M \left( \xi \; \middle| \; \left( \xi_1, \xi_3 \right) \right), \,
+    M \left( \xi_1 \; \middle| \; \xi_2 \right) $.
+\end{enumerate}
+
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

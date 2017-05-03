@@ -465,16 +465,16 @@ $$ln \, L \left( X_1, \theta \right) =
   - ln \, \theta - \frac{X_1}{ \theta }.$$
 
 Берём первую производную от логарифма функции прадоподобия
-$$ \frac{ \partial L}{ \partial \theta } =
+$$ \frac{ \partial ln \, L}{ \partial \theta } =
   - \frac{1}{ \theta } + \frac{X_1}{ \theta^2}.$$
 
 Берём вторую производную от логарифма функции правдоподобия
-$$ \frac{ \partial ^2 L}{ \partial \theta^2} =
+$$ \frac{ \partial ^2 ln \, L}{ \partial \theta^2} =
   \frac{1}{ \theta^2} - \frac{2X_1}{ \theta^3}.$$
 
 Ищем количество информации
 $$I \left( \theta \right) =
-  -M \left( - \frac{1}{ \theta^2} - \frac{2X_1}{ \theta^3} \right) =
+  -M \left( \frac{1}{ \theta^2} - \frac{2X_1}{ \theta^3} \right) =
   - \frac{1}{ \theta^2} + \frac{2}{ \theta^3} \cdot MX_1 =
   - \frac{1}{ \theta^2} + \frac{2}{ \theta^2} =
   \frac{1}{ \theta^2}.$$
@@ -556,3 +556,118 @@ $$b_n \left( \theta \right) =
   M \hat{ \theta } - \theta =
   e^{- \lambda } - e^{- \lambda } =
   0.$$
+
+\subsubsection*{6.12}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выбока из распределения с плотностью
+$f_{ \theta } \left( y \right) = \theta y^{ \theta - 1}, \,
+  y \in \left( 0, 1 \right) $,
+где $ \theta > 0$.
+Докажите, что статистика $- \overline{ln \, X}$ несмещённая и эффективная оценка для параметра
+$$ \tau =
+  \frac{1}{ \theta }.$$
+
+\textit{Решение.}
+$$M \left( - \overline{ln \, X} \right) =
+  M \left( - \frac{1}{n} \sum \limits_{i = 1}^n ln \, X_i \right) =
+  - \frac{1}{n} \cdot M \sum \limits_{i = 1}^n ln \, X_i =
+  - \frac{1}{n} \cdot nM \, ln \, X_1.$$
+Сократим константы
+$$- \frac{1}{n} \cdot nM \, ln \, X_1 =
+  -M \, ln \, X_1.$$
+Найдём математическое ожидание логарифма случайной величины выборки
+$$M \, ln \, X_1 =
+  \int \limits_0^1 ln \, x \cdot \theta x^{ \theta - 1} dx =
+  \theta \int \limits_0^1 x^{ \theta - 1} ln \, x dx.$$
+Возьмём интеграл по частям
+$$u = ln \, x, \,
+  dv = x^{ \theta - 1} dx, \,
+  du = \frac{dx}{x}, \,
+  v = \frac{x^{ \theta }}{ \theta },$$
+получим
+$$ \theta \int \limits_0^1 x^{ \theta - 1} ln \, x dx =
+  \theta \cdot \left. ln \, x \cdot \frac{x^{ \theta }}{ \theta } \right|_0^1 -
+  \theta \int \limits_0^1 \frac{x^{ \theta }}{ \theta } \cdot \frac{dx}{x} =
+  - \int \limits_0^1 x^{ \theta - 1} dx =
+  - \left. \frac{x^{ \theta }}{ \theta } \right|_0^1 =
+  - \frac{1}{ \theta }.$$
+Запишем через параметр
+$$- \frac{1}{ \theta } =
+  - \tau.$$
+Подставляем найденное значение математического ожидания в математическое ожидание оценки
+$-M \, ln \, X_1 =
+  - \left( - \tau \right) =
+  \tau $,
+значит, имеет несмещённость.
+
+Теперь ищем дисперсию
+$$D \left( - \overline{ln \, X} \right) =
+  \frac{1}{n^2} \sum \limits_{i = 1}^n D \, ln \, X_i =
+  \frac{1}{n} \left[ M \left( kn \, X_1 \right)^2 - \left( M \, ln \, X_1 \right)^2 \right].$$
+Вычислим первое слагаемое из скобки
+$$M \, ln^2 X_1 =
+  \int \limits_0^1 ln^2 x \cdot \theta x^{ \theta - 1} dx =
+  \theta \int \limits_0^1 x^{ \theta - 1} ln^2 xdx.$$
+Возьмём интеграл по частям
+$$u = ln^2 x, \,
+  dv = x^{ \theta - 1} dx, \,
+  du = 2ln \, x \cdot \frac{dx}{x}, \,
+  v = \frac{x^{ \theta }}{ \theta }.$$
+Получим
+$$ \theta \int \limits_0^1 x^{ \theta - 1} ln^2 xdx =
+  \theta \cdot \left. ln^2 x \cdot \frac{x^{ \theta }}{ \theta } \right|_0^1 -
+  \theta \int \limits_0^1 \frac{x^{ \theta }}{ \theta } \cdot 2ln \, x \cdot \frac{dx}{x}.$$
+Первое слагаемое зануляется, во втором сокращаем $ \theta $ и выносим двойку за знак интеграла
+$$ \theta \int \limits_0^1 \frac{x^{ \theta }}{ \theta } \cdot 2ln \, x \cdot \frac{dx}{x} =
+  -2 \int \limits_0^1 x^{ \theta - 1} ln \, xdx.$$
+Возьмём интеграл по частям
+$$u = ln \, x, \,
+  dv = x^{ \theta - 1} dx, \,
+  du = \frac{dx}{x}, \,
+  v = \frac{x^{ \theta }}{ \theta }.$$
+Получим
+$$-2 \int \limits_0^1 x^{ \theta - 1} ln \, xdx =
+  -2 \cdot \left. ln \, x \cdot \frac{x^{ \theta }}{ \theta } \right|_0^1 +
+  2 \int \limits_0^1 \frac{x^{ \theta }}{ \theta } \cdot \frac{dx}{x} =
+  \frac{2}{ \theta } \int \limits_0^1 x^{ \theta - 1} dx =
+  \frac{2}{ \theta^2}$$.
+Дисперсия оценки равна
+$$ \frac{1}{n} \left[ M \left( kn \, X_1 \right)^2 - \left( M \, ln \, X_1 \right)^2 \right] =
+  \frac{1}{n} \left( \frac{2}{ \theta^2} - \frac{1}{ \theta^2} \right) =
+  \frac{1}{n \theta^2} =
+  \frac{ \tau^2}{n}.$$
+
+Ищем количество информации. Начинаем с функции правдоподобия
+$$L \left( X_1, \tau \right) =
+  \frac{1}{ \tau } \cdot X_1^{ \frac{1}{ \tau - 1}} \cdot
+  \mathbbm{1} \left\{ X_1 \in \left( 0, 1 \right) \right\}.$$
+Пусть $X_1 \in \left( 0, 1 \right) $.
+Тогда берём логарифм
+$$ln \, L \left( X_1, \tau \right) =
+  -ln \, \tau + \left( \frac{1}{ \tau } - 1 \right) ln \, X_1 =
+  -ln \, \tau + \frac{1}{ \tau } \cdot ln \, X_1 - ln \, X_1.$$
+
+Берём первую производную от логарифма функции правдоподобия
+$$ \frac{ \partial ln \, L \left( X_1, \tau \right) }{ \partial \tau } =
+  - \frac{1}{ \tau } - \frac{1}{ \tau^2} \cdot ln \, X_1.$$
+
+Берём вторую производную от логарифма функции правдоподобия
+$$ \frac{ \partial^2 ln \, L \left( X_1, \tau \right) }{ \partial \tau^2} =
+  \frac{1}{ \tau^2} + \frac{2}{ \tau^3} \cdot ln \, X_1.$$
+
+Ищем количество информации
+$$I \left( \tau \right) =
+  -M \left( \frac{1}{ \tau^2} + \frac{2}{ \tau^3} \cdot ln \, X_1 \right) =
+  - \frac{1}{ \tau^2} - \frac{2}{ \tau^3} \cdot M \, ln \, X_1 =
+  - \frac{1}{ \tau^2} + \frac{2}{ \tau^3} \cdot \tau =
+  \frac{1}{ \tau^2}.$$
+
+Ищем обратную величину к количеству информации и делим на $n$.
+Получим
+$$ \frac{1}{nI \left( \tau \right) } =
+  \frac{ \tau^2}{n} =
+  D \left( - \overline{ln \, X} \right).$$
+
+Значит, $- \overline{ln \, X}$ --- эффективная оценка.

@@ -394,7 +394,7 @@ $$D \theta^* =
   D \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
   \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i.$$
 Воспользуемся независимостью случайных величин в выборке
-$$ \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i -
+$$ \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i =
   \frac{1}{n^2} \cdot nDX_1.$$
 Случайные величины в выборке одинаково распределены, значит
 $$ \frac{1}{n^2} \cdot nDX_1 =
@@ -671,3 +671,105 @@ $$ \frac{1}{nI \left( \tau \right) } =
   D \left( - \overline{ln \, X} \right).$$
 
 Значит, $- \overline{ln \, X}$ --- эффективная оценка.
+
+\subsubsection*{6.13}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из распределения $N \left( \mu, \theta \right) $ с неизвестным параметром $ \theta $
+и известным математическим ожиданием.
+Докажите, что статистика
+$$ \theta^* =
+  \frac{1}{n} \sum \limits_{i = 1}^n \left( X_i - \mu \right)^2$$
+является эффективной по Рао-Крамеру оценкой параметра $ \theta $.
+
+\textit{Решение.} Проверим несмещённость
+$$M \theta^* =
+  M \left[ \frac{1}{n} \sum \limits_{i = 1}^n \left( X_i - \mu \right)^2 \right] =
+  \frac{1}{n} \cdot M \sum \limits_{i = 1}^n \left( X_i - \mu \right)^2 =
+  \frac{1}{n} \cdot nM \left( X_1 - \mu \right)^2.$$
+Сократим $n$ и раскроем квадрат
+$$ \frac{1}{n} \cdot nM \left( X_1 - \mu \right)^2 =
+  M \left( X_1^2 - 2\mu X_1 + \mu^2 \right) =
+  MX_1^2 - 2 \mu MX_1 + \mu^2.$$
+По свойствам дисперсии
+$$MX_1^2 - 2 \mu MX_1 + \mu^2 =
+  DX_1 + \left( MX_1 \right)^2 - 2 \mu MX_1 + \mu^2 =
+  \theta + \mu^2 - 2 \mu \cdot \mu + \mu^2 =
+  \theta.$$
+
+Несмещённость есть.
+Ищем дисперсию
+$$D \theta^* =
+  D \left[ \frac{1}{n} \sum \limits_{i = 1}^n \left( X_i - \mu \right)^2 \right] =
+  \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n \left( X_i - \mu \right)^2 =
+  \frac{1}{n} \cdot D \left( X_1 - \mu \right)^2.$$
+Вычислим отдельно дисперсию
+$D \left( X_1 - \mu \right)^2 =
+  M \left( X_1 - \mu \right)^4 - \left[ M \left( X_1 - \mu \right)^2 \right]^2$.
+Случайная величина $X_1 - \mu $ имеет распределение $N \left( 0, \theta \right) $.
+Если X имеет нормальное распределение $N \left( 0, \sigma^2 \right) $,
+то для неё существуют (конечные) моменты при всех p с действительной частью больше $-1$.
+Для неотрицательных целых p, центральные моменты таковы
+$$MX^p =
+  \begin{cases}
+    0, \qquad p = 2n + 1, \\
+    \sigma^p \left( p - 1 \right)!!, \qquad p = 2n.
+  \end{cases}$$
+В данной задаче $ \sigma^2 = \theta $, следовательно $ \sigma = \sqrt{ \theta }$.
+Подставим значения математических ожиданий четвёртого и второго моментов
+$$M \left( X_1 - \mu \right)^4 - \left[ M \left( X_1 - \mu \right)^2 \right]^2 =
+  \left( \sqrt{ \theta } \right)^4 \left( 4 - 1 \right)!! -
+  \left[ \left( \sqrt{ \theta } \right)^2 \left( 2 - 1 \right)!! \right]^2.$$
+Упростим
+$$ \left( \sqrt{ \theta } \right)^4 \left( 4 - 1 \right)!! -
+  \left[ \left( \sqrt{ \theta } \right)^2 \left( 2 - 1 \right)!! \right]^2 =
+  3!! \theta^2 - \theta^2 =
+  3 \theta^2 - \theta^2 =
+  2 \theta^2.$$
+Тогда дисперсия оценки равна
+$$ \frac{1}{n} \cdot D \left( X_1 - \mu \right)^2 =
+  \frac{2 \theta^2}{n}.$$
+
+Переходим к функции правдоподобия и оценке количества информации.
+Смотрим на одно наблюдение
+$$L \left( X_1, \theta \right) =
+  \frac{1}{ \sqrt{2 \pi \theta }} \cdot e^{- \frac{ \left( X_1 - \mu \right)^2}{2 \theta }}.$$
+
+Логарифмируем
+$$ln \, L \left( X_1, \theta \right) =
+  - \frac{1}{2} \cdot ln \left( 2 \pi \theta \right) -
+  \frac{ \left( X_1 - \mu \right)^2}{2 \theta } =
+  - \frac{1}{2} \cdot ln \left( 2 \pi \right) - \frac{1}{2} \cdot ln \theta -
+  \frac{ \left( X_1 - \mu \right)^2}{2 \theta }.$$
+
+Ищем первую производную
+$$ \frac{ \partial \, ln \, L \left( X_1, \theta \right) }{ \partial \theta } =
+  - \frac{1}{2 \theta } + \frac{ \left( X_1 -  \mu \right)^2}{2 \theta^2}.$$
+
+Ищем вторую производную
+$$ \frac{ \partial^2 ln \, L \left( X_1, \theta \right) }{ \partial \theta^2} =
+  \frac{1}{2 \theta^2} - \frac{ \left( X_1 - \mu \right)^2}{ \theta^3}.$$
+
+Таким образом,
+$$I \left( \theta \right) =
+  -M \left( \frac{1}{2 \theta^2} - \frac{ \left( X_1 - \mu \right)^2}{ \theta^3} \right) =
+  - \frac{1}{2 \theta^2} + \frac{1}{ \theta^3} \left( MX_1^2 - 2 \mu MX_1 + \mu^2 \right).$$
+По свойствам дисперсии
+$$- \frac{1}{2 \theta^2} + \frac{1}{ \theta^3} \left( MX_1^2 - 2 \mu MX_1 + \mu^2 \right) =
+  - \frac{1}{2 \theta^2} +
+  \frac{1}{ \theta^3} \left( DX_1 + \left( MX_1 \right)^2 - 2 \mu \mu + \mu^2 \right).$$
+Подставим значение математического ожидания и дисперсии
+$$- \frac{1}{2 \theta^2} +
+  \frac{1}{ \theta^3} \left( DX_1 + \left( MX_1 \right)^2 - 2 \mu \mu + \mu^2 \right) =
+  - \frac{1}{2 \theta^2} + \frac{1}{ \theta^3} \left( \theta + \mu^2 - 2 \mu^2 + \mu^2 \right).$$
+Упростим
+$$- \frac{1}{2 \theta^2} + \frac{1}{ \theta^3} \left( \theta + \mu^2 - 2 \mu^2 + \mu^2 \right) =
+  - \frac{1}{2 \theta^2} + \frac{1}{ \theta^2} =
+  \frac{1}{2 \theta^2}.$$
+
+Формируем величину
+$$ \frac{1}{nI \left( \theta \right) } =
+  \frac{2 \theta^2}{n} =
+  D \theta^*,$$
+значит, оценка эффективная.

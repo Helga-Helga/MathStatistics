@@ -203,7 +203,7 @@ $$A =
     \end{bmatrix}.$$
 
   Записываем характеристическую функцию и плотность.
-  Матрица коавриации невырождена, так что плотность может записать
+  Матрица коавриации невырождена, так что плотность можем записать
   $$p_{ \left( \xi_1, \xi_2 \right) } \left( \vec{x} \right) =
     \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{2}} \cdot
     e^{- \frac{1}{2} \left( x_1 + 1 \, x_2 \right) \cdot
@@ -232,7 +232,10 @@ $$A =
   \begin{equation*}
     \begin{split}
       \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{2}} \cdot
-      e^{- \frac{1}{2} \left( x_1 + 1 \, x_2 \right) \cdot
+      e^{- \frac{1}{2} \cdot
+        \begin{bmatrix}
+          x_1 + 1 & x_2
+        \end{bmatrix} \cdot
         \begin{bmatrix}
           3 & -1 \\
           -1 & \frac{1}{2}
@@ -244,7 +247,10 @@ $$A =
       } = \\
       = \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{2}} \cdot
       exp \left\{
-      - \frac{1}{4} \left( x_1 + 6 - 2 \cdot x_2 \, -2x_1 - 2 + 2x_2 \right) \cdot
+        - \frac{1}{4} \cdot
+        \begin{bmatrix}
+          x_1 + 6 - 2 \cdot x_2 & -2x_1 - 2 + 2x_2
+        \end{bmatrix} \cdot
         \begin{bmatrix}
           x_1 + 1 \\
           x_2
@@ -364,4 +370,103 @@ $$A =
     0,$$
   значит матрица неотрицательно определённая,
   то есть может быть ковариационной матрицей гауссовского случайного вектора.
+\end{enumerate}
+
+
+\subsubsection*{7.12}
+
+\textit{Задание.}
+Пусть $ \left( \xi_1, \xi_2, \xi_3 \right) $ ---
+гауссовский вектор со средним $ \left( 1, 2, 5 \right) $ и матрицей ковариаций из задачи 7.3 f).
+\begin{enumerate}[label=\alph*)]
+  \item Запишите плотность распределения и характеристическую функцию для вектора
+  $ \left( \xi_1, \xi_2, \xi_3 \right) $.
+  \item Найдите матрицу ковариаций и среднее для вектора $ \left( \eta_1, \eta_2, \eta_3 \right) $,
+  где $ \eta_1 = \xi_1 + \xi_2, \, \eta_2 = \xi_2 + \xi_3, \, \eta_3 = \xi_1 + \xi_3$.
+  \item Выясните, являются ли случайные величины $ \eta_2, \eta_3$ независимыми.
+  \item Найдите условные математические ожидания
+  $$M \left( \xi_2 \; \middle| \; \left( \xi_1, \xi_3 \right) \right), \,
+    M \left( \xi_1 \; \middle| \; \xi_2 \right).$$
+  \item Вычислите $M \eta_1^2, M \eta_1^3, M \eta_1^4$.
+\end{enumerate}
+
+\textit{Решение.}
+\begin{enumerate}[label=\alph*)]
+  \item $ \left( \xi_1, \xi_2, \xi_3 \right) = \vec{ \xi }$ ---
+  гауссовский вектор с математическим ожиданием $M \vec{ \xi } = \left( 1, 2, 5 \right) $
+  и ковариационной матрицей
+  $$A =
+    \begin{bmatrix}
+      1 & 2 & 1 \\
+      2 & 5 & 0 \\
+      1 & 0 & 10
+    \end{bmatrix}.$$
+
+  Записываем характеристическую функцию и плотность.
+
+  $$det \, A =
+    \begin{vmatrix}
+      1 & 2 & 1 \\
+      2 & 5 & 0 \\
+      1 & 0 & 10
+    \end{vmatrix} =
+    1 \cdot
+    \begin{vmatrix}
+      2 & 5 \\
+      1 & 9
+    \end{vmatrix} - 0 \cdot
+    \begin{vmatrix}
+      1 & 2 \\
+      1 & 0
+    \end{vmatrix} + 10 \cdot
+    \begin{vmatrix}
+      1 & 2 \\
+      2 & 5
+    \end{vmatrix} =
+    -5 + 10 \left( 5 - 4 \right) =
+    5.$$
+  Матрица ковариаций невырождена, так что может записать
+  $$p_{ \left( \xi_1, \xi_2, \xi_3 \right) } \left( \vec{x} \right) =
+    \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}}} \cdot \frac{1}{ \sqrt{5}} \cdot
+    e^{- \frac{1}{2} \cdot
+      \begin{bmatrix}
+        x_1 - 1 & x_2 - 2 & x_3 - 5
+      \end{bmatrix} \cdot A^{-1} \cdot
+      \begin{bmatrix}
+        x_1 - 1 \\
+        x_2 - 2 \\
+        x_3 - 5
+      \end{bmatrix}}.$$
+  Найдём обратную матрицу к матрице ковариаций
+  $$A^{-1} =
+    \frac{1}{5} \cdot
+    \begin{vmatrix}
+      50 & -10 & -5 \\
+      -10 & 9 & 2 \\
+      -5 & 2 & 1
+    \end{vmatrix}.$$
+  Перемножив вектора и матрицы в степени экспоненты, получим
+  \begin{equation*}
+    \begin{split}
+      \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}}} \cdot \frac{1}{ \sqrt{5}} \cdot
+      e^{- \frac{1}{2} \cdot
+        \begin{bmatrix}
+          x_1 - 1 & x_2 - 2 & x_3 - 5
+        \end{bmatrix} \cdot A^{-1} \cdot
+        \begin{bmatrix}
+          x_1 - 1 \\
+          x_2 - 2 \\
+          x_3 - 5
+        \end{bmatrix}} = \\
+      = \frac{1}{ \left( 2 \pi \right)^{ \frac{3}{2}} \sqrt{5}} \cdot
+      e^{50x_1^2 + 9x_2^2 + x_3^2 - 40x_1 x_2 - 10x_1 x_3 + 4x_2 x_3 + 30x_1 - 16x_2 - 8x_3 + 21}.
+    \end{split}
+  \end{equation*}
+
+  Запишем характеристическую функцию
+  $$ \varphi_{ \vec{ \xi }} \left( \vec{ \lambda } \right) =
+    exp \left\{
+      i \left( \vec{ \lambda }, M \vec{ \xi } \right) -
+      \frac{1}{2} \cdot \left( A \vec{ \lambda }, \vec{ \lambda }
+    \right) \right\}.$$
 \end{enumerate}

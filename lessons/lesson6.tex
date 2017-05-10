@@ -600,12 +600,12 @@ $$- \frac{1}{ \theta } =
 $-M \, ln \, X_1 =
   - \left( - \tau \right) =
   \tau $,
-значит, имеет несмещённость.
+значит, имеем несмещённость.
 
 Теперь ищем дисперсию
 $$D \left( - \overline{ln \, X} \right) =
-  \frac{1}{n^2} \sum \limits_{i = 1}^n D \, ln \, X_i =
-  \frac{1}{n} \left[ M \left( kn \, X_1 \right)^2 - \left( M \, ln \, X_1 \right)^2 \right].$$
+  \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n \, ln \, X_i =
+  \frac{1}{n} \left[ M \left( ln \, X_1 \right)^2 - \left( M \, ln \, X_1 \right)^2 \right].$$
 Вычислим первое слагаемое из скобки
 $$M \, ln^2 X_1 =
   \int \limits_0^1 ln^2 x \cdot \theta x^{ \theta - 1} dx =
@@ -632,9 +632,9 @@ $$-2 \int \limits_0^1 x^{ \theta - 1} ln \, xdx =
   -2 \cdot \left. ln \, x \cdot \frac{x^{ \theta }}{ \theta } \right|_0^1 +
   2 \int \limits_0^1 \frac{x^{ \theta }}{ \theta } \cdot \frac{dx}{x} =
   \frac{2}{ \theta } \int \limits_0^1 x^{ \theta - 1} dx =
-  \frac{2}{ \theta^2}$$.
+  \frac{2}{ \theta^2}.$$
 Дисперсия оценки равна
-$$ \frac{1}{n} \left[ M \left( kn \, X_1 \right)^2 - \left( M \, ln \, X_1 \right)^2 \right] =
+$$ \frac{1}{n} \left[ M \left( ln \, X_1 \right)^2 - \left( M \, ln \, X_1 \right)^2 \right] =
   \frac{1}{n} \left( \frac{2}{ \theta^2} - \frac{1}{ \theta^2} \right) =
   \frac{1}{n \theta^2} =
   \frac{ \tau^2}{n}.$$

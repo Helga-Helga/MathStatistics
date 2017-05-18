@@ -1225,7 +1225,7 @@ $$ \begin{bmatrix}
   Видим, что это линейная комбинация координат гауссовского вектора, значит,
   вектор действительно гауссовский.
   Чтобы указать распределение, нужны параметры,
-  то есть вектор математических ожиданий и матрицу ковариаций.
+  то есть вектор математических ожиданий и матрица ковариаций.
 
   $$ \vec{ \eta } =
     B \vec{ \xi } =
@@ -1278,7 +1278,7 @@ $$ \begin{bmatrix}
       -1 & 2
     \end{bmatrix}$$
   --- матрица ковариаций;
-  \item скобкоми обозначена упорядоченность
+  \item скобками обозначена упорядоченность
   $ \vec{ \eta } =
     \left(
       \xi_{ \left( 2 \right) } - \xi_{ \left( 1 \right) }, \,
@@ -1297,7 +1297,7 @@ $$ \begin{bmatrix}
   $$p_{B \vec{ \xi }} \left( \vec{x} \right) =
     \frac{1}{det \, B} \cdot p_{ \vec{ \xi }} \left( B^{-1} \vec{x} \right).$$
 
-  Значит, матрица $B$ должны быть только квадратной.
+  Значит, матрица $B$ должна быть только квадратной.
   Найдём плотность вектора
   $ \left(
       \xi_{ \left( 2 \right) } - \xi_{ \left( 1 \right) }, \,
@@ -1432,11 +1432,10 @@ $$ \begin{bmatrix}
       x_3^2 + x_1^2 + 2x_1 x_3 + x_3^2 + x_1^2 + x_2^2 + x_3^2 + 2x_1 x_2 + 2x_2 x_3 + 2x_1 x_3 = \\
       = 3x_3^2 + 2x_1^2 + x_2^2 + 4x_1 x_3 + 2x_1 x_2 + 2x_2 x_3 = \\
       = 3x_3^2 + 2x_3 \left( 2x_1 + x_2 \right) + 2x_1^2 + x_2^2 +2x_1x_2 = \\
-      = \left( \sqrt{3} x_3 + 2x_1 + x_2 \right)^2 - \left( 2x_1 + x_2 \right)^2 + 2x_1^2 + x_2^2 +
-      2x_1 x_2 = \\
-      = \left( \sqrt{3} x_3 + 2x_1 + x_2 \right)^2 - 4x_1^2 + 4x_1 x_2 + 2x_1^2 - x_2^2 + x_2^2 +
-      2x_1 x_2 = \\
-      = \left( \sqrt{3} x_3 + 2x_1 + x_2 \right)^2 - 2x_1^2 + 6x_1 x_2.
+      = \left( \sqrt{3} x_3 + \frac{2x_1 + x_2}{ \sqrt{3}} \right)^2 -
+      \frac{ \left( 2x_1 + x_2 \right)^2}{3} + 2x_1^2 + x_2^2 + 2x_1 x_2 = \\
+      = \left( \sqrt{3} x_3 + \frac{2x_1 + x_2}{ \sqrt{3}} \right)^2 -
+      \frac{2}{3} \left( x_1^2 + x_2^2 + x_1 x_2 \right) .
     \end{split}
   \end{equation*}
 
@@ -1445,13 +1444,15 @@ $$ \begin{bmatrix}
     \begin{split}
       p_{ \left( \xi{ \left( 2 \right) } - \xi_{ \left( 1 \right) }, \xi_{ \left( 3 \right) } - \xi_{ \left( 2 \right) } \right) }
         \left( x_1, x_2 \right) = \\
-      = \frac{6}{2 \pi } \cdot e^{- \frac{1}{2} \left( 6x_1 x_2 - 2x_1^2 \right) } \cdot
+      = \frac{6}{2 \pi } \cdot e^{- \frac{1}{2} \cdot
+      \frac{2}{3} \left( x_1^2 + x_2^2 + x_1 x_2 \right) } \cdot
       \mathbbm{1} \left\{ 0 < x_1 < x_1 + x_2 \right\} \times \\
       \times \int \limits_{ \mathbb{R}}
-        \frac{1}{ \sqrt{2 \pi }} \cdot e^{- \frac{1}{2} \left( \sqrt{3} x_3 + 2x_1 + x_2 \right)^2}
+        \frac{1}{ \sqrt{2 \pi }} \cdot
+        e^{- \frac{1}{2} \left( \sqrt{3} x_3 + \frac{2x_1 + x_2}{ \sqrt{3}} \right)^2}
       dx_3 = \\
-      = \frac{6}{2 \pi \sqrt{3}} \cdot e^{- \frac{1}{2} \left( 6x_1 x_2 - 2x_1^2 \right) } =
-      \frac{ \sqrt{3}}{ \pi } \cdot e^{- \frac{1}{2} \left( 6x_1 x_2 - 2x_1^2 \right) }.
+      = \frac{6}{2 \pi \sqrt{3}} \cdot e^{- \frac{1}{3} \left( x_1^2 + x_2^2 + x_1 x_2 \right) } =
+      \frac{ \sqrt{3}}{ \pi } \cdot e^{- \frac{1}{3} \left(x_1^2 + x_2^2 + x_1 x_2 \right) }.
     \end{split}
   \end{equation*}
 \end{enumerate}

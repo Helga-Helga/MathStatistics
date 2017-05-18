@@ -1456,3 +1456,118 @@ $$ \begin{bmatrix}
     \end{split}
   \end{equation*}
 \end{enumerate}
+
+\subsubsection*{7.14}
+
+\textit{Задание.} Пусть $Z = XY$, где $X$ и $Y$ независимы, $X \sim N \left( 0, 1 \right) $,
+а
+$$P \left( Y = 1 \right) =
+  P \left( Y = -1 \right) =
+  \frac{1}{2}.$$
+Докажите, что $Z \sim N \left( 0, 1 \right) $.
+Найдите распределение пар $ \left( X, Z \right), \, \left( Y, Z \right) $
+и распределение случайной величины $X + Z$.
+Убедитесь в том, что $X$ и $Z$ являются некоррелируемыми, но зависимыми случайными величинами.
+
+\textit{Решение.}
+$$ \varphi_Z \left( t \right) =
+  Me^{itZ} =
+  Me^{itXY} =
+  Me^{-itX} \cdot P \left( Y = -1 \right) + Me^{itX} \cdot P \left( Y = 1 \right).$$
+По определению характеристической функции
+$$Me^{-itX} \cdot P \left( Y = -1 \right) + Me^{itX} \cdot P \left( Y = 1 \right) =
+  \varphi_X \left( -t \right) \cdot \frac{1}{2} + \varphi_X \left( t \right) \cdot \frac{1}{2}.$$
+Подставляем значения характеристической функции
+$$ \varphi_X \left( -t \right) \cdot \frac{1}{2} + \varphi_X \left( t \right) \cdot \frac{1}{2} =
+  e^{- \frac{t^2}{2}} \cdot \frac{1}{2} + e^{- \frac{t^2}{2}} \cdot \frac{1}{2} =
+  e^{- \frac{t^2}{2}},$$
+значит, $Z \sim N \left( 0, 1 \right) $.
+
+Найдём
+$$ \varphi_{ \left( X, Z \right) } \left( t_1, t_2 \right) =
+  Me^{it_1 X + it_2 Z} =
+  Me^{it_1 X + it_2 XY}.$$
+Подставляем возможные значения $Y$ и умножаем полученные выражения на соответствующие вероятности
+$$Me^{it_1 X + it_2 XY} =
+  Me^{it_1X + it_2 X} \cdot P \left( Y = 1 \right) +
+  Me^{it_1 X - it_2 X} \cdot P \left( Y = -1 \right).$$
+Группируем степени экспонент и подставляем значения вероятностей
+\begin{equation*}
+  \begin{split}
+    Me^{it_1X + it_2 X} \cdot P \left( Y = 1 \right) +
+    Me^{it_1 X - it_2 X} \cdot P \left( Y = -1 \right) = \\
+    = Me^{iX \left( t_1 + t_2 \right) } \cdot \frac{1}{2} +
+    Me^{iX \left( t_1 - t_2 \right) } \cdot \frac{1}{2} = \\
+    = \varphi_X \left( t_1 + t_2 \right) \cdot \frac{1}{2} +
+    \varphi_X \left( t_1 - t_2 \right) \cdot \frac{1}{2} =
+    e^{- \frac{ \left( t_1 + t_2 \right)^2}{2}} \cdot \frac{1}{2} +
+    e^{- \frac{ \left( t_1 - t_2 \right)^2}{2}} \cdot \frac{1}{2} = \\
+    = \frac{1}{2} \cdot e^{- \frac{t_1^2 + 2t_1 t_2 + t_2^2}{2}} +
+    \frac{1}{2} \cdot e^{- \frac{t_1^2 - 2t_1 t_2 + t_2^2}{2}} =
+    \frac{1}{2} \cdot e^{- \frac{t_1^2 + t_2^2}{2}} \left( e^{-t_1 t_2} + e^{t_1 t_2} \right).
+  \end{split}
+\end{equation*}
+
+Подобным образом находим
+$$ \varphi_{ \left( Y, Z \right) } \left( t_1, t_2 \right) =
+  Me^{it_1 Y + it_2 Z} =
+  Me^{it_1 Y + it_2 XY}.$$
+Подставляем возможные значения $Y$ и умножаем полученные выражения на соответствующие вероятности
+$$Me^{it_1 Y + it_2 XY} =
+  Me^{-it_1 -it_2 X} \cdot P \left( Y = -1 \right) +
+  Me^{it_1 + it_2 X} \cdot P \left( Y = 1 \right).$$
+Разбиваем экспоненты на две
+\begin{equation*}
+  \begin{split}
+    Me^{-it_1 -it_2 X} \cdot P \left( Y = -1 \right) +
+    Me^{it_1 + it_2 X} \cdot P \left( Y = 1 \right) = \\
+    = M \left( e^{-it_1} e^{-it_2 X} \right) \cdot \frac{1}{2} +
+    M \left( e^{it_1} e^{it_2 X} \right) \cdot \frac{1}{2} = \\
+    = e^{-it_1} \cdot \varphi_X \left( -t_2 \right) \cdot \frac{1}{2} +
+    e^{it_1} \varphi_X \left( t_2 \right) \cdot \frac{1}{2} =
+    e^{-it_1} \cdot e^{- \frac{t_2^2}{2}} \cdot \frac{1}{2} +
+    e^{it_1} \cdot e^{- \frac{t_2^2}{2}} \cdot \frac{1}{2} = \\
+    = \frac{1}{2} \cdot e^{- \frac{t_2^2}{2}} \left( e^{-it_1} + e^{it_1} \right).
+  \end{split}
+\end{equation*}
+
+По такому же принципу находим
+$$ \varphi_{X + Z} \left( t \right) =
+  Me^{it \left( X + Z \right) } =
+  Me^{itX + itZ} =
+  Me^{itX + itXY}.$$
+Подставляем возможные значения $Y$ и умножаем полученные выражения на соответствующие вероятности
+$$Me^{itX + itXY} =
+  Me^{itX - itX} \cdot P \left( Y = -1 \right) + Me^{itX + itX} \cdot P \left( Y = 1 \right).$$
+Приводим подобные в степенях экспонент и подставляем значения вероятностей
+$$Me^{itX - itX} \cdot P \left( Y = -1 \right) + Me^{itX + itX} \cdot P \left( Y = 1 \right) =
+  \frac{1}{2} + Me^{2itX} \cdot \frac{1}{2}.$$
+По определению характеристической функции
+$$ \frac{1}{2} + Me^{2itX} \cdot \frac{1}{2} =
+  \frac{1}{2} + \varphi_X \left( 2t \right) \cdot \frac{1}{2} =
+  \frac{1}{2} + e^{- \frac{4t^2}{2}} \cdot \frac{1}{2} =
+  \frac{1}{2} + e^{-2t^2} \cdot \frac{1}{2} =
+  \frac{1}{2} \left( 1 + e^{-2t^2} \right).$$
+
+Характеристическая функция независимых случайных
+величин равна произведению их характеристических функций.
+
+$ \varphi_X \left( t \right) =
+  Me^{itX} =
+  e^{- \frac{t^2}{2}}$.
+
+Найдём произведение характеристических функций случайных величин
+$$ \varphi_X \left( t \right) \varphi_Z \left( t \right) =
+  e^{- \frac{t^2}{2}} e^{- \frac{t^2}{2}} =
+  e^{-t^2} \neq
+  \frac{1}{2} \left( 1 + e^{-2t^2} \right) =
+  \varphi_{X + Z} \left( t \right),$$
+значит, случайные величины $X$ и $Z$ --- зависимы.
+
+$M \left( XZ \right) =
+  M \left( XXY \right) =
+  M \left( X^2 Y \right) =
+  MX^2 \cdot MY =
+  -1 \cdot \frac{1}{2} + 1 \cdot \frac{1}{2} =
+  0$,
+значит, они некоррелируемые.

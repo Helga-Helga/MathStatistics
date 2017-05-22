@@ -765,6 +765,86 @@ $$ \begin{bmatrix}
   \end{equation*}
 \end{enumerate}
 
+\subsubsection{7.8}
+
+\textit{Задание.}
+Пусть $ \xi $ и $ \eta $ --- независимые стандартные гауссовские случайные величины.
+Докажите,
+что величины $ \xi + \eta $ и $ \xi - \eta $
+являются независимыми гауссовскими случайными величинами.
+
+\textit{Решение.} $ \xi, \eta \sim N \left(0, 1 \right) $ --- независимы.
+Хотим показать, что $ \xi + \eta $ и $ \xi - \eta $ --- независимые.
+Стандартный способ --- через характеристические функции.
+Формируем вектор $ \left( \xi + \eta, \xi - \eta \right)$.
+Должно быть
+$$ \varphi_{ \left( \xi + \eta, \xi - \eta \right) } \left( t_1, t_2 \right) =
+  \varphi_{ \xi + \eta } \left( t_1 \right) \cdot \varphi_{ \xi - \eta } \left( t_2 \right) $$
+тогда и только тогда, когда $ \xi - \eta, \, \xi + \eta $ --- независимы --- критерий.
+
+Заметим, что раз $ \xi, \eta $ --- независимы, то вектор $ \left( \xi, \eta \right) $ ---
+гауссовский.
+Можно убедиться, что $ \left( \xi + \eta, \xi - \eta \right) $ --- гауссовский.
+Тогда достаточно показать, что $Cov \left( \xi + \eta, \xi - \eta \right) = 0$.
+
+Случайная величина $ \xi + \eta $ имеет распределение $N \left( 0, 2 \right) $.
+
+Её характеристическая функция равна $ \varphi_{ \xi + \eta } \left( t_1 \right) = e^{-t_1^2}$.
+
+Случайная величина $ \xi - \eta $ имеет распределение $N \left( 0, 2 \right) $,
+потому что <<минус>> из дисперсии выносится с квадратом.
+
+Она имеет характеристическую функцию $ \varphi_{ \xi - \eta } \left( t_2 \right) = e^{-t_2^2}$.
+
+Значит,
+произведение
+$ \varphi_{ \xi + \eta } \left( t_1 \right) \varphi_{ \xi - \eta } \left( t_2 \right) =
+  e^{- \left( t_1^2 + t_2^2 \right) }$.
+
+Переходим к характеристической функции вектора.
+По опрделению
+$$ \varphi_{ \left( \xi + \eta, \xi - \eta \right) } \left( t_1, t_2 \right) =
+  Me^{i \left[ t_1 \left( \xi + \eta \right) + t_2 \left( \xi - \eta \right) \right] }.$$
+Группируем $ \xi $ и $ \eta $,
+получаем
+$$Me^{i \left[ t_1 \left( \xi + \eta \right) + t_2 \left( \xi - \eta \right) \right] } =
+  Me^{i \left( t_1 \xi + t_1 \eta + t_2 \xi - t_2 \eta \right) } =
+  Me^{i \left[ \xi \left( t_1 + t_2 \right) + \eta \left( t_1 - t_2 \right) \right] }.$$
+Случайные величины $ \xi $ и $ \eta $ --- независимы, значит,
+$$Me^{i \left[ \xi \left( t_1 + t_2 \right) + \eta \left( t_1 - t_2 \right) \right] } =
+  \varphi_{ \xi } \left( t_1 + t_2 \right) \varphi_{ \eta} \left( t_1 - t_2 \right).$$
+Подставляем явный вид.
+Это стандартное нормальное распределение, следовательно,
+$ \varphi_{ \xi } \left( t_1 + t_2 \right) \varphi_{ \eta} \left( t_1 - t_2 \right) =
+  e^{- \frac{ \left( t_1 + t_2 \right)^2}{2}} e^{- \frac{ \left( t_1 - t_2 \right)^2}{2}} =
+  e^{- \left( t_1^2 + t_2^2 \right) }$.
+
+Случайный вектор $ \left( \xi, \eta \right) $ --- гауссовкий,
+потому что
+$$ \forall \alpha, \beta \,
+  \alpha \xi + \beta \eta \sim N \left( 0, \alpha^2 + \beta^2 \right) $$
+--- нормальное распределение.
+Отсюда следует, что $ \left( \xi + \eta, \xi - \eta \right) $ --- гауссовский,
+потому что
+$$ \forall \alpha, \beta \,
+  \alpha \left( \xi + \eta \right) + \beta \left( \xi - \eta \right) =
+  \alpha \xi + \alpha \eta + \beta \xi - \beta \eta =
+  \left( \alpha + \beta \right) \xi + \left( \alpha - \beta \right) \eta $$
+--- линейная комбинация элементов гауссовского вектора,
+или в явном виде
+$N \left( 0, \left( \alpha + \beta \right)^2 + \left( \alpha - \beta \right)^2 \right) $.
+Они будет независимыми, если некоррелируемы.
+
+Из линейности следует,
+что
+$$Cov \left( \xi + \eta, \xi - \eta \right) =
+  Cov \left( \xi, \xi \right) - Cov \left( \xi, \eta \right) +
+  Cov \left( \eta, \xi \right) - Cov \left( \eta, \eta \right).$$
+Случайные величины $ \xi $ и $ \eta $ --- независимые, и тем более некоррелируемы,
+$Cov \left( \xi, \xi \right) $ --- это её дисперсия, значит,
+$Cov \left( \eta, \xi \right) - Cov \left( \eta, \eta \right) = 1 - 1 = 0$, следовательно,
+они некоррелируемые и независимые.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

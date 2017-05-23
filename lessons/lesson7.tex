@@ -845,6 +845,108 @@ $Cov \left( \xi, \xi \right) $ --- это её дисперсия, значит,
 $Cov \left( \eta, \xi \right) - Cov \left( \eta, \eta \right) = 1 - 1 = 0$, следовательно,
 они некоррелируемые и независимые.
 
+\subsubsection*{7.9}
+
+\textit{Задание.}
+Пусть положительная случайная величина $R$ имеет распределение Рэлея с плотностью распределения:
+$$f_R \left( r \right) =
+  \frac{r}{ \sigma^2} \cdot e^{- \frac{r^2}{2 \sigma^2}}, \,
+  r > 0,$$
+где $ \sigma^2 > 0$, и пусть $ \theta $ ---
+независимая от неё случайная величина с равномерным распределением на $ \left( 0, 2 \pi \right) $.
+Докажите,
+что величины $X = R \cos \theta $ и $Y = R \sin \theta $
+являются независимыми и имеют нормальное расределение $N \left( 0, \sigma^2 \right) $.
+
+\textit{Решение.}
+Пусть есть вектор $ \vec{ \xi } = \left( \xi_1, \dotsc, \xi_n \right) $ и допустим,
+что $p_{ \vec{ \xi }} \left( x_1, \dotsc, x_n \right) $ --- известно.
+
+$ \vec{ \eta } =
+  \varphi \left( \vec{ \xi } \right) $.
+
+Будет замена
+$$ \begin{cases}
+    z_1 = \varphi_1 \left( x_1, \dotsc, x_n \right), \\
+    z_2 = \varphi \left( x_1, \dotsc, x_n \right), \\
+    \dotsc \\
+    x_n = \varphi \left( x_1, \dotsc, x_n \right).
+  \end{cases}$$
+
+Тогда
+$$p_{ \vec{ \eta }} \left( \vec{z} \right) =
+  p_{ \vec{ \eta }} \left( z_1, \dotsc, z_n \right) =
+  \frac{1}{J \left( z \right) } \cdot
+  p_{ \vec{ \xi }} \left( \varphi^{-1} \left( \vec{x} \right) \right),$$
+где $ \varphi^{-1} \left( \vec{z} \right) $ --- обратное отображение, а
+$$J \left( x \right) =
+  \begin{vmatrix}
+    \frac{ \partial \varphi_1}{ \partial x_1} & \dotsc & \frac{ \partial \varphi_1}{ \partial x_n} \\
+    \dotsc & \dotsc & \dotsc \\
+    \frac{ \partial \varphi_n}{ \partial x_1} & \dotsc & \frac{ \partial \varphi_n}{ \partial x_n}
+  \end{vmatrix}$$
+--- определитель Якобиана.
+
+Сформируем вектор $ \left( R, \theta \right) $.
+
+Запишем плотность этого вектора $p_{ \left( R, \theta \right) } \left( x, y \right) $.
+
+Рассматриваем замену переменных.
+
+Нужно перевести
+$ \left( R, \theta \right) \to \left( \varphi \right)
+  \left( R \cos \theta, R \sin \theta \right) $.
+
+Имеем замену
+$$ \begin{cases}
+    z_1 = x \cos y, \\
+    z_2 = x \sin y.
+  \end{cases}$$
+
+Такая замена координат приводит к такому преобразованию.
+После этого согласно с формулой замены переменных нужно записать плотность нового вектора.
+
+$ \theta \sim U \left( \left[ 0, 2 \pi \right] \right) $.
+
+Случайные величины $R, \theta $ --- независимы между собой.
+Запишем плотность вектора как произведение плотностей,
+потому что они независимы
+$p_{ \left( R, \theta \right) } \left( x, y \right) =
+  p_R \left( x \right) p_{ \theta } \left( y \right) $.
+Подставляем явный вид, включая индикаторы
+$$p_R \left( x \right) p_{ \theta } \left( y \right) =
+  \frac{x}{ \sigma^2} \cdot e^{- \frac{x^2}{2 \sigma^2}} \cdot
+  \mathbbm{1} \left\{ x > 0 \right\} \cdot \frac{1}{2 \pi } \cdot
+  \mathbbm{1} \left\{ y \in \left[ 0, 2 \pi \right] \right\}.$$
+
+Записываем
+$$J \left( z \right) =
+  \begin{vmatrix}
+    \frac{ \partial z_1}{ \partial x} & \frac{ \partial z_1}{ \partial y} \\
+    \frac{ \partial z_1}{ \partial x} & \frac{ \partial z_2}{ \partial y}
+  \end{vmatrix} =
+  \begin{vmatrix}
+    \cos y & -x \sin y \\
+    \sin y & x \cos y
+  \end{vmatrix} =
+  x \cos^2 y + x \sin^2 y =
+  x =
+  \sqrt{z_1^2 + z_2^2}.$$
+
+По сути это полярная замена координат.
+
+Пишем плотность в новых переменных, индикаторы никаких ограничений на $z_1, z_2$ не дают
+$$p_{ \left( R \cos \theta, R \sin \theta \right) } \left( z_1, z_2 \right) =
+  \frac{1}{ \sqrt{z_1^2 + z_2^2}} \cdot \frac{ \sqrt{z_1^2 + z_2^2}}{ \sigma^2} \cdot
+  e^{- \left( z_1^2 + x_2^2 \right) \cdot \frac{1}{2 \sigma^2}} \cdot \frac{1}{2 \pi } =
+  \frac{1}{2 \pi \sigma^2} \cdot e^{- \frac{z_1^2 + z_2^2}{2 \sigma^2}}.$$
+Это похоже на гауссовское распределение
+$$ \frac{1}{2 \pi \sigma^2} \cdot e^{- \frac{z_1^2 + z_2^2}{2 \sigma^2}} =
+  \left( \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{z_1^2}{2 \sigma^2}} \right) \cdot
+  \left( \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{z_2^2}{2 \sigma^2}} \right) =
+  p_{R \cos \theta } \left( z_1 \right) p_{R \sin \theta } \left( z_2 \right).$$
+Из этого следует независимость.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
 

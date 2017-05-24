@@ -121,5 +121,42 @@ $$ \frac{ \sum \limits_{i = 1}^n  \xi_i}{n} \overset{P}{ \rightarrow }
   1$$
 по закону больших чисел.
 
+\subsubsection*{8.6}
+
+\textit{Задание.}
+Пусть $ \xi_1, \dotsc, \xi_n$ --- независимые случайные величины,
+причём $ \xi_i$ имеет распределение $ \chi^2$ с $m_i$ степенями свободы.
+Докажите,
+что сумма $ \xi = \xi_1 + \dotsc + \xi_n$ этих случайных величин имеет распределение $ \chi^2$ с
+$$m =
+  m_1 + \dotsc + m_n$$
+степенями свободы.
+
+\textit{Решение.} $ \xi_i \sim \chi_{m_i}^2$ --- знаем.
+Нужно доказать, что тогда
+$$ \xi =
+  \sum \limits_{i = 1}^n \xi_i \sim
+  \chi_m^2,$$
+где $m = m_1 + \dotsc + m_n$.
+
+Сумма квадратов $m_1$-й случайной величины
+$$ \xi_1 =
+  \sum \limits_{i = 1}^{m_1} \theta_{1i}^2,$$
+где $ \theta_{1i} \sim N \left( 0, 1 \right)$, и они независимы между собой, соответственно
+$$ \xi_1 =
+  \sum \limits_{i = 1}^{m_2} \theta_{2i}^2,$$
+где $ \theta_{2i} \sim N \left( 0, 1 \right) $, и они независимы между собой и так далее,
+$$ \xi_n =
+  \sum \limits_{i = 1}^{m_n} \theta_{ni}^2,$$
+где $ \theta_{2i} \sim N \left( 0, 1 \right) $, и они независимы между собой.
+
+Всего будет $m_1 + m_2 + \dotsc + m_n$ слагаемых.
+Случайные величины
+$$ \theta_{1i}, \dotsc, \theta_{ni}$$
+--- независимы между собой.
+$$ \xi =
+  \sum \limits_{i = 1}^n  \xi_i =
+  \sum \limits_{i = 1}^n \sum \limits_{j = 1}^{m_i} \theta_{ij}^2.$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

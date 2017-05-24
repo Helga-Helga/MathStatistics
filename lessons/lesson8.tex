@@ -158,5 +158,133 @@ $$ \xi =
   \sum \limits_{i = 1}^n  \xi_i =
   \sum \limits_{i = 1}^n \sum \limits_{j = 1}^{m_i} \theta_{ij}^2.$$
 
+\subsubsection*{8.9}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распределения с параметром $ \lambda $.
+Докажите,
+что статистика $T_n = 2n \lambda \overline{X}$ имеет распределение $ \chi^2$ с $2n$
+стеепенями свободы.
+
+\textit{Решение.}
+$$T_n =
+  2n \lambda \overline{X} =
+  2 \lambda \sum \limits_{i = 1}^n X_i,$$
+где $X_i \sim Exp \left( \lambda \right) $,
+тогда статистика $T_n \overset{d}{ \sim } \xi_1^2 + \dotsc + \xi_{2n}^2$, где $ \xi_i^2$ ---
+независимые одинаково распределённые случайные величины,
+каждая из которых имеет стандартное нормальное распределение $N \left( 0, 1 \right) $.
+
+Имеем $n$ пар
+$ \left( \xi_1^2 + \xi_2^2 \right) + \left( \xi_3^2 + \xi_4^2 \right) + \dotsc +
+  \left( \xi_{2n - 1}^2 + \xi_{2n}^2 \right)$,
+имеющих распределение
+$$Exp \left( \frac{1}{2} \right).$$
+
+Будет сумма $n$ одинаково распределённых показательных случайных величин с параметром $0.5$.
+
+Для распределения Эрланга
+$$p_{X_1 + X_2} \left( x \right) =
+  \int \limits_{ \mathbb{R}} p_{X_1} \left( v \right) p_{X_2} \left( x - v \right) dv.$$
+Распределение показательное, следовательно, $v \leq x$.
+Получаем
+$$ \int \limits_{ \mathbb{R}} p_{X_1} \left( v \right) p_{X_2} \left( x - v \right) dv =
+  \int \limits_0^x \lambda e^{- \lambda v} \lambda e^{- \lambda \left( x - v \right) } dv =
+  \lambda^2 \int \limits_0^x e^{- \lambda v + \lambda v - \lambda x} dv.$$
+Упрощаем степень экспоненты
+$$ \lambda^2 \int \limits_0^x e^{- \lambda v + \lambda v - \lambda x} dv =
+  \lambda^2 \int \limits_0^x e^{- \lambda x} dv =
+  \lambda^2 e^{- \lambda x} x.$$
+
+Плотность суммы $n$ слагаемых равна (по предположению индукции)
+$$p_{ \sum \limits_{i = 1}^n X_i} \left( x \right) =
+  \frac{ \lambda^n}{ \left( n - 1 \right)!} \cdot x^{n - 1} e^{- \lambda x}.$$
+
+Делаем шаг индукции
+$$p_{ \sum \limits_{i = 1}^{n + 1}} \left( x \right) =
+  \int \limits_{ \mathbb{R}}
+    p_{X_1 + \dotsc + X_n} \left( v \right) p_{X_{n + 1}} \left( x - v \right)
+  dv.$$
+Подставляем явный вид плотностей
+$$ \int \limits_{ \mathbb{R}}
+    p_{X_1 + \dotsc + X_n} \left( v \right) p_{X_{n + 1}} \left( x - v \right)
+  dv =
+  \int \limits_0^x
+    \frac{ \lambda^n}{ \left( n - 1 \right)!} \cdot v^{n - 1} e^{- \lambda v} \lambda \cdot
+    e^{- \lambda \left( x - v \right) }
+  dv.$$
+Выносим константы и берём интеграл
+$$ \int \limits_0^x
+    \frac{ \lambda^n}{ \left( n - 1 \right)!} \cdot v^{n - 1} e^{- \lambda v} \lambda \cdot
+    e^{- \lambda \left( x - v \right) }
+  dv =
+  \frac{ \lambda^{n + 1}}{n!} \cdot e^{- \lambda x} x^n.$$
+
+Функция распределения
+$$F_{T_n} \left( x \right) =
+  P \left( T_n \leq x \right) =
+  P \left( \sum \limits_{X_i} \leq \frac{x}{2 \lambda } \right) =
+  F_{ \sum \limits_{i = 1}^n X_i} \left( \frac{x}{2 \lambda } \right).$$
+
+Плотность распределения получается дифференцированием функции распределения
+$$p_{T_n} \left( x \right) =
+  \frac{1}{2 \lambda } \cdot p_{ \sum \limits_{i = 1}^n X_i} \left( \frac{x}{2 \lambda } \right).$$
+
+Подставим
+$$ \frac{x}{2 \lambda }$$
+в соответствующее выражение
+$$p_{T_n} \left( x \right) =
+  \frac{1}{2 \lambda } \cdot \frac{ \lambda^n}{ \left( n - 1 \right)!} \cdot
+  \left( \frac{x}{2 \lambda } \right)^{n - 1} \cdot e^{- \frac{x}{2}} =
+  \frac{x^{n - 1}}{2^n \left( n - 1 \right)!} \cdot e^{- \frac{x}{2}}.$$
+
+Если бы знали плотность $ \xi_1^2$ или $ \xi_2^2$, было бы удобно
+$$p_{ \xi_1^2 + \xi_2^2} \left( x \right) =
+  \int \limits_{ \mathbb{R}} p_{ \xi_1^2} \left( v \right) p_{ \xi_2^2} \left( x - v \right) dv.$$
+
+По определению
+$F_{ \xi_1^2 + \xi_2^2} \left( x \right) =
+  P \left( \xi_1^2 + \xi_2^2 \leq x \right) =
+  M \mathbbm{1} \left\{ \xi_1^2 + \xi_2^2 \leq x \right\}$.
+По правилу вычисления математического ожидания, если есть две случайные величины, будет 2 интеграла
+$$M \mathbbm{1} \left\{ \xi_1^2 + \xi_2^2 \leq x \right\} =
+  \iint \limits{ \mathbb{R}^2}
+    \mathbbm{1} \left\{ v^2 + u^2 \leq x \right\} \cdot p_{ \left( \xi_1, \xi_2 \right) }
+  dudv.$$
+Они независимы, значит, совместная плотность --- это произведение плотностей, которые мы знаем.
+Подставляем в явном виде.
+Каждая имеет стандартное нормальное распределение
+$$ \iint \limits{ \mathbb{R}^2}
+    \mathbbm{1} \left\{ v^2 + u^2 \leq x \right\} \cdot p_{ \left( \xi_1, \xi_2 \right) }
+  dudv =
+  \iint \limits_{ \mathbb{R}^2}
+    \mathbbm{1} \left\{ v^2 + u^2 \leq x \right\} \cdot \frac{1}{2 \pi } \cdot
+    e^{- \frac{v^2 + u^2}{2}}
+  dudv.$$
+Замена: $u = \rho \cos \phi, \, v = \rho \sin \phi$.
+Получаем
+$$ \iint \limits_{ \mathbb{R}^2}
+    \mathbbm{1} \left\{ v^2 + u^2 \leq x \right\} \cdot \frac{1}{2 \pi } \cdot
+    e^{- \frac{v^2 + u^2}{2}}
+  dudv =
+  \int \limits_0^{ \sqrt{x}}
+    \int \limits_0^{2 \pi } \frac{1}{2 \pi } \cdot e^{- \frac{ \rho^2}{2}} \rho d \rho
+  d \phi.$$
+По $ \phi $ можем проинтегрировать сразу
+$$ \int \limits_0^{ \sqrt{x}}
+    \int \limits_0^{2 \pi } \frac{1}{2 \pi } \cdot e^{- \frac{ \rho^2}{2}} \rho d \rho
+  d \phi =
+  \frac{2 \pi }{2 \pi } \cdot
+  \int \limits_0^{ \sqrt{x}} e^{- \frac{ \rho^2}{2}} d \left( \frac{ \rho^2}{2} \right) =
+  \left. -e^{- \frac{ \rho^2}{2}} \right|_0^{ \sqrt{x}} =
+  1 - e^{- \frac{x}{2}}$$
+--- функция показательного распределения с параметром $0.5$.
+
+$$p_{ \xi_1^2 + \dotsc + \xi_n^2} \left( x \right) =
+  \left( \frac{1}{2} \right)^n \cdot \frac{1}{ \left( n - 1 \right)!} \cdot
+  x^{n - 1} e^{- \frac{x}{2}}.$$
+
+Такая же плотность была у случайной величины $T_n$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

@@ -60,5 +60,41 @@ $$ \overline{X} - a \sim
 $$ \frac{ \left( \overline{X} - a \right) \sqrt{n}}{ \sigma } \sim
   N \left( 0, 1 \right).$$
 
+\subsubsection*{8.4}
+
+\textit{Задание.}
+Пусть $ \chi_n^2$ --- случайная величина,
+распределённая по закону $ \chi^2$ с $n$ степенями свободы.
+Вычислите её математическое ожидание $M \chi_n^2$ и дисперсию $D \chi_n^2$.
+
+\textit{Решение.}
+Раз эта случайная величина имеет распределение $ \chi^2$ с $n$ степенями свободы, изобразим её как
+$$ \chi_n^2 =
+  \sum \limits_{ \xi_i^2},$$
+где $ \xi_1, \dotsc, \xi_n$ --- независимые, имеющие распределение $N \left( 0, 1 \right) $.
+Тогда
+$$M \chi_n^2 =
+  M \sum \limits_{i = 1}^n \xi_i^2 =
+  nM \xi_1^2 =
+  n \left[ M \xi_1^2 + \left( D \xi_1 \right)^2 \right] =
+  n.$$
+
+Теперь ищем дисперсию
+$$D \chi_n^2 =
+  D \sum \limits_{i = 1}^n \xi_i^2.$$
+Случайные величины независимы
+$$D \sum \limits_{i = 1}^n \xi_i^2 =
+  nD \xi_1^2 =
+  n \left[ M \xi_1^4 - \left( M \xi_1^2 \right)^2 \right].$$
+Случайная величина $ \xi \sim N \left( 0, 1 \right) $.
+Если $ \xi \sim N \left( 0, \sigma^2 \right) $,
+то
+$$M \xi^{2n} =
+  \left( 2n - 1 \right)!! \left( \sigma^2 \right)^n,$$
+значит,
+$n \left[ M \xi_1^4 - \left( M \xi_1^2 \right)^2 \right] =
+  n \left( 3 - 1 \right) =
+  2n$.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

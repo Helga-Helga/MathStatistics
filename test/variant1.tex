@@ -30,3 +30,35 @@ $$ \frac{MS - x}{ \sqrt{DS}} \approx
 По условию $MS = 365 \cdot M \xi_1 = 3650, \, \sqrt{DS} = \sqrt{365 \cdot D \xi_1} = 3 \sqrt{365}$
 и значит $-x + 3650 \approx 2.32 \cdot 3 \sqrt{365} \approx 132.97$,
 откуда $x = -132.97 + 3650 \approx 2517$.
+
+\subsubsection*{2}
+
+\textit{Задание.}
+Для произвольного действительного числа $y$ вычислите дисперсию $DF_n^* \left( y \right) $,
+где $F_n^*$ --- эмпирическая функция распределения, построенная по выборке из распределения $F$.
+
+\textit{Решение.}
+$$F_n^* \left( y \right) =
+  \frac{1}{n} \sum \limits_{k = 1}^n \mathbbm{1} \left\{ X_k \leq y \right\}, \,
+  y \in \mathbb{R}.$$
+
+Ищем дисперсию
+$$DF_n^* \left( y \right) =
+  D \left( \frac{1}{n} \sum \limits_{k = 1}^n \mathbbm{1} \left\{ X_k \leq y \right\} \right) =
+  \frac{1}{n^2} \cdot D \sum \limits_{k = 1}^n \mathbbm{1} \left\{ X_k \leq y \right\}.$$
+Вносим дисперсию под знак суммы, пользуясь независимостью случайных величин, а затем используем то,
+что они имеют одинаковое распределение
+$$ \frac{1}{n^2} \cdot D \sum \limits_{k = 1}^n \mathbbm{1} \left\{ X_k \leq y \right\} =
+  \frac{1}{n^2} \sum \limits_{k = 1}^n D \mathbbm{1} \left\{ X_k \leq y \right\} =
+  \frac{1}{n^2} \cdot nD \mathbbm{1} \left\{ X_1 \leq y \right\}.$$
+Сокращаем константы и пользуемся свойством дисперсии
+$$ \frac{1}{n^2} \cdot nD \mathbbm{1} \left\{ X_1 \leq y \right\} =
+  \frac{1}{n} \cdot D \mathbbm{1} \left\{ X_1 \leq y \right\} =
+  \frac{1}{n} \left[ F \left( y \right) - F^2 \left( y \right) \right] =
+  \frac{1}{n} \cdot F \left( y \right) \left[ 1 - F \left( y \right) \right],$$
+так как
+$M \mathbbm{1} \left\{ X_1 \leq y \right\} =
+  1 \cdot P \left( X_1 \leq y \right) + 0 \cdot P \left( X_1 > y \right) =
+  P \left( X_1 \leq y \right) =
+  F \left( y \right) $,
+и $M \left( \mathbbm{1} \left\{ X_1 \leq y \right\} \right)^2 = F \left( y \right) $.

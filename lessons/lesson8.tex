@@ -27,5 +27,38 @@ $$F_{k_1, k_2} =
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
+\subsubsection*{8.3}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, x_n$ --- выборка из распределения $N \left( a, \sigma^2 \right) $.
+Докажите, что величина
+$$ \frac{ \left( \overline{X} - a \right) \sqrt{n}}{ \sigma }$$
+имеет распределение $N \left( 0, 1 \right) $.
+
+\textit{Решение.}
+$ \varphi_{ \overline{X}} \left( t \right) =
+  Me^{it \overline{X}} =
+  Me^{it \cdot \frac{1}{n} \sum \limits_{i = 1}^n X_i} =
+  Me^{it \cdot \frac{1}{n} \left( X_1 + \dotsc + X_n \right) }$.
+Воспользуемся независимостью
+$$Me^{it \cdot \frac{1}{n} \left( X_1 + \dotsc + X_n \right) } =
+  \varphi_{X_1} \left( \frac{t}{n} \right) \cdot \dotsc \cdot
+  \varphi_{X_n} \left( \frac{t}{n} \right).$$
+Воспользуемся одинаковой распределённостью
+$$ \varphi_{X_1} \left( \frac{t}{n} \right) \cdot \dotsc \cdot
+  \varphi_{X_n} \left( \frac{t}{n} \right) =
+  exp \left\{ \left( \frac{iat}{n} - \frac{t^2 \sigma^2}{2n^2} \right) n \right\} =
+  exp \left\{ ita - \frac{t^2 \sigma^2}{2n} \right\},$$
+значит,
+$$ \overline{X} \sim
+  N \left( a, \frac{ \sigma^2}{n} \right).$$
+После этого центрированием следует, что
+$$ \overline{X} - a \sim
+  N \left( 0, \frac{ \sigma^2}{n} \right).$$
+
+Получаем, что
+$$ \frac{ \left( \overline{X} - a \right) \sqrt{n}}{ \sigma } \sim
+  N \left( 0, 1 \right).$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

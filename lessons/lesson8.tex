@@ -96,5 +96,30 @@ $n \left[ M \xi_1^4 - \left( M \xi_1^2 \right)^2 \right] =
   n \left( 3 - 1 \right) =
   2n$.
 
+\subsubsection*{8.5}
+
+\textit{Задание.}
+Пусть $ \chi_n^2$ --- случайная величина,
+распределённая по закону $ \chi^2$ с $n$ степенями свободы.
+Докажите, что
+$$ \frac{1}{n} \cdot \chi_n^2 \overset{P}{ \rightarrow}
+  1$$
+при $n \to \infty $.
+
+\textit{Решение.}
+$$ \frac{ \xi_1^2 + \dotsc + \xi_n^2}{n} \overset{P}{ \rightarrow }
+  1,$$
+где $ \xi_1, \dotsc, \xi_n$ ---
+независимые случайные величины со стандартным нормальным распределением $N \left( 0, 1 \right) $.
+
+Такая сумма похожа на закон больших чисел.
+Раз $ \xi_i$ --- независимы, то их квадраты тоже независимы между собой.
+
+Тогда
+$$ \frac{ \sum \limits_{i = 1}^n  \xi_i}{n} \overset{P}{ \rightarrow }
+  M \xi_i^2 =
+  1$$
+по закону больших чисел.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

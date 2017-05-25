@@ -288,3 +288,41 @@ $$p_{ \xi_1^2 + \dotsc + \xi_n^2} \left( x \right) =
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{8.10}
+
+\textit{Задание.}
+Пусть $ \chi_n^2$ --- случайная величина,
+распределённая по закону $ \chi^2$ с $n$ степенями свободы.
+Докажите, что
+$$ \frac{ \chi_n^2 - n}{ \sqrt{2n}} \overset{d}{ \rightarrow}
+  N \left( 0, 1 \right) $$
+при $n \to \infty $.
+
+\textit{Решение.}
+Это следует из центральной предельной теоремы при
+$$M \xi_1^2 = 1, \,
+  D \xi_1^2 = 2.$$
+
+
+\subsubsection*{8.11}
+
+\textit{Задание.} Пусть
+$$t_n =
+  \frac{ \xi }{ \sqrt{ \frac{1}{n} \chi_n^2}}$$
+--- случайная величина, распределённая по закону Стьюдента с $n$ степенями свободы.
+Докажите, что $t_n \overset{P}{ \rightarrow } \xi $ при $n \to \infty $.
+
+\textit{Решение.}
+$$t_n =
+  \frac{ \xi }{ \sqrt{ \frac{1}{n} \chi_n^2}} =
+  \frac{ \xi }{ \sqrt{ \frac{1}{n} \sum \limits_{i = 1}^n \xi_i^2}}.$$
+
+По закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = 1}^n  \xi_i^2 \overset{P}{ \rightarrow }
+  M \xi_1 =
+  1, \,
+  n \to \infty,$$
+тогда
+$$t_n \overset{P}{ \rightarrow } \frac{ \xi }{ \sqrt{1}} = \xi, \,
+  n \to \infty.$$

@@ -62,3 +62,97 @@ $M \mathbbm{1} \left\{ X_1 \leq y \right\} =
   P \left( X_1 \leq y \right) =
   F \left( y \right) $,
 и $M \left( \mathbbm{1} \left\{ X_1 \leq y \right\} \right)^2 = F \left( y \right) $.
+
+\subsubsection*{3}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из нормального распределения $N \left( a, 1 \right) $.
+Проверьте несмещённость и состоятельность оценки
+$$ \hat{a_n} =
+  \frac{ \sum \limits_{i = n + 1}^{2n} X_i}{n}$$
+параметра $a$.
+Найдите среднеквадратическое отклонение данной оценки от истинного значения параметра $a$.
+
+\textit{Решение.} Проверим несмещённость оценки.
+Проверим, выполняется ли $M \hat{a_n} = a$.
+
+Нужно найти математическое ожидание
+$$M \frac{ \sum \limits_{i = n + 1}^{2n} X_i}{n} =
+  \frac{1}{n} \cdot M \sum \limits_{i = n + 1}^{2n} X_i =
+  \frac{1}{n} \sum \limits_{i = n + 1}^{2n} MX_i =
+  \frac{1}{n} \left[ 2n - \left( n + 1 \right) + 1 \right] MX_1.$$
+Раскрываем скобки
+$$ \frac{1}{n} \left[ 2n - \left( n + 1 \right) + 1 \right] MX_1 =
+  \frac{1}{n} \left( 2n - n - 1 + 1 \right) MX_1 =
+  \frac{1}{n} \cdot na =
+  a.$$
+
+Отсюда следует, что оценка несмещённая.
+
+Чтобы дать ответ на второй вопрос задачи,
+нужно найти предел по вероятности статистики $ \hat{a_n}$ при $n \to \infty $.
+Поскольку случайные величины $X_1, \dotsc, X_n$
+являются независимыми одинаково распределёнными случайными величинами с конечным первым моментом,
+то согласно закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = n + 1}^{2n} X_i \overset{P}{ \rightarrow } MX_1, \,
+  n \to \infty,$$
+а тогда при $n \to \infty: \, \hat{a_n} \overset{P}{ \rightarrow } MX_1 = a$.
+
+Значит статистика $ \hat{a_n}$ является состоятельной оценкой параметра $a$.
+
+Формула среднеквадратического отклонения имеет вид $ \sigma = \sqrt{D \xi }$.
+
+Найдём дисперсию оценки
+$$D \frac{ \sum \limits_{i = n + 1}^{2n} X_i}{n} =
+  \frac{1}{n^2} \cdot D \sum \limits_{i = n + 1}^{2n} X_i =
+  \frac{1}{n^2} \cdot nDX_1 =
+  \frac{1}{n} \cdot DX_1 =
+  \frac{1}{n}.$$
+
+Извлекая корень, получаем
+$$ \sigma =
+  \sqrt{ \frac{1}{n}} =
+  \frac{1}{ \sqrt{n}}.$$
+
+\subsubsection*{3}
+
+\textit{Задание.} Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Бернулли.
+Является ли статистика $p_n^* = \left( \overline{X} \right)^2$ несмещённой оценкой параметра $p$?
+Состоятельной?
+
+\textit{Решение.}
+Для того, чтобы выяснить, является ли статистиа $p_n^*$ несмещённой оценкой параметра $p$,
+необходимо проверить, выполняется ли условие $Mp_n^* = p$.
+Находим математическое ожидание статистики $p_n^*:$
+$$Mp_n^* =
+  M \left( \overline{X} \right)^2 =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2 =
+  \frac{1}{n^2} \cdot M \left( \sum \limits_{i = 1}^n X_i \right)^2.$$
+По свойствам дисперсии
+$$ \frac{1}{n^2} \cdot M \left( \sum \limits_{i = 1}^n X_i \right)^2 =
+  \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i +
+  \frac{1}{n^2} \cdot \left( M \sum \limits_{i = 1}^n X_i \right)^2.$$
+Воспользуемся тем, что случайные величины независимы и одинаково распределены
+$$ \frac{1}{n^2} \cdot D \sum \limits_{i = 1}^n X_i +
+  \frac{1}{n^2} \cdot \left( M \sum \limits_{i = 1}^n X_i \right)^2 =
+  \frac{1}{n^2} \cdot nDX_1 + \frac{1}{n^2} \cdot \left( nMX_1 \right)^2.$$
+Сокращаем константы
+$$ \frac{1}{n^2} \cdot nDX_1 + \frac{1}{n^2} \cdot \left( nMX_1 \right)^2 =
+  \frac{1}{n} \cdot DX_1 + \left( MX_1 \right)^2 =
+  \frac{1}{n} \cdot \sqrt{p} \left( 1 - \sqrt{p} \right) + p.$$
+
+Таким образом
+$$Mp_n^* =
+  \frac{1}{n} \cdot \sqrt{p} \left( 1 - \sqrt{p} \right) + p \neq
+  p,$$
+а значит статистика $p_n^*$ не является несмещённой оценкой неизвесного параметра $p$.
+
+Чтобы дать ответ на второй вопрос задачи,
+нужно найти предел по вероятности статистики $p_n^*$ при $n \to \infty $.
+Поскольку случайные величины $X_1, \dotsc, X_n$
+являются независимыми одинаково распределёнными случайными величинаим с конечным первым моментом,
+то согласно закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \rightarrow } MX_1, \,
+  n \to \infty,$$
+а тогда при $n \to \infty: \, p_n^* \overset{P}{ \rightarrow } \left( MX_1 \right)^2 = p$.
+Значит статистика $p_n^*$ является состоятельной оценкой параметра $p$.

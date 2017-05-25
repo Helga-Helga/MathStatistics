@@ -169,7 +169,7 @@ $$p \left( y \right) =
   \frac{2y}{ \theta } \cdot \mathbbm{1} \left\{ y \in \left[ 0, \theta \right] \right\}.$$
 
 \textit{Решение.} Согласно методу максимального правдоподобия,
-в качестве оценки несмещённого параметра $ \theta $ выбирается статистика $ \theta^*$,
+в качестве оценки неизвестного параметра $ \theta $ выбирается статистика $ \theta^*$,
 которая даёт наибольшее значение функции правдоподобия, которая для данной выборки имеет вид
 $$L \left( X_1, \dotsc, X_n, \theta \right) =
   \prod \limits_{i = 1}^n
@@ -190,3 +190,58 @@ $$L \left( X_1, \dotsc, X_n, \theta \right) =
   \caption{Функция правдоподобия}
   \label{fig:5}
 \end{figure}
+
+\subsubsection*{6}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного распределения на отрезке $ \left[ a, b \right], \, a < b$.
+Пользуясь методом моментов, постройте оценку векторного параметра $ \left( a, b \right) $.
+
+\textit{Решение.}
+Метод моментов в качестве оценки неизвестного параметра $ \left( a, b \right) $
+предлагает брать решение $ \left( a^*, b^* \right) $ системы уравнений
+$$ \begin{cases}
+    m_1 \left( a^*, b^* \right) = \overline{X}, \\
+    m_2 \left( a^*, b^* \right) = \overline{X^2},
+  \end{cases}$$
+где $m_1 \left( a, b \right) = MX_1, \, m_2 \left( a, b \right) = MX_1^2$ ---
+моменты заданного распределения.
+
+Находим первые два момента элементов выборки:
+$$MX_1 = \frac{a + b}{2}, \,
+  MX_1^2 =
+  DX_1 + \left( MX_1 \right)^2 =
+  \frac{ \left( b - a \right)^2}{12} + \frac{ \left( a + b \right)^2}{4}.$$
+Раскроем скобки и приведём к общему знаменателю
+$$ \frac{ \left( b - a \right)^2}{12} + \frac{ \left( a + b \right)^2}{4} =
+  \frac{b^2 - 2ab + a^2}{12} + \frac{3a^2 + 6ab + 3b^2}{12} =
+  \frac{4b^2 + 4ab + 4a^2}{12}.$$
+Сокращаем на 4 и получаем второй момент
+$$ \frac{4b^2 + 4ab + 4a^2}{12} =
+  \frac{a^2 + ab + b^2}{3}.$$
+
+Решая систему уравнений
+$$ \begin{cases}
+    a + b = 2 \overline{X}, \\
+    a^2 + ab + b^2 = 3 \overline{X^2},
+  \end{cases}$$
+находим, что
+$$ \begin{cases}
+    a + b = 2 \overline{X}, \\
+    ab = 4 \left( \overline{X} \right)^2 - 3 \overline{X^2},
+  \end{cases}$$
+откуда $2 \overline{X} b - b^2 = 4 \left( \overline{X} \right)^2 - 3 \overline{X^2}$ или
+$b^2 - 2 \overline{X} b + 4 \left( \overline{X} \right)^2 - 3 \overline{X^2} = 0$.
+Выделяем полный квадрат
+$ \left( b - \overline{X} \right)^2 + 3 \left( \overline{X} \right)^2 - 3 \overline{X}^2 =
+  0$.
+Берём корень
+$$b - \overline{X} =
+  \sqrt{3 \overline{X}^2 - 3 \left( \overline{X} \right)^2},$$
+тогда $b^* = \overline{X} + \sqrt{3 \overline{X}^2 - 3 \left( \overline{X} \right)^2}$.
+
+Соответственно
+$a^* =
+  2 \overline{X} - \overline{X} - \sqrt{3 \overline{X}^2 - 3 \left( \overline{X} \right)^2} =
+  \overline{X} - \sqrt{3 \overline{X}^2 - 3 \left( \overline{X} \right)^2}$.

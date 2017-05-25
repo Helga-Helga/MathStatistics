@@ -372,3 +372,83 @@ $$ne^{n \beta } \int \limits_{ \beta }^{+ \infty } ye^{-ny} dy =
     \beta + \frac{1}{n}.
   \end{split}
 \end{equation*}
+
+\subsubsection*{8}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из биномиального распределения с параметрами $m$ и $p$ при известном $m$.
+Найдите смещение и дисперсию оценки $ \hat{p} = X_1$ неизвестного параметра $p$.
+Улучшите эту оценку усреднением по достаточной статистике.
+Найдите смещение и дисперсию улучшенной оценки.
+Выясните, является ли улучшенная оценка эффективной.
+
+\textit{Решение.}
+Ищем смещение $M \hat{p} = MX_1 = mp$, значит,
+смещение
+$$b_n \left( p \right) =
+  M \hat{p} - p =
+  mp - p =
+  p \left( m - 1 \right).$$
+
+Дисперсия равна $D \hat{p} = DX_1 = mp \left( 1 - p \right) $.
+
+Запишем функцию правдоподобия данной выборки:
+$$L \left( X_1, \dotsc, X_n, p \right) =
+  \prod \limits_{i = 1}^n X_m^{X_i} p^{X_i} \left( 1 - p \right)^{m - X_i} =
+  \prod \limits_{i = 1}^n C_m^{X_i} \cdot p^{ \sum \limits_{i = 1}^n X_i} \cdot
+  \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \left( m - X_i \right) }.$$
+Запишем через выборочное среднее
+$$ \prod \limits_{i = 1}^n C_m^{X_i} \cdot p^{ \sum \limits_{i = 1}^n X_i} \cdot
+  \left( 1 - p \right)^{ \sum \limits_{i = 1}^n \left( m - X_i \right) } =
+  \prod \limits_{i = 1}^n C_m^{X_i} \cdot p^{n \overline{X}} \cdot
+  \left( 1 - p \right)^{n \left( m - \overline{X} \right) }.$$
+
+Видим, что функция правдоподобия подаётся в виде произведения функции
+$$h \left( X_1, \dotsc, X_n \right) =
+  \prod \limits_{i = 1}^n C_m^{X_i},$$
+которая не зависит от неизвестного параметра,
+и функции
+$$g \left( X_1, \dotsc, X_n, p \right) =
+  p^{n \overline{X}} \left( 1 - p \right)^{n \left( m - \overline{X} \right) },$$
+которая зависит от неизвестного параметра и от функции выборки
+$$T \left( X_1, \dotsc, X_n \right) =
+  \overline{X}.$$
+Тогда, по теореме про характеризацию достаточной статистики,
+функция $T \left( X_1, \dotsc, X_n \right) = \overline{X}$
+является достаточной статистикой для параметра $p$.
+
+Теперь, чтобы улучшить оценку $ \hat{p} = X_1$ параметра $p$,
+усредним её по достаточной статистике
+$ \overline{X}: \,
+  p^* =
+  M \left( \hat{p} \; \middle| \; \overline{X} \right) =
+  M \left( X_1 \; \middle| \; \overline{X} \right) =
+  \overline{X}$,
+так как
+$M \left( X_1 \; \middle| \; \overline{X} \right) =
+  \dotsc =
+  M \left( X_n \; \middle| \; \overline{X} \right) $.
+
+Ищем смещение
+$$Mp^* =
+  M \overline{X} =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
+  \frac{1}{n} \cdot nMX_1 =
+  MX_1 =
+  mp,$$
+значит смещение
+$b_n \left( p \right) =
+  Mp^* - p =
+  M \overline{X} - p =
+  mp - p =
+  p \left( m - 1 \right) $.
+
+Вычисляем дисперсию статистики
+$$Dp^* =
+  D \overline{X} =
+  D \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right) =
+  \frac{1}{n} \cdot DX_1 =
+  \frac{1}{n} \cdot mp \left( 1 - p \right).$$
+
+Так как оценка смещённая, то она не является эффективной.

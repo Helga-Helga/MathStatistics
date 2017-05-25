@@ -156,3 +156,37 @@ $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \rightarrow } MX_1, \,
   n \to \infty,$$
 а тогда при $n \to \infty: \, p_n^* \overset{P}{ \rightarrow } \left( MX_1 \right)^2 = p$.
 Значит статистика $p_n^*$ является состоятельной оценкой параметра $p$.
+
+
+\subsubsection*{5}
+
+\textit{Задание.}
+Найдите оценку максимального правдоподобия параметра
+$$ \theta >
+  0,$$
+если распределение выборки имеет плотность
+$$p \left( y \right) =
+  \frac{2y}{ \theta } \cdot \mathbbm{1} \left\{ y \in \left[ 0, \theta \right] \right\}.$$
+
+\textit{Решение.} Согласно методу максимального правдоподобия,
+в качестве оценки несмещённого параметра $ \theta $ выбирается статистика $ \theta^*$,
+которая даёт наибольшее значение функции правдоподобия, которая для данной выборки имеет вид
+$$L \left( X_1, \dotsc, X_n, \theta \right) =
+  \prod \limits_{i = 1}^n
+    \frac{2X_i}{ \theta } \cdot \mathbbm{1} \left\{ X_i \in \left[ 0, \theta \right] \right\} =
+  \frac{2^n \prod \limits_{i = 1}^n X_i}{ \theta^{n}} \cdot
+  \mathbbm{1}
+    \left\{ X_{ \left( 1 \right) } \geq 0, \, X_{ \left( n \right) } \leq \theta \right\}.$$
+
+Заметим, что функция правдоподобия не дифференцируема по $ \theta $.
+
+Из  приведённого на рисунке \ref{fig:5} графика функции $L$ как функции переменной $ \theta $
+делаем вывод, что максимального значения она достигает в точке $X_{ \left( n \right) }$.
+Значит оценкой максимального правдоподобия является статистика $ \theta^* = X_{ \left( n \right) }$.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=.4\textwidth]{./pictures/v1_5.png}
+  \caption{Функция правдоподобия}
+  \label{fig:5}
+\end{figure}

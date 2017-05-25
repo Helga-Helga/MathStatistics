@@ -367,3 +367,21 @@ $$t_{n - 1} =
 $$ \frac{ \frac{1}{n} \sum \limits_{i = 1}^n \left( X_i - a \right) \sqrt{n}}{ \sqrt{ \frac{1}{n} \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2}} \sim
   t_{ \left( n - 1 \right) }$$
 по определению.
+
+\subsubsection*{8.14}
+
+\textit{Задание.} Пусть
+$$F_{m, n} =
+  \frac{ \frac{1}{m} \cdot \chi_m^2}{ \frac{1}{n} \cdot \chi_n^2}$$
+--- случайная величина, распределённая по закону Фишера с $ \left( m, n \right) $ степенями свободы.
+Докажите, что
+$$F_{m, n} \overset{P}{ \rightarrow }
+  \frac{1}{m} \cdot \chi_m^2$$
+при $n \to \infty $.
+
+\textit{Решение.}
+$$ \frac{ \frac{1}{m} \cdot \chi_m^2}{ \frac{1}{n} \cdot \chi_n^2} \overset{P}{ \rightarrow }
+  \frac{ \frac{1}{m} \cdot \chi_m^2}{M \xi_1^2} =
+  \frac{1}{m} \cdot \chi_n^2, \,
+  n \to \infty $$
+по закону больших чисел.

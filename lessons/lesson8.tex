@@ -338,3 +338,32 @@ $$t_n \overset{P}{ \rightarrow } \frac{ \xi }{ \sqrt{1}} = \xi, \,
 что
 $$t_n \overset{d}{ \rightarrow} \xi \sim N \left( 0, 1 \right), \,
   n \to \infty.$$
+
+\subsubsection*{8.13}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределения $N \left( a, \sigma^2 \right) $.
+Докажите, что величина
+$$t_{n - 1} =
+  \frac{ \left( \overline{X} - a \right) \sqrt{n}}{s},$$
+имеет распределение Стьюдента с $ \left( n - 1 \right) $ степенями свободы.
+
+\textit{Решение.} В задаче 8.3 получено, что
+$$ \overline{X} \sim
+  N \left( a, \frac{ \sigma^2}{n} \right),$$
+если $X_i \sim N \left( a, \sigma^2 \right), \, i = \overline{1, n}$.
+
+Доказано, что
+$$ \frac{ \overline{X} - a}{ \frac{ \sigma }{ \sqrt{n}}} \sim
+  N \left( 0, 1 \right),$$
+потому отсюда
+$$t_{n - 1} =
+  \frac{ \left( \overline{X} - a \right) \sqrt{n}}{s} =
+  \frac{ \frac{ \overline{X} - a}{ \frac{ \sigma }{ \sqrt{n}}}}{ \frac{s}{ \sigma }} \sim
+  N \left( 0, 1 \right) \cdot
+  \frac{1}{ \sqrt{ \frac{ \left( n - 1 \right) s^2}{ \sigma^2} \cdot \frac{1}{n - 1}}} \sim
+  \frac{N \left( 0, 1 \right) }{ \sqrt{ \frac{1}{n - 1} \cdot \chi_{n - 1}^2}}.$$
+Это равно
+$$ \frac{ \frac{1}{n} \sum \limits_{i = 1}^n \left( X_i - a \right) \sqrt{n}}{ \sqrt{ \frac{1}{n} \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2}} \sim
+  t_{ \left( n - 1 \right) }$$
+по определению.

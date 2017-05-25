@@ -245,3 +245,130 @@ $$b - \overline{X} =
 $a^* =
   2 \overline{X} - \overline{X} - \sqrt{3 \overline{X}^2 - 3 \left( \overline{X} \right)^2} =
   \overline{X} - \sqrt{3 \overline{X}^2 - 3 \left( \overline{X} \right)^2}$.
+
+
+\subsubsection*{7}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из смещённого показательного распределения с плотностью
+$$f_{ \beta } \left( y \right) =
+  \begin{cases}
+    e^{ \beta - y}, \qquad y \geq \beta, \\
+    0, \qquad y < \beta.
+  \end{cases}$$
+Предъявите достаточную статистику для оценки параметра $ \beta $
+и вычислите её математическое ожидание.
+
+\textit{Решение.} Запишем функцию правдоподобия данной выборки:
+$$L \left( X_1, \dotsc, X_n, \beta \right) =
+  \prod \limits_{i = 1}^n f_{ \beta } \left( X_i \right) =
+  \prod \limits_{i = 1}^n e^{ \beta - X_i} \cdot \mathbbm{1} \left\{ X_i \leq \beta \right\}.$$
+Раскроем произведение
+$$ \prod \limits_{i = 1}^n e^{ \beta - X_i} \cdot \mathbbm{1} \left\{ X_i \leq \beta \right\} =
+  e^{ \sum \limits_{i = 1}^n \left( \beta - X_i \right) } \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq \beta \right\} =
+  e^{n \left( \beta - \overline{X} \right) } \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq \beta \right\}.$$
+Разобьём экспоненту на две
+$$e^{n \left( \beta - \overline{X} \right) } \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq \beta \right\} =
+  e^{n \beta } e^{-n \overline{X}} \cdot
+  \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq \beta \right\}.$$
+
+Видим,
+что функция правдоподобия подаётся в виде произведения функции
+$h \left( X_1, \dotsc, X_n \right) = e^{-n \overline{X}}$,
+которая не зависит от неизвестного параметра,
+и функции
+$g \left( X_1, \dotsc, X_n, \beta \right) =
+  e^{n \beta } \cdot \mathbbm{1} \left\{ X_{ \left( 1 \right) } \geq \beta \right\} $,
+которая зависит от неизвестного параметра и от функции выборки
+$T \left( X_1, \dotsc, X_n \right) =
+  X_{ \left( 1 \right) }$.
+
+Тогда, по теореме про характеризацию достаточной статистики,
+функция $T \left( X_1, \dotsc, X_n \right) = X_{ \left( 1 \right) }$
+является достаточной статистикой параметра $ \beta $.
+
+Найдём функцию распределения порядковой статистики
+$$F_{X_{ \left( 1 \right) }} \left( y \right) =
+  P \left( X_{ \left( 1 \right) } \leq y \right) =
+  P \left\{ \min \left( X_1, \dotsc, X_n \right) \leq y \right\} =$$
+$=P$(хотя бы один элемент выборки не превышает $y$) $=$
+\begin{equation*}
+  \begin{split}
+    = \sum \limits_{k = 1}^n
+      P \left( exactly \, k \, elements \, of \, the \, set \, dot'n \, exceed \, y \right) = \\
+    = \sum \limits_{k = 1}^n
+      C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k} = \\
+    = \sum \limits_{k = 0}^n
+      C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k} -
+    C_n^0 F^0 \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - 0}.
+  \end{split}
+\end{equation*}
+Применяем формулу для бинома Ньютона
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k = 0}^n
+      C_n^k F^k \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - k} -
+    C_n^0 F^0 \left( y \right) \left[ 1 - F \left( y \right) \right]^{n - 0} = \\
+    = \left[ F \left( y \right) + 1 - F \left( y \right) \right]^n -
+    \left[ 1 - F \left( y \right) \right]^n =
+    1 - \left[ 1 - \int \limits_{- \infty }^y f \left( x \right) dx \right]^n = \\
+    = 1 -
+    \left(
+      1 -
+      \int \limits_{- \infty }^y e^{ \beta - x} \cdot \mathbbm{1} \left\{ x \geq \beta \right\} dx
+    \right)^n =
+    1 - \left( 1 - \int \limits_{ \beta }^y e^{ \beta - x} dx \right)^n = \\
+    = 1 - \left( 1 - e^{ \beta } \int \limits_{ \beta }^y e^{-x} dx \right)^n =
+    1 - \left( 1 + \left. e^{ \beta } e^{-x} \right|_{ \beta }^y \right)^n =
+    1 - \left( 1 + e^{ \beta - y} - e^{ \beta } e^{- \beta } \right)^n = \\
+    = 1 - \left( 1 + e^{ \beta - y} - 1 \right)^n =
+    1 - \left( e^{ \beta - y} \right)^n =
+    1 - e^{n \beta - ny}.
+  \end{split}
+\end{equation*}
+
+Продифференцируем
+$$f_{X_{ \left( 1 \right) }} \left( y \right) =
+  \frac{ \partial F_{X_{ \left( 1 \right) }} \left( y \right) }{ \partial y} =
+  \frac{ \partial }{ \partial y} \left( 1 - e^{n \beta } e^{-ny} \right) =
+  -e^{n \beta } \cdot \frac{ \partial }{ \partial y} e^{-ny}.$$
+Берём производную от сложной функции
+$$-e^{n \beta } \cdot \frac{ \partial }{ \partial y} e^{-ny} =
+  -e^{n \beta } \left( -n \right) e^{-ny} =
+  ne^{ n \beta - ny}, \,
+  y \in \left[ \beta, + \infty \right).$$
+
+Найдём математическое ожидание  по определению
+$$MX_{ \left( 1 \right) } =
+  \int \limits_{ \beta }^{+ \infty } yf_{X_{ \left( 1 \right) }} \left( y \right) dy =
+  \int \limits_{ \beta }^{+ \infty } yne^{n \beta - ny} dy =
+  ne^{n \beta } \int \limits_{ \beta }^{+ \infty } ye^{-ny} dy.$$
+Берём интеграл по частям
+$$u = y, \,
+  dv = e^{-ny} dy, \,
+  du = dy, \,
+  c = - \frac{1}{n} e^{-ny}.$$
+Получаем
+$$ne^{n \beta } \int \limits_{ \beta }^{+ \infty } ye^{-ny} dy =
+  ne^{n \beta } \left(
+    \left. -y \cdot \frac{1}{n} \cdot e^{-ny} \right|_{ \beta }^{+ \infty } +
+    \int \limits_{ \beta }^{+ \infty } \frac{1}{n} \cdot e^{-ny} dy
+  \right).$$
+Подставляем пределы интегрирования и берём интеграл
+\begin{equation*}
+  \begin{split}
+    ne^{n \beta } \left(
+      \left. -y \cdot \frac{1}{n} \cdot e^{-ny} \right|_{ \beta }^{+ \infty } +
+      \int \limits_{ \beta }^{+ \infty } \frac{1}{n} \cdot e^{-ny} dy
+    \right) = \\
+    = ne^{n \beta } \left(
+      \beta \cdot \frac{1}{n} \cdot e^{-n \beta } -
+      \left. \frac{1}{n^2} \cdot e^{-ny} \right|_{ \beta }^{+ \infty }
+    \right) =
+    \beta + \frac{1}{n} \cdot e^{n \beta } e^{-n \beta } =
+    \beta + \frac{1}{n}.
+  \end{split}
+\end{equation*}

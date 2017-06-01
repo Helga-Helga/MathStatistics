@@ -267,5 +267,63 @@ $$P \left(
 
 Следовательно, $P \left( a_1 - a_2 \in \left[ T_1, T_2 \right] \right) = 1 - \alpha $.
 
+\subsubsection*{10.5}
+
+\textit{Задание.}
+Пусть в условии предыдущей задачи все наблюдения имеют одинаковую, но неизвестную дисперсию,
+то есть
+$$X_i \sim N \left( a_1, \sigma^2 \right), \,
+  Y_i \sim N \left( a_2, \sigma^2 \right).$$
+Постройте доверительный интервал для разности $ \tau = a_1 - a_2$ средних.
+
+\textit{Решение.}
+\begin{equation*}
+  \begin{split}
+    \xi =
+    \sqrt{ \frac{mn \left( m + n - 2 \right) }{m + n}} \cdot
+    \frac{ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) }{ \sqrt{n \hat{ \sigma_1^2} + m \hat{ \sigma_2^2}}} =
+    c \left[ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) \right] = \\
+    = \frac{ \eta }{ \sqrt{ \frac{ \chi_{n + m - 2}^2}{n + m - 2}}} \sim
+    t_{n + m - 2}.
+  \end{split}
+\end{equation*}
+
+Видно, что в этой формуле $ \sigma^2$ нигде не участвует.
+Здесь используется независимость выборок $X_1, \dotsc, X_n, Y_1, \dotsc, Y_m$.
+
+Распределение Стьюдента симметрично,
+поэтому можно искать одно число
+$P \left( -u_{ \frac{ \alpha }{2}} \leq \xi \leq u_{ \frac{ \alpha }{2}} \right) =
+  1 - \alpha $.
+
+Подставляем значение случайной величины
+$$P \left\{
+    -u_{ \frac{ \alpha }{2}} \leq
+    c \left[ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) \right] \leq
+    u_{ \frac{ \alpha }{2}}
+  \right\} =
+  1 - \alpha.$$
+
+Делим на константу
+$$P \left(
+    - \frac{u_{ \frac{ \alpha }{2}}}{c} \leq \overline{X} - a_1 - \overline{Y} + a_2 \leq
+    \frac{u_{ \frac{ \alpha }{2}}}{c}
+  \right) =
+  1 - \alpha.$$
+
+Переносим выборочные средние из центрального выражения неравенства
+$$P \left(
+    - \frac{u_{ \frac{ \alpha }{2}}}{c} - \overline{X} + \overline{Y} \leq - a_1 + a_2 \leq
+    \frac{u_{ \frac{ \alpha }{2}}}{c} - \overline{X} + \overline{Y}
+  \right) =
+  1 - \alpha.$$
+
+Умножаем на $-1$ все части неравенства и получаем доверительный интервал
+$$P \left(
+    - \frac{u_{ \frac{ \alpha }{2}}}{c} + \overline{X} - \overline{Y} = T_1 \leq - a_1 + a_2 \leq
+    \frac{u_{ \frac{ \alpha }{2}}}{c} + \overline{X} - \overline{Y} = T_2
+  \right) =
+  1 - \alpha.$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

@@ -64,5 +64,139 @@ $$P_{ \theta } \left\{
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
+\subsubsection*{10.3}
+
+\textit{Задание.}
+По выборке $X_1, \dotsc, X_n$ из нормального распределения $N \left( a, \sigma^2 \right) $
+постройте доверительные интревалы для параметров распределения, если:
+\begin{enumerate}[label=\alph*)]
+  \item $a$ неизвестный параметр, $ \sigma^2$ --- известный;
+  \item $ \sigma^2$ неизвестный параметр, $a$ --- известный.
+\end{enumerate}
+
+\textit{Решение.} С помощью этих распределений можно строить доверительный интервал:
+$$ \begin{cases}
+    \frac{ \sqrt{n} \left( \overline{X} - a \right) }{ \sigma } \sim N \left( 0, 1 \right), \\
+    \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{ \sigma^2} \sim \chi_{n - 1}^2, \\
+    \frac{ \sqrt{n} \left( \overline{X} - a \right) }{ \hat{ \sigma }} \sim t_{n - 1}.
+  \end{cases}$$
+
+\begin{enumerate}[label=\alph*)]
+  \item Используем первое
+  $$ \xi =
+    \frac{ \sqrt{n} \left( \overline{X} - a \right) }{ \sigma } \sim
+    N \left( 0, 1 \right).$$
+
+  Если задан уровень доверия $ \alpha $, по таблице можем найти
+  $$P \left( \xi \geq u_{ \frac{ \alpha }{2}} \right) =
+    \frac{ \alpha }{2} =
+    \Phi \left( u_{ \frac{ \alpha }{2}} \right).$$
+
+  Плотность имеет вид колокольчика,
+  поэтому
+  $$P \left( \xi \leq - u_{ \frac{ \alpha }{2}} \right) =
+    P \left( \xi \geq u_{ \frac{ \alpha }{2}} \right).$$
+  Это значит,
+  что
+  $P \left( -u_{ \frac{ \alpha }{2}} \leq \xi \leq u_{ \frac{ \alpha }{2}} \right) =
+    1 - \alpha $.
+  Следовательно, выбираем
+  $$ \frac{ \alpha }{2}$$
+  так, чтобы в сумме было $ \alpha $.
+
+  Подставляем значение случайной величины
+  $$P \left(
+      -u_{ \frac{ \alpha }{2}} \leq \frac{ \sqrt{n} \left( \overline{X} - a \right) }{ \sigma } \leq
+      u_{ \frac{ \alpha }{2}}
+    \right) =
+    1 - \alpha.$$
+  Нужно найти отрезок для $a$.
+  Получаем
+  \begin{equation*}
+    \begin{split}
+      P \left(
+        -u_{ \frac{ \alpha }{2}} \cdot \frac{ \sigma }{ \sqrt{n}} - \overline{X} \leq -a \leq
+        u_{ \frac{ \alpha }{2}} \cdot \frac{ \sigma }{ \sqrt{n}} - \overline{X}
+      \right) = \\
+      = P \left(
+        u_{ \frac{ \alpha }{2}} \cdot \frac { \sigma }{ \sqrt{n}} + \overline{X} \geq a \geq
+        \overline{X} - u_{ \frac{ \alpha }{2} \cdot \frac{ \sigma }{ \sqrt{n}}}
+      \right) =
+      1 - \alpha,
+    \end{split}
+  \end{equation*}
+  где
+  $$u_{ \frac{ \alpha }{2}} \cdot \frac { \sigma }{ \sqrt{n}} + \overline{X}$$
+  --- статистика $T_2$, а
+  $$ \overline{X} - u_{ \frac{ \alpha }{2} \cdot \frac{ \sigma }{ \sqrt{n}}}$$
+  --- статистика $T_1$.
+
+  Получаем доверительный интервал
+  $$ \left[ T_1, T_2 \right] =
+    \left[
+      \overline{X} - u_{ \frac{ \alpha }{2} \cdot \frac{ \sigma }{ \sqrt{n}}},
+      u_{ \frac{ \alpha }{2}} \cdot \frac { \sigma }{ \sqrt{n}} + \overline{X}
+    \right];$$
+  \item распределение $ \chi^2$ сосредоточено на полуинтервале $ \left[ 0, + \infty \right) $,
+  оно не может быть симметричным.
+  Допустим,
+  $$ \xi =
+    \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{ \sigma^2} \sim
+    \chi_{n - 1}^2.$$
+
+  Имеем вероятность
+  $P \left\{ \chi_{n - 1}^2 < x_{n - 1} \left( \alpha \right) \right\} =
+    \alpha \in \left( 0, 1 \right) $.
+
+  Из рисунка \ref{fig:103} видно, что
+  $$P \left( \xi \leq y_1 \right) =
+    \frac{ \alpha }{2}$$
+  и
+  $$P \left( \xi \geq y_2 \right) =
+    \frac{ \alpha }{2}.$$
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\textwidth]{./pictures/10_3.png}
+    \caption{Вероятность попадания в отрезок}
+    \label{fig:103}
+  \end{figure}
+
+  Функция распределения будет иметь вид, показанный на рисунке \ref{fig:1031}.
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[width=.4\textwidth]{./pictures/10_3_1.png}
+    \caption{Функция распределения}
+    \label{fig:1031}
+  \end{figure}
+
+  $P \left( \xi \geq y_1 \wedge \xi \leq y_2 \right) = 1 - \alpha $.
+
+  Подставляя вместо $ \xi $ выражение,
+  можем определить интервал
+  $$P \left( y_1 \leq \xi \leq y_2 \right) =
+    1 - \alpha,$$
+  то есть
+  $$P \left\{ y_1 \leq \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{ \sigma^2} \leq y_2 \right\} =
+    1 - \alpha.$$
+
+  Выражем пределы для нужной величины
+  $$P \left\{
+      \frac{1}{ \left( n - 1 \right) \hat{ \sigma^2}} \leq \frac{1}{ \sigma^2} \leq
+      \frac{y_2}{ \left( n - 1 \right) \hat{ \sigma^2}}
+    \right\} =
+    1 - \alpha,$$
+  получаем
+  $$P \left\{
+      \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{y_2} = T_1 \leq
+      \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{y_1} = T_2
+    \right\} =
+    1 - \alpha.$$
+
+  Получили выражение $P \left( T_1 \leq \sigma^2 \leq T_2 \right) = 1 - \alpha $, значит,
+  $ \left[ T_1, T_2 \right] $ -- доверительный интеравал.
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

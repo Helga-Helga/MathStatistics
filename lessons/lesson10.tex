@@ -414,3 +414,133 @@ $$P \left(
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{10.9}
+
+\textit{Задание.}
+По реализации $2.96, 3.07, 3.02, 2.98, 3.06$
+выборки объёма 5 из нормального распределения
+с неизвестными параметрами постройте деверительные
+интервалы для математического ожидания и дисперсии на уровне значимости $0.05$.
+
+\textit{Решение.} Выборка имеет объём $n = 5$.
+
+Найдём выборочное среднее
+$$ \overline{X} =
+  \frac{1}{5} \sum \limits_{i = 1}^5 X_i =
+  \frac{2.96 + 3.07 + 3.02 + 2.98 + 3.06}{5} =
+  3.018.$$
+
+Найдём выборочную дисперсию
+$$ \hat{ \sigma^2} =
+  \frac{1}{4} \sum \limits_{i = 1}^5 \left( X_i - \overline{X} \right)^2.$$
+Подставляем числа
+\begin{equation*}
+  \begin{split}
+    \frac{1}{4} \sum \limits_{i = 1}^5 \left( X_i - \overline{X} \right)^2 = \\
+    = \frac{1}{4} \left( 0.003364 + 0.002704 + 4 \cdot 10^{-6} + 0.001444 + 0.001764 \right) = \\
+    = \frac{1}{4} \cdot 0.00928 =
+    0.00232.
+  \end{split}
+\end{equation*}
+
+Используем формулу
+$$P \left(
+    - \frac{ \sigma }{ \sqrt{n}} \cdot u_{ \frac{ \alpha }{2}} + \overline{X} \leq a \leq
+    \frac{ \sigma }{ \sqrt{n}} \cdot u_{ \frac{ \alpha }{2}} + \overline{X}
+  \right) =
+  1 - \alpha =
+  1 - 0.05 =
+  0.95.$$
+
+Из таблицы нормального распределения
+$u_{ \frac{ \alpha }{2}} =
+  u_{ \frac{0.05}{2}} =
+  u_{0.025} =
+  1.96$.
+
+Ищем числовые выражения для пределов
+$$- \frac{ \sigma }{ \sqrt{n}} \cdot u_{ \frac{ \alpha }{2}} + \overline{X} =
+  - \frac{ \sqrt{0.00232}}{ \sqrt{5}} \cdot 1.96 + 3.018 =
+  2.976$$
+и
+$$ \frac{ \sigma }{ \sqrt{n}} \cdot u_{ \frac{ \alpha }{2}} + \overline{X} =
+  3.06.$$
+
+Доверительный интервал для $a$ имеет вид $ \left[ 2.976, 3.06 \right] $.
+
+Чтобы найти доверительный интервал для дисперсии, используем формулу
+$$P \left\{
+    \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{X_2 \left( \alpha \right) } \leq \sigma^2 \leq
+    \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{X_1 \left( \alpha \right) }
+  \right\} =
+  1 - \alpha,$$
+где $X_2 \left( \alpha \right)  = 11.7$ --- квантиль уровня
+$$1 - \frac{ \alpha }{2}$$
+с $n - 1$ степенью свободы, а $X_1 \left( \alpha \right) = 0.297$ --- квантиль уровня
+$$ \frac{ \alpha }{2}$$
+с $n - 1$ степенью свободы.
+
+Тогда
+$$ \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{X_2 \left( \alpha \right) } =
+  \frac{4 \cdot 0.00232}{11.7} =
+  0.00079, \,
+  \frac{ \left( n - 1 \right) \hat{ \sigma^2}}{X_1 \left( \alpha \right) } =
+  \frac{4 \cdot 0.00232}{0.297} =
+  0.03125.$$
+Следовательно, доверительный интервал для $ \sigma^2$ имеет вид $ \left[ 0.00079, 0.03125 \right] $.
+
+\subsubsection*{10.10}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ и $Y_1, \dotsc, Y_n$ --- две независимые выборки,
+причём первая из них из распределения $N \left( a_1, \sigma^2 \right) $, а вторая ---
+из распределения $N \left( a_2, C \sigma^2 \right) $.
+Постройте доверительный интервал для разности $ \tau = a_1 - a_2$,
+считая параметры распределений неизвестными, а $C$ --- известным множителем.
+
+\textit{Решение.}
+$$ \xi =
+  \sqrt{ \frac{nm \left( m + n - 2 \right) }{m + n}} \cdot
+  \frac{ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) }{ \sqrt{n \hat{ \sigma_1^2} + mC \hat{ \sigma_2^2}}} =
+  d \left[ \left( \overline{X} - a_1 - \overline{Y} - a_2 \right) \right].$$
+Эта случайная величина имеет распределение $t_{m + n - 2}$.
+
+Видим, что в этой формуле $ \sigma^2$ нигде не участвует.
+Здесь используется независимость выборок $X_1, \dotsc, X_n, Y_1, \dotsc, Y_m$.
+
+Распределение Стьюдента симметричное,
+поэтому можно искать одно число
+$P \left( -u_{ \frac{ \alpha }{2}} \leq \xi \leq u_{ \frac{ \alpha }{2}} \right) =
+  1 - \alpha $.
+
+Подставляем значение случайной величины
+$$P \left\{
+    -u_{ \frac{ \alpha }{2}} \leq
+    d \left[ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) \right] \leq
+    u_{ \frac{ \alpha }{2}}
+  \right\} =
+  1 - \alpha.$$
+
+Делим на константу
+$$P \left(
+    - \frac{u_{ \frac{ \alpha }{2}}}{d} \leq \overline{X} - a_1 - \overline{Y} + a_2 \leq
+    \frac{u_{ \frac{ \alpha }{2}}}{d}
+  \right) =
+  1 - \alpha.$$
+
+Переносим выборочные средние из центрального выражения неравенства
+$$P \left\{
+    - \frac{u_{ \frac{ \alpha }{2}}}{d} - \overline{X} + \overline{Y} \leq
+    - \left( a_1 - a_2 \right) \leq
+    \frac{u_{ \frac{ \alpha }{2}}}{d} - \overline{X} + \overline{Y}
+  \right\} =
+  1 - \alpha.$$
+
+Умножаем на -1 все части неравенства и получаем доверительный интервал
+$$P \left(
+    - \frac{u_{ \frac{ \alpha }{2}}}{d} + \overline{X} - \overline{Y} \leq
+    - \left( a_1 - a_2 \right) \leq
+    \frac{u_{ \frac{ \alpha }{2}}}{d} + \overline{X} - \overline{Y}
+  \right) =
+  1 - \alpha.$$

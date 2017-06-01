@@ -198,5 +198,74 @@ $$ \begin{cases}
   $ \left[ T_1, T_2 \right] $ -- доверительный интеравал.
 \end{enumerate}
 
+\subsubsection*{10.4}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ и $Y_1, \dotsc, Y_m$ --- две независимые выборки,
+причём первая из них из распределения $N \left( a_1, \sigma_1^2 \right) $, а вторая ---
+из распределения $N \left( a_2, \sigma_2^2 \right) $.
+Постройте доверительный интервал для разности $a_1 - a_2$, считая,
+что дисперсии являются известными.
+
+\textit{Решение.} Известно, что
+$$ \frac{ \sqrt{n} \left( \overline{X} - a_1 \right) }{ \sigma_1} \sim
+  N \left( 0, 1 \right) $$
+и
+$$ \frac{ \sqrt{m} \left( \overline{Y} - a_2 \right) }{ \sigma_2} \sim
+  N \left( 0, 1 \right).$$
+Из этого следует, что
+$$ \overline{X} - a_1 \sim
+  N \left( 0, \frac{1}{n} \cdot \sigma_1^2 \right),$$
+а
+$$ \overline{Y} - a_2 \sim
+  N \left( 0, \frac{1}{m} \cdot \sigma_2^2 \right).$$
+
+Если рассмотрим разность, используем независимость выборок
+$$ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) \sim
+  N \left( 0, \frac{1}{n} \cdot \sigma_1^2 + \frac{1}{m} \cdot \sigma_2^2 \right).$$
+
+Есть $ \xi \sim N \left( a_1, \sigma_1^2 \right) $ и $ \eta \sim N \left( a_2, \sigma_2^2 \right) $,
+и они независимы.
+Тогда
+$$ \xi - \eta \sim
+  N \left( a_1 - a_2, \sigma_1^2 + \sigma_2^2 \right).$$
+
+Преобразуем разность выборок, чтобы получить стандартное нормальное распределение
+$$ \frac{ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) }{ \sqrt{ \frac{ \sigma_1^2}{m} + \frac{ \sigma_2^2}{n}}} =
+  \xi \sim
+  N \left( 0, 1 \right),$$
+а для его есть таблица значений.
+
+Нужно теперь находить доверительный интервал (то же самое, что делали в пункте а) задачи 10.3).
+$$P \left\{
+    -u_{ \frac{ \alpha }{2}} \leq
+    \frac{ \left( \overline{X} - a_1 \right) - \left( \overline{Y} - a_2 \right) }{ \sqrt{ \frac{ \sigma_1^2}{m} + \frac{ \sigma_2^2}{n}}} \leq
+    u_{ \frac{ \alpha }{2}}
+  \right\} =
+  1 - \alpha.$$
+
+Умножаем все части неравенства на знаменатель
+$$P \left(
+    -u_{ \frac{ \alpha }{2}} \sqrt{ \frac{ \sigma_1^2}{n} + \frac{\sigma_2^2}{m}} \leq
+    u_{ \frac{ \alpha }{2}}
+  \right) =
+  1 - \alpha.$$
+
+Выражем нужную разность
+\begin{equation*}
+  \begin{split}
+    P \left(
+      -u_{ \frac{ \alpha }{2}} \sqrt{ \frac{ \sigma_1^2}{n} + \frac{ \sigma_2^2}{m}} + \overline{X} -
+      \overline{Y} = T_1 \leq
+      a_1 - a_2 \leq
+      u_{ \frac{ \alpha }{2}} \sqrt{ \frac{ \sigma_1^2}{n} + \frac{ \sigma_2^2}{m}} + \overline{X} -
+      \overline{Y} = T_2
+    \right) = \\
+    = 1 - \alpha.
+  \end{split}
+\end{equation*}
+
+Следовательно, $P \left( a_1 - a_2 \in \left[ T_1, T_2 \right] \right) = 1 - \alpha $.
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

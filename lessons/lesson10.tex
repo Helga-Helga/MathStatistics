@@ -325,5 +325,92 @@ $$P \left(
   \right) =
   1 - \alpha.$$
 
+\subsubsection*{10.7}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного распределения на отрезке $ \left[ 0, \theta \right] $.
+\begin{enumerate}[label=\alph*)]
+  \item Докажите, что
+  $$ \frac{X_{ \left( n \right) }}{ \theta }$$
+  является центральной статистикой.
+  \item Постройте доверительный интервал с уровнем доверия $1 - \alpha $ для параметра $ \theta $,
+  используя центральную статистику.
+\end{enumerate}
+
+\textit{Решение.} $X_1, \dotsc, X_n \sim U \left( \left[ 0, \theta \right] \right) $.
+\begin{enumerate}[label=\alph*)]
+  \item Покажем, что
+  $$ \frac{1}{ \theta } \cdot X_{ \left( n \right) } =
+    G \left( \vec{X}, \theta \right).$$
+
+  Функция монотонно убывает по $ \theta \in \Theta \in \left[ 0, + \infty \right) $.
+
+  Ищем распределение
+  $$F_{G \left( \vec{X}, \theta \right) } \left( y \right) =
+    P \left\{ \frac{X_{ \left( n \right) }}{ \theta } \leq y \right\} =
+    P \left\{ X_{ \left( n \right) } \leq y \theta \right\} =
+    \left[ P \left( X_1 \leq y \theta \right) \right]^n.$$
+  По определению функции распределения
+  $$ \left[ P \left( X_1 \leq y \theta \right) \right]^n =
+    F_{X_1} \left( y \theta \right)^n =
+    \left(
+      \int \limits_{- \infty }^y
+        \frac{1}{ \theta } \cdot \mathbbm{1} \left\{ x \in \left[ 0, \theta \right] \right\}
+      dx
+    \right)^n.$$
+  Выносим константу за знак интеграла и меняем пределы интегрирования за счёт индикатора
+  $$ \left(
+      \int \limits_{- \infty }^y
+        \frac{1}{ \theta } \cdot \mathbbm{1} \left\{ x \in \left[ 0, \theta \right] \right\}
+      dx
+    \right)^n =
+    \frac{1}{ \theta^n } \cdot
+    \left( \int \limits_0^y \mathbbm{1} \left\{ x \leq \theta \right\} dx \right)^n.$$
+  Рассматриваем 3 случая
+  \begin{equation*}
+    \begin{split}
+      \frac{1}{ \theta^n } \cdot
+      \left( \int \limits_0^y \mathbbm{1} \left\{ x \leq \theta \right\} dx \right)^n =
+      \begin{cases}
+        0, \qquad y < 0, \\
+        \frac{1}{ \theta^n} \cdot
+        \left( \int \limits_0^y \theta \cdot \mathbbm{1} \left\{ z \leq 1 \right\} dz \right)^n =
+        \frac{1}{ \theta^n} \left( \int \limits_0^y \theta dz \right)^n = \\
+        = y^n, \qquad y \in \left[ 0, 1 \right), \\
+        1, \qquad y \geq 1.
+      \end{cases}
+    \end{split}
+  \end{equation*}
+
+  Можно найти распределение иначе
+  $$ \frac{X_{ \left( n \right) }}{ \theta } =
+    \frac{1}{ \theta } \cdot \max \left( X_1, \dotsc, X_n \right) =
+    \max \left( \frac{X_1}{ \theta }, \dotsc, \frac{X_n}{ \theta } \right).$$
+  Все случайные величины имеют одинаковое распределение
+  $$ \max \left( \frac{X_1}{ \theta }, \dotsc, \frac{X_n}{ \theta } \right) \overset{d}{=}
+    \max \left( \tilde{X_1}, \dotsc, \tilde{X_n} \right) =
+    \tilde{X_{ \left( n \right) }} \sim
+    U \left( \left[ 0, 1 \right] \right).$$
+  \item Статистика
+  $$ \frac{X_{ \left( n \right) }}{ \theta }$$
+  имеет известное распределение.
+  $$P \left\{ a_1 \leq \frac{X_{ \left( n \right) }}{ \theta } \leq a_2 \right\} \geq
+    1 - \alpha.$$
+
+  Делим на максимальную порядковую статистику
+  $$P \left\{
+      \frac{a_1}{X_{ \left( n \right) }} \leq \frac{1}{ \theta } \leq
+      \frac{a_1}{X_{ \left( n \right) }}
+    \right\} =
+    P \left\{
+      \frac{X_{ \left( n \right) }}{a_2} \leq \theta \leq \frac{X_{ \left( n \right) }}{a_1}
+    \right\} \geq
+    1 - \alpha,$$
+  следовательно,
+  $$ \left[ T_1, T_2 \right] =
+    \left[ \frac{X_{ \left( n \right) }}{a_2}, \frac{X_{ \left( n \right) }}{a_1} \right].$$
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

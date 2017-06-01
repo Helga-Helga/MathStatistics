@@ -38,6 +38,62 @@ $$ \sqrt{n} =
   3.36,$$
 и $n = \left( 3.36 \right)^2 = 11.29$, то есть наименьшее $n = 12$.
 
+\subsubsection*{2}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределения $F$ и $ \nu_n$ ---
+количество элементов выборки, которые попали в полуинтервал $ \left( a, b \right] $, где $a < b$ ---
+фиксированные числа.
+Докажите, что статистика
+$$ \frac{ \nu_n}{n}$$
+является несмещённой состоятельной оценкой разности $F \left( b \right) - F \left( a \right) $.
+
+\textit{Решение.} Для того, чтобы доказать, что статистика
+$$ \frac{ \nu_n}{n}$$
+является несмещённой оценкой разности $F \left( b \right) - F \left( a \right) $,
+необходимо проверить выполнение условия
+$$M \frac{ \nu_n}{n} =
+  F \left( b \right) - F \left( a \right).$$
+Находим математическое ожидание статистики
+$$M \frac{ \nu_n}{n} =
+  M \frac{ \sum \limits_{i = 1}^n \mathbbm{1} \left\{ X_i \in \left( a, b \right] \right\} }{n} =
+  \frac{1}{n} \cdot
+  M \sum \limits_{i = 1}^n \mathbbm{1} \left\{ X_i \in \left( a, b \right] \right\} =
+  M \mathbbm{1} \left\{ X_1 \in \left( a, b \right] \right\}.$$
+Разбиваем на разность двух вероятностей
+$$M \mathbbm{1} \left\{ X_1 \in \left( a, b \right] \right\} =
+  P \left( X_1 \leq b \right) - P \left( X_1 < a \right) =
+  F \left( b \right) - F \left( a \right).$$
+
+Таким образом,
+$$M \frac{ \nu_n}{n} =
+  F \left( b \right) - F \left( a \right),$$
+а значит, статистика
+$$ \frac{ \nu_n}{n}$$
+является несмещённой оценкой разности $F \left( b \right) - F \left( a \right) $.
+
+Чтобы доказать состоятельность, нужно найти предел по вероятности статистики
+$$ \frac{ \nu_n}{n}$$
+при $n \to \infty $.
+Поскольку случайные величины
+$ \mathbbm{1} \left\{ X_1 \in \left( a, b \right] \right\}, \dotsc,
+  X_n \in \left( a, b \right] $
+являются независимыми одинаково распределёнными случайными величинами с конечным первым моментом,
+то согласно с законом больших чисел
+$$ \frac{1}{n} \cdot
+  \sum \limits_{i = 1}^n
+    \mathbbm{1} \left\{ X_i \in \left( a, b \right] \right\} \overset{P}{ \rightarrow}
+  M \mathbbm{1} \left\{ X_1 \in \left( a, b \right] \right\}, \,
+  n \to \infty,$$
+а тогда при $n \to \infty $ выполняется
+$$ \frac{ \nu_n}{n} \overset{P}{ \rightarrow }
+  M \mathbbm{1} \left\{ X_1 \in \left( a, b \right] \right\} =
+  F \left( b \right) - F \left( a \right).$$
+
+Значит, статистика
+$$ \frac{ \nu_n}{n}$$
+является состоятельной оценкой разности $F \left( b \right) - F \left( a \right) $.
+
 \subsubsection*{4}
 
 \textit{Задание.}

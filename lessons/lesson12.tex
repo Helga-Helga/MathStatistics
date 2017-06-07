@@ -177,5 +177,94 @@ $$P \left( 5 \left( \overline{X} - 1 \right) < -3.35 \right) =
 
 А значит, мощность $1 - \beta > 1 - 0.00135$ --- очень близкое число к единице, что хорошо.
 
+\subsubsection*{12.4}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_9$ ---
+независимые наблюдения случайной
+величины с распределением Бернулли с неизвестной вероятностью успеха $p$.
+Постройте критерий Неймана-Пирсона с уровнем доверия $ \alpha = 0.8$ для проверки гипотезы
+$$ \left\{ H_0: \, p = \frac{1}{3} \right\} $$
+против альтернативы
+$$ \left\{ H_1: \, p = \frac{2}{3} \right\}.$$
+Определите наименьший объём выборки,
+при котором вероятности ошибок первого и второго рода не превышают $0.01$.
+
+\textit{Решение.} $X_1, \dotsc, X_9 \sim Bern \left( p \right) $.
+
+Записываем функцию правдоподобия
+$$L \left( X_1, \dotsc, X_9, p \right) =
+  \prod \limits_{i = 1}^9 p^{X_i} \left( 1 - p \right)^{1 - X_i} =
+  p^{ \sum \limits_{i = 1}^9 X_i} \cdot \left( 1 - p \right)^{9 - \sum \limits_{i = 1}^9 X_i}.$$
+
+Теперь берём отношение функций правдоподобия
+$$ \varphi \left( \vec{X} \right) =
+  \frac{L \left( X_1, \dotsc, X_9, \frac{2}{3} \right) }{L \left( X_1, \dotsc, X_9, \frac{1}{3} \right) }.$$
+Подставляем значения функций правдоподобия при гипотезах
+$$ \frac{L \left( X_1, \dotsc, X_9, \frac{2}{3} \right) }{L \left( X_1, \dotsc, X_9, \frac{1}{3} \right) } =
+  \left[ \left( \frac{2}{3} \right)^{ \sum \limits_{i = 1}^9 X_i} \left( 1 - \frac{2}{3} \right)^{9 - \sum \limits_{i = 1}^9 X_i} \right] \cdot
+  \frac{1}{ \left( \frac{1}{3} \right)^{ \sum \limits_{i = 1}^9 X_i} \left( 1 - \frac{1}{3} \right)^{9 - \sum \limits_{i = 1}^9 X_i}}.$$
+Упрощаем выражения в скобках
+\begin{equation*}
+  \begin{split}
+    \left[ \left( \frac{2}{3} \right)^{ \sum \limits_{i = 1}^9 X_i} \left( 1 - \frac{2}{3} \right)^{9 - \sum \limits_{i = 1}^9 X_i} \right] \cdot
+    \frac{1}{ \left( \frac{1}{3} \right)^{ \sum \limits_{i = 1}^9 X_i} \left( 1 - \frac{1}{3} \right)^{9 - \sum \limits_{i = 1}^9 X_i}} = \\
+    = \left[ \left( \frac{2}{3} \right)^{ \sum \limits_{i = 1}^9 X_i} \left( \frac{1}{3} \right)^{9 - \sum \limits_{i = 1}^9 X_i} \right] \cdot
+    \frac{1}{ \left( \frac{1}{3} \right)^{ \sum \limits_{i = 1}^9 X_i} \left( \frac{2}{3} \right)^{9 - \sum \limits_{i = 1}^9 X_i}} =
+    2^{-9 + 2 \sum \limits_{i = 1}^9 X_i}.
+  \end{split}
+\end{equation*}
+
+Эта функция растёт вместе с
+$$ \sum \limits_{i = 1}^9 X_i.$$
+Значит, зададим
+$$ \left\{ \sum \limits_{i = 1}^9 X_i > c \right\} $$
+--- критическая область для $H_0$, где $c$ находим из условия, что
+$$P \left( \sum \limits_{i = 1}^9 X_i > c \; \middle| \; H_0 \right) =
+  0.2.$$
+
+Знаем, что
+$$ \xi =
+  \sum \limits_{i = 1}^9 X_i \sim
+  Binom \left( 9, \frac{1}{3} \right) $$
+при гипотезе $H_0$.
+
+Имеем вероятность $P \left( \xi > c \right) = 0.2$.
+
+Распишем через сумму вероятностей равенств
+$$P \left( \xi = c + 1 \right) + \dotsc + P \left( \xi = 9 \right) =
+  0.2.$$
+
+При этом $P \left( \xi = 0 \right) + \dotsc + P \left( \xi = 9 \right) = 1$.
+
+Отбрасываем слагаемые из последней суммы до тех пор, пока сумма впервые не станет меньшей чем $0.2$.
+Так находим $c^*$.
+
+Формулируем критерий.
+Если
+$$ \sum \limits_{i = 1}^9 X_i >
+  c^*,$$
+то отклоняем основную гипотезу и принимаем, что
+$$p =
+  \frac{2}{3}.$$
+Если же
+$$ \sum \limits_{i = 1}^9 X_i \leq
+  c^*,$$
+то принимаем основную гипотезу, что
+$$p =
+  \frac{1}{3}.$$
+
+Запишем систему уравнений с двумя неизвестными $c$ и $n$.
+
+Знаем, что
+$$ \begin{cases}
+    \alpha =
+      P \left( \sum \limits_{i = 1}^n X_i > c \; \middle| \; p = \frac{1}{3} \right) =
+      P \left\{ \xi > c, where \, \xi \sim Binom \left( n, \frac{1}{3} \right) \right\}, \\
+    \beta =
+      P \left( \sum \limits_{i = 1}^n X_i \leq c \; \middle| \; p = \frac{2}{3} \right) =
+      P \left\{ \eta \leq c, where \, \eta \sim Binom \left( n, \frac{2}{3} \right) \right\}.
+  \end{cases}$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

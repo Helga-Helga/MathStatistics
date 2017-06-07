@@ -266,5 +266,67 @@ $$ \begin{cases}
       P \left\{ \eta \leq c, where \, \eta \sim Binom \left( n, \frac{2}{3} \right) \right\}.
   \end{cases}$$
 
+\subsubsection*{12.5}
+
+\textit{Задание.}
+По независимым наблюдениям $X_1, \dotsc, X_{32}$ нормальной величины с распределением
+$N \left( 0, \theta \right) $ постройте критерий Неймана-Пирсона с уровнем доверия $ \alpha = 0.95$
+для проверки гипотезы $ \left\{ H_0: \, \theta = 1 \right\} $ против альтернативы
+$ \left\{ H_1: \, \theta = 4 \right\} $.
+Вычислите мощность этого критерия.
+
+\textit{Решение.} Записываем
+$$L \left( X_1, \dotsc, X_{32}, \theta \right) =
+  \prod \limits_{i = 1}^{32} \frac{1}{ \sqrt{2 \pi \theta }} \cdot e^{- \frac{X_i^2}{2 \theta }} =
+  \left( \frac{1}{ \sqrt{2 \pi \theta }} \right)^{32} \cdot
+  e^{- \frac{1}{2 \theta} \sum \limits_{i = 1}^{32} X_i^2}.$$
+
+Теперь --- отношение правдоподобностей.
+$ \pi $ сократятся
+$$ \varphi \left( \vec{X} \right) =
+   \left( \frac{1}{2} \right)^{32} \cdot e^{\frac{1}{8} \sum \limits_{i = 1}^{32} X_i^2}.$$
+Видим, что критическая область для $H_0$ будет
+$$ \left\{ \sum \limits_{i = 1}^{32} X_i^2 > c \right\},$$
+где $c$ находится из условия
+$$P \left( \sum \limits_{i = 1}^{32} X_i^2 < c \; \middle| \; H_0 \right) \leq
+  0.05.$$
+При гипотезе $H_0 \, X_i \sim N \left( 0, 1 \right) $, а тогда
+$$ \sum \limits_{i = 1}^{32} X_i^2 \sim
+  \chi_{32}^2.$$
+Раз так, то будем искать $c$ из условия
+$$1 - P \left( \sum \limits_{i = 1}^{32} X_i^2 < c \; \middle| \; H_0 \right) 0
+  0.95.$$
+
+Значит, $c = 46.2$ --- из таблицы $ \chi^2$-распределения.
+Таким образом, сформулируем критерий.
+Если
+$$ \sum \limits_{i = 1}^{32} X_i^2 >
+  46.2,$$
+то отклоняем основную гипотезу $H_0$ и принимаем, что $ \theta = 4$, а если
+$$ \sum \limits_{i = 1}^{32} X_i^2 \leq
+  46.2,$$
+принимаем основную гипотезу, то есть считаем, что $ \theta = 1$.
+
+Ищем ошибку второго рода, то есть
+$$ \beta =
+  P \left( \sum \limits_{i = 1}^{32} X_i^2 \leq 46.2 \; \middle| \; H_1 \right).$$
+При гипотезе $H_1 \, X_i \sim N \left( 0, 4 \right) $.
+Значит,
+$$ \frac{X_i}{2} \sim
+  N \left( 0, 1 \right),$$
+а тогда
+$$ \sum \limits_{i = 1}^{32} \left( \frac{X_i}{2} \right)^2 =
+  \frac{ \sum \limits_{i = 1}^{32} X_i^2}{4} \sim
+  \chi_{32}^2.$$
+Значит, чтобы этого добиться, нужно слева и справа поделить на 4, то есть
+$$P \left( \sum \limits_{i = 1}^{32} X_i^2 \leq 46.2 \; \middle| \; H_1 \right) =
+  P \left( \frac{ \sum \limits_{i = 1}^{32} X_i^2}{4} \leq 11.55 \right) <
+  0.1$$
+--- утверждаем из таблицы $ \chi^2$-распределения.
+
+Значит, ошибка второго рода меньше чем $0.1$, значит, мощность
+$$1 - \beta >
+  0.9.$$
+
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}

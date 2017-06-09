@@ -288,13 +288,13 @@ $$ \varphi \left( \vec{X} \right) =
 Видим, что критическая область для $H_0$ будет
 $$ \left\{ \sum \limits_{i = 1}^{32} X_i^2 > c \right\},$$
 где $c$ находится из условия
-$$P \left( \sum \limits_{i = 1}^{32} X_i^2 < c \; \middle| \; H_0 \right) \leq
+$$P \left( \sum \limits_{i = 1}^{32} X_i^2 > c \; \middle| \; H_0 \right) \leq
   0.05.$$
 При гипотезе $H_0 \, X_i \sim N \left( 0, 1 \right) $, а тогда
 $$ \sum \limits_{i = 1}^{32} X_i^2 \sim
   \chi_{32}^2.$$
 Раз так, то будем искать $c$ из условия
-$$1 - P \left( \sum \limits_{i = 1}^{32} X_i^2 < c \; \middle| \; H_0 \right) 0
+$$1 - P \left( \sum \limits_{i = 1}^{32} X_i^2 < c \; \middle| \; H_0 \right) =
   0.95.$$
 
 Значит, $c = 46.2$ --- из таблицы $ \chi^2$-распределения.
@@ -472,3 +472,68 @@ $$ \sum \limits_{i = 1}^{100} X_i <
 $$ \sum \limits_{i = 1}^{100} X_i \geq
   -64,$$
 то принимаем $ \lambda = 1$.
+
+
+\subsubsection*{12.9}
+
+\textit{Задание.}
+Основная гипотеза по поводу некоторой выборки состоит в том,
+что элементы выборки имеют стандартное нормальное распределение, а альтернативная гипотеза ---
+в том, что элементы выборки имеют распределение Бернулли с параметром $0.5$.
+Постройте критерий Нееймана-Пирсона,
+который различает эти две гипотезы с вероятностью ошибки первого рода, которая равна $0.5$.
+
+\textit{Решение.}
+Нулевая гипотеза $H_0$ --- это $X_1, \dotsc, X_n \sim N \left( 0, 1 \right) $ против альтернативы
+$$H_1: \,
+  X_1, \dotsc, X_n \sim Bern \left( \frac{1}{2} \right).$$
+
+Вычислим функцию правдоподобия для нулевой гипотезы
+$$L_0 \left( \vec{X} \right) =
+  \prod \limits_{i = 1}^n \frac{1}{ \sqrt{2 \pi }} \cdot e^{- \frac{X_i^2}{2}} =
+  \frac{1}{ \left( \sqrt{2 \pi } \right)^n} \cdot e^{- \frac{1}{2} \sum \limits_{i = 1}^n X_i^2}$$
+и для альтернативы
+$$L_1 \left( \vec{X} \right) =
+  \prod \limits_{i = 1}^n
+    \left( \frac{1}{2} \right)^{X_i} \left( 1 - \frac{1}{2} \right)^{1 - X_i} =
+  \prod \limits_{i = 1}^n \left( \frac{1}{2} \right)^{X_i} \left( \frac{1}{2} \right)^{1 - X_i}.$$
+Суммируем показатели степеней
+$$ \prod \limits_{i = 1}^n \left( \frac{1}{2} \right)^{X_i} \left( \frac{1}{2} \right)^{1 - X_i} =
+  \prod \limits_{i = 1}^n \left( \frac{1}{2} \right)^{X_i + 1 - X_i} =
+  \prod \limits_{i = 1}^n \frac{1}{2} =
+  \frac{1}{2^n}.$$
+
+Отношение правдоподобий
+$$ \varphi \left( \vec{X} \right) =
+  \frac{ \frac{1}{2^n}}{ \frac{1}{ \left( 2 \pi \right)^{ \frac{n}{2}}} \cdot e^{- \frac{1}{2} \sum \limits_{i = 1}^n X_i^2}} =
+  \frac{ \left( 2 \pi \right)^{ \frac{n}{2}} e^{ \frac{1}{2} \sum \limits_{i = 1}^n X_i^2}}{2^n} =
+  2^{- \frac{n}{2}} \pi^{ \frac{n}{2}} e^{ \frac{1}{2} \sum \limits_{i = 1}^n} X_i^2.$$
+
+Видим, что критической областью для $H_0$ будет
+$$ \left\{ \sum \limits_{i = 1}^n X_i^2 > c \right\},$$
+где $c$ находим из условия
+$$P \left( \sum \limits_{i = 1}^n X_i^2 > c \; \middle| \; H_0 \right) \leq
+  0.5.$$
+
+При гипотезе $H_0 \, X_i \sim N \left( 0, 1 \right) $, а тогда
+$$ \sum \limits_{i = 1}^n X_i^2 \sim
+  \chi_n^2.$$
+
+Раз так, то будем искать $c$ из условия
+$$1 - P \left( \sum \limits_{i = 1}^n X_i^2 < c \; \middle| \; H_0 \right) =
+  0.5.$$
+
+Зная $n$, находим $c^*$.
+
+Формулируем критерий.
+Если
+$$ \sum \limits_{i = 1}^n X_i^2 >
+  c^*,$$
+то отклоняем основную гипотезу и принимаем, что
+$$X_i \sim
+  Bern \left( \frac{1}{2} \right).$$
+
+Если же
+$$ \sum \limits_{i = 1}^n X_i^2 \leq
+  c^*,$$
+то принимаем основную гипотезу, что $X_i \sim N \left( 0, 1 \right) $.

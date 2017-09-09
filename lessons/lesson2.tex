@@ -1,106 +1,1186 @@
-\addcontentsline{toc}{chapter}{Занятие 2. Характеристики случайного процесса}
-\chapter*{Занятие 2. Характеристики случайного процесса}
+\addcontentsline{toc}{chapter}{Занятие 2. Свойства оценок}
+\chapter*{Занятие 2. Свойства оценок}
 
 \addcontentsline{toc}{section}{Контрольные вопросы и задания}
 \section*{Контрольные вопросы и задания}
 
-\subsubsection*{Приведите определение случайного процесса.}
+\subsubsection*{Что называют оценкой неизвестного параметра?}
 
-Случайный процесс $ \xi \left( t \right), \, t \in T$ ---
-это параметризированная совокупность случайных величин.
+Статистику, значение которой заменяет неизвестный параметр, называют оценкой этого параметра.
 
-\subsubsection*{Что называют конечномерными распределениями случайного процесса?}
+\subsubsection*{Приведите определение оценки: несмещённой, ассимптотически несмещённой,
+                состоятельной, сильно состоятельной, оптимальной.}
 
-$ \left\{ \mu_{t_1, \dotsc, t_n}; \, t_1, \dotsc, t_n \in T, \, n \geq 1 \right\} $ ---
-набор конечномерных распределений процесса $ \xi $, где $ \mu_{t_1, \dotsc, t_n}$ ---
-распределение вектора $ \left( \xi \left( t_1 \right), \dotsc, \xi \left( t_n \right) \right) $ в
-$ \mathbb{R}^n$,
-то есть для борелевского
-$ \Delta \in \mathcal{B} \left( \mathbb{R}^n \right), \,
-  \mu_{t_1, \dotsc, t_n} \left( \Delta \right) =
-  P \left\{
-    \left( \xi \left( t_1 \right), \dotsc, \xi \left( t_n \right) \right) \in \Delta
-  \right\} $.
+Оценка $ \hat{ \theta}$  несмещённая,
+если $ \forall \theta \in \Theta: \, M_{ \theta } \hat{ \theta } = \theta $.
 
-\subsubsection*{Приведите определение функции математического ожидания,
-                дисперсии и ковариационной функции случайного процесса.}
+Асимптотически несмещенная оценка --- такая оценка,
+математическое ожидание которой совпадает с оцениваемым параметром при $n \to \infty $.
 
-$m \left( t \right) = M \xi \left( t \right), \, t \in T$ --- функция среднего.
+Оценка $ \hat{ \theta }$ называется состоятельной,
+если стремится к истинному значению $ \theta $ по вероятности
+$ \hat{ \theta } \overset{P}{ \rightarrow } \theta, \,
+  n \to \infty $.
 
-$D \xi \left( t \right), \, t \in T$ --- функция дисперсии.
+Оценка $ \hat{ \theta }$ называется сильно состоятельной,
+если стремится к истинному значению $ \theta $ почти наверное
+$ \hat{ \theta } \overset{a.s.}{ \rightarrow } \theta, \,
+  n \to \infty $.
 
-$K \left( t, s \right) =
-  M \left[ \xi \left( t \right) - m \left( t \right) \right] \cdot
-  \left[ \xi \left( s \right) - m \left( s \right) \right], \, t, s \in T$ ---
-функция ковариации.
+Несмещённая оценка $ \hat{ \theta } \in K$
+называется оптимальной в классе квадратично интегрируемых оценок $K$,
+если для всякой другой несмещённой оценки
+$ \tilde{ \theta } \in \Theta \,
+  \forall \theta \in \Theta: \,
+  D_{ \theta } \hat{ \theta } \leq D_{ \theta } \tilde{ \theta }$
+или же
+$ \forall \theta \in \Theta, \,
+  M_{ \theta } \left( \hat{ \theta } - \theta \right)^ \leq
+  M_{ \theta } \left( \tilde{ \theta } - \theta \right)^2$.
+
+\subsubsection*{Что называется среднеквадратическим отклонением оценки?}
+
+$M_{ \theta } \left( \hat{ \theta } - \theta \right) $ --- среднеквадратическое оклонение.
+
+\subsubsection*{Сформулируйте утверждение про поведение выборочных моментов.}
+
+ыборочный начальный момент $M_k \, k$-го порядка стремится к начальному моменту $ \nu_k$
+случайной величины $X$, то есть
+$$ \lim \limits_{n \to \infty } P \left( \left| M_k - \nu_k \right| \geq \varepsilon \right) =
+  0,$$
+для любого сколь угодно малого $ \varepsilon > 0$,
+если моменты $ \nu_{2k}$ и $ \nu_k$ случайной величины $X$ существуют и конечны.
+
+\subsubsection*{Какая оценка является несмещённой и состоятельной для математического ожидания
+                распределения выборки?}
+
+В качестве оценки для математического
+ожидания естественно предложить среднееарифметическое наблюденных значений
+$$ \tilde{m} =
+  \frac{ \sum \limits_{i = 1}^n X_i}{n}.$$
+
+\subsubsection*{Какая статистика является несмещённой оценкой для дисперсии распределения выборки?}
+
+$$ \frac{1}{n - 1} \sum \limits_{k = 1}^n \left( x_k - \overline{x} \right)^2$$
+--- несмещённая оценка для $ \sigma^2 = Dx_1$.
 
 \addcontentsline{toc}{section}{Аудиторные задачи}
 \section*{Аудиторные задачи}
 
-\subsubsection*{2.2}
+\subsubsection*{2.4}
 
 \textit{Задание.}
-Пусть
-$$ \xi \left( t \right) =
-  X \cdot e^{-t}, \,
-  t > 0,$$
-где $X$ --- случайная величина,
-которая имеет нормальное распределение с параметрами $a, \, \sigma^2$.
-Найдите математическое ожидание, дисперсию,
-ковариационную функцию и одномерную плотность распределения случайного процесса
-$ \xi =
-  \left\{ \xi \left( t \right), \, t > 0 \right\} $.
+Для выборки равномерного распределения на отрезке $ \left[ \theta , 1 \right] $
+проверьте состоятельность и несмещённость оценки $X_{ \left( 1 \right) }$ параметра $ \theta $.
+
+\textit{Решение.} $ \theta $ --- минимальное наблюдение.
+Проверяем,
+выполняется ли $X_{ \left( 1 \right) } \overset{P}{ \rightarrow } \theta, \, n \to \infty $.
+
+По определению сходимости по вероятности
+$$ \forall \varepsilon > 0 \,
+  P \left( \left| X_{ \left( 1 \right) } - \theta \right| > \varepsilon \right) \to 0, \,
+  n \to \infty.$$
+
+Раскроем модуль
+$$P \left\{ X_{ \left( 1 \right) } > \varepsilon + \theta \right\} =
+  P \left( X_1 > \varepsilon + \theta, \dotsc, X_n > \varepsilon + \theta \right) =
+  \left[ P \left( X_1 > \varepsilon + \theta \right) \right]^n.$$
+Подставим значение вероятности из геометрического эксперимента
+$$ \left[ P \left( X_1 > \varepsilon + \theta \right) \right]^n =
+  \left( \frac{1 - \theta - \varepsilon }{1 - \theta } \right)^n =
+  \left( 1 - \frac{ \varepsilon }{1 - \theta } \right)^n \to
+  0, \,
+  n \to \infty.$$
+
+Число в скобках строго меньше единицы, так как $0 \leq \theta \leq 1$.
+
+Отсюда следует, что оценка состоятельная.
+
+Проверяем несмещённость оценки.
+Проверяем, выполняется ли
+$$MX_{ \left( 1 \right) } =
+  \theta.$$
+
+Нужно найти плотность
+$$MX_{ \left( 1 \right) } =
+  \int \limits_{ \mathbb{R}} f_{X_{ \left( 1 \right) }} \left( y \right) ydy.$$
+
+Начинаем с функции распределения
+$F_{X_{ \left( 1 \right) }} \left( y \right) =
+  P \left( X_{ \left( 1 \right) } \leq y \right) $.
+Переходим к противоположному событию
+$$P \left( X_{ \left( 1 \right) } \leq y \right) =
+  1 - P \left( X_{ \left( 1 \right) } > y \right) =
+  1 - \left[ P \left( X_1 > y \right) \right]^n.$$
+Переходим к противоположному событию
+$1 - \left[ P \left( X_1 > y \right) \right]^n =
+  1 - \left[ 1 - F \left( y \right) \right]^n$.
+
+Продифференцируем
+$$ \frac{dF_{X_{ \left( 1 \right) }} \left( y \right) }{dy} =
+  n \left[ 1 - F \left( y \right) \right]^{n - 1} f \left( y \right).$$
+На отрезке $ \left[ \theta, 1 \right] $ имеет равномерное распределение
+$$n \left[ 1 - F \left( y \right) \right]^{n - 1} f \left( y \right) =
+  n \left[ 1 - \frac{y - \theta }{1 - \theta } \right]^{n - 1} \cdot
+  \mathbbm{1} \left\{ y \in \left[ \theta, 1 \right] \right\} \cdot \frac{1}{1 - \theta }.$$
+Приведём к общему знаменателю
+$$n \left[ 1 - \frac{y - \theta }{1 - \theta } \right]^{n - 1} \cdot
+  \mathbbm{1} \left\{ y \in \left[ \theta, 1 \right] \right\} \cdot \frac{1}{1 - \theta } =
+  \frac{n}{ \left( 1 - \theta \right)^2} \cdot \left( 1 - y \right)^{n - 1} \cdot
+  \mathbbm{1} \left\{ y \in \left[ \theta, 1 \right] \right\}.$$
+
+Нашли плотность $X_{ \left( 1 \right) }$ и теперь можем вычислить интеграл
+$$MX_{ \left( 1 \right) } =
+  \int \limits_{ \theta }^1
+    y \cdot \frac{n}{ \left( 1 - \theta \right)^2} \cdot \left( 1 - y \right)^{n - 1}
+  dy.$$
+Замена:
+$$1 - y = z, \,
+  dy = -dz, \,
+  y = 1 - z, \,
+  y = 1 \Rightarrow \implies z = 0, \,
+  y = \theta \implies z = 1 - \theta.$$
+Подставляя замену, получаем
+$$ \int \limits_{ \theta }^1
+    y \cdot \frac{n}{ \left( 1 - \theta \right)^2} \cdot \left( 1 - y \right)^{n - 1}
+  dy =
+  n \cdot \frac{1}{ \left( 1 - \theta \right)^n}
+  \int \limits_0^{1 - \theta } \left( 1 - z \right) z^{n - 1} dz.$$
+Вычислим интеграл
+\begin{equation*}
+  \begin{split}
+    n \cdot \frac{1}{ \left( 1 - \theta \right)^n}
+    \int \limits_0^{1 - \theta } \left( 1 - z \right) z^{n - 1} dz
+    \frac{n}{ \left( 1 - \theta \right)^n}
+    \left[
+      \frac{ \left( 1 - \theta \right)^n}{n} - \frac{ \left( 1 - \theta \right)^{n+1}}{n + 1}
+    \right] = \\
+    = n \left( \frac{1}{n} - \frac{1 - \theta }{n + 1} \right) =
+    1 - \frac{n}{n + 1} \left( 1 - \theta \right).
+  \end{split}
+\end{equation*}
+Раскроем скобки
+$$1 - \frac{n}{n + 1} \left( 1 - \theta \right) =
+  1 - \frac{n}{n + 1} - \theta \cdot \frac{n}{n + 1} \neq
+  \theta.$$
+Отсюда следует, что оценка смещённая, но ассимптотически несмещённая, потому что
+$$1 - \frac{n}{n + 1} \to 0, \,
+  n \to \infty $$
+и
+$$ \frac{n}{n + 1} \to 1, \,
+  n \to \infty.$$
+
+\subsubsection*{2.5}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределения Пуассона с параметром $ \lambda > 0$.
+Выясните, является ли статистика
+$$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2:$$
+\begin{enumerate}[label=\alph*)]
+  \item несмещённой оценкой для $ \lambda^2$;
+  \item состоятельной оценкой для $ \lambda^2$.
+\end{enumerate}
 
 \textit{Решение.}
-Сейчас $T = \left( 0, \infty \right) $.
+\begin{enumerate}[label=\alph*)]
+  \item Нужно проверить, выполняется ли
+  $$M \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 =
+    \lambda^2.$$
+  Преобразуем левую часть
+  $$M \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 =
+    MX_1^2 =
+    DX_1 + \left( MX_1 \right)^2 =
+    \lambda + \lambda^2 \neq
+    \lambda^2.$$
 
-Случайная величина $X$ имеет распределение $N \left( a, \sigma^2 \right) $.
-Нужно найти $M \xi \left( t \right) = m \left( t \right), \, D \xi \left( t \right) $,
-ковариационную функцию $K \left( t, s \right) $ и одномерную плотность распределения
-$p_{ \xi } \left( t \right) $.
+  Значит, оценка смещённая;
+  \item проверяем, имеет ли место
+  $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2  \overset{P}{ \rightarrow } \lambda^2, \,
+    n \to \infty.$$
 
-Найчнём с математического ожидания
-$$m \left( t \right) =
-  M \left( X \cdot e^{-t} \right) =
-  e^{-t} MX =
-  e^{-t} \cdot a.$$
+  По закону больших чисел
+  $$ \frac{1}{n} \sum \limits_{i = 1}^n X_i^2 \to
+    MX_1^2 =
+    \lambda^2 + \lambda \neq
+    \lambda^2,$$
+  значит, оценка не состоятельная.
+\end{enumerate}
 
-Далее ---
-функция дисперсии $D \xi \left( t \right) = D \left( X \cdot e^{-t} \right) = e^{-2t} \cdot DX$.
-Дисперсия $X$ --- известная: $e^{-2t} \cdot DX = e^{-2t} \cdot \sigma^2$.
+\subsubsection*{2.6}
 
-Далее ---
-ковариационная функция
-$$K \left( t, s \right) =
-  M \left[ \xi \left( t \right) - m \left( t \right) \right] \cdot
-  \left[ \xi \left( s \right) - m \left( s \right) \right] =
-  cov \left[ \xi \left( t \right), \xi \left( s \right) \right].$$
-Вместо $ \xi \left( t \right), \, \xi \left( s \right) $ подставляем их значения
-$$cov \left[ \xi \left( t \right), \xi \left( s \right) \right] =
-  cov \left( Xe^{-t}, Xe^{-s} \right).$$
-Множители выносятся
-$$cov \left( Xe^{-t}, Xe^{-s} \right) =
-  e^{-t - s} cov \left( X, X \right) =
-  e^{-t - s} DX =
-  e^{-t - s} \sigma^2.$$
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распределения с параметром $ \alpha > 0$.
+Докажите, что статистика $1 / \overline{X}$ является состоятельной оценкой для $ \alpha $.
 
-Последнее ---
-это плотность $ \xi \left( t \right) \sim N \left( e^{-t} a, \, e^{-2t} \sigma^2 \right) $.
+\textit{Решение.} Нужно показать, что
+$$ \frac{1}{ \overline{X}} \overset{P}{ \rightarrow } \alpha, \,
+   n \to \infty.$$
 
-Нужно написать нормальную плотность с заданными математическим ожиданием и дисперсией
-$$p_{ \xi \left( t \right) } \left( x \right) =
-  \frac{1}{ \sqrt{2 \pi e^{-2t} \sigma^2}} \cdot
-  e^{- \frac{ \left( x - e^{-t} a \right)^2}{2e^{-2t} \sigma^2}}.$$
+Выборочное среднее
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i.$$
 
-Траектория процесса изображена на рисунке \ref{fig:22}
-и имеет разный вид в зависимости от значения случайной величины $X$.
+По закону больших чисел
+$$ \overline{X} \overset{P}{ \rightarrow }
+  MX_1 =
+  \frac{1}{ \alpha }.$$
+Отсюда следует, что
+$$ \frac{1}{ \overline{X}} \overset{P}{ \rightarrow }
+  \frac{1}{MX_1} =
+  \alpha.$$
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=.4\textwidth]{./pictures/2_2.png}
-  \caption{Траектория процесса}
-  \label{fig:22}
-\end{figure}
+\subsubsection*{2.7}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из нормального распределения $N \left( a, \sigma^2 \right) $.
+Докажите, что статистика
+$$S_n =
+  \frac{1}{2 \left( n - 1 \right) } \sum \limits_{i = 1}^{n - 1} \left( X_{i + 1} - X_i \right)^2$$
+является несмещённой и состоятельной оценкой для $ \sigma^1$.
+
+\textit{Решение.} Нужно проверить условие $MS_n = \sigma^2$.
+
+Разность двух соседних элементов выборки имеет распределение
+$$X_{i + 1} - X_i \sim
+  N \left( 0, 2 \sigma^2 \right).$$
+
+Найдём математическое ожидание статистики
+$$MS_n =
+  M \frac{1}{2 \left( n - 1 \right) } \cdot
+  \sum \limits_{i = 1}^{n - 1} \left( X_{i + 1} - X_i \right)^2 =
+  \frac{1}{2 \left( n - 1 \right) } \sum \limits_{i = 1}^n M \left( X_{i + 1} - X_i \right)^2.$$
+Случайные величины одинаково распределены
+$$ \frac{1}{2 \left( n - 1 \right) } \sum \limits_{i = 1}^n M \left( X_{i + 1} - X_i \right)^2 =
+  \frac{n}{2 \left( n - 1 \right) } \cdot M \left( X_2 - X_1 \right)^2.$$
+В данном случае второй момент равен  дисперсии
+$$ \frac{n}{2 \left( n - 1 \right) } \cdot M \left( X_2 - X_1 \right)^2 =
+  \frac{1}{2} \cdot 2 \sigma^2 =
+  \sigma^2.$$
+Отсюда следует, что оценка несмещённая.
+
+Проверим состоятельность, то есть $S_n \overset{P}{ \rightarrow } \sigma^2, \, n \to \infty $.
+
+Разобъём $S_n$ на две суммы
+$$S_n =
+  \frac{1}{2 \left( n - 1 \right) } \cdot
+  \left[
+    \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+    \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+  \right].$$
+В каждой из сумм слагаемые независимы
+\begin{equation*}
+  \begin{split}
+    \frac{1}{2 \left( n - 1 \right) } \cdot
+    \left[
+      \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+      \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+    \right] = \\
+    = \frac{1}{2 \left( n - 1 \right) } \cdot
+    \left[
+      \frac{m}{m} \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+      \frac{n - 1 - m}{n - 1 - m} \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+    \right].
+  \end{split}
+\end{equation*}
+По закону больших чисел
+\begin{equation*}
+  \begin{split}
+    \frac{1}{2 \left( n - 1 \right) } \cdot
+    \left[
+      \frac{m}{m} \sum \limits_{even \, i} \left( X_{i + 1} - X_i \right)^2 +
+      \frac{n - 1 - m}{n - 1 - m} \sum \limits_{odd \, i} \left( X_{i + 1} - X_i \right)^2
+    \right] \overset{P}{ \rightarrow } \\
+    \overset{P}{ \rightarrow } \frac{1}{2} \cdot M \left( X_2 - X_1 \right)^2 =
+    \frac{1}{2} \cdot D \left( X_2 - X_1 \right) =
+    \sigma^2, \,
+    n \to \infty.
+  \end{split}
+\end{equation*}
+Отсюда следует, что оценка состоятельная.
+
+\subsubsection*{2.8}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распредения с параметром $ \alpha > 1$.
+Для какого параметра $ \theta = \theta \left( \alpha \right) $ статистика
+$$ \hat{ \theta_n} =
+  e^{ \overline{X}}$$
+является состоятельной оценкой?
+Является ли $ \hat{ \theta_n}$ сильно состоятельной оценкой того же параметра?
+Является ли $ \hat{ \theta_n}$ несмещённой оценкой того же параметра?
+Ассимптотически немещённой?
+
+\textit{Решение.}
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i.$$
+По закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \to } MX_1, \,
+  n \to \infty.$$
+
+Случайные величины в выборке имеют показательное распределение
+$$MX_1 =
+  \frac{1}{ \alpha },$$
+значит,
+$$ \overline{X} \overset{P}{ \to } \frac{1}{ \alpha }, \,
+  n \to \infty.$$
+
+Применяем непрерывную функцию $e^x$.
+Получаем $e^{ \overline{X}} \overset{P}{ \to } e^{ \frac{1}{ \alpha }}, \, n \to \infty $.
+
+Проверяем, является ли оценка $e^{ \overline{X}}$ несмещённой к параметру $e^{ \frac{1}{ \alpha }}$,
+то есть выполняется ли $Me^{ \overline{X}} = e^{ \frac{1}{ \alpha }}$.
+
+Вычисляем $Me^{ \overline{X}} = Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i}$.
+Случайные величины независимы и одинаково распределены,
+поэтому $Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i} = \left( Me^{ \frac{X_1}{n}} \right)^n$.
+По определению характеристической функции $ \varphi_{X_1} = Me^{itX_1}$ получаем
+$$ \left( Me^{ \frac{X_1}{n}} \right)^n =
+  \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n.$$
+Характеристическая функция показательного распределения
+$$ \varphi_{X_1} \left(t \right) =
+  Me^{itX_1} =
+  \frac{ \alpha }{ \alpha - it}.$$
+Подставляем
+$$ \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n =
+  \left( \frac{ \alpha }{ \alpha - \frac{1}{n}} \right)^n.$$
+Прибавим и отнимем в числителе $1 / n$ и поделим числитель на знаменатель
+$$ \left( \frac{ \alpha }{ \alpha - \frac{1}{n}} \right)^n =
+  \left( \frac{ \alpha + \frac{1}{n} - \frac{1}{n}}{ \alpha - \frac{1}{n}} \right)^n =
+  \left[ 1 + \frac{1}{n \left( \alpha - \frac{1}{n} \right)} \right]^n =
+  e^{ \frac{1}{ \alpha }}.$$
+Значит, оценка смещённая, но несмещённая ассимптотически.
+
+\subsubsection*{2.9}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из геометрического распределения с параметром $p$.
+Найдите состоятельные оценки для параметров
+$$p, \,
+  p^2, \,
+  ln p, \,
+  p \sin \left( 1 - p \right), \,
+  pe^{ \frac{q^2}{2}}.$$
+
+\textit{Решение.} Всё это --- непрерывные функции от $p$.
+Применение непрерывной функции не нарушает сходимости по вероятности.
+
+Если параметр каким-то образом связан со средним, но нужно пробовать выборочные моменты.
+
+Сформируем выборочное среднее и применим закон больших чисел
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \to }
+  MX_1.$$
+Для геометрического распределения
+$$MX_1 =
+  \frac{1 - p}{p}.$$
+
+Прибавим единицу слева и справа
+$$1 + \overline{X} \overset{P}{ \to }
+  1 + \frac{1 - p}{p} =
+  1 + \frac{1}{p} - 1 =
+  \frac{1}{p}.$$
+
+Функция
+$$f \left( x \right) =
+  \frac{1}{x}$$
+--- это непрерывная функция, значит, можем применить эту функцию слева и справа,
+и сходимость сохранится
+$$ \frac{1}{1 + \overline{X}} \overset{P}{ \to }
+  p.$$
+
+Состоятельной оценкой для параметра $p$ будет
+$$ \hat{p} =
+  \frac{1}{1 + \overline{X}}.$$
+
+Состоятельной оценкой для $p^2$ будет $ \hat{p^2} = \hat{p}^2 \overset{P}{ \to } p^2$,
+потому что $f \left( x \right) = x^2$ --- это непрерывная функция.
+
+Логарифм --- это непрерывная функция
+$$ \hat{ln p} =
+  ln \hat{p} =
+  ln \frac{1}{1 + \overline{X}} \overset{P}{ \to }
+  ln p,$$
+поскольку
+$$ \frac{1}{1 + \overline{X}} \overset{P}{ \to }
+  p.$$
+
+\subsubsection*{2.12}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из распределния Пуассона с параметром $ \lambda > 0$.
+Докажите, что не существует несмещённой оценки для параметра $1 / \lambda $.
+
+\textit{Решение.} Будем действовать от противного.
+
+Допустим, что такая оценка существует, то есть существует $ \hat{ \theta }$ такое, что
+$$M \hat{ \theta } =
+  \frac{1}{ \lambda }.$$
+Это условие несмещённости.
+
+$ \hat{ \theta }$ --- функция от выборки,
+то есть $ \hat{ \theta } = f \left( X_1, \dotsc, X_n \right) $.
+
+Распределение Пуассона дискретное
+\begin{equation*}
+  \begin{split}
+    M \hat{ \theta } =
+    Mf \left( X_1, \dotsc, X_n \right) = \\
+    = \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Воспользуемся независимостью
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1, X_2 = k_2, \dotsc, X_n = k_n \right) = \\
+    = \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1 \right) \cdot \dotsc \cdot P \left( X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Подставим в явном виде вероятности
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1 \right) \cdot \dotsc \cdot P \left( X_n = k_n \right) = \\
+    = \sum \limits_{k_1 = 0}^{ \infty } \dotsc \sum \limits_{k_n = 0}^{ \infty }
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      \frac{ \lambda^{ \sum \limits_{i = 1}^n k_i}}{ \prod \limits_{i = 1}^n k_i!} \cdot
+      e^{- \lambda n}.
+  \end{split}
+\end{equation*}
+Обозначим
+$$ \sum k_i =
+  k$$
+и получим
+$$e^{- \lambda n} \cdot
+  \sum \limits_{k = 0}^{ \infty } \lambda^k \cdot
+  \sum \limits_{k_i: \, k_1 + k_2 + \dotsc + k_n = k}
+    \frac{f \left( k_1, \dotsc, k_n \right) }{k_1! \dotsc k_n!} =
+  e^{- \lambda n} \sum \limits_{k = 0}^{ \infty } \lambda^k c_k,$$
+где $c_k$ --- число.
+
+Допустим, что эта величина равна $1 / \lambda $.
+
+Посмотрим, возможно ли это
+$$e^{- \lambda n} \sum \limits_{k = 0}^{ \infty } \lambda^k c_k =
+  \frac{1}{ \lambda }.$$
+
+Запишем так, чтобы с одной стороны было $e^{ \lambda n}$, а всё остальное перенесём
+$$e^{ \lambda n} =
+  \sum \limits_{k = 0}^{ \infty } \lambda^{k + 1} c_k.$$
+
+Для экспоненты существует одно развитие в ряд.
+Из этого следует, что последнее равенство невозможно
+(развитие в ряд начинается со степени $ \lambda $, равной единице).
 
 \addcontentsline{toc}{section}{Домашнее задание}
 \section*{Домашнее задание}
+
+\subsubsection*{2.17}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из равномерного распределения на отрезке $ \left[ 0, \theta \right] $.
+Проверьте несмещённость,
+состоятельность и найдите среднеквадратическое отклонение следующих оценок параметра $ \theta $:
+\begin{enumerate}[label=\alph*)]
+  \item $X_{ \left( 1 \right) } + X_{ \left( n \right) }$;
+  \item $ \left( n + 1 \right) X_{ \left( 1 \right) }$.
+\end{enumerate}
+
+\textit{Решение.} $ \theta $ --- максимальное наблюдение.
+\begin{enumerate}[label=\alph*)]
+  \item Проверим,
+  выполняется ли
+  $X_{ \left( 1 \right) } + X_{ \left( n \right) } \overset{P}{ \to } \theta, \,
+    n \to \infty $.
+
+  По определению сходимости по вероятности
+  $ \forall \varepsilon > 0 \,
+    P \left( X_{ \left( 1 \right) } > \varepsilon \right) = \\
+    = P \left( X_1 > \varepsilon, X_2 > \varepsilon, \dotsc, X_n > \varepsilon \right) =
+    \left[ P \left( X_1 > \varepsilon \right) \right]^n.$
+  Подставим значение вероятности из геометрического эксперимента
+  $$ \left[ P \left( X_1 > \varepsilon \right) \right]^n =
+    \left( \frac{ \theta - \varepsilon }{ \theta } \right)^n \to 0, \,
+    n \to \infty.$$
+
+  Значит, $X_{ \left( 1 \right) } \overset{P}{ \to } 0, \, n \to \infty $.
+
+  Остаётся проверить,
+  выполняется ли $X_{ \left( n \right) } \overset{P}{ \to } \theta, \, n \to \infty $.
+
+  По определению сходимости по вероятности
+  $$P \left\{ \left| X_{ \left( n \right) } - \theta \right| > \varepsilon \right\} \to 0, \,
+    n \to \infty.$$
+
+  Раскроем модуль
+  \begin{equation*}
+    \begin{split}
+      P \left\{ \theta - X_{ \left( n \right) } > \varepsilon \right\} =
+      P \left\{ X_{ \left( n \right) } - \theta < - \varepsilon \right\} =
+      P \left\{ X_{ \left( n \right) } < \theta - \varepsilon \right\} = \\
+      = P \left(
+        X_1 < \theta - \varepsilon, X_2 < \theta - \varepsilon, \dotsc, X_n < \theta - \varepsilon
+      \right) =
+      \left[ P \left( X_1 < \theta - \varepsilon \right) \right]^n.
+    \end{split}
+  \end{equation*}
+  Подставим значение вероятности из геометрического эксперимента
+  $$ \left[ P \left( X_1 < \theta - \varepsilon \right) \right]^n =
+    \left( \frac{ \theta - \varepsilon }{ \theta } \right)^n =
+    \left( 1 - \frac{ \varepsilon }{ \theta } \right)^n \to 0, \,
+    n \to \infty.$$
+
+  Число в скобках строго меньше единицы, так как $0 \leq \theta \leq 1, \, \varepsilon > 0$.
+
+  Отсюда следует, что оценка состоятельная.
+
+  Проверим несмещённость оценки.
+  Проверим, выполняется ли
+  $$M \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) =
+    \theta.$$
+
+  Из задачи 1.21
+  $$MX_{ \left( n \right) } =
+    \frac{ \theta n}{n + 1}$$
+  и
+  $$MX_{ \left( 1 \right) } =
+    \frac{ \theta }{n + 1}.$$
+  Из свойства линейности математического ожидания
+  $$M \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) =
+    MX_{ \left( 1 \right) } + MX_{ \left( n \right) } =
+    \frac{ \theta n}{n + 1} + \frac{ \theta }{n + 1} =
+    \frac{ \theta \left( n + 1 \right) }{n + 1} =
+    \theta.$$
+
+  Отсюда следует, что оценка несмещённая.
+
+  Формула среднеквадратического отклонения имеет вид $ \sigma = \sqrt{D \xi }$.
+
+  Найдём дисперсию оценки
+  \begin{equation*}
+    \begin{split}
+      D \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) =
+      M \left( X_{ \left( 1 \right) } + X_{ \left( n \right) } \right)^2 -
+      \left[ M \left(  X_{ \left( 1 \right) } + X_{ \left( n \right) } \right) \right]^2 = \\
+      = M \left(
+        X_{ \left( 1 \right) }^2 +
+        X_{ \left( n \right) }^2 +
+        2X_{ \left( 1 \right) } X_{ \left( n \right) }
+      \right) -
+      \left( MX_{ \left( 1 \right) } + MX_{ \left( n \right) } \right)^2 = \\
+      = MX_{ \left( 1 \right) }^2 +
+      MX_{ \left( n \right) }^2 +
+      2M \left( X_{ \left( 1 \right) } X_{ \left( n \right) } \right) -
+      \left( MX_{ \left( 1 \right) } \right)^2 -
+      2MX_{ \left( 1 \right) } MX_{ \left( n \right) } - \\
+      - \left( MX_{ \left( n \right) } \right)^2 =
+      DX_{ \left( 1 \right) } +
+      DX_{ \left( n \right) } +
+      2cov \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right).
+    \end{split}
+  \end{equation*}
+  Возьмём необходимые значения из задачи 1.21, а именно
+  $$DX_{ \left( 1 \right) } =
+    \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+    DX_{ \left( n \right) }, \,
+    cov \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) =
+    \frac{ \theta^2}{ \left( n + 1 \right)^2 \left( n + 2 \right) }.$$
+  Подставляя в найденной выражение, получаем
+  \begin{equation*}
+    \begin{split}
+      DX_{ \left( 1 \right) } +
+      DX_{ \left( n \right) } +
+      2cov \left( X_{ \left( 1 \right) }, X_{ \left( n \right) } \right) = \\
+      = \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } +
+      \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } +
+      \frac{2 \theta^2}{ \left( n + 1 \right)^2 \left( n + 2 \right) } = \\
+      = \frac{2 \theta^2 n + 2 \theta }{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+      \frac{2 \theta^2 \left( n + 1 \right) }{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+      \frac{2 \theta^2}{ \left( n + 1 \right) \left( n + 2 \right) }.
+    \end{split}
+  \end{equation*}
+
+  Извлекая корень, получаем
+  $$ \sigma =
+    \sqrt{ \frac{2 \theta^2}{ \left( n + 1 \right) \left( n + 2 \right) }} =
+    \theta \sqrt{ \frac{2}{ \left( n + 1 \right) \left( n + 2 \right) }};$$
+  \item проверим,
+  выполняется ли
+  $ \left( n + 1 \right) X_{ \left( 1 \right) } \overset{P}{ \to } \theta, \,
+    n \to \infty $.
+
+  По определению сходимости по вероятности
+  $$ \forall \varepsilon > 0 \,
+    P \left(
+      \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| > \varepsilon
+    \right) \to 0, \,
+    n \to \infty.$$
+
+  Перейдём к противоположному событию
+  $$P \left(
+    \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| > \varepsilon
+  \right) =
+  1 -
+  P \left\{
+    \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| \leq \varepsilon
+  \right\}.$$
+  Раскроем модуль
+  \begin{equation*}
+    \begin{split}
+      1 - P \left\{
+        \left| \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \right| \leq \varepsilon
+      \right\} = \\
+      = 1 - P \left\{
+        - \varepsilon \leq \left( n + 1 \right) X_{ \left( 1 \right) } - \theta \leq \varepsilon
+      \right\} = \\
+      = 1 - P \left\{
+        \frac{- \varepsilon + \theta }{n + 1} \leq
+        X_{ \left( 1 \right) } \leq
+        \frac{ \varepsilon + \theta }{n + 1}
+      \right\} = \\
+      = 1 + P \left\{ X_{ \left( 1 \right) } \leq \frac{ \theta - \varepsilon }{n + 1} \right\} -
+      P \left\{ X_{ \left( 1 \right) } < \frac{ \varepsilon + \theta }{n + 1} \right\} = \\
+      = 1 + 1 - P \left(
+        X_1 > \frac{ \theta - \varepsilon }{n + 1},
+        \dotsc,
+        X_n > \frac{ \theta - \varepsilon }{n + 1}
+      \right) -
+      1 + P \left( X_{ \left( 1 \right) } > \frac{ \varepsilon + \theta }{n + 1} \right) = \\
+      = 1 - \left[ P \left( X_1 > \frac{ \theta - \varepsilon }{n + 1} \right) \right]^n +
+      \left[ P \left( X_1 > \frac{ \theta + \varepsilon}{n + 1} \right) \right]^n.
+    \end{split}
+  \end{equation*}
+  Подставим значения вероятностей из геометрического эксперимента
+  \begin{equation*}
+    \begin{split}
+      1 - \left[ P \left( X_1 > \frac{ \theta - \varepsilon }{n + 1} \right) \right]^n +
+      \left[ P \left( X_1 > \frac{ \theta + \varepsilon}{n + 1} \right) \right]^n = \\
+      = 1 - \left( \frac{ \theta - \frac{ \theta - \varepsilon }{n + 1}}{ \theta } \right)^2 +
+      \left( \frac{ \theta - \frac{ \varepsilon + \theta }{ n + 1}}{ \theta } \right)^n = \\
+      = 1 - \left( 1 - \frac{ \theta - \varepsilon }{ \left( n + 1 \right) \theta } \right)^n +
+      \left( 1 - \frac{ \varepsilon + \theta }{ \left( n + 1 \right) \theta } \right)^n \not \to
+      0, \, n \to \infty.
+    \end{split}
+  \end{equation*}
+
+  Отсюда следует, что оценка несостоятельная.
+
+  Проверим несмещённость оценки.
+  Проверим, выполняется ли
+  $$M \left( n + 1 \right) X_{ \left( 1 \right) } =
+    \theta.$$
+
+  Выносим константу из-под знака математического ожидания
+  $$ \left( n + 1 \right) MX_{ \left( 1 \right) } =
+    \left( n + 1 \right) \cdot \frac{ \theta }{n + 1} =
+    \theta.$$
+
+  Отсюда следует, что оценка несмещённая.
+
+  Найдём дисперсию оценки
+  $$D \left( n + 1 \right) X_{ \left( 1 \right) } =
+    \left( n + 1 \right)^2 DX_{ \left( 1 \right) } =
+    \left( n + 1 \right)^2 \cdot \frac{ \theta^2 n}{ \left( n + 1 \right)^2 \left( n + 2 \right) } =
+    \frac{ \theta^2 n}{n + 2},$$
+  откуда среднеквадратическое отклонение равно
+  $$ \sigma =
+    \sqrt{D \left( n + 1 \right) X_{ \left( 1 \right) }} =
+    \sqrt{ \frac{ \theta^2 n}{n + 2}} =
+    \theta \sqrt{ \frac{n}{n + 2}}.$$
+\end{enumerate}
+
+\subsubsection*{2.18}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ ---
+выборка из показательного распределения с параметром $1 / \sqrt{ \alpha }$.
+Выясните,
+является ли статистика $ \hat{ \alpha_n} = \left( \overline{X} \right)^2$
+несмещённой оценкой параметра $ \alpha $.
+Является ли эта оценка состоятельной?
+
+\textit{Решение.} Нужно проверить, выполняется ли $M \left( \overline{X} \right)^2 = \alpha $.
+
+Запишем, что означает выборочное среднее
+$$M \left( \overline{X} \right)^2 =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2 =
+  M \left( \frac{1}{n^2} \left( \sum \limits_{i = 1}^n X_i \right)^2 \right) =
+  \frac{1}{n^2} \cdot M \left( \sum \limits_{i = 1}^n X_i \right)^2.$$
+Квадрат суммы запишем в виде двух сумм.
+Получим
+$$ \frac{1}{n^2} \cdot
+  M \left( \sum \limits_{i = 1}^n X_i^2 + 2 \sum \limits_{k < i}^n X_k X_i \right) =
+  \frac{1}{n^2} \cdot M \sum \limits_{i = 1}^n X_i +
+  \frac{2}{n^2} M \sum \limits_{k < i}^n X_k X_i.$$
+Случайные величины независимы и одинаково распределены, поэтому
+$$ \frac{1}{n^2} \cdot M \sum \limits_{i = 1}^n X_i +
+  \frac{2}{n^2} M \sum \limits_{k < i}^n X_k X_i =
+  \frac{1}{n^2} \sum \limits_{i = 1}^n MX_i^2 + \frac{2}{n^2} \sum \limits_{k < i}^n MX_k MX_i.$$
+Для показательного распределения
+$$MX_i = \frac{1}{ \lambda } = \frac{1}{ \frac{1}{ \sqrt{ \alpha }}} = \sqrt{ \alpha }, \,
+  MX_i^2 = \frac{2}{ \lambda^2} = \frac{2}{ \frac{1}{ \alpha }} = 2 \alpha.$$
+Подставляем
+\begin{equation*}
+  \begin{split}
+    \frac{1}{n^2} \sum \limits_{i = 1}^n MX_i^2 + \frac{2}{n^2} \sum \limits_{k < i}^n MX_k MX_i =
+    \frac{1}{n^2} \cdot n \cdot 2 \alpha +
+    \frac{1}{n^2} \cdot \left( n - 1 \right) n \left( MX_1 \right)^2 = \\
+    = \frac{2 \alpha }{n} + \frac{n - 1}{n} \cdot \alpha =
+    \frac{2 \alpha }{n} + \alpha - \frac{ \alpha }{n} =
+    \frac{ \alpha }{n} + \alpha \to \alpha, \, n \to \infty,
+  \end{split}
+\end{equation*}
+значит, оценка смещённая, но несмещённая ассимптотически.
+
+Проверим, имеет ли место
+$ \left( \overline{X} \right)^2 \overset{P}{ \to } \alpha, \,
+  n \to \infty $.
+
+По закону больших чисел
+$$ \left( \overline{X} \right)^2 =
+  \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2 \to
+  \left( MX_1 \right)^2 =
+  \left( \sqrt{ \alpha } \right)^2 =
+  \alpha,$$
+значит, оценка состоятельная.
+
+\subsubsection*{2.21}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из биномиального распределения с параметрами 2 и $p$.
+Для какого параметра $ \theta = \theta \left( p \right) $ статистика
+$ \hat{ \theta_n} = e^{ \overline{X}}$ будет состоятельной?
+Является ли $ \hat{ \theta_n}$ сильно состоятельной оценкой того же параметра?
+Является ли $ \hat{ \theta_n}$ несмещённой оценкой того же параметра?
+Найдите среднеквадратическое отклонение этой оценки.
+
+\textit{Решение.}
+$$ \overline{X} =
+  \frac{1}{n} \sum \limits_{i = 1}^n X_i.$$
+
+По закону больших чисел
+$$ \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{P}{ \to } MX_1, \,
+  n \to \infty.$$
+
+Случайные величины в выборке имеют биномиальное распределение с математическим ожиданием
+$MX_1 = np = 2p$, значит, $ \overline{X} \overset{P}{ \to } 2p, \, n \to \infty $.
+
+Применим непрерывную функцию $e^x$.
+Получим $e^{ \overline{X}} \overset{P}{ \to } e^{2p}, \, n \to \infty $.
+
+Проверим, является ли оценка несмещённой к параметру $e^{2p}$,
+то есть выполняется ли $Me^{ \overline{X}} = e^{2p}$.
+
+Вычисляем $Me^{ \overline{X}} = Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i}$.
+Случайные величины независимы и одинаково распределены,
+поэтому $Me^{ \frac{1}{n} \sum \limits_{i = 1}^n X_i} = \left( Me^{ \frac{X_1}{n}} \right)^n$.
+По определению характеристической функции $ \varphi_{X_1} \left( t \right) = Me^{itX_1}$, получим
+$$ \left( Me^{ \frac{X_1}{n}} \right)^n =
+  \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n.$$
+Характеристическая функция биномиального распределения
+$$ \varphi_{X_1} \left( t \right) =
+  Me^{itX_1} =
+  \left[ \left( e^{it} - 1 \right) p + 1 \right]^n.$$
+Подставим и получим
+$$ \left[ \varphi_{X_1} \left( \frac{1}{in} \right) \right]^n =
+  \left[ \left( e^{\frac{i}{in}} - 1 \right) p + 1 \right]^n =
+  \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^n \neq
+  e^{2p}.$$
+
+Значит, оценка смещённая.
+
+Проверим сильную состоятельность.
+По усиленному закону больших чисел
+$$ \overline{X} = \frac{1}{n} \sum \limits_{i = 1}^n X_i \overset{a.s.}{ \to } MX_1 = 2p, \,
+  n \to \infty.$$
+Отсюда следует, что $e^{ \overline{X}} \overset{a.s.}{ \to } e^{2p}, \, n \to \infty $.
+Значит, оценка сильно состоятельная.
+
+Найдём дисперсию оценки
+$De^{ \overline{X}} =
+  Me^{2 \overline{X}} - \left( Me^{ \overline{X}} \right)^2$.
+
+Нашли, что $Me^{ \overline{X}} = \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^n$.
+
+Вычисляем $Me^{2 \overline{X}} = Me^{ \frac{2}{n} \sum \limits_{i = 1}^n X_i}$.
+Из независимости и одинаковой распределенности случайных величин следует,
+что $Me^{ \frac{2}{n} \sum \limits_{i = 1}^n X_i} = \left( Me^{ \frac{2X_1}{n}} \right)^n$.
+По определению характеристической функции $ \varphi_{X_1} \left( t \right) = Me^{itX_1}$, получаем
+$$ \left( Me^{ \frac{2X_1}{n}} \right)^n =
+  \left[ \varphi_{X_1} \left( \frac{2}{in} \right) \right]^n.$$
+Подставляем характеристическую фунцию биномиального распределения
+$$ \left[ \varphi_{X_1} \left( \frac{2}{in} \right) \right]^n =
+  \left[ \left( e^{ \frac{2i}{in}} - 1 \right) p + 1 \right]^n =
+  \left[ \left( e^{ \frac{2}{n}} - 1 \right) p + 1 \right]^n.$$
+Отсюда находим дисперсию оценки
+$$De^{ \overline{X}} =
+  \left[ \left( e^{ \frac{2}{n}} - 1 \right) p + 1 \right]^n -
+  \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^{2n}.$$
+Извлекая корень, получим
+$ \sigma =
+  \sqrt{
+    \left[ \left( e^{ \frac{2}{n}} - 1 \right) p + 1 \right]^n -
+    \left[ \left( e^{ \frac{1}{n}} - 1 \right) p + 1 \right]^{2n}
+  }.$
+
+\subsubsection*{2.22}
+
+\textit{Задание.} В партии из $n$ изделий оказалось $m$ бракованных.
+Неизвестная вероятность $p$ появления бракованного изделия оценивается величиной $m / n$.
+Проверьте состоятельность и несмещённость этой оценки.
+
+\textit{Решение.} Выборка имеет распределение Бернулли, то есть
+$$X_i =
+  \begin{cases}
+    1, \qquad p, \\
+    0, \qquad 1 - p,
+  \end{cases}$$
+где событие $ \left\{ X_i = 1 \right\} $ означает, что $i$-тое изделие браковано.
+
+Тогда
+$$ \frac{m}{n} =
+  \frac{X_1 + \dotsc + X_n}{n},$$
+где $ \left( X_1 + \dotsc + X_n \right) $ --- количество бракованных изделий в партии.
+
+Проверяем состоятельность, то есть проверяем, выполняется ли
+$$ \frac{m}{n} \overset{p}{ \to } p, \,
+  n \to \infty.$$
+По закону больших чисел
+$$ \frac{m}{n} =
+  \frac{X_1 + \dotsc + X_n}{n} \overset{p}{ \to }
+  MX_1 =
+  p, \,
+  n \to \infty,$$
+так как это распределение Бернулли.
+
+Это означает, что оценка состоятельная.
+
+Проверим несмещённость оценки, то есть проверим, выполняется ли
+$$M \frac{m}{n} =
+  p.$$
+
+Ищем математическое ожидание оценки
+$$M \frac{m}{n} =
+  M \frac{X_1 + \dotsc + X_n}{p} =
+  \frac{1}{n} \cdot M \left( X_1 + \dotsc + X_n \right).$$
+Пользуемся линейностью математического ожидания
+$$ \frac{1}{n} \cdot M \left( X_1 + \dotsc + X_n \right) =
+  \frac{1}{n} \cdot nMX_1 =
+  p,$$
+то есть оценка несмещённая.
+
+\subsubsection*{2.23}
+
+\textit{Задание.} При каком значении $k$ статистика
+$$k \sum \limits_{j = 1}^n \left| X_j \right|,$$
+которая построена по выборке из нормального распределения $N \left( 0, \sigma^2 \right) $,
+является несмещённой оценкой для параметра $ \sigma $?
+
+\textit{Решение.} Нужно найти такое $k$, для которого
+$$M \left( k \sum \limits_{j = 1}^n \left| X_j \right| \right) =
+  \sigma, \,
+  X_j \sim N \left( 0, \sigma^2 \right).$$
+
+Выносим константу $k$ за знак математического ожидания
+$$M \left( k \sum \limits_{j = 1}^n \left| X_j \right| \right) =
+  kM \sum \limits_{j = 1}^n \left| X_j \right|.$$
+Пользуемся линейностью математического ожидания
+$$kM \sum \limits_{j = 1}^n \left| X_j \right| =
+  k \sum \limits_{j = 1}^n M \left| X_j \right|.$$
+Из того, что случайные величины одинаково распределены, следует, что
+$$k \sum \limits_{j = 1}^n M \left| X_j \right| =
+  knM \left| X_1 \right|.$$
+
+Найдём математическое ожидание модуля первого элемента выборки через плотность распределения
+$$M \left| X_1 \right| =
+  \int \limits_{ \mathbb{R}} p \left( x \right) \cdot \left| x \right| dx =
+  \int \limits_{ \mathbb{R}}
+    \left| x \right| \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{x^2}{2 \sigma^2}}
+  dx =
+  2 \cdot
+  \int \limits_0^{+ \infty }
+    x \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{x^2}{2 \sigma^2}}
+  dx.$$
+Внесём под знак дифференциала то, что стоит в степени экспоненты
+$$2 \cdot
+  \int \limits_0^{+ \infty }
+    x \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot e^{- \frac{x^2}{2 \sigma^2}}
+  dx =
+  -2 \cdot \frac{1}{ \sqrt{2 \pi } \sigma } \cdot \frac{1}{2} \cdot
+  \int \limits_0^{+ \infty }
+    e^{- \frac{x^2}{2 \sigma^2}}
+  d \left( - \frac{x^2}{2 \sigma^2} \right) \cdot
+  2 \sigma^2 =
+  \sqrt{ \frac{2}{ \pi }} \cdot \sigma.$$
+
+Тогда математическое ожидание оценки
+$$M \left( k \sum \limits_{j = 1}^n \left| X_j \right| \right) =
+  kn \sigma \sqrt{ \frac{2}{ \pi }}$$
+--- условие несмещённости, откуда
+$$k =
+  \frac{1}{n} \sqrt{ \frac{ \pi }{2}}.$$
+
+\subsubsection*{2.24}
+
+\textit{Задание.}
+Пусть $X_1, \dotsc, X_n$ --- выборка из показательного распределения с параметром $ \alpha > 0$.
+Найдите несмещённые состоятельные оценки для параметров
+$$ \alpha, \,
+  \sin \frac{1}{ \alpha }.$$
+
+\textit{Решение.} $X_1, \dotsc, X_n$ --- независимые одинаково распределённые.
+
+$ \theta $ --- неизвестный параметр.
+
+$$ \hat{ \theta } =
+  \frac{f \left( X_1 \right) + \dotsc + f \left( X_n \right) }{n}.$$
+
+Так как элементы выборки одинаково распределённые, то $M \hat{ \theta } = Mf \left( X_1 \right) $.
+
+По закону больших чисел $ \hat{ \theta } \overset{P}{ \to } Mf \left( X_1 \right) $.
+
+Хотим, чтобы
+$$ \begin{cases}
+    M \hat{ \theta } = \hat{ \theta }, \\
+    \hat{ \theta } \overset{P}{ \to } \theta.
+  \end{cases}$$
+
+Нужно подобрать $f$ из условия, что $Mf \left( X_1 \right) = \theta = \alpha $.
+
+Записывая математическое ожидание через интеграл от плотности получаем преобразование Лапласа
+$$ \int \limits_0^{ \infty } f \left( y \right) \alpha e^{- \alpha y} dy =
+   \alpha.$$
+
+Это способ построения одновременно несмещённой и сотоятельной оценки.
+
+Выносим $ \alpha $ из-под знака интеграла
+$$ \alpha \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  \alpha.$$
+Сокращая константы, получаем
+$$ \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  1.$$
+Из таблицы преобразований Лапласа $f \left( y \right) = \delta \left( y \right) $.
+Тогда оценка параметра $ \alpha $ примет вид
+$$ \hat{ \theta } =
+  \frac{ \delta \left( X_1 \right) + \dotsc + \delta \left( X_n \right) }{n}.$$
+
+Для второго параметра
+$$ \int \limits_0^{ \infty } f \left( y \right) \alpha e^{- \alpha y} dy =
+  \sin \frac{1}{ \alpha }.$$
+
+Вынесем $ \alpha $ из-под знака интеграла
+$$ \alpha \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  \sin \frac{1}{ \alpha }.$$
+
+Перенесём $ \alpha $ вправо
+$$ \int \limits_0^{ \infty } f \left( y \right) e^{- \alpha y} dy =
+  \frac{1}{ \alpha } \cdot \sin \frac{1}{y} \sim
+  \frac{1}{ \alpha } \cdot \frac{1}{ \alpha } =
+  \frac{1}{ \alpha^2},$$
+откуда из таблицы преобразований Лапласа $f \left( y \right) = y$.
+Перешли к пределу, потому что иначе интеграл расходится.
+Оценка параметра в таком случае примет вид
+$$ \hat{ \theta } =
+  \frac{X_1 + \dotsc + X_n}{n} =
+  \overline{X}.$$
+
+\subsubsection*{2.25}
+
+\textit{Задание.}
+Пусть $X$ --- количество успехов в серии из $n$ испытаний Бернулли с вероятностью успеха $p$.
+Докажите, что не существует несмещённой оценки для параметра $p^N$ при $N > n$.
+
+\textit{Решение.} Будем действовать от противного.
+
+Допустим, такая оценка существует, то есть существует $ \hat{ \theta }$ такое,
+что $M \hat{ \theta } = p^N$.
+
+Это условие несмещённости.
+
+$ \hat{ \theta }$ --- функция от выборки $X_1, \dotsc, X_n$, где $X_1 + \dotsc + X_n = X$,
+то есть $ \hat{ \theta } = f \left( X_1, \dotsc, X_n \right) $.
+
+Распределение Бернулли дискретное
+\begin{equation*}
+  \begin{split}
+    M \hat{ \theta } =
+    Mf \left( X_1, \dotsc, X_n \right) = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1, \dotsc, X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Пользуясь независимостью, получаем
+\begin{equation*}
+  \begin{split}
+   \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1, \dotsc, X_n = k_n \right) = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      P \left( X_1 = k_1 \right) \cdot \dotsc \cdot P \left( X_n = k_n \right).
+  \end{split}
+\end{equation*}
+Подставляем вероятности в явном виде
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) P \left( X_1 = k_1 \right) \cdot P \left( X_n = k_n \right) = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) p^{k_1} \cdot
+      \left( 1 - p \right)^{1 - k_1} \cdot \dotsc \cdot p^{k_n} \cdot \left( 1 - p \right)^{1 - k_n} = \\
+    = \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      p^{k_1 + \dotsc + k_n} \cdot \left( 1 - p \right)^{n - \left( k_1 + \dotsc + k_n \right) }.
+    \end{split}
+\end{equation*}
+Обозначим
+$$ \sum k_i =
+  k.$$
+Получим
+\begin{equation*}
+  \begin{split}
+    \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+      f \left( X_1, \dotsc, X_n \right) \cdot
+      p^{k_1 + \dotsc + k_n} \cdot \left( 1 - p \right)^{n - \left( k_1 + \dotsc + k_n \right) } = \\
+    = \sum \limits_{k = 0}^n
+      \sum \limits_{k_1, \dotsc, k_n = 1 \, or \, 0}
+        f \left( k_1, \dotsc, k_n \right) p^k \left( 1 - p \right)^{n - k} =
+    \sum \limits_{k = 0}^n c_k p^k \left( 1 - p \right)^{n - k},
+  \end{split}
+\end{equation*}
+где $c_k$ --- число.
+
+Допустим, эта величина равна $p^N$.
+
+Посмотрим, возможно ли это
+$$ \sum \limits_{k = 0}^n c_k p^k \left( 1 - p \right)^{n - k} =
+  p^N.$$
+
+Последнее равенство невозможно при $N > n$.
+Из этого следует, что не существует несмещённой оценки для параметра $p^N$ при $N > n$.
+
+\subsubsection*{2.26}
+
+\textit{Задание.} Проводится $n$ измерений неизвестного диаметра $d$ круга.
+В первом приближении считается,
+что измерения $X_i = d + \varepsilon_i$
+проводятся с независимыми случайными погрешностями $ \varepsilon_i$,
+которые имеют нормальное распределение с нулевым математическим ожиданием
+и неизвестной дисперсией $ \sigma^2$.
+Проверьте несмещённость и состоятельность следующей оценки площади круга:
+$$ \hat{s_n} =
+  \frac{ \pi }{4} \left( \left( \overline{X} \right)^2 - \frac{S_0^2}{n} \right),$$
+где
+$$S_0^2 =
+  \frac{1}{n - 1} \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2.$$
+
+\textit{Решение.} Имеем случайные величины $ \varepsilon_i \sim N \left( 0, \sigma^2 \right) $.
+Проверим несмещённость оценки, то есть проверим, выполняется ли
+$$M \hat{s_n} =
+  \frac{ \pi d^2}{4}.$$
+
+Преобразуем
+$$S_0^2 =
+  \frac{1}{n - 1} \sum \limits_{i = 1}^n \left( X_i - \overline{X} \right)^2 =
+  \frac{1}{n - 1} \cdot
+  \sum \limits_{i = 1}^n \left( d + \varepsilon_i - d - \overline{ \varepsilon } \right)^2 =
+  \frac{1}{n - 1} \cdot
+  \sum \limits_{i = 1}^n \left( \varepsilon_i - \overline{ \varepsilon } \right)^2.$$
+Математическое ожидание этой случайной величины равно
+$$MS_0^2 =
+  DS_0^2 =
+  \sigma^2.$$
+
+Найдём математическое ожидание квадрата выборочного среднего
+$$M \left( \overline{X} \right)^2 =
+  M \left( \frac{1}{n} \sum \limits_{i = 1}^n X_i \right)^2 =
+  M \left[
+    \frac{1}{n^2} \cdot
+    \left( \sum \limits_{i = 1}^n X_i^2 + 2 \sum \limits_{i, j = 1, \, i \neq j}^n X_i X_j \right)
+  \right].$$
+Пользуемся тем, что случайные величины в выборке одинаково распределены
+$$M \left[
+    \frac{1}{n^2} \cdot
+    \left( \sum \limits_{i = 1}^n X_i^2 + 2 \sum \limits_{i, j = 1, \, i \neq j}^n X_i X_j \right)
+  \right] =
+  \frac{1}{n^2} \cdot nMX_1^2 + \frac{1}{n^2} \cdot 2C_n^2 \left( MX_1 \right)^2.$$
+Расписываем биномиальный коэффициент
+$$ \frac{1}{n^2} \cdot nMX_1^2 + \frac{1}{n^2} \cdot 2C_n^2 \left( MX_1 \right)^2 =
+  \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot \frac{n!}{2 \left( n - 2 \right)!} \cdot \left( MX_1 \right)^2.$$
+Расписываем $n!$ через факториал, стоящий в знаменателе
+$$ \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot \frac{n!}{2 \left( n - 2 \right)!} \cdot \left( MX_1 \right)^2 =
+  \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot
+  \frac{ \left( n - 2 \right)! \left( n - 1 \right) n}{2 \left( n - 2 \right)!} \cdot
+  \left( MX_1 \right)^2.$$
+Сокращаем
+$$ \frac{1}{n} \cdot MX_1^2 +
+  \frac{2}{n^2} \cdot
+  \frac{ \left( n - 2 \right)! \left( n - 1 \right) n}{2 \left( n - 2 \right)!} \cdot
+  \left( MX_1 \right)^2 =
+  \frac{1}{n} \cdot MX_1^2 + \frac{n - 1}{n} \cdot \left( MX_1 \right)^2.$$
+Найдём математическое ожидание измерения
+$$MX_1 =
+  M \left( d + \varepsilon_i \right) =
+  Md + M \varepsilon_i =
+  d.$$
+Найдём математическое ожидание квадрата измерения
+$$MX_1^2 =
+  M \left( d + \varepsilon_i \right)^2 =
+  M \left( d^2 + 2d \varepsilon_i + \varepsilon_i^2 \right) =
+  Md^2 + M \left( 2d \varepsilon_i \right) + M \varepsilon_i^2.$$
+Выносим константы за знак матетматического ожидания и учитываем то,
+что случайная величина $ \varepsilon_i$ имеет нулевой математическое ожидание
+$$Md^2 + M \left( 2d \varepsilon_i \right) + M \varepsilon_i^2 =
+  d^2 + 2dM \varepsilon_i + D \varepsilon_i =
+  d^2 + \sigma^2.$$
+Подставляя эти значения
+в полученное выражение для математического ожидания квадрата выборочного среднего, получаем
+$$M \left( \overline{X} \right)^2 =
+  \frac{1}{n} \cdot \left( d^2 + \sigma^2 \right) + \frac{n - 1}{n} \cdot d^2 =
+  \frac{d^2 + \sigma^2 + nd^2 - d^2}{n} =
+  \frac{ \sigma^2 + nd^2}{n} =
+  d^2 + \frac{ \sigma^2}{n}.$$
+
+Получаем математическое ожидание оценки
+$$M \hat{s_n} =
+  M \left\{
+    \frac{ \pi }{4} \cdot \left[ \left( \overline{X} \right)^2 - \frac{S_0^2}{n} \right]
+  \right\} =
+  \frac{ \pi }{4} \cdot M \left[ \left( \overline{X} \right)^2 - \frac{S_0^2}{n} \right] =
+  \frac{ \pi }{4} \cdot M \left( \overline{X} \right)^2 - \frac{ \pi }{4} \cdot M \frac{S_0^2}{n}.$$
+Подставляем найденные значения математических ожиданий и выносим за скобку общий множитель
+$$ \frac{ \pi }{4} \cdot M \left( \overline{X} \right)^2 - \frac{ \pi }{4} \cdot M \frac{S_0^2}{n} =
+  \frac{ \pi }{4} \cdot \left( d^2 + \frac{ \sigma^2}{n} \right) - \frac{ \pi }{4n} \cdot MS_0^2 =
+  \frac{ \pi }{4} \cdot d^2 + \frac{ \pi \sigma^2}{4n} - \frac{ \pi \sigma^2}{4n} =
+  \frac{ \pi d^2}{4},$$
+значит, оценка несмещённая.
+
+Проверим состоятельность оценки, то есть выполняется ли
+$$ \hat{s_n} \overset{P}{ \to } \frac{ \pi d^2}{4}, \,
+  n \to \infty.$$
+
+По закону больших чисел
+$$ \left( \overline{X} \right)^2 \overset{P}{ \to } \left( MX_1 \right)^2 = d^2, \,
+  n \to \infty.$$
+
+Остаётся проверить, стремится ли по вероятности второе слагаемое в оценке к нулю
+$$P \left( \frac{S_0^2}{n} \geq \varepsilon \right) =
+  P \left( S_0^2 \geq \varepsilon n \right).$$
+Применим неравенство Чебышева
+$$P \left( S_0^2 \geq \varepsilon n \right) \leq
+  \frac{MS_0^2}{ \varepsilon n} \to 0, \,
+  n \to \infty.$$
+Остюда следует, что
+$$ \frac{S_0^2}{n} \overset{P}{ \to } 0, \, n \to \infty.$$
+Значит,
+$$ \hat{s_n} \overset{P}{ \to } \frac{ \pi }{4} \cdot d^2,$$
+то есть оценка состоятельная.

@@ -103,15 +103,13 @@ $$X_1 + \dotsc + X_n = k.$$
   \end{split}
 \end{equation*}
 Имеем распределение Пуассона.
-Сумма $n$ независимых случайных величин имеет распределение Пуассона с параметром $ \lambda n$.
+Сумма независимых случайных величин имеет распределение Пуассона с параметром $ \lambda n$.
 Подставляем значения вероятностей
 \begin{equation*}
   \begin{split}
-    \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} P \left\{ X_1 = k_1 \right\} \cdot \dotsc \cdot P \left\{ X_n = k_n \right\} }
-          {P \left\{ \sum \limits_{i = 1}^n X_i = k \right\} } = \\
+    \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} P \left\{ X_1 = k_1 \right\} \cdot \dotsc \cdot P \left\{ X_n = k_n \right\} }{P \left\{ \sum \limits_{i = 1}^n X_i = k \right\} } = \\
     = \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} \cdot
-    \frac{ \frac{ \lambda^{k_1}}{k_1!} \cdot e^{- \lambda } \cdot \dotsc \cdot \frac{ \lambda^{k_n}}{k_n!} \cdot e^{- \lambda }}
-          { \frac{ \left( \lambda n \right)^k}{k!} \cdot e^{- \lambda n}} =
+    \frac{ \frac{ \lambda^{k_1}}{k_1!} \cdot e^{- \lambda } \cdot \dotsc \cdot \frac{ \lambda^{k_n}}{k_n!} \cdot e^{- \lambda }}{ \frac{ \left( \lambda n \right)^k}{k!} \cdot e^{- \lambda }} =
     \frac{ \mathbbm{1} \left\{ \sum \limits_{i = 1}^n k_i = k \right\} k!}{k_1! \dotsc k_n! n^k}.
   \end{split}
 \end{equation*}
